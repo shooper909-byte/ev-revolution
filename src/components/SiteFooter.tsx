@@ -1,7 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
-import { CurvatureMark } from "@/components/Wordmark";
 import { careLabel, pillars } from "@/lib/pillars";
 
 const company = [
@@ -19,16 +19,9 @@ export function SiteFooter() {
       <Container className="py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-3">
-              <CurvatureMark className="h-11 w-auto" />
-              <span className="font-display text-xl tracking-[0.14em]">
-                <span className="gold-text">EVE&rsquo;S</span>
-                <span className="text-ivory"> SISTERS</span>
-              </span>
-            </div>
-            <p className="brand-eyebrow mt-4 text-[0.5625rem] text-taupe">
-              The Evolution of a Woman&rsquo;s Body
-            </p>
+            <Link href="/" aria-label="Eve's Sisters — home" className="block w-72 max-w-full">
+              <Image src="/images/eves-sisters-logo.png" alt="Eve's Sisters — The Evolution of a Woman's Body" width={1280} height={1280} sizes="288px" className="h-auto w-full" />
+            </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory-200/80">
               More than a clinic. A movement for women — evidence-led wellness
               and longevity for every stage.

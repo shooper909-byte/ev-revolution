@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 /**
@@ -46,7 +47,9 @@ export function Wordmark({
       className={`group flex items-center gap-3 ${className}`}
       aria-label="Eve’s Sisters — home"
     >
-      <CurvatureMark className="h-10 w-auto shrink-0 transition-opacity group-hover:opacity-85" />
+      <span aria-hidden="true" className="relative block h-12 w-9 shrink-0 overflow-hidden bg-black">
+        <Image src="/images/eves-sisters-logo.png" alt="" width={1280} height={1280} sizes="112px" priority className="absolute max-w-none" style={{ width: "310%", height: "auto", left: "-100%", top: "-39%" }} />
+      </span>
       <span className="flex flex-col leading-none">
         <span className="whitespace-nowrap font-display text-lg tracking-[0.14em] sm:text-xl">
           <span className="gold-text">EVE&rsquo;S</span>
