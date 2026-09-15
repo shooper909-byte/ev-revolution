@@ -6,6 +6,7 @@ import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PillarIcon } from "@/components/PillarIcon";
 import { getPillar, pillars } from "@/lib/pillars";
 import { posts } from "@/lib/posts";
+import { WeightManagement } from "@/components/WeightManagement";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -19,6 +20,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   if (!pillar) return { title: "Not found" };
 
+  if (slug === "weight-loss") {
+    const description = "Personalized weight management and metabolic wellness for women at every stage of life.";
+    return { title: "Weight Management", description, openGraph: { title: "Weight Management | Eve's Sisters", description } };
+  }
+
   return {
     title: pillar.name,
     description: pillar.intro,
@@ -31,6 +37,7 @@ export default async function PillarPage({ params }: Params) {
   const pillar = getPillar(slug);
 
   if (!pillar) notFound();
+  if (slug === "weight-loss") return <WeightManagement pillar={pillar} />;
 
   const related = posts.filter((post) => post.pillar === pillar.name);
   const others = pillars.filter((item) => item.slug !== pillar.slug);
