@@ -44,17 +44,17 @@ export function Wordmark({
     <Link
       href="/"
       className={`group flex items-center gap-3 ${className}`}
-      aria-label="EV-REVOLUTION — home"
+      aria-label="Eve's Sisters — home"
     >
       <CurvatureMark className="h-10 w-auto shrink-0 transition-opacity group-hover:opacity-85" />
       <span className="flex flex-col leading-none">
         <span className="whitespace-nowrap font-display text-lg tracking-[0.14em] sm:text-xl">
-          <span className="gold-text">EV</span>
-          <span className="text-ivory">-REVOLUTION</span>
+          <span className="gold-text">EVE'S</span>
+          <span className="text-ivory"> SISTERS</span>
         </span>
         {showTagline && (
           <span className="brand-eyebrow mt-1.5 whitespace-nowrap text-[0.5rem] text-taupe sm:text-[0.5625rem]">
-            Women&rsquo;s Wellness &amp; Longevity
+            The Evolution of a Woman's Body
           </span>
         )}
       </span>

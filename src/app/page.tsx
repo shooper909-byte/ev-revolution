@@ -43,7 +43,7 @@ export default function HomePage() {
               <span className="mt-2 block gold-text">The same power.</span>
             </h1>
             <p className="mt-8 max-w-lg text-base leading-relaxed text-ivory-200/85 sm:text-lg">
-              EV-REVOLUTION is a women&rsquo;s wellness and longevity platform
+              Eve's Sisters is a women&rsquo;s wellness and longevity platform
               covering weight, hormones and menopause, skin, energy, recovery
               and healthspan — held to the evidence, written for real life.
             </p>

@@ -6,7 +6,7 @@ import { CurvatureMark } from "@/components/Wordmark";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "More than a clinic. A movement for women. Why EV-REVOLUTION exists, what we stand for, and how we hold ourselves to the evidence.",
+    "More than a clinic. A movement for women. Why Eve's Sisters exists, what we stand for, and how we hold ourselves to the evidence.",
 };
 
 const values = [
@@ -33,14 +33,14 @@ export default function AboutPage() {
     <>
       <section className="relative overflow-hidden border-b border-onyx-700 bg-[linear-gradient(120deg,var(--color-onyx),var(--color-plum-900)_180%)]">
         <Container className="relative py-20 sm:py-28">
-          <Eyebrow>About EV-REVOLUTION</Eyebrow>
+          <Eyebrow>About Eve's Sisters</Eyebrow>
           <h1 className="mt-8 max-w-3xl font-display text-[2.5rem] leading-[1.08] text-ivory sm:text-6xl">
             More than a clinic.
             <span className="block gold-text">A movement for women.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-ivory-200/85 sm:text-lg">
             Women&rsquo;s health has been under-researched, under-funded and
-            under-explained for generations. EV-REVOLUTION exists to close that
+            under-explained for generations. Eve's Sisters exists to close that
             gap with the seriousness it has always deserved — and the quality of
             experience women are given everywhere except their own healthcare.
           </p>
@@ -65,7 +65,7 @@ export default function AboutPage() {
               vocabulary.
             </p>
             <p>
-              We built EV-REVOLUTION as the resource we could not find. Six
+              We built Eve's Sisters as the resource we could not find. Six
               pillars, covered properly: weight, hormones and menopause, skin
               and beauty, energy and performance, recovery, and longevity. Each
               one written to be understood without a medical degree and honest

@@ -1,6 +1,8 @@
-# EV-REVOLUTION
+# Eve's Sisters
 
-**Women's Wellness & Longevity**
+The Evolution of a Woman's Body
+
+**Women's Wellness, Weight Loss & Longevity at Every Stage of Life**
 
 A women's wellness and longevity platform focused on weight, hormones and
 menopause, skin and beauty, energy and performance, recovery, and healthspan.
@@ -113,7 +115,7 @@ page except the two API routes is statically generated.
 
 ## Editorial policy
 
-EV-REVOLUTION publishes general wellness education. Copy in this repository is
+Eve's Sisters publishes general wellness education. Copy in this repository is
 deliberately written to avoid diagnostic, therapeutic or outcome claims, and
 routes readers to a qualified clinician for anything individual. `/disclaimer`
 carries the full statement and is linked from the footer of every page. Keep
