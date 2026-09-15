@@ -25,11 +25,9 @@ const principles = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero — drop /public/images/hero.jpg to layer the campaign image
-          behind the gradient; the section is complete without it. */}
+      {/* Keep the existing gradient until a homepage campaign asset is supplied. */}
       <section
         className="relative overflow-hidden border-b border-onyx-700 bg-[linear-gradient(115deg,var(--color-onyx)_0%,var(--color-onyx-900)_45%,var(--color-plum-900)_140%)] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
       >
         <div
           aria-hidden="true"

@@ -7,7 +7,12 @@ import Link from "next/link";
  */
 export function CurvatureMark({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 48 64" fill="none" aria-hidden="true" className={className}>
+    <svg
+      viewBox="0 0 48 64"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
       <defs>
         <linearGradient id="ev-gold" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="var(--color-champagne-700)" />
@@ -48,7 +53,7 @@ export function Wordmark({
     >
       <CurvatureMark className="h-10 w-auto shrink-0 transition-opacity group-hover:opacity-85" />
       <span className="flex flex-col leading-none">
-        <span className="whitespace-nowrap font-display text-lg tracking-[0.14em] sm:text-xl">
+        <span className="whitespace-nowrap font-display text-lg tracking-[0.02em] sm:text-xl">
           <span className="gold-text">EVE'S</span>
           <span className="text-ivory"> SISTERS</span>
         </span>

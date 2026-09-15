@@ -28,8 +28,8 @@ export function SiteFooter() {
               The Evolution of a Woman's Body
             </p>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory-200/80">
-              More than a clinic. A movement for women — evidence-led wellness
-              and longevity for every stage.
+              More than care. A movement for women — evidence-led wellness and
+              longevity for every stage.
             </p>
           </div>
 
@@ -72,7 +72,7 @@ export function SiteFooter() {
         </div>
 
         <div className="hairline mt-16 border-t pt-8">
-          <p className="text-xs leading-relaxed text-taupe-700">
+          <p className="text-xs leading-relaxed text-taupe">
             Eve's Sisters publishes general wellness education. Nothing on this
             site is medical advice, diagnosis or treatment, and it is not a
             substitute for care from a qualified clinician. Always speak with
@@ -80,11 +80,11 @@ export function SiteFooter() {
             health, and seek immediate care for urgent symptoms.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs text-taupe-700">
+            <p className="text-xs text-taupe">
               &copy; {new Date().getFullYear()} Eve's Sisters. All rights
               reserved.
             </p>
-            <p className="brand-eyebrow text-[0.5rem] text-taupe-700">
+            <p className="brand-eyebrow text-[0.5rem] text-taupe">
               Mind &middot; Body &middot; Beauty &middot; Longevity
             </p>
           </div>
