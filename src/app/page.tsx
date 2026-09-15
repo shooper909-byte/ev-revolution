@@ -25,12 +25,8 @@ const principles = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero — drop /public/images/hero.jpg to layer the campaign image
-          behind the gradient; the section is complete without it. */}
-      <section
-        className="relative overflow-hidden border-b border-onyx-700 bg-[linear-gradient(115deg,var(--color-onyx)_0%,var(--color-onyx-900)_45%,var(--color-plum-900)_140%)] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
-      >
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-onyx-700 bg-[linear-gradient(115deg,var(--color-onyx)_0%,var(--color-onyx-900)_45%,var(--color-plum-900)_140%)]">
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-[linear-gradient(115deg,var(--color-onyx)_0%,color-mix(in_oklab,var(--color-onyx)_92%,transparent)_45%,color-mix(in_oklab,var(--color-plum-900)_85%,transparent)_140%)]"
