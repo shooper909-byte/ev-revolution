@@ -44,19 +44,19 @@ export function Wordmark({
   return (
     <Link
       href="/"
-      className={`group flex items-center gap-3 ${className}`}
+      className={`group flex min-w-0 items-center gap-2 sm:gap-3 ${className}`}
       aria-label="Eve’s Sisters — home"
     >
       <span aria-hidden="true" className="relative block h-12 w-9 shrink-0 overflow-hidden bg-black">
         <Image src="/images/eves-sisters-logo.png" alt="" width={1280} height={1280} sizes="112px" priority className="absolute max-w-none" style={{ width: "310%", height: "auto", left: "-100%", top: "-39%" }} />
       </span>
       <span className="flex flex-col leading-none">
-        <span className="whitespace-nowrap font-display text-lg tracking-[0.14em] sm:text-xl">
+        <span className="whitespace-nowrap font-display text-base tracking-[0.08em] sm:text-xl sm:tracking-[0.14em]">
           <span className="gold-text">EVE&rsquo;S</span>
-          <span className="text-ivory"> SISTERS</span>
+          <span className="gold-text"> SISTERS</span>
         </span>
         {showTagline && (
-          <span className="brand-eyebrow mt-1.5 whitespace-nowrap text-[0.5rem] text-taupe sm:text-[0.5625rem]">
+          <span className="mt-1.5 text-[0.5rem] tracking-[0.04em] text-champagne sm:text-[0.5625rem]">
             The Evolution of a Woman&rsquo;s Body
           </span>
         )}

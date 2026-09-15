@@ -75,7 +75,7 @@ export function SiteHeader() {
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          className="hairline flex h-11 w-11 items-center justify-center rounded-full border lg:hidden"
+          className="hairline flex h-11 w-11 shrink-0 items-center justify-center rounded-full border lg:hidden"
         >
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
           <svg

@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     siteName: "Eve's Sisters",
     type: "website",
   },
+  twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
 };
 
