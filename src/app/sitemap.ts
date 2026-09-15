@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { pillars } from "@/lib/pillars";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ev-revolution.com";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://evevolutionhealth.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/care", "/about", "/journal", "/contact", "/disclaimer"];
