@@ -274,14 +274,17 @@ export default function CarePage() {
             <div className="relative h-72 w-full sm:h-96 lg:h-full lg:min-h-[36rem]">
               <Image
                 src="/images/care/care-flexible.webp"
-                alt="Four women of different ages together in a warm, softly lit room."
+                alt="Four generations of a family standing together in warm, soft light."
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
+                className="object-cover object-top"
               />
+              {/* The copy sits in the lower half, so the scrim has to carry it
+                  on its own — the faces in this frame are light enough that a
+                  thin gradient would leave the eyebrow unreadable. */}
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-[linear-gradient(to_right,color-mix(in_oklab,var(--color-onyx)_55%,transparent),transparent_45%)]"
+                className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-onyx)_0%,color-mix(in_oklab,var(--color-onyx)_94%,transparent)_30%,color-mix(in_oklab,var(--color-onyx)_70%,transparent)_52%,transparent_82%)]"
               />
             </div>
 
