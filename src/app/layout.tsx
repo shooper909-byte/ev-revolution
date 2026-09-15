@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ev-revolution.com"),
+  metadataBase: new URL("https://evevolutionhealth.com"),
   title: {
     default: "Eve's Sisters — The Evolution of a Woman's Body",
     template: "%s | Eve's Sisters",
