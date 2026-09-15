@@ -22,6 +22,20 @@ export type Pillar = {
   focus: { title: string; body: string }[];
   covered: string[];
   question: string;
+
+  /* ---- Care hub (/care) display overrides -------------------------------
+     The pillar detail pages and navigation keep the canonical `name`. These
+     optional fields only change how a pillar is presented on the Care hub,
+     so there is a single source of truth for the six care areas. */
+
+  /** Label shown on the Care hub, where the brand uses friendlier wording. */
+  careLabel?: string;
+  /** One-line description for the Care hub card. */
+  careSummary?: string;
+  /** Campaign photograph in /public/images/care, without the extension. */
+  careImage?: string;
+  /** Alt text for `careImage`. */
+  careImageAlt?: string;
 };
 
 const plum: Accent = {
@@ -99,6 +113,12 @@ export const pillars: Pillar[] = [
       "How to discuss medical options with your clinician",
     ],
     question: "Why has my body stopped responding to what used to work?",
+    careLabel: "Weight Management",
+    careSummary:
+      "Medical weight management and metabolic wellness.",
+    careImage: "care-weight-management",
+    careImageAlt:
+      "A woman in a black evening gown standing with one hand on her hip, smiling confidently.",
   },
   {
     slug: "hormones-menopause",
@@ -132,6 +152,12 @@ export const pillars: Pillar[] = [
       "Protecting bone and cardiovascular health",
     ],
     question: "Is this normal, and who do I ask?",
+    careLabel: "Menopause & Hormones",
+    careSummary:
+      "Support through perimenopause, menopause and hormonal changes.",
+    careImage: "care-menopause-hormones",
+    careImageAlt:
+      "A woman in her fifties with silver-streaked hair, lit against a dark background and looking upward.",
   },
   {
     slug: "skin-beauty",
@@ -165,6 +191,12 @@ export const pillars: Pillar[] = [
       "Hair and scalp changes worth flagging",
     ],
     question: "Which of these products is actually doing something?",
+    careLabel: "Skin & Beauty",
+    careSummary:
+      "Skin, hair and beauty-focused wellness.",
+    careImage: "care-skin-beauty",
+    careImageAlt:
+      "Close profile of a woman with luminous deep brown skin against an onyx background.",
   },
   {
     slug: "energy-performance",
@@ -198,6 +230,12 @@ export const pillars: Pillar[] = [
       "When fatigue warrants a clinical workup",
     ],
     question: "Why am I this tired, and is it something I can fix?",
+    careLabel: "Energy & Performance",
+    careSummary:
+      "Energy, strength, focus and performance.",
+    careImage: "care-energy-performance",
+    careImageAlt:
+      "Warm-lit study of a strong, toned torso draped in deep plum silk.",
   },
   {
     slug: "recovery-rejuvenation",
@@ -231,6 +269,12 @@ export const pillars: Pillar[] = [
       "Joint and connective-tissue care",
     ],
     question: "Am I under-recovering rather than under-training?",
+    careLabel: "Recovery",
+    careSummary:
+      "Rest, recovery, mobility and whole-body wellness.",
+    careImage: "care-recovery",
+    careImageAlt:
+      "A rolled towel resting on a dark floor in a quiet, low-lit recovery space.",
   },
   {
     slug: "longevity-healthspan",
@@ -264,9 +308,25 @@ export const pillars: Pillar[] = [
       "Building a clinical team that will actually listen",
     ],
     question: "What should I be doing now for the woman I will be at 70?",
+    careLabel: "Longevity",
+    careSummary:
+      "Healthy aging, prevention and long-term vitality.",
+    careImage: "care-longevity",
+    careImageAlt:
+      "A silver-haired woman in a black blazer, relaxed and smiling at the camera.",
   },
 ];
 
 export function getPillar(slug: string): Pillar | undefined {
   return pillars.find((pillar) => pillar.slug === slug);
+}
+
+/** The label to use for a pillar on the Care hub. */
+export function careLabel(pillar: Pillar): string {
+  return pillar.careLabel ?? pillar.name;
+}
+
+/** The Care hub summary for a pillar, falling back to its tagline. */
+export function careSummary(pillar: Pillar): string {
+  return pillar.careSummary ?? pillar.tagline;
 }

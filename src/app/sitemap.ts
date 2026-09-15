@@ -4,14 +4,14 @@ import { pillars } from "@/lib/pillars";
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ev-revolution.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/about", "/journal", "/contact", "/disclaimer"];
+  const staticRoutes = ["", "/care", "/about", "/journal", "/contact", "/disclaimer"];
 
   return [
     ...staticRoutes.map((route) => ({
       url: `${baseUrl}${route}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
-      priority: route === "" ? 1 : 0.7,
+      priority: route === "" ? 1 : route === "/care" ? 0.9 : 0.7,
     })),
     ...pillars.map((pillar) => ({
       url: `${baseUrl}/pillars/${pillar.slug}`,

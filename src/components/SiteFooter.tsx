@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { CurvatureMark } from "@/components/Wordmark";
-import { pillars } from "@/lib/pillars";
+import { careLabel, pillars } from "@/lib/pillars";
 
 const company = [
+  { href: "/", label: "Home" },
+  { href: "/care", label: "Care" },
   { href: "/about", label: "About" },
-  { href: "/journal", label: "Journal" },
+  { href: "/journal", label: "Resources" },
   { href: "/contact", label: "Contact" },
   { href: "/disclaimer", label: "Medical Disclaimer" },
 ];
@@ -33,8 +35,12 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <nav aria-label="Pillars">
-            <h2 className="brand-eyebrow text-champagne">Pillars</h2>
+          <nav aria-label="Care">
+            <h2 className="brand-eyebrow text-champagne">
+              <Link href="/care" className="transition-colors hover:text-champagne-200">
+                Care
+              </Link>
+            </h2>
             <ul className="mt-5 space-y-3">
               {pillars.map((pillar) => (
                 <li key={pillar.slug}>
@@ -42,7 +48,7 @@ export function SiteFooter() {
                     href={`/pillars/${pillar.slug}`}
                     className="text-sm text-ivory-200 transition-colors hover:text-champagne"
                   >
-                    {pillar.name}
+                    {careLabel(pillar)}
                   </Link>
                 </li>
               ))}
@@ -63,6 +69,13 @@ export function SiteFooter() {
                 </li>
               ))}
             </ul>
+
+            <Link
+              href="/contact"
+              className="button-sheen brand-eyebrow mt-8 inline-block bg-plum px-6 py-3 text-[0.5625rem] text-ivory transition-colors hover:bg-plum-600"
+            >
+              Get Started
+            </Link>
 
             <h2 className="brand-eyebrow mt-10 text-champagne">Newsletter</h2>
             <div className="mt-4">
