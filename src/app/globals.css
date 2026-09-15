@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   EV-REVOLUTION — brand tokens
+   Hexes taken directly from the EV-REVOLUTION brand colour palette board.
+   Balance target: 60% onyx + ivory / 20% deep plum / 10% champagne /
+   10% mauve + taupe. Champagne stays a fine-line accent, never a field.
+   ------------------------------------------------------------------ */
+@theme {
+  /* Onyx */
+  --color-onyx: #080b0b;
+  --color-onyx-900: #0e1212;
+  --color-onyx-800: #161b1b;
+  --color-onyx-700: #232929;
+
+  /* Warm Ivory */
+  --color-ivory: #f7efe6;
+  --color-ivory-200: #ebe0d3;
+  --color-ivory-300: #dccebc;
+
+  /* Deep Plum — the signature */
+  --color-plum: #642a52;
+  --color-plum-600: #7d3767;
+  --color-plum-400: #9c4a82;
+  --color-plum-900: #3d1832;
+
+  /* Champagne Gold — luxury accent, fine lines and detail only */
+  --color-champagne: #dab16a;
+  --color-champagne-200: #f0d9a8;
+  --color-champagne-700: #b3884a;
+
+  /* Dusty Mauve */
+  --color-mauve: #b98aa1;
+  --color-mauve-700: #8d6278;
+
+  /* Warm Taupe */
+  --color-taupe: #9a8e86;
+  --color-taupe-700: #736961;
+
+  --font-display: var(--font-playfair), "Didot", Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* A committed dark luxury identity: onyx ground, ivory type.
+   The site does not invert with the viewer's theme. */
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-onyx);
+  color: var(--color-ivory);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::selection {
+  background-color: var(--color-plum);
+  color: var(--color-ivory);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-champagne);
+  outline-offset: 3px;
+}
+
+/* Wide-tracked uppercase — the voice of the brand board. */
+@utility brand-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* Brushed-gold fill for the EV monogram and display moments. */
+@utility gold-text {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-champagne-700) 0%,
+    var(--color-champagne-200) 28%,
+    var(--color-champagne) 52%,
+    var(--color-champagne-200) 74%,
+    var(--color-champagne-700) 100%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+@utility hairline {
+  border-color: color-mix(in oklab, var(--color-champagne) 30%, transparent);
+}
