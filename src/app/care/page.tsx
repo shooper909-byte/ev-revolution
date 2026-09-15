@@ -8,12 +8,12 @@ import { Reveal } from "@/components/Reveal";
 import { pillars } from "@/lib/pillars";
 
 export const metadata: Metadata = {
-  title: { absolute: "Care | EVEVOLUTION Women’s Wellness" },
+  title: { absolute: "Care | Eve’s Sisters Women’s Wellness" },
   description:
-    "Explore EVEVOLUTION care pathways for weight management, menopause and hormones, skin and beauty, energy and performance, recovery, and longevity at every stage of life.",
+    "Explore Eve’s Sisters care pathways for weight management, menopause and hormones, skin and beauty, energy and performance, recovery, and longevity at every stage of life.",
   alternates: { canonical: "/care" },
   openGraph: {
-    title: "Care | EVEVOLUTION Women’s Wellness",
+    title: "Care | Eve’s Sisters Women’s Wellness",
     description:
       "Six care pathways for women’s wellness — weight management, menopause and hormones, skin and beauty, energy and performance, recovery, and longevity.",
     type: "website",
@@ -89,7 +89,7 @@ const brandPillars = [
   },
   {
     label: "Six care areas",
-    body: "Connected support across the EVEVOLUTION ecosystem.",
+    body: "Connected support across the Eve’s Sisters ecosystem.",
   },
   {
     label: "Every stage",
@@ -242,7 +242,7 @@ export default function CarePage() {
             </h2>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-onyx-800/75">
               From weight management to hormone health, skin, energy, recovery
-              and longevity, EVEVOLUTION brings women&rsquo;s wellness together
+              and longevity, Eve&rsquo;s Sisters brings women&rsquo;s wellness together
               in one thoughtfully designed experience.
             </p>
           </Reveal>
@@ -411,7 +411,7 @@ export default function CarePage() {
               id="standard-heading"
               className="brand-eyebrow text-center text-champagne"
             >
-              The EVEVOLUTION Standard
+              The Eve&rsquo;s Sisters Standard
             </h2>
           </Reveal>
 

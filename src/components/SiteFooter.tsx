@@ -22,12 +22,12 @@ export function SiteFooter() {
             <div className="flex items-center gap-3">
               <CurvatureMark className="h-11 w-auto" />
               <span className="font-display text-xl tracking-[0.14em]">
-                <span className="gold-text">EV</span>
-                <span className="text-ivory">-REVOLUTION</span>
+                <span className="gold-text">EVE&rsquo;S</span>
+                <span className="text-ivory"> SISTERS</span>
               </span>
             </div>
             <p className="brand-eyebrow mt-4 text-[0.5625rem] text-taupe">
-              Evolve &middot; Balance &middot; Thrive
+              The Evolution of a Woman&rsquo;s Body
             </p>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory-200/80">
               More than a clinic. A movement for women — evidence-led wellness
@@ -86,7 +86,7 @@ export function SiteFooter() {
 
         <div className="hairline mt-16 border-t pt-8">
           <p className="text-xs leading-relaxed text-taupe-700">
-            EV-REVOLUTION publishes general wellness education. Nothing on this
+            Eve&rsquo;s Sisters publishes general wellness education. Nothing on this
             site is medical advice, diagnosis or treatment, and it is not a
             substitute for care from a qualified clinician. Always speak with
             your own healthcare provider before changing anything about your
@@ -94,7 +94,7 @@ export function SiteFooter() {
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-xs text-taupe-700">
-              &copy; {new Date().getFullYear()} EV-REVOLUTION. All rights
+              &copy; {new Date().getFullYear()} Eve&rsquo;s Sisters. All rights
               reserved.
             </p>
             <p className="brand-eyebrow text-[0.5rem] text-taupe-700">

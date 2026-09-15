@@ -68,7 +68,7 @@ export function PrincipleCarousel() {
       }}
     >
       <p className="brand-eyebrow text-[0.5625rem] text-champagne-700">
-        EVEVOLUTION Principles
+        Eve&rsquo;s Sisters Principles
       </p>
 
       {/* aria-live announces the statement that replaces the current one,

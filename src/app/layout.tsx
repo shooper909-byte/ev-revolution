@@ -19,16 +19,16 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ev-revolution.com"),
   title: {
-    default: "EV-REVOLUTION — Women's Wellness & Longevity",
-    template: "%s | EV-REVOLUTION",
+    default: "Eve's Sisters — The Evolution of a Woman's Body",
+    template: "%s | Eve's Sisters",
   },
   description:
     "Evidence-led women's wellness and longevity: weight, hormones and menopause, skin and beauty, energy, recovery and healthspan. Different stages. The same power.",
   openGraph: {
-    title: "EV-REVOLUTION — Women's Wellness & Longevity",
+    title: "Eve's Sisters — The Evolution of a Woman's Body",
     description:
       "Evidence-led women's wellness and longevity for every stage. Different stages. The same power.",
-    siteName: "EV-REVOLUTION",
+    siteName: "Eve's Sisters",
     type: "website",
   },
   robots: { index: true, follow: true },

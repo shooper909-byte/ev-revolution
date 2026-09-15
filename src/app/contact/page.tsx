@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Questions, press enquiries and partnerships — reach the EV-REVOLUTION team.",
+    "Questions, press enquiries and partnerships — reach the Eve’s Sisters team.",
 };
 
 export default function ContactPage() {

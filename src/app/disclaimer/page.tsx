@@ -4,14 +4,14 @@ import { Container, Eyebrow } from "@/components/Container";
 export const metadata: Metadata = {
   title: "Medical Disclaimer",
   description:
-    "EV-REVOLUTION publishes general wellness education. It is not medical advice, diagnosis or treatment.",
+    "Eve’s Sisters publishes general wellness education. It is not medical advice, diagnosis or treatment.",
   robots: { index: true, follow: true },
 };
 
 const sections = [
   {
     heading: "This is education, not medical advice",
-    body: "Everything published by EV-REVOLUTION — on this site, in the Journal, and in our emails — is general wellness and longevity education. It is not medical advice, diagnosis or treatment, and it does not create a clinician–patient relationship. It cannot account for your history, your medications, your labs or your circumstances.",
+    body: "Everything published by Eve’s Sisters — on this site, in the Journal, and in our emails — is general wellness and longevity education. It is not medical advice, diagnosis or treatment, and it does not create a clinician–patient relationship. It cannot account for your history, your medications, your labs or your circumstances.",
   },
   {
     heading: "Always involve a qualified clinician",
@@ -31,7 +31,7 @@ const sections = [
   },
   {
     heading: "A note on our sister company",
-    body: "EV-REVOLUTION is a consumer wellness and longevity brand. It is operated separately from any research-use-only laboratory business under common ownership, and nothing published by such a business should be read as a therapeutic claim, a consumer health service, or an offer of treatment.",
+    body: "Eve’s Sisters is a consumer wellness and longevity brand. It is operated separately from any research-use-only laboratory business under common ownership, and nothing published by such a business should be read as a therapeutic claim, a consumer health service, or an offer of treatment.",
   },
 ];
 
