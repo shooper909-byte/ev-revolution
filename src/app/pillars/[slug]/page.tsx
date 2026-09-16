@@ -13,6 +13,8 @@ import { RecoveryRejuvenation } from "@/components/RecoveryRejuvenation";
 
 import { LongevityHealthspan } from "@/components/LongevityHealthspan";
 
+import { HormonesMenopause } from "@/components/HormonesMenopause";
+
 type Params = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
@@ -53,6 +55,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     return { title: { absolute: title }, description, openGraph: { title, description } };
   }
 
+  if (slug === "hormones-menopause") {
+    const title = "Hormones & Menopause | Eve's Sisters";
+    const description = "Women's wellness education for perimenopause, menopause, sleep, mood, metabolism and healthy aging at every stage of life.";
+    return { title: { absolute: title }, description, openGraph: { title, description } };
+  }
+
   return {
     title: pillar.name,
     description: pillar.intro,
@@ -71,6 +79,8 @@ export default async function PillarPage({ params }: Params) {
   if (slug === "skin-beauty") return <SkinBeauty pillar={pillar} />;
 
   if (slug === "longevity-healthspan") return <LongevityHealthspan pillar={pillar} />;
+
+  if (slug === "hormones-menopause") return <HormonesMenopause pillar={pillar} />;
 
   const related = posts.filter((post) => post.pillar === pillar.name);
   const others = pillars.filter((item) => item.slug !== pillar.slug);
