@@ -9,6 +9,7 @@ import { posts } from "@/lib/posts";
 import { SkinBeauty } from "@/components/SkinBeauty";
 import { WeightManagement } from "@/components/WeightManagement";
 import { EnergyPerformance } from "@/components/EnergyPerformance";
+import { RecoveryRejuvenation } from "@/components/RecoveryRejuvenation";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -38,6 +39,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     return { title: { absolute: title }, description: pillar.intro, openGraph: { title, description: pillar.intro } };
   }
 
+  if (slug === "recovery-rejuvenation") {
+    const title = "Recovery & Rejuvenation | Eve's Sisters";
+    const description = "Women's wellness guidance for recovery, sleep, mobility, strength, stress management and healthy aging at every stage of life.";
+    return { title: { absolute: title }, description, openGraph: { title, description } };
+  }
+
   return {
     title: pillar.name,
     description: pillar.intro,
@@ -52,6 +59,7 @@ export default async function PillarPage({ params }: Params) {
   if (!pillar) notFound();
   if (slug === "weight-loss") return <WeightManagement pillar={pillar} />;
   if (slug === "energy-performance") return <EnergyPerformance pillar={pillar} />;
+  if (slug === "recovery-rejuvenation") return <RecoveryRejuvenation pillar={pillar} />;
   if (slug === "skin-beauty") return <SkinBeauty pillar={pillar} />;
 
   const related = posts.filter((post) => post.pillar === pillar.name);
