@@ -32,6 +32,10 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary_large_image" },
+  icons: {
+    icon: "/images/eves-sisters-logo.png",
+    apple: "/images/eves-sisters-logo.png",
+  },
   robots: { index: true, follow: true },
 };
 
