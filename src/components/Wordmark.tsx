@@ -47,11 +47,11 @@ export function Wordmark({
       className={`group flex min-w-0 items-center gap-2 sm:gap-3 ${className}`}
       aria-label="Eve’s Sisters — home"
     >
-      <span aria-hidden="true" className="relative block h-12 w-9 shrink-0 overflow-hidden bg-black">
+      <span aria-hidden="true" className="relative block h-14 w-10 shrink-0 overflow-hidden bg-black">
         <Image src="/images/eves-sisters-logo.png" alt="" width={1280} height={1280} sizes="112px" priority className="absolute max-w-none" style={{ width: "310%", height: "auto", left: "-100%", top: "-39%" }} />
       </span>
       <span className="flex flex-col leading-none">
-        <span className="whitespace-nowrap font-display text-base tracking-[0.08em] sm:text-xl sm:tracking-[0.14em]">
+        <span className="whitespace-nowrap font-display text-lg tracking-[0.08em] sm:text-2xl sm:tracking-[0.1em]">
           <span className="gold-text">EVE&rsquo;S</span>
           <span className="gold-text"> SISTERS</span>
         </span>

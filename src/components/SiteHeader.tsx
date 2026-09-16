@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CareMenu } from "@/components/CareMenu";
 import { Container } from "@/components/Container";
+import weightStyles from "./WeightManagement.module.css";
 import { Wordmark } from "@/components/Wordmark";
 import { careLabel, pillars } from "@/lib/pillars";
 
@@ -20,6 +21,7 @@ const primaryNav = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const campaignPage = pathname === "/pillars/weight-loss" || pathname === "/pillars/skin-beauty";
   const [open, setOpen] = useState(false);
 
   // Close the mobile menu whenever navigation lands on a new page.
@@ -36,9 +38,9 @@ export function SiteHeader() {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-onyx-700/80 bg-onyx/90 backdrop-blur-md">
+    <header className={`sticky top-0 z-50 border-b border-onyx-700/80 bg-onyx/90 backdrop-blur-md ${campaignPage ? weightStyles.referenceHeader : ""}`}>
       <Container className="flex h-20 items-center justify-between gap-4">
-        <Wordmark />
+        <Wordmark showTagline={false} />
 
         <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
           <Link
@@ -50,6 +52,7 @@ export function SiteHeader() {
           </Link>
 
           <CareMenu active={careActive} />
+          {campaignPage && <><a href="#program" className={linkClass("#program")}>Program</a><a href="#how-it-works" className={linkClass("#how-it-works")}>How It Works</a></>}
 
           {primaryNav.map((item) => (
             <Link
