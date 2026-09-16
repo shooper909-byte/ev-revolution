@@ -33,6 +33,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     return { title: { absolute: title }, description, openGraph: { title, description } };
   }
 
+  if (slug === "skin-beauty") {
+    const title = "Skin & Beauty | Eve's Sisters";
+    return { title: { absolute: title }, description: pillar.intro, openGraph: { title, description: pillar.intro } };
+  }
+
   return {
     title: pillar.name,
     description: pillar.intro,
