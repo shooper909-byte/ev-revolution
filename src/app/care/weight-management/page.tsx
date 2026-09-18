@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { CareLeadForm } from "@/components/CareLeadForm";
 import { Container, Eyebrow } from "@/components/Container";
 import { PillarIcon, type PillarIconName } from "@/components/PillarIcon";
 import { Reveal } from "@/components/Reveal";
-import { WeightCareAssessmentForm } from "./WeightCareAssessmentForm";
+import {
+  ComparisonTable,
+  type ComparisonRow,
+} from "@/components/care/ComparisonTable";
+import { PlanCards, type Plan } from "@/components/care/PlanCards";
+import { Steps } from "@/components/care/Steps";
 
 /* ------------------------------------------------------------------
    /care/weight-management — the subscription and treatment-options page.
@@ -40,20 +46,6 @@ const trustRow = [
   ["lotus", "Personalized treatment"],
   ["infinity", "Ongoing support"],
 ] satisfies [PillarIconName, string][];
-
-type Plan = {
-  id: string;
-  title: string;
-  price: string;
-  priceNote?: string;
-  description: string;
-  includes: string[];
-  treatments?: { label: string; body: string };
-  cta: string;
-  footnote: string;
-  featured?: boolean;
-  badge?: string;
-};
 
 const plans: Plan[] = [
   {
@@ -125,17 +117,16 @@ const plans: Plan[] = [
   },
 ];
 
-/** Comparison rows. `true` renders a check, `false` a dash, a string prints. */
-const comparison: { label: string; values: (string | boolean)[] }[] = [
+const comparison: ComparisonRow[] = [
   {
     label: "Monthly price",
     values: ["$89", "$79 + medication", "$129 + medication"],
   },
-  { label: "Generic medication included", values: ["One eligible", false, false] },
   {
-    label: "GLP-1 access",
-    values: [false, "If eligible", "If eligible"],
+    label: "Generic medication included",
+    values: ["One eligible", false, false],
   },
+  { label: "GLP-1 access", values: [false, "If eligible", "If eligible"] },
   { label: "Monthly check-ins", values: [true, true, true] },
   { label: "Provider messaging", values: [true, true, true] },
   { label: "Nutrition guidance", values: [false, false, true] },
@@ -152,7 +143,7 @@ const treatments: [PillarIconName, string, string][] = [
   ["infinity", "Contrave", "Oral"],
 ];
 
-const steps = [
+const steps: [string, string][] = [
   [
     "Complete Your Assessment",
     "Tell us about your health history, goals, medications and previous weight-management experience.",
@@ -171,28 +162,6 @@ const steps = [
   ],
 ];
 
-/* Champagne type does not meet contrast on ivory, so the light sections take
-   their accent from plum and their focus ring with it. */
-const onIvoryFocus =
-  "focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-plum";
-
-function Check() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="mt-0.5 h-4 w-4 shrink-0"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m4.5 12.5 5 5 10-11" />
-    </svg>
-  );
-}
-
 export default function WeightManagementCarePage() {
   return (
     <>
@@ -209,7 +178,10 @@ export default function WeightManagementCarePage() {
           <nav aria-label="Breadcrumb">
             <ol className="brand-eyebrow flex flex-wrap items-center gap-2 text-[0.5625rem] text-taupe">
               <li>
-                <Link href="/care" className="transition-colors hover:text-champagne">
+                <Link
+                  href="/care"
+                  className="transition-colors hover:text-champagne"
+                >
                   Care
                 </Link>
               </li>
@@ -285,8 +257,14 @@ export default function WeightManagementCarePage() {
                 style={{ "--enter-delay": "360ms" } as React.CSSProperties}
               >
                 {trustRow.map(([icon, label]) => (
-                  <li key={label} className="hairline flex items-center gap-3 border-t pt-4">
-                    <PillarIcon name={icon} className="h-5 w-5 shrink-0 text-champagne" />
+                  <li
+                    key={label}
+                    className="hairline flex items-center gap-3 border-t pt-4"
+                  >
+                    <PillarIcon
+                      name={icon}
+                      className="h-5 w-5 shrink-0 text-champagne"
+                    />
                     <span className="brand-eyebrow text-[0.5625rem] leading-relaxed text-ivory-200">
                       {label}
                     </span>
@@ -296,7 +274,7 @@ export default function WeightManagementCarePage() {
             </div>
 
             <div className="relative">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-onyx-700 sm:aspect-[5/6] lg:aspect-[5/6]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-onyx-700 sm:aspect-[5/6]">
                 <Image
                   src="/images/care/care-weight-management.webp"
                   alt="A confident curvy woman in black, hand on her hip, in warm champagne light."
@@ -338,198 +316,16 @@ export default function WeightManagementCarePage() {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:gap-7">
-            {plans.map((plan, index) => (
-              <Reveal key={plan.id} delay={index * 90} className="h-full">
-                <div
-                  className={`relative flex h-full flex-col rounded-3xl p-8 sm:p-9 ${
-                    plan.featured
-                      ? "border border-champagne bg-plum-900 text-ivory shadow-[0_26px_70px_-40px_rgba(8,11,11,0.9)]"
-                      : "border border-onyx/12 bg-white/70 text-onyx"
-                  }`}
-                >
-                  {plan.badge && (
-                    <span className="brand-eyebrow absolute -top-3 left-8 rounded-full bg-champagne px-4 py-1.5 text-[0.5rem] text-onyx">
-                      {plan.badge}
-                    </span>
-                  )}
+          <PlanCards plans={plans} />
 
-                  <h3
-                    className={`font-display text-[1.75rem] leading-tight ${
-                      plan.featured ? "text-ivory" : "text-onyx"
-                    }`}
-                  >
-                    {plan.title}
-                  </h3>
-
-                  <p className="mt-5 flex flex-wrap items-baseline gap-x-2">
-                    <span
-                      className={`font-display text-[2.5rem] leading-none ${
-                        plan.featured ? "text-champagne" : "text-plum"
-                      }`}
-                    >
-                      {plan.price}
-                    </span>
-                    <span
-                      className={`text-sm ${
-                        plan.featured ? "text-ivory-200/80" : "text-onyx-800/70"
-                      }`}
-                    >
-                      {plan.priceNote}
-                    </span>
-                  </p>
-
-                  <p
-                    className={`mt-5 text-sm leading-relaxed ${
-                      plan.featured ? "text-ivory-200/85" : "text-onyx-800/75"
-                    }`}
-                  >
-                    {plan.description}
-                  </p>
-
-                  <ul className="mt-7 grid gap-3">
-                    {plan.includes.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <span className={plan.featured ? "text-champagne" : "text-plum"}>
-                          <Check />
-                        </span>
-                        <span
-                          className={`text-sm leading-relaxed ${
-                            plan.featured ? "text-ivory-200/90" : "text-onyx-800/85"
-                          }`}
-                        >
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {plan.treatments && (
-                    <p
-                      className={`mt-7 rounded-2xl px-5 py-4 text-xs leading-relaxed ${
-                        plan.featured
-                          ? "bg-onyx/35 text-ivory-200/80"
-                          : "bg-ivory-200/60 text-onyx-800/75"
-                      }`}
-                    >
-                      <span
-                        className={`brand-eyebrow block text-[0.5rem] ${
-                          plan.featured ? "text-champagne" : "text-plum"
-                        }`}
-                      >
-                        {plan.treatments.label}
-                      </span>
-                      <span className="mt-2 block">{plan.treatments.body}</span>
-                    </p>
-                  )}
-
-                  <div className="mt-auto pt-8">
-                    <a
-                      href="#get-started"
-                      className={`button-sheen brand-eyebrow block rounded-full px-7 py-4 text-center text-[0.625rem] transition-colors ${
-                        plan.featured
-                          ? "bg-champagne text-onyx hover:bg-champagne-200"
-                          : `bg-plum text-ivory hover:bg-plum-600 ${onIvoryFocus}`
-                      }`}
-                    >
-                      {plan.cta}
-                    </a>
-                    <p
-                      className={`mt-4 text-xs leading-relaxed ${
-                        plan.featured ? "text-ivory-200/75" : "text-onyx-800/70"
-                      }`}
-                    >
-                      {plan.footnote}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* Comparison — one table, scrollable rather than squeezed on a
-              phone, with the plan names repeated as row headers for readers
-              who arrive one cell at a time. */}
           <Reveal>
-            <div className="mt-16">
-              <h3 className="font-display text-[1.6rem] leading-tight text-onyx">
-                Compare the plans
-              </h3>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-onyx-800/75">
-                A plan is clinical support, not a prescription. Medication is
-                included or accessed only when a licensed provider determines it
-                is appropriate for you.
-              </p>
-
-              {/* The scroll container stays inside the Container padding: a
-                  full-bleed one still widens the layout viewport on a phone,
-                  which zooms the whole page out. */}
-              <div
-                tabIndex={0}
-                role="region"
-                aria-label="Plan comparison, scrollable"
-                className={`mt-7 max-w-full overflow-x-auto [contain:paint] ${onIvoryFocus}`}
-              >
-                <table className="w-full min-w-[34rem] border-collapse text-left">
-                  <caption className="sr-only">
-                    Weight care plans compared across price, medication access
-                    and support
-                  </caption>
-                  <thead>
-                    <tr className="border-b border-onyx/20">
-                      <th scope="col" className="py-4 pr-4 text-sm font-normal text-onyx-800/70">
-                        <span className="sr-only">Feature</span>
-                      </th>
-                      {plans.map((plan) => (
-                        <th
-                          key={plan.id}
-                          scope="col"
-                          className="py-4 pr-4 font-display text-base font-normal text-onyx last:pr-0"
-                        >
-                          {plan.title}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {comparison.map((row) => (
-                      <tr key={row.label} className="border-b border-onyx/10">
-                        <th
-                          scope="row"
-                          className="py-4 pr-6 text-sm font-normal leading-relaxed text-onyx-800/85"
-                        >
-                          {row.label}
-                        </th>
-                        {row.values.map((value, index) => (
-                          <td
-                            key={`${row.label}-${plans[index].id}`}
-                            className="py-4 pr-4 text-sm text-onyx-800/85 last:pr-0"
-                          >
-                            {typeof value === "string" ? (
-                              value
-                            ) : value ? (
-                              <>
-                                <span aria-hidden="true" className="text-plum">
-                                  <Check />
-                                </span>
-                                <span className="sr-only">Included</span>
-                              </>
-                            ) : (
-                              <>
-                                <span aria-hidden="true" className="text-taupe-700">
-                                  &mdash;
-                                </span>
-                                <span className="sr-only">Not included</span>
-                              </>
-                            )}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <ComparisonTable
+              columns={plans.map((plan) => plan.title)}
+              rows={comparison}
+              caption="Weight care plans compared across price, medication access and support"
+              heading="Compare the plans"
+              intro="A plan is clinical support, not a prescription. Medication is included or accessed only when a licensed provider determines it is appropriate for you."
+            />
           </Reveal>
         </Container>
       </section>
@@ -557,7 +353,10 @@ export default function WeightManagementCarePage() {
               <li key={name}>
                 <Reveal delay={index * 60}>
                   <div className="flex items-center gap-4 rounded-2xl border border-onyx-700 bg-onyx-900 px-6 py-5 transition-colors hover:border-champagne/40">
-                    <PillarIcon name={icon} className="h-6 w-6 shrink-0 text-champagne" />
+                    <PillarIcon
+                      name={icon}
+                      className="h-6 w-6 shrink-0 text-champagne"
+                    />
                     <span>
                       <span className="block font-display text-xl leading-tight text-ivory">
                         {name}
@@ -602,25 +401,7 @@ export default function WeightManagementCarePage() {
             </h2>
           </Reveal>
 
-          <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-            {steps.map(([title, body], index) => (
-              <li key={title}>
-                <Reveal delay={index * 80}>
-                  <div className="border-t border-plum/30 pt-6">
-                    <span className="brand-eyebrow font-display text-2xl not-italic text-plum">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="mt-4 font-display text-xl leading-snug text-onyx">
-                      {title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-onyx-800/75">
-                      {body}
-                    </p>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
+          <Steps steps={steps} />
         </Container>
       </section>
 
@@ -653,7 +434,10 @@ export default function WeightManagementCarePage() {
             </p>
           </div>
 
-          <WeightCareAssessmentForm />
+          <CareLeadForm
+            program="weight-management"
+            labelledBy="get-started-heading"
+          />
         </Container>
       </section>
 
@@ -673,7 +457,7 @@ export default function WeightManagementCarePage() {
                 "The pillar behind the plans — how we think about metabolic wellness.",
               ],
               [
-                "/pillars/hormones-menopause",
+                "/care/hormones-menopause",
                 "Hormones & Menopause",
                 "Where weight, hormones and midlife meet.",
               ],

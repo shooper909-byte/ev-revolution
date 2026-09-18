@@ -4,7 +4,7 @@ import { pillars } from "@/lib/pillars";
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://evevolutionhealth.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/care", "/care/weight-management", "/about", "/journal", "/contact", "/disclaimer"];
+  const staticRoutes = ["", "/care", "/care/weight-management", "/care/hormones-menopause", "/about", "/journal", "/contact", "/disclaimer"];
 
   return [
     ...staticRoutes.map((route) => ({
@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           ? 1
           : route === "/care"
             ? 0.9
-            : route === "/care/weight-management"
+            : route.startsWith("/care/")
               ? 0.85
               : 0.7,
     })),

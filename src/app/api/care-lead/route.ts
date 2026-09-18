@@ -1,28 +1,24 @@
 import { NextResponse } from "next/server";
+import { getCareProgram } from "@/lib/carePrograms";
 import { forwardTo, isValidEmail } from "@/lib/forward";
 
 /* ------------------------------------------------------------------
-   Weight-care assessment leads.
-   Handles /care/weight-management#get-started.
+   Assessment leads from the care subscription pages.
+   Serves /care/weight-management and /care/hormones-menopause.
 
-   The clinical intake vendor is not wired up yet, so the lead goes through
+   The clinical intake vendor is not wired up yet, so these leads go through
    the site's existing secure workflow: an HTTPS webhook, server side, the
    same mechanism the contact and newsletter forms use. Nothing is stored in
    this app and nothing is emailed from the browser.
 
-   Only contact details are accepted. `interest` names a subscription tier,
-   not a condition or a medication, so no health information passes through
-   here — and none of it reaches an analytics destination.
+   Only contact details and one area of interest are accepted. Symptoms,
+   medications, menstrual or surgical history and anything else clinical stay
+   out of this route by construction — they belong in the secure clinical
+   assessment — and none of it reaches an analytics destination.
    ------------------------------------------------------------------ */
 
-const interests = [
-  "Oral Weight Care",
-  "GLP-1 Care",
-  "Complete Weight Care",
-  "I am not sure",
-];
-
 type LeadBody = {
+  program?: unknown;
   firstName?: unknown;
   lastName?: unknown;
   email?: unknown;
@@ -46,11 +42,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Invalid request." }, { status: 400 });
   }
 
+  const program = getCareProgram(body?.program);
+  if (!program) {
+    return NextResponse.json({ message: "Invalid request." }, { status: 400 });
+  }
+
   const firstName = text(body?.firstName, 80);
   const lastName = text(body?.lastName, 80);
   const mobile = text(body?.mobile, 32);
   const state = text(body?.state, 2).toUpperCase();
-  const interest = text(body?.interest, 40);
+  const interest = text(body?.interest, 60);
 
   if (!firstName || !lastName || !isValidEmail(body?.email)) {
     return NextResponse.json(
@@ -73,9 +74,9 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!interests.includes(interest)) {
+  if (!program.interests.includes(interest)) {
     return NextResponse.json(
-      { message: "Please choose which plan you are interested in." },
+      { message: "Please choose the option that fits you best." },
       { status: 400 },
     );
   }
@@ -88,7 +89,7 @@ export async function POST(request: Request) {
   }
 
   const webhook =
-    process.env.EV_WEIGHT_CARE_WEBHOOK_URL ?? process.env.EV_CONTACT_WEBHOOK_URL;
+    process.env.EV_CARE_LEAD_WEBHOOK_URL ?? process.env.EV_CONTACT_WEBHOOK_URL;
 
   // A lead carrying a name, an email and a phone number never leaves over
   // plain HTTP, whatever a misconfigured environment asks for. A loopback
@@ -105,7 +106,8 @@ export async function POST(request: Request) {
   }
 
   const result = await forwardTo(webhook, {
-    type: "weight-care-lead",
+    type: "care-lead",
+    program: program.label,
     firstName,
     lastName,
     email: body.email,
@@ -113,7 +115,7 @@ export async function POST(request: Request) {
     state,
     interest,
     consent: true,
-    source: "/care/weight-management",
+    source: program.source,
     submittedAt: new Date().toISOString(),
   });
 

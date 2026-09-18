@@ -1,25 +1,22 @@
 "use client";
 
 import { useId, useState } from "react";
+import { carePrograms, type CareProgramKey } from "@/lib/carePrograms";
 
 /* ------------------------------------------------------------------
-   The weight-care assessment lead form.
+   The assessment lead form, shared by the care subscription pages.
 
-   It collects contact details only — no health history, no medications, no
-   diagnosis. Those belong in the clinical assessment, behind a provider.
-   The submission goes to the site's own API route, which forwards it to the
-   configured lead workflow over HTTPS; nothing is emailed from the browser
-   and nothing is sent to an analytics destination.
+   It collects contact details and one area of interest — no symptoms, no
+   health history, no medications. Those questions belong inside the clinical
+   assessment, behind a licensed provider and a secure intake workflow, so
+   they are deliberately absent here until that workflow is live.
+
+   The submission goes to this site's own API route, which forwards it over
+   HTTPS through the configured lead workflow. Nothing is emailed from the
+   browser and nothing is sent to an analytics destination.
    ------------------------------------------------------------------ */
 
 type Status = "idle" | "submitting" | "success" | "error";
-
-export const interests = [
-  "Oral Weight Care",
-  "GLP-1 Care",
-  "Complete Weight Care",
-  "I am not sure",
-] as const;
 
 const states: [string, string][] = [
   ["AL", "Alabama"], ["AK", "Alaska"], ["AZ", "Arizona"], ["AR", "Arkansas"],
@@ -45,10 +42,20 @@ const fieldClass =
 
 const labelClass = "brand-eyebrow block text-[0.5rem] text-taupe";
 
-export function WeightCareAssessmentForm() {
+export function CareLeadForm({
+  program,
+  labelledBy,
+  privacyNote = "Contact details only. Your health history is collected inside the clinical assessment.",
+}: {
+  program: CareProgramKey;
+  /** id of the heading this form belongs to. */
+  labelledBy: string;
+  privacyNote?: string;
+}) {
   const id = useId();
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  const { interestLabel, interests } = carePrograms[program];
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -59,10 +66,11 @@ export function WeightCareAssessmentForm() {
     setMessage("");
 
     try {
-      const response = await fetch("/api/weight-care", {
+      const response = await fetch("/api/care-lead", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
+          program,
           firstName: formData.get("firstName"),
           lastName: formData.get("lastName"),
           email: formData.get("email"),
@@ -103,8 +111,8 @@ export function WeightCareAssessmentForm() {
         </p>
         <p className="mt-5 text-sm leading-relaxed text-ivory-200/85">{message}</p>
         <p className="mt-7 text-xs leading-relaxed text-ivory-200/65">
-          A licensed provider reviews every request. Medical weight management
-          is offered only when it is clinically appropriate.
+          A licensed provider reviews every request. Treatment is offered only
+          when it is clinically appropriate.
         </p>
         <button
           type="button"
@@ -123,7 +131,7 @@ export function WeightCareAssessmentForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      aria-labelledby="get-started-heading"
+      aria-labelledby={labelledBy}
       className="hairline grid gap-6 rounded-3xl border bg-onyx-900/70 p-7 sm:p-9"
     >
       <div className="grid gap-6 sm:grid-cols-2">
@@ -212,7 +220,7 @@ export function WeightCareAssessmentForm() {
         </div>
         <div>
           <label htmlFor={`${id}-interest`} className={labelClass}>
-            Primary interest
+            {interestLabel}
           </label>
           <select
             id={`${id}-interest`}
@@ -246,8 +254,8 @@ export function WeightCareAssessmentForm() {
           className="text-xs leading-relaxed text-ivory-200/80"
         >
           I agree that Eve&rsquo;s Sisters may contact me by email, phone or
-          text about my weight-care assessment. Message rates may apply and I
-          can opt out at any time.
+          text about my assessment. Message rates may apply and I can opt out at
+          any time.
         </label>
       </div>
 
@@ -272,8 +280,7 @@ export function WeightCareAssessmentForm() {
             status === "error" ? "text-mauve" : "text-ivory-200/65"
           }`}
         >
-          {message ||
-            "Contact details only. Your health history is collected inside the clinical assessment."}
+          {message || privacyNote}
         </p>
       </div>
     </form>

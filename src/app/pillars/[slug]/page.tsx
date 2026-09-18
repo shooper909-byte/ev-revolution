@@ -124,12 +124,31 @@ export default async function PillarPage({ params }: Params) {
               than dismissing it. That is what this pillar exists to give you —
               and what to bring to your own clinician.
             </p>
-            <Link
-              href="/contact"
-              className="brand-eyebrow mt-10 self-start bg-plum px-7 py-3.5 text-[0.625rem] text-ivory transition-colors hover:bg-plum-600"
-            >
-              Ask us
-            </Link>
+            {/* A pillar with a subscription page sends people to the plans
+                and the assessment; the rest still open the contact form. */}
+            {pillar.carePath ? (
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <Link
+                  href={`${pillar.carePath}#get-started`}
+                  className="button-sheen brand-eyebrow bg-plum px-7 py-3.5 text-center text-[0.625rem] text-ivory transition-colors hover:bg-plum-600"
+                >
+                  Get Started Today
+                </Link>
+                <Link
+                  href={`${pillar.carePath}#plans`}
+                  className="hairline brand-eyebrow border px-7 py-3.5 text-center text-[0.625rem] text-champagne transition-colors hover:bg-onyx-800"
+                >
+                  Compare Options
+                </Link>
+              </div>
+            ) : (
+              <Link
+                href="/contact"
+                className="brand-eyebrow mt-10 self-start bg-plum px-7 py-3.5 text-[0.625rem] text-ivory transition-colors hover:bg-plum-600"
+              >
+                Ask us
+              </Link>
+            )}
           </div>
         </Container>
       </section>

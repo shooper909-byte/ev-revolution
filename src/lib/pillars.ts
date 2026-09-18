@@ -36,6 +36,10 @@ export type Pillar = {
   careImage?: string;
   /** Alt text for `careImage`. */
   careImageAlt?: string;
+
+  /** The subscription page for this pillar, when one exists. The pillar page
+      sends its calls to action there instead of to the contact form. */
+  carePath?: string;
 };
 
 const plum: Accent = {
@@ -83,6 +87,7 @@ const champagne: Accent = {
 export const pillars: Pillar[] = [
   {
     slug: "weight-loss",
+    carePath: "/care/weight-management",
     name: "Weight Loss",
     navLabel: "Weight",
     icon: "leaf",
@@ -122,6 +127,7 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "hormones-menopause",
+    carePath: "/care/hormones-menopause",
     name: "Hormones & Menopause",
     navLabel: "Hormones",
     icon: "lotus",
