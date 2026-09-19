@@ -167,6 +167,7 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "skin-beauty",
+    carePath: "/care/skin-beauty",
     name: "Skin & Beauty",
     navLabel: "Skin",
     icon: "honeycomb",

@@ -14,6 +14,9 @@ export type CareProgram = {
   source: string;
   interestLabel: string;
   interests: readonly string[];
+  /** Optional second question: which tier the person is leaning towards. */
+  planLabel?: string;
+  plans?: readonly string[];
 };
 
 export const carePrograms = {
@@ -38,6 +41,28 @@ export const carePrograms = {
       "Vaginal or urinary symptoms",
       "Sexual wellness",
       "I am not sure",
+    ],
+  },
+  "skin-beauty": {
+    label: "Skin and beauty",
+    source: "/care/skin-beauty",
+    interestLabel: "Primary concern",
+    interests: [
+      "Acne",
+      "Hyperpigmentation",
+      "Fine lines or photoaging",
+      "Hormonal acne",
+      "Hair thinning or hair loss",
+      "Eyelash concerns",
+      "Multiple concerns",
+      "I am not sure",
+    ],
+    planLabel: "Preferred plan",
+    plans: [
+      "Skin Essentials",
+      "Skin and Hair Plus",
+      "Complete Skin and Beauty",
+      "Help me choose",
     ],
   },
 } as const satisfies Record<string, CareProgram>;
