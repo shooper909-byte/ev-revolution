@@ -7,6 +7,7 @@ import { PillarIcon } from "@/components/PillarIcon";
 import { getPillar, pillars } from "@/lib/pillars";
 import { posts } from "@/lib/posts";
 import { WeightManagement } from "@/components/WeightManagement";
+import { EnergyPerformance } from "@/components/pillars/EnergyPerformance";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -25,6 +26,17 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     return { title: "Weight Management", description, openGraph: { title: "Weight Management | Eve's Sisters", description } };
   }
 
+  if (slug === "energy-performance") {
+    const title = "Energy and Performance for Women | Eve's Sisters";
+    const description =
+      "Learn about common contributors to fatigue, brain fog and reduced performance and explore personalized energy-care options from Eve's Sisters.";
+    return {
+      title: { absolute: title },
+      description,
+      openGraph: { title, description },
+    };
+  }
+
   return {
     title: pillar.name,
     description: pillar.intro,
@@ -38,6 +50,7 @@ export default async function PillarPage({ params }: Params) {
 
   if (!pillar) notFound();
   if (slug === "weight-loss") return <WeightManagement pillar={pillar} />;
+  if (slug === "energy-performance") return <EnergyPerformance pillar={pillar} />;
 
   const related = posts.filter((post) => post.pillar === pillar.name);
   const others = pillars.filter((item) => item.slug !== pillar.slug);
