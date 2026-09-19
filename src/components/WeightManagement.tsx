@@ -20,9 +20,9 @@ const faqs = [
   ["What is medical weight management?", "Medical weight management is care supervised by a qualified healthcare professional who considers health history and individual needs. This page provides general wellness information and does not offer a diagnosis or promise a prescription. Speak with your own clinician about medical care."],
   ["How is the program personalized?", "Your goals, lifestyle and wellness priorities help guide the conversation. Contact us to discuss the support currently available and whether it fits your needs."],
   ["Does weight management include nutrition and exercise?", "Nutrition, movement, strength, sleep and sustainable habits can all be part of weight management. An appropriate approach considers your circumstances and abilities; results vary."],
-  ["How do I get started?", "Use Get Started to reach our existing contact page and share your questions and goals. Our team can explain available next steps. Please do not send sensitive medical information through the general contact form."],
+  ["How do I get started?", "Use Get Started to open the weight care plans and start your assessment. Share your contact details and a licensed provider will determine whether medical weight management is appropriate for you. Please do not send sensitive medical information through a general form."],
 ];
-function Action({ children = "Get Started", href = "/contact" }: { children?: React.ReactNode; href?: string }) {
+function Action({ children = "Get Started", href = "/care/weight-management#get-started" }: { children?: React.ReactNode; href?: string }) {
   return <Link href={href} className={s.button}>{children}<span aria-hidden="true"> →</span></Link>;
 }
 function Portrait({ priority = false }: { priority?: boolean }) {
@@ -36,7 +36,7 @@ export function WeightManagement({ pillar }: { pillar: Pillar }) {
           <Eyebrow>Weight Management</Eyebrow>
           <h1 id="weight-title">A Healthier You<br /><em>at Every Stage</em></h1>
           <p>Personalized weight management and metabolic wellness designed around your body, goals and stage of life.</p>
-          <div className={s.actions}><Action /><a className={s.secondary} href="#program">Explore the Program <span aria-hidden="true">↓</span></a></div>
+          <div className={s.actions}><Action /><Link className={s.secondary} href="/care/weight-management#plans">Compare Options <span aria-hidden="true">→</span></Link></div>
           <ul className={s.features}>{[[pillar.icon, "Personalized Approach"], ["renew", "Metabolic Wellness"], ["infinity", "Ongoing Support"]].map(([icon, label]) => <li key={label}><PillarIcon name={icon as PillarIconName} className="h-8 w-8" /><span>{label}</span></li>)}</ul>
         </div>
         <Portrait priority />
