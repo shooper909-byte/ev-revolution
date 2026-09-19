@@ -25,6 +25,7 @@ type LeadBody = {
   mobile?: unknown;
   state?: unknown;
   interest?: unknown;
+  plan?: unknown;
   consent?: unknown;
 };
 
@@ -52,6 +53,7 @@ export async function POST(request: Request) {
   const mobile = text(body?.mobile, 32);
   const state = text(body?.state, 2).toUpperCase();
   const interest = text(body?.interest, 60);
+  const plan = text(body?.plan, 60);
 
   if (!firstName || !lastName || !isValidEmail(body?.email)) {
     return NextResponse.json(
@@ -77,6 +79,15 @@ export async function POST(request: Request) {
   if (!program.interests.includes(interest)) {
     return NextResponse.json(
       { message: "Please choose the option that fits you best." },
+      { status: 400 },
+    );
+  }
+
+  // A programme that offers a preferred-plan question requires one of its own
+  // options; a programme that does not ask cannot have one smuggled in.
+  if (program.plans ? !program.plans.includes(plan) : plan) {
+    return NextResponse.json(
+      { message: "Please choose the plan that fits you best." },
       { status: 400 },
     );
   }
@@ -114,6 +125,7 @@ export async function POST(request: Request) {
     mobile,
     state,
     interest,
+    ...(plan ? { plan } : {}),
     consent: true,
     source: program.source,
     submittedAt: new Date().toISOString(),

@@ -1,7 +1,11 @@
 "use client";
 
 import { useId, useState } from "react";
-import { carePrograms, type CareProgramKey } from "@/lib/carePrograms";
+import {
+  carePrograms,
+  type CareProgram,
+  type CareProgramKey,
+} from "@/lib/carePrograms";
 
 /* ------------------------------------------------------------------
    The assessment lead form, shared by the care subscription pages.
@@ -55,7 +59,10 @@ export function CareLeadForm({
   const id = useId();
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
-  const { interestLabel, interests } = carePrograms[program];
+  // Typed as CareProgram so the optional questions are readable across
+  // programmes that do not ask them.
+  const { interestLabel, interests, planLabel, plans }: CareProgram =
+    carePrograms[program];
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -77,6 +84,7 @@ export function CareLeadForm({
           mobile: formData.get("mobile"),
           state: formData.get("state"),
           interest: formData.get("interest"),
+          plan: formData.get("plan"),
           consent: formData.get("consent") === "on",
         }),
       });
@@ -240,6 +248,30 @@ export function CareLeadForm({
           </select>
         </div>
       </div>
+
+      {planLabel && plans && (
+        <div>
+          <label htmlFor={`${id}-plan`} className={labelClass}>
+            {planLabel}
+          </label>
+          <select
+            id={`${id}-plan`}
+            name="plan"
+            required
+            defaultValue=""
+            className={`${fieldClass} mt-3`}
+          >
+            <option value="" disabled>
+              Select an option
+            </option>
+            {plans.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       <div className="flex items-start gap-3">
         <input
