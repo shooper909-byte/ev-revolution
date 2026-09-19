@@ -28,7 +28,9 @@ export function SiteHeader() {
   }, [pathname]);
 
   const careActive =
-    pathname === "/care" || pathname.startsWith("/pillars/");
+    pathname === "/care" ||
+    pathname.startsWith("/pillars/") ||
+    pathname === "/peptide-care";
 
   const linkClass = (href: string) =>
     `brand-eyebrow text-[0.625rem] transition-colors hover:text-champagne ${
@@ -143,6 +145,23 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
+            {/* A standalone service page rather than one of the six pillars,
+                so it closes the Care sub-list instead of joining them. */}
+            <li className="border-t border-onyx-800/80">
+              <Link
+                href="/peptide-care"
+                className={`block py-3.5 text-sm ${
+                  pathname === "/peptide-care"
+                    ? "text-champagne"
+                    : "text-ivory-200"
+                }`}
+                aria-current={
+                  pathname === "/peptide-care" ? "page" : undefined
+                }
+              >
+                Peptide Care
+              </Link>
+            </li>
           </ul>
 
           {primaryNav.map((item) => (
