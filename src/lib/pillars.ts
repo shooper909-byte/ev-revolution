@@ -207,6 +207,7 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "energy-performance",
+    carePath: "/care/energy-performance",
     name: "Energy & Performance",
     navLabel: "Energy",
     icon: "bolt",

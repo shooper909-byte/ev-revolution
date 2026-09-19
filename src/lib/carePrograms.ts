@@ -65,6 +65,28 @@ export const carePrograms = {
       "Help me choose",
     ],
   },
+  "energy-performance": {
+    label: "Energy and performance",
+    source: "/care/energy-performance",
+    interestLabel: "Primary concern",
+    interests: [
+      "Persistent fatigue",
+      "Brain fog or concentration",
+      "Reduced exercise tolerance",
+      "Sleep and recovery",
+      "Nutrient concerns",
+      "Thyroid or metabolic concerns",
+      "Multiple concerns",
+      "I am not sure",
+    ],
+    planLabel: "Preferred plan",
+    plans: [
+      "Energy Essential",
+      "Energy and Performance Plus",
+      "Complete Energy Care",
+      "Help me choose",
+    ],
+  },
 } as const satisfies Record<string, CareProgram>;
 
 export type CareProgramKey = keyof typeof carePrograms;

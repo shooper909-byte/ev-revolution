@@ -209,6 +209,81 @@ body {
   }
 }
 
+/* ------------------------------------------------------------------
+   Energy motion — the pillar hero's travelling line and drifting glow,
+   plus the gold rules that draw themselves as a section lands.
+
+   Every one of these is paused by default and only runs inside a
+   `[data-motion="on"]` scope, which src/components/MotionScope.tsx turns
+   on while the section is actually on screen. Nothing animates in a
+   background tab or below the fold, nothing moves under reduced motion,
+   and none of it affects layout — transforms, opacity and stroke only.
+   ------------------------------------------------------------------ */
+
+@keyframes energy-travel {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -620;
+  }
+}
+
+.energy-travel {
+  animation: energy-travel 11s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.08);
+    opacity: 0.78;
+  }
+}
+
+.aurora {
+  animation: aurora-drift 26s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+[data-motion="on"] .energy-travel,
+[data-motion="on"] .aurora {
+  animation-play-state: running;
+}
+
+/* A hairline that draws left to right when its Reveal lands. */
+.gold-rule {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-shown="true"] .gold-rule {
+  transform: scaleX(1);
+}
+
+@media (scripting: none) {
+  .gold-rule {
+    transform: scaleX(1);
+  }
+}
+
+/* Editorial card imagery lifts slightly on hover — never on its own. */
+.media-lift img {
+  transition: transform 600ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.media-lift:hover img,
+.media-lift:focus-within img {
+  transform: scale(1.03);
+}
+
 @media (prefers-reduced-motion: reduce) {
   /* Settle every motion device into its resting state rather than
      animating it quickly — nothing should move, and nothing should
@@ -220,6 +295,25 @@ body {
     opacity: 1;
     transform: none;
     animation: none;
+  }
+
+  /* No travelling line, no drifting glow, no hover zoom — and the gold
+     rules simply exist rather than drawing themselves in. */
+  .energy-travel,
+  .aurora {
+    animation: none;
+  }
+
+  .gold-rule {
+    transform: none;
+    transition: none;
+  }
+
+  .media-lift img,
+  .media-lift:hover img,
+  .media-lift:focus-within img {
+    transition: none;
+    transform: none;
   }
 
   .button-sheen::after {
