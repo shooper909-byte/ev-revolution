@@ -23,7 +23,19 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   if (slug === "weight-loss") {
     const description = "Personalized weight management and metabolic wellness for women at every stage of life.";
-    return { title: "Weight Management", description, openGraph: { title: "Weight Management | Eve's Sisters", description } };
+    return {
+      title: "Weight Management",
+      description,
+      alternates: { canonical: "/pillars/weight-loss" },
+      openGraph: {
+        title: "Weight Management | Eve's Sisters",
+        description,
+        type: "website",
+        url: "https://evevolutionhealth.com/pillars/weight-loss",
+        images: ["/opengraph-image.png"],
+      },
+      twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
+    };
   }
 
   if (slug === "energy-performance") {
