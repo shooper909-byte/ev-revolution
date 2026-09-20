@@ -247,14 +247,20 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="border-b border-onyx-700 bg-[radial-gradient(circle_at_80%_30%,color-mix(in_oklab,var(--color-plum)_45%,transparent),transparent_38%),linear-gradient(120deg,var(--color-onyx),var(--color-plum-900))]">
-        <Container className="py-20 sm:py-28">
-          <Eyebrow>The Signature Experience</Eyebrow>
-          <h2 className="mt-6 font-display text-5xl text-ivory sm:text-6xl">Eve&rsquo;s Secret™</h2>
-          <p className="mt-4 font-display text-2xl text-champagne">Some things are better shared between sisters.</p>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory-200/90">A more elevated way to explore women&rsquo;s wellness—bringing multiple areas of care together in one thoughtfully designed experience.</p>
-          <ul className="mt-8 flex flex-wrap gap-3 text-base text-ivory"><li className="hairline border px-4 py-3">More personalized</li><li className="hairline border px-4 py-3">More connected</li><li className="hairline border px-4 py-3">Designed around your goals</li></ul>
-          <Link href="/eves-secret" className="button-sheen brand-eyebrow mt-10 inline-block bg-plum px-8 py-4 text-xs text-ivory transition-colors hover:bg-plum-600">Unlock Eve&rsquo;s Secret</Link>
+      <section className="overflow-hidden border-b border-onyx-700 bg-[radial-gradient(circle_at_28%_30%,color-mix(in_oklab,var(--color-plum)_45%,transparent),transparent_40%),linear-gradient(120deg,var(--color-onyx),var(--color-plum-900))]">
+        <Container className="grid max-w-[1366px] items-stretch px-0 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
+          <div className="flex flex-col justify-center px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
+            <Eyebrow>The Signature Experience</Eyebrow>
+            <h2 className="mt-6 font-display text-5xl text-ivory sm:text-6xl">Eve&rsquo;s Secret™</h2>
+            <p className="mt-4 font-display text-2xl text-champagne">Some things are better shared between sisters.</p>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory-200/90">A more elevated way to explore women&rsquo;s wellness—bringing multiple areas of care together in one thoughtfully designed experience.</p>
+            <ul className="mt-8 flex flex-wrap gap-3 text-base text-ivory"><li className="hairline border px-4 py-3">More personalized</li><li className="hairline border px-4 py-3">More connected</li><li className="hairline border px-4 py-3">Designed around your goals</li></ul>
+            <Link href="/eves-secret" className="button-sheen brand-eyebrow mt-10 inline-block w-fit bg-plum px-8 py-4 text-xs text-ivory transition-colors hover:bg-plum-600">Unlock Eve&rsquo;s Secret</Link>
+          </div>
+          <Link href="/eves-secret" aria-label="Explore Eve’s Secret" className="group relative block min-h-[360px] overflow-hidden border-t border-champagne/25 lg:min-h-[560px] lg:border-l lg:border-t-0">
+            <Image src="/images/eves-secret-hero.png" alt="Four women together in an elegant black and purple Eve’s Secret setting." width={1680} height={937} sizes="(min-width: 1024px) 58vw, 100vw" className="h-full w-full object-cover object-[72%_center] transition-transform duration-700 group-hover:scale-[1.02]" />
+            <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-onyx/20 via-transparent to-transparent" />
+          </Link>
         </Container>
       </section>
 
