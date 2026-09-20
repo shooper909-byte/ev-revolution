@@ -50,6 +50,12 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a)return;var h=a.getAttribute("href");if(h&&h.charAt(0)==="/"&&h.charAt(1)!=="/"){e.preventDefault();e.stopImmediatePropagation();window.location.href=a.href;}},true);',
+          }}
+        />
       </body>
     </html>
   );

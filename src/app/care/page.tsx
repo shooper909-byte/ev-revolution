@@ -17,8 +17,33 @@ export const metadata: Metadata = {
     description:
       "Six care pathways for women’s wellness — weight management, menopause and hormones, skin and beauty, energy and performance, recovery, and longevity.",
     type: "website",
+    url: "https://evevolutionhealth.com/care",
+    images: ["/opengraph-image.png"],
   },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
 };
+
+const careSteps = [
+  ["Choose Your Path", "Explore the care area that best reflects your current goals and concerns."],
+  ["Tell Us About You", "Complete a private request so the care team can understand what you are looking for."],
+  ["Review Your Options", "Learn about available wellness programs and, where offered, next steps for evaluation."],
+  ["Continue With Support", "Stay connected through guidance, education and ongoing wellness support."],
+] as const;
+
+const careSchema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Care | Eve’s Sisters Women’s Wellness",
+  url: "https://evevolutionhealth.com/care",
+  description: "Six women’s wellness pathways for every stage of life.",
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://evevolutionhealth.com/" },
+    { "@type": "ListItem", position: 2, name: "Care", item: "https://evevolutionhealth.com/care" },
+  ],
+}];
 
 const heroValues = [
   "Whole-woman approach",
@@ -103,7 +128,11 @@ const brandPillars = [
 
 export default function CarePage() {
   return (
-    <>
+    <div className="overflow-x-clip">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(careSchema) }}
+      />
       {/* ---------------------------------------------------------------
           Hero
           --------------------------------------------------------------- */}
@@ -120,7 +149,7 @@ export default function CarePage() {
             </div>
 
             <h1
-              className="brand-enter mt-7 font-display text-[2.4rem] leading-[1.06] text-ivory sm:text-[2.9rem] lg:text-[3.1rem] lg:whitespace-nowrap"
+              className="brand-enter mt-7 font-display text-[2.05rem] leading-[1.06] text-ivory sm:text-[2.9rem] lg:text-[3.1rem]"
               style={{ "--enter-delay": "90ms" } as React.CSSProperties}
             >
               Personalized Care for
@@ -148,10 +177,10 @@ export default function CarePage() {
               style={{ "--enter-delay": "270ms" } as React.CSSProperties}
             >
               <Link
-                href="/contact"
+                href="/care/weight-management#get-started"
                 className="button-sheen brand-eyebrow group bg-plum px-8 py-4 text-center text-[0.625rem] text-ivory transition-colors hover:bg-plum-600"
               >
-                Get Started
+                Start With Weight Care
                 <span
                   aria-hidden="true"
                   className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1"
@@ -160,10 +189,10 @@ export default function CarePage() {
                 </span>
               </Link>
               <Link
-                href="#pathways"
+                href="#how-it-works"
                 className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne transition-colors hover:bg-onyx-800"
               >
-                Explore Services
+                How It Works
               </Link>
             </div>
 
@@ -187,6 +216,7 @@ export default function CarePage() {
                 src="/images/care/care-hero.webp"
                 alt="A woman with dark curly hair wrapped in deep plum silk, head tilted back in warm light."
                 fill
+                unoptimized
                 priority
                 sizes="(min-width: 1024px) 44vw, 92vw"
                 className="brand-settle object-cover"
@@ -215,6 +245,20 @@ export default function CarePage() {
               </p>
             </div>
           </div>
+        </Container>
+      </section>
+
+      <section id="how-it-works" aria-labelledby="how-it-works-heading" className="scroll-mt-24 border-b border-onyx-700 bg-onyx-900">
+        <Container className="py-20 sm:py-28">
+          <Reveal>
+            <Eyebrow>How Eve&rsquo;s Sisters Works</Eyebrow>
+            <h2 id="how-it-works-heading" className="mt-6 max-w-3xl font-display text-[2.1rem] leading-tight text-ivory sm:text-[2.75rem]">Care that begins with understanding you.</h2>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory-200/85">Explore the right pathway, share what you are looking for and review the options currently available—without promises of automatic approval or guaranteed outcomes.</p>
+          </Reveal>
+          <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {careSteps.map(([title, body], index) => <Reveal as="li" key={title} delay={index * 80}><p className="font-display text-3xl text-champagne-700">{String(index + 1).padStart(2, "0")}</p><h3 className="hairline mt-5 border-t pt-5 font-display text-2xl text-ivory">{title}</h3><p className="mt-4 text-base leading-relaxed text-ivory-200/85">{body}</p></Reveal>)}
+          </ol>
+          <Link href="/care/weight-management#get-started" className="button-sheen brand-eyebrow mt-12 inline-block bg-plum px-8 py-4 text-xs text-ivory transition-colors hover:bg-plum-600">Explore Intake Options</Link>
         </Container>
       </section>
 
@@ -276,6 +320,7 @@ export default function CarePage() {
                 src="/images/care/care-flexible.webp"
                 alt="Four generations of a family standing together in warm, soft light."
                 fill
+                unoptimized
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover object-top"
               />
@@ -307,7 +352,7 @@ export default function CarePage() {
                 your life.
               </p>
               <Link
-                href="/contact"
+                href="#how-it-works"
                 className="brand-eyebrow group mt-8 inline-flex items-center gap-2 text-[0.5625rem] text-champagne"
               >
                 How It Works
@@ -368,7 +413,8 @@ export default function CarePage() {
                 <Image
                   src="/images/care/care-together.webp"
                   alt="Four women of different ages, sizes and skin tones standing together and smiling."
-                  fill
+                fill
+                unoptimized
                   sizes="(min-width: 1024px) 52vw, 92vw"
                   className="object-cover"
                 />
@@ -395,6 +441,18 @@ export default function CarePage() {
               </div>
             </Reveal>
           </div>
+        </Container>
+      </section>
+
+      <section aria-labelledby="secret-heading" className="border-b border-onyx-700 bg-[radial-gradient(circle_at_80%_25%,color-mix(in_oklab,var(--color-plum)_45%,transparent),transparent_38%),linear-gradient(120deg,var(--color-onyx),var(--color-plum-900))]">
+        <Container className="py-20 sm:py-28">
+          <Reveal>
+            <Eyebrow>The Signature Experience</Eyebrow>
+            <h2 id="secret-heading" className="mt-6 font-display text-5xl text-ivory sm:text-6xl">Eve&rsquo;s Secret™</h2>
+            <p className="mt-4 font-display text-2xl text-champagne">Some things are better shared between sisters.</p>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory-200/90">A more elevated way to explore women&rsquo;s wellness—bringing multiple areas of care together in one thoughtfully designed experience.</p>
+            <Link href="/eves-secret" className="button-sheen brand-eyebrow mt-10 inline-block bg-plum px-8 py-4 text-xs text-ivory transition-colors hover:bg-plum-600">Unlock Eve&rsquo;s Secret</Link>
+          </Reveal>
         </Container>
       </section>
 
@@ -448,6 +506,7 @@ export default function CarePage() {
           alt=""
           aria-hidden="true"
           fill
+          unoptimized
           sizes="100vw"
           className="object-cover opacity-70"
         />
@@ -470,10 +529,10 @@ export default function CarePage() {
               you.
             </p>
             <Link
-              href="/contact"
+              href="/care/weight-management#get-started"
               className="button-sheen brand-eyebrow group mt-11 inline-block bg-champagne px-10 py-4 text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200"
             >
-              Get Started
+              Explore Intake Options
               <span
                 aria-hidden="true"
                 className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1"
@@ -484,6 +543,6 @@ export default function CarePage() {
           </Reveal>
         </Container>
       </section>
-    </>
+    </div>
   );
 }

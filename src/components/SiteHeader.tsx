@@ -13,8 +13,11 @@ import { careLabel, pillars } from "@/lib/pillars";
    "Resources" points at the existing /journal route rather than adding a
    duplicate one. */
 const primaryNav = [
-  { href: "/about", label: "About" },
+  { href: "/care/weight-management#plans", label: "Packages" },
+  { href: "/eves-secret", label: "Eve’s Secret™" },
+  { href: "/about#philosophy", label: "Our Approach" },
   { href: "/journal", label: "Resources" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -31,16 +34,16 @@ export function SiteHeader() {
     pathname === "/care" || pathname.startsWith("/pillars/");
 
   const linkClass = (href: string) =>
-    `brand-eyebrow text-[0.625rem] transition-colors hover:text-champagne ${
+    `brand-eyebrow whitespace-nowrap text-xs tracking-[0.16em] transition-colors hover:text-champagne focus-visible:text-champagne ${
       pathname === href ? "text-champagne" : "text-ivory-200"
     }`;
 
   return (
     <header className="sticky top-0 z-50 border-b border-onyx-700/80 bg-onyx/90 backdrop-blur-md">
-      <Container className="flex h-20 items-center justify-between gap-4">
+      <Container className="flex h-20 max-w-[1366px] items-center justify-between gap-4">
         <Wordmark />
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-3 xl:flex xl:gap-5">
           <Link
             href="/"
             className={linkClass("/")}
@@ -64,7 +67,7 @@ export function SiteHeader() {
 
           <Link
             href="/contact"
-            className="button-sheen brand-eyebrow bg-plum px-6 py-3 text-[0.5625rem] text-ivory transition-colors hover:bg-plum-600"
+            className="button-sheen brand-eyebrow whitespace-nowrap bg-plum px-5 py-3 text-xs tracking-[0.14em] text-ivory transition-colors hover:bg-plum-600"
           >
             Get Started
           </Link>
@@ -75,7 +78,7 @@ export function SiteHeader() {
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          className="hairline flex h-11 w-11 shrink-0 items-center justify-center rounded-full border lg:hidden"
+          className="hairline flex h-11 w-11 shrink-0 items-center justify-center rounded-full border xl:hidden"
         >
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
           <svg
@@ -101,7 +104,7 @@ export function SiteHeader() {
       <div
         id="mobile-nav"
         hidden={!open}
-        className="border-t border-onyx-700 bg-onyx-900 lg:hidden"
+        className="border-t border-onyx-700 bg-onyx-900 xl:hidden"
       >
         <Container className="grid gap-1 py-6">
           <Link
@@ -153,6 +156,7 @@ export function SiteHeader() {
                 pathname === item.href ? "text-champagne" : "text-ivory"
               }`}
               aria-current={pathname === item.href ? "page" : undefined}
+              onClick={() => setOpen(false)}
             >
               {item.label}
             </Link>
@@ -160,6 +164,7 @@ export function SiteHeader() {
 
           <Link
             href="/contact"
+            onClick={() => setOpen(false)}
             className="brand-eyebrow mt-4 bg-plum px-6 py-4 text-center text-[0.625rem] text-ivory"
           >
             Get Started

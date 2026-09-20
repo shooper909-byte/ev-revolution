@@ -13,7 +13,7 @@ import { careLabel, careSummary, type Pillar } from "@/lib/pillars";
 export function CareCard({ pillar }: { pillar: Pillar }) {
   return (
     <Link
-      href={`/pillars/${pillar.slug}`}
+      href={pillar.carePath ?? `/pillars/${pillar.slug}`}
       className="group relative flex aspect-[4/5] flex-col justify-end overflow-hidden border border-onyx-700 bg-onyx-900"
     >
       {pillar.careImage && (
@@ -21,6 +21,7 @@ export function CareCard({ pillar }: { pillar: Pillar }) {
           src={`/images/care/${pillar.careImage}.webp`}
           alt={pillar.careImageAlt ?? ""}
           fill
+          unoptimized
           sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 88vw"
           className="object-cover transition-transform duration-[450ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.04]"
         />
@@ -51,11 +52,12 @@ export function CareCard({ pillar }: { pillar: Pillar }) {
         <h3 className="mt-5 font-display text-[1.6rem] leading-tight text-ivory transition-transform duration-300 group-hover:-translate-y-1">
           {careLabel(pillar)}
         </h3>
-        <p className="mt-2.5 text-sm leading-relaxed text-ivory-200/80 transition-transform duration-300 group-hover:-translate-y-1">
+        <p className="mt-2.5 text-base leading-relaxed text-ivory-200/85 transition-transform duration-300 group-hover:-translate-y-1">
           {careSummary(pillar)}
         </p>
+        <p className="mt-3 text-sm leading-relaxed text-ivory-300/80">For women asking: “{pillar.question}”</p>
         <span className="brand-eyebrow mt-6 flex items-center gap-2 text-[0.5625rem] text-champagne">
-          Explore
+          Explore Options
           <span
             aria-hidden="true"
             className="inline-block transition-transform duration-300 group-hover:translate-x-1.5"
