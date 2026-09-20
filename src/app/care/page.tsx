@@ -18,9 +18,9 @@ export const metadata: Metadata = {
       "Six care pathways for women’s wellness — weight management, menopause and hormones, skin and beauty, energy and performance, recovery, and longevity.",
     type: "website",
     url: "https://evevolutionhealth.com/care",
-    images: ["/opengraph-image.png"],
+    images: ["/og-image"],
   },
-  twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
+  twitter: { card: "summary_large_image", images: ["/og-image"] },
 };
 
 const careSteps = [
@@ -216,7 +216,6 @@ export default function CarePage() {
                 src="/images/care/care-hero.webp"
                 alt="A woman with dark curly hair wrapped in deep plum silk, head tilted back in warm light."
                 fill
-                unoptimized
                 priority
                 sizes="(min-width: 1024px) 44vw, 92vw"
                 className="brand-settle object-cover"
@@ -320,7 +319,6 @@ export default function CarePage() {
                 src="/images/care/care-flexible.webp"
                 alt="Four generations of a family standing together in warm, soft light."
                 fill
-                unoptimized
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover object-top"
               />
@@ -414,7 +412,6 @@ export default function CarePage() {
                   src="/images/care/care-together.webp"
                   alt="Four women of different ages, sizes and skin tones standing together and smiling."
                 fill
-                unoptimized
                   sizes="(min-width: 1024px) 52vw, 92vw"
                   className="object-cover"
                 />
@@ -506,7 +503,6 @@ export default function CarePage() {
           alt=""
           aria-hidden="true"
           fill
-          unoptimized
           sizes="100vw"
           className="object-cover opacity-70"
         />

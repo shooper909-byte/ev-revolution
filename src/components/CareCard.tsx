@@ -21,7 +21,6 @@ export function CareCard({ pillar }: { pillar: Pillar }) {
           src={`/images/care/${pillar.careImage}.webp`}
           alt={pillar.careImageAlt ?? ""}
           fill
-          unoptimized
           sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 88vw"
           className="object-cover transition-transform duration-[450ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.04]"
         />

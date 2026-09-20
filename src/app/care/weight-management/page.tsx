@@ -38,9 +38,9 @@ export const metadata: Metadata = {
       "Explore personalized weight-management plans from Eve's Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
     url: canonical,
     type: "website",
-    images: ["/opengraph-image.png"],
+    images: ["/og-image"],
   },
-  twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
+  twitter: { card: "summary_large_image", images: ["/og-image"] },
 };
 
 const availableStateCodes = (process.env.EV_WEIGHT_CARE_STATES ?? "")
@@ -318,7 +318,6 @@ export default function WeightManagementCarePage() {
                   src="/images/care/care-weight-management-glp1.png"
                   alt="Weight-care medication formats arranged with a measuring tape in the Eve’s Sisters black, purple and gold palette."
                   fill
-                  unoptimized
                   priority
                   sizes="(min-width: 1024px) 42vw, 92vw"
                   className="brand-settle object-cover"

@@ -32,9 +32,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
         description,
         type: "website",
         url: "https://evevolutionhealth.com/pillars/weight-loss",
-        images: ["/opengraph-image.png"],
+        images: ["/og-image"],
       },
-      twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
+      twitter: { card: "summary_large_image", images: ["/og-image"] },
     };
   }
 

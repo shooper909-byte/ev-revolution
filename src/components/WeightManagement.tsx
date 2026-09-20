@@ -46,7 +46,7 @@ function Action({ children = "Get Started", href = "/care/weight-management#get-
   return <Link href={href} className={s.button}>{children}<span aria-hidden="true"> →</span></Link>;
 }
 function Portrait({ priority = false }: { priority?: boolean }) {
-  return <div className={s.portrait}><Image src="/images/about-mature-campaign.png" alt="A woman looking ahead in warm light." width={1122} height={1402} sizes="(max-width: 767px) 200vw, 110vw" priority={priority} unoptimized /></div>;
+  return <div className={s.portrait}><Image src="/images/about-mature-campaign.png" alt="A woman looking ahead in warm light." width={1122} height={1402} sizes="(max-width: 767px) 200vw, 110vw" priority={priority} /></div>;
 }
 export function WeightManagement({ pillar }: { pillar: Pillar }) {
   return <div className={s.page}>
