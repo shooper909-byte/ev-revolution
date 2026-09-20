@@ -66,7 +66,7 @@ export function SiteHeader() {
           ))}
 
           <Link
-            href="/contact"
+            href="/care/weight-management#get-started"
             className="button-sheen brand-eyebrow whitespace-nowrap bg-plum px-5 py-3 text-xs tracking-[0.14em] text-ivory transition-colors hover:bg-plum-600"
           >
             Get Started
@@ -163,7 +163,7 @@ export function SiteHeader() {
           ))}
 
           <Link
-            href="/contact"
+            href="/care/weight-management#get-started"
             onClick={() => setOpen(false)}
             className="brand-eyebrow mt-4 bg-plum px-6 py-4 text-center text-[0.625rem] text-ivory"
           >

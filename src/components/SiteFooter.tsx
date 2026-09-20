@@ -64,7 +64,7 @@ export function SiteFooter() {
             </ul>
 
             <Link
-              href="/contact"
+              href="/care/weight-management#get-started"
               className="button-sheen brand-eyebrow mt-8 inline-block bg-plum px-6 py-3 text-[0.5625rem] text-ivory transition-colors hover:bg-plum-600"
             >
               Get Started
