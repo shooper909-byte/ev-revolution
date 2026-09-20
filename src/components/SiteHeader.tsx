@@ -31,7 +31,9 @@ export function SiteHeader() {
   }, [pathname]);
 
   const careActive =
-    pathname === "/care" || pathname.startsWith("/pillars/");
+    pathname === "/care" ||
+    pathname.startsWith("/pillars/") ||
+    pathname === "/peptide-care";
 
   const linkClass = (href: string) =>
     `brand-eyebrow whitespace-nowrap text-xs tracking-[0.16em] transition-colors hover:text-champagne focus-visible:text-champagne ${
@@ -146,6 +148,20 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
+            <li className="border-t border-onyx-800/80">
+              <Link
+                href="/peptide-care"
+                className={`block py-3.5 text-sm ${
+                  pathname === "/peptide-care"
+                    ? "text-champagne"
+                    : "text-ivory-200"
+                }`}
+                aria-current={pathname === "/peptide-care" ? "page" : undefined}
+                onClick={() => setOpen(false)}
+              >
+                Peptide Care
+              </Link>
+            </li>
           </ul>
 
           {primaryNav.map((item) => (

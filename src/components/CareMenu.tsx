@@ -124,6 +124,17 @@ export function CareMenu({ active }: { active: boolean }) {
           ))}
           <li className="hairline mt-2 border-t pt-2">
             <Link
+              href="/peptide-care"
+              className="group flex items-center justify-between gap-3 px-5 py-2.5 text-sm text-ivory-200 transition-colors hover:bg-onyx-800 hover:text-champagne"
+            >
+              Peptide Care
+              <span aria-hidden="true" className="text-champagne opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100">
+                &rarr;
+              </span>
+            </Link>
+          </li>
+          <li className="hairline mt-2 border-t pt-2">
+            <Link
               href="/care"
               className="brand-eyebrow block px-5 py-2.5 text-[0.5625rem] text-champagne transition-colors hover:bg-onyx-800"
             >
