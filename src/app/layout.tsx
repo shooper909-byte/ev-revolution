@@ -19,16 +19,16 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://evevolutionhealth.com"),
   title: {
-    default: "Eve's Sisters — The Evolution of a Woman's Body",
-    template: "%s | Eve's Sisters",
+    default: "Eve’s Sisters — The Evolution of a Woman's Body",
+    template: "%s | Eve’s Sisters",
   },
   description:
     "Evidence-led women's wellness and longevity: weight, hormones and menopause, skin and beauty, energy, recovery and healthspan. Different stages. The same power.",
   openGraph: {
-    title: "Eve's Sisters — The Evolution of a Woman's Body",
+    title: "Eve’s Sisters — The Evolution of a Woman's Body",
     description:
       "Evidence-led women's wellness and longevity for every stage. Different stages. The same power.",
-    siteName: "Eve's Sisters",
+    siteName: "Eve’s Sisters",
     type: "website",
   },
   twitter: { card: "summary_large_image" },

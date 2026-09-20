@@ -47,7 +47,7 @@ export function SiteHeader() {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-onyx-700/80 bg-onyx/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 overflow-x-clip border-b border-onyx-700/80 bg-onyx/90 backdrop-blur-md">
       <Container className="flex h-20 max-w-[1366px] items-center justify-between gap-4">
         <Wordmark />
 

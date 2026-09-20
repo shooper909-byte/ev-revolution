@@ -51,6 +51,7 @@ html {
 body {
   background-color: var(--color-onyx);
   color: var(--color-ivory);
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 

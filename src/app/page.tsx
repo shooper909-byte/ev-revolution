@@ -11,10 +11,10 @@ import { formatPostDate, posts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://evevolutionhealth.com/" },
-  title: "Eve's Sisters — Women's Wellness for Every Stage",
+  title: "Eve’s Sisters — Women's Wellness for Every Stage",
   description: "Evidence-led guidance and personalized wellness pathways for weight management, hormones, skin, energy, recovery and longevity.",
   openGraph: {
-    title: "Eve's Sisters — Women's Wellness for Every Stage",
+    title: "Eve’s Sisters — Women's Wellness for Every Stage",
     description: "Your body evolves. Your care should too.",
     url: "https://evevolutionhealth.com/",
     images: ["/opengraph-image.png"],
@@ -44,7 +44,7 @@ const steps = [
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Eve's Sisters",
+  name: "Eve’s Sisters",
   url: "https://evevolutionhealth.com/",
   logo: "https://evevolutionhealth.com/images/eves-sisters-logo.png",
 };
@@ -52,7 +52,7 @@ const organizationJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Eve's Sisters",
+  name: "Eve’s Sisters",
   url: "https://evevolutionhealth.com/",
 };
 

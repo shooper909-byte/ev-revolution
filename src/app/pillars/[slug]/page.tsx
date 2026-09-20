@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       description,
       alternates: { canonical: "/pillars/weight-loss" },
       openGraph: {
-        title: "Weight Management | Eve's Sisters",
+        title: "Weight Management | Eve’s Sisters",
         description,
         type: "website",
         url: "https://evevolutionhealth.com/pillars/weight-loss",
@@ -39,9 +39,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   }
 
   if (slug === "energy-performance") {
-    const title = "Energy and Performance for Women | Eve's Sisters";
+    const title = "Energy and Performance for Women | Eve’s Sisters";
     const description =
-      "Learn about common contributors to fatigue, brain fog and reduced performance and explore personalized energy-care options from Eve's Sisters.";
+      "Learn about common contributors to fatigue, brain fog and reduced performance and explore personalized energy-care options from Eve’s Sisters.";
     return {
       title: { absolute: title },
       description,

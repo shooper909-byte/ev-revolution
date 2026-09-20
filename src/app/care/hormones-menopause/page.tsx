@@ -27,14 +27,14 @@ import { Steps } from "@/components/care/Steps";
 const canonical = "https://www.evevolutionhealth.com/care/hormones-menopause";
 
 export const metadata: Metadata = {
-  title: { absolute: "Menopause and Hormone Care Plans | Eve's Sisters" },
+  title: { absolute: "Menopause and Hormone Care Plans | Eve’s Sisters" },
   description:
-    "Explore personalized perimenopause, menopause and hormone-care plans from Eve's Sisters, including symptom support, prescription management and ongoing clinical care.",
+    "Explore personalized perimenopause, menopause and hormone-care plans from Eve’s Sisters, including symptom support, prescription management and ongoing clinical care.",
   alternates: { canonical },
   openGraph: {
-    title: "Menopause and Hormone Care Plans | Eve's Sisters",
+    title: "Menopause and Hormone Care Plans | Eve’s Sisters",
     description:
-      "Explore personalized perimenopause, menopause and hormone-care plans from Eve's Sisters, including symptom support, prescription management and ongoing clinical care.",
+      "Explore personalized perimenopause, menopause and hormone-care plans from Eve’s Sisters, including symptom support, prescription management and ongoing clinical care.",
     url: canonical,
     type: "website",
   },
@@ -681,7 +681,7 @@ export default function HormonesMenopauseCarePage() {
                 "Weight Management",
                 "Metabolic care for the shifts that often arrive alongside.",
               ],
-              ["/care", "All Care", "Every pathway Eve's Sisters supports."],
+              ["/care", "All Care", "Every pathway Eve’s Sisters supports."],
             ].map(([href, title, body]) => (
               <li key={href}>
                 <Link

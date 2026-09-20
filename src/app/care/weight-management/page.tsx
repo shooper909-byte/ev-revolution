@@ -26,16 +26,16 @@ import { Steps } from "@/components/care/Steps";
 const canonical = "https://evevolutionhealth.com/care/weight-management";
 
 export const metadata: Metadata = {
-  // `absolute` because the root layout otherwise appends "| Eve's Sisters"
+  // `absolute` because the root layout otherwise appends "| Eve’s Sisters"
   // and the requested title already carries it.
-  title: { absolute: "Weight Management Plans and GLP-1 Care | Eve's Sisters" },
+  title: { absolute: "Weight Management Plans and GLP-1 Care | Eve’s Sisters" },
   description:
-    "Explore personalized weight-management plans from Eve's Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
+    "Explore personalized weight-management plans from Eve’s Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
   alternates: { canonical },
   openGraph: {
-    title: "Weight Management Plans and GLP-1 Care | Eve's Sisters",
+    title: "Weight Management Plans and GLP-1 Care | Eve’s Sisters",
     description:
-      "Explore personalized weight-management plans from Eve's Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
+      "Explore personalized weight-management plans from Eve’s Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
     url: canonical,
     type: "website",
     images: ["/og-image"],
@@ -513,7 +513,7 @@ export default function WeightManagementCarePage() {
                 "Hormones & Menopause",
                 "Where weight, hormones and midlife meet.",
               ],
-              ["/care", "All Care", "Every pathway Eve's Sisters supports."],
+              ["/care", "All Care", "Every pathway Eve’s Sisters supports."],
             ].map(([href, title, body]) => (
               <li key={href}>
                 <Link

@@ -26,7 +26,7 @@ import { Steps } from "@/components/care/Steps";
    ------------------------------------------------------------------ */
 
 const canonical = "https://evevolutionhealth.com/peptide-care";
-const title = "Clinician-Guided Peptide Care | Eve's Sisters";
+const title = "Clinician-Guided Peptide Care | Eve’s Sisters";
 const description =
   "Explore peptide-based treatment options through a licensed clinical provider. Every treatment requires medical evaluation and is prescribed only when appropriate and legally available.";
 

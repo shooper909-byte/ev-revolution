@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Container, Eyebrow } from "@/components/Container";
 import { Reveal } from "@/components/Reveal";
 import { collectionDisclaimer, mrsExperiences } from "@/lib/mrsCollection";
+import { PackageComparison } from "@/components/PackageComparison";
 
 const canonical = "https://evevolutionhealth.com/packages/mrs-collection";
 const consultationHref = "/care/weight-management#get-started";
@@ -23,13 +24,20 @@ export default function MrsCollectionPage() {
           <Reveal>
             <Eyebrow>The Mrs. Collection</Eyebrow>
             <h1 className="mt-5 font-display text-5xl leading-[0.98] text-ivory sm:text-7xl">Three experiences. One private standard of care.</h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-ivory-200">Women are not one shade, one age, or one story. The Mrs. Collection offers three personalized wellness experiences created to honor different priorities, life stages, complexions, cultures, and definitions of confidence.</p>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-ivory-200">Every woman carries a different story. Explore three personalized wellness collections created around changing bodies, evolving priorities, and the care women deserve at every stage.</p>
             <p className="mt-5 max-w-2xl text-base leading-8 text-ivory-200/85">Choose the experience that speaks to you. Your care will always be personalized according to your health history, goals, and clinician’s assessment—not your race or appearance.</p>
             <Link href="#experiences" className="button-sheen brand-eyebrow mt-9 inline-flex rounded-full bg-champagne px-8 py-4 text-[0.625rem] text-onyx">Enter the Mrs. Collection <span aria-hidden="true" className="ml-3">&darr;</span></Link>
           </Reveal>
           <div className="grid grid-cols-3 gap-2 sm:gap-4" aria-hidden="true">
             {mrsExperiences.map((item, index) => <Image key={item.slug} src={item.image} alt="" width={1122} height={1402} priority={index === 1} sizes="(min-width: 1024px) 24vw, 33vw" className={`h-[340px] w-full rounded-t-[5rem] object-cover object-top sm:h-[540px] ${index === 1 ? "mt-8" : ""}`} />)}
           </div>
+        </Container>
+      </section>
+
+      <section className="border-y border-champagne/30 bg-onyx-900">
+        <Container className="max-w-[1366px] py-20 sm:py-24">
+          <Reveal className="text-center"><Eyebrow>Compare membership levels</Eyebrow><h2 className="mt-5 font-display text-4xl text-ivory sm:text-5xl">Essentials, Signature, and Elite.</h2><p className="mx-auto mt-5 max-w-2xl leading-7 text-ivory-200">One consistent membership structure across all three collections, personalized during your clinical intake.</p></Reveal>
+          <div className="mt-12"><PackageComparison compact /></div>
         </Container>
       </section>
 
