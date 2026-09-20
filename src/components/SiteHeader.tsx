@@ -14,6 +14,7 @@ import { careLabel, pillars } from "@/lib/pillars";
    duplicate one. */
 const primaryNav = [
   { href: "/care/weight-management#plans", label: "Packages" },
+  { href: "/packages/mrs-collection", label: "The Mrs. Collection" },
   { href: "/eves-secret", label: "Eve’s Secret™" },
   { href: "/about#philosophy", label: "Our Approach" },
   { href: "/journal", label: "Resources" },
@@ -35,9 +36,14 @@ export function SiteHeader() {
     pathname.startsWith("/pillars/") ||
     pathname === "/peptide-care";
 
+  const isActive = (href: string) =>
+    href === "/packages/mrs-collection"
+      ? pathname.startsWith("/packages/mrs-")
+      : pathname === href;
+
   const linkClass = (href: string) =>
     `brand-eyebrow whitespace-nowrap text-xs tracking-[0.16em] transition-colors hover:text-champagne focus-visible:text-champagne ${
-      pathname === href ? "text-champagne" : "text-ivory-200"
+      isActive(href) ? "text-champagne" : "text-ivory-200"
     }`;
 
   return (
@@ -61,7 +67,7 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className={linkClass(item.href)}
-              aria-current={pathname === item.href ? "page" : undefined}
+              aria-current={isActive(item.href) ? "page" : undefined}
             >
               {item.label}
             </Link>
@@ -169,9 +175,9 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className={`border-b border-onyx-800 py-3 font-display text-lg ${
-                pathname === item.href ? "text-champagne" : "text-ivory"
+                isActive(item.href) ? "text-champagne" : "text-ivory"
               }`}
-              aria-current={pathname === item.href ? "page" : undefined}
+              aria-current={isActive(item.href) ? "page" : undefined}
               onClick={() => setOpen(false)}
             >
               {item.label}
