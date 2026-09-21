@@ -40,16 +40,19 @@ export function SiteHeader() {
       <Container className="flex h-20 items-center justify-between gap-4">
         <Wordmark />
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
+        <nav
+          aria-label="Primary"
+          className="hidden shrink-0 items-center gap-5 lg:flex xl:gap-7"
+        >
+          <CareMenu active={careActive} />
+
           <Link
             href="/"
-            className={linkClass("/")}
+            className={`${linkClass("/")} shrink-0`}
             aria-current={pathname === "/" ? "page" : undefined}
           >
             Home
           </Link>
-
-          <CareMenu active={careActive} />
 
           {primaryNav.map((item) => (
             <Link
