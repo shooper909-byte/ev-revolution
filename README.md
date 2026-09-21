@@ -47,11 +47,22 @@ the two care assessment pages, whose own forms are the point of the page.
 BREVO_API_KEY=xkeysib-... npm run brevo:setup
 ```
 
-That creates the `Eve's Sisters` folder, the newsletter and popup lists, and
-the `EVS_SIGNUP_SOURCE` / `EVS_CONSENT_AT` contact attributes, then prints the
-environment lines to paste into `.env.local` and into the hosting environment.
-Re-running it is safe — it reports what already exists instead of duplicating
-it. Every variable is documented in `.env.example`.
+That creates the `Eve's Sisters` folder, the newsletter and popup lists, the
+`EVS_SIGNUP_SOURCE` / `EVS_CONSENT_AT` contact attributes, and the sending
+identity, then prints the environment lines to paste into `.env.local` and into
+the hosting environment. Re-running it is safe — it reports what already exists
+instead of duplicating it. Every variable is documented in `.env.example`.
+
+The sending identity is two separate things, and campaigns need both:
+
+- **The sender**, `customerservice@evevolutionhealth.com` by default and
+  overridable with `BREVO_SENDER_EMAIL`. Creating it makes Brevo email that
+  address a verification link, and the sender cannot be used until someone
+  clicks it.
+- **The domain**, authenticated with DNS. The script adds
+  `evevolutionhealth.com` to Brevo and prints the `brevo-code`, DKIM and DMARC
+  TXT records to add at the DNS host. Campaigns will send without them and land
+  in spam folders with them missing.
 
 Note that the Brevo account is shared with another brand, so the setup script
 namespaces everything it creates under `Eve's Sisters` and `EVS_`.
@@ -60,10 +71,10 @@ Until `BREVO_API_KEY` is set, `/api/subscribe` falls back to
 `EV_NEWSLETTER_WEBHOOK_URL`, and with neither configured it returns an explicit
 "not connected" message rather than silently accepting addresses.
 
-Two things still have to be done in the Brevo dashboard, because the API does
-not expose them: verifying a sender on the Eve's Sisters sending domain (the
-only verified sender today belongs to the other brand), and building any
-Brevo-hosted popup or form. The popup in this repo is the site's own, which is
+Two steps stay manual, because nobody can automate them from here: clicking the
+verification link Brevo sends to the sender address, and adding the DNS records
+the script prints. Brevo-hosted popups and forms are dashboard-only too — Brevo
+has no API for creating them. The popup in this repo is the site's own, which is
 why it can match the brand system and respect reduced motion.
 
 ---
