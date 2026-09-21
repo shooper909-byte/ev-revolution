@@ -52,15 +52,14 @@ export function SiteHeader() {
         <Wordmark />
 
         <nav aria-label="Primary" className="hidden items-center gap-3 xl:flex xl:gap-5">
+          <CareMenu active={careActive} />
           <Link
             href="/"
-            className={linkClass("/")}
+            className={`${linkClass("/")} shrink-0`}
             aria-current={pathname === "/" ? "page" : undefined}
           >
             Home
           </Link>
-
-          <CareMenu active={careActive} />
 
           {primaryNav.map((item) => (
             <Link
