@@ -26,18 +26,26 @@ const steps = [
   {
     title: "Choose Your Path",
     body: "Explore the area of care that best reflects your current goals and concerns.",
+    image: "/images/home/choose-your-path.webp",
+    imageAlt: "Woman browsing women’s healthcare and wellness options on a laptop at home.",
   },
   {
     title: "Tell Us About You",
     body: "Complete a private request so the care team can better understand what you are looking for.",
+    image: "/images/home/tell-us-about-you.webp",
+    imageAlt: "Woman privately completing a secure online health-intake form on her laptop.",
   },
   {
     title: "Review Your Options",
     body: "Learn about available wellness programs and, where offered, appropriate next steps for clinical evaluation.",
+    image: "/images/home/review-your-options.webp",
+    imageAlt: "Woman speaking with a female clinician by telehealth with unbranded wellness products nearby.",
   },
   {
     title: "Continue With Support",
     body: "Stay connected through guidance, education and ongoing wellness support.",
+    image: "/images/home/continue-with-support.webp",
+    imageAlt: "Woman opening a discreet wellness delivery while reviewing a follow-up message on her phone.",
   },
 ];
 
@@ -185,7 +193,22 @@ export default function HomePage() {
                 <p className="font-display text-3xl text-champagne-700">
                   {String(index + 1).padStart(2, "0")}
                 </p>
-                <h3 className="hairline mt-5 border-t pt-5 font-display text-2xl text-ivory">
+                <div className="hairline mt-2 border-t pt-4">
+                  <div className="relative aspect-[3/2] overflow-hidden border border-plum-600/70">
+                    <Image
+                      src={step.image}
+                      alt={step.imageAlt}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 bg-onyx/15"
+                    />
+                  </div>
+                </div>
+                <h3 className="mt-5 font-display text-2xl text-ivory">
                   {step.title}
                 </h3>
                 <p className="mt-4 text-base leading-relaxed text-ivory-200/85">
