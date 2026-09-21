@@ -2,10 +2,10 @@
 /**
  * One-time Brevo setup for the Eve's Sisters captures.
  *
- * Creates the folder, the lists each capture source writes to, and the custom
- * contact attributes the API route wants to stamp on new contacts — none of
- * which can be created from the Brevo UI's form builder alone. Re-running is
- * safe: anything that already exists is reported and left untouched.
+ * Creates the folder, the lists each capture source writes to, the custom
+ * contact attributes the API route stamps on new contacts, the sending
+ * identity, and the domain authentication record set. Re-running is safe:
+ * anything that already exists is reported and left untouched.
  *
  *   BREVO_API_KEY=xkeysib-... npm run brevo:setup
  *
@@ -25,6 +25,12 @@ const ATTRIBUTES = [
   { env: "BREVO_SOURCE_ATTRIBUTE", name: "EVS_SIGNUP_SOURCE", type: "text" },
   { env: "BREVO_CONSENT_ATTRIBUTE", name: "EVS_CONSENT_AT", type: "text" },
 ];
+
+/** The address campaigns send from. Brevo emails it a verification link. */
+const SENDER = {
+  name: process.env.BREVO_SENDER_NAME ?? "Eve's Sisters",
+  email: process.env.BREVO_SENDER_EMAIL ?? "customerservice@evevolutionhealth.com",
+};
 
 const apiKey = process.env.BREVO_API_KEY;
 if (!apiKey) {
@@ -66,6 +72,38 @@ async function findFolder(name) {
 async function findList(name) {
   const { lists = [] } = await call("GET", "/contacts/lists?limit=50&offset=0");
   return lists.find((list) => list.name === name) ?? null;
+}
+
+async function findSender(email) {
+  const { senders = [] } = await call("GET", "/senders");
+  return (
+    senders.find(
+      (sender) => sender.email?.toLowerCase() === email.toLowerCase(),
+    ) ?? null
+  );
+}
+
+async function findDomain(name) {
+  const response = await call("GET", "/senders/domains");
+  const domains = response.domains ?? response.data ?? [];
+  return (
+    domains.find(
+      (domain) =>
+        (domain.domain_name ?? domain.domain ?? domain.name ?? "").toLowerCase() ===
+        name.toLowerCase(),
+    ) ?? null
+  );
+}
+
+function printDnsRecords(records) {
+  for (const [label, record] of Object.entries(records ?? {})) {
+    if (!record?.host_name) continue;
+    const state = record.status ? "verified" : "not yet verified";
+    console.log(`            ${label} (${state})`);
+    console.log(`              host  ${record.host_name}`);
+    console.log(`              type  ${record.type ?? "TXT"}`);
+    console.log(`              value ${record.value}`);
+  }
 }
 
 async function existingAttributeNames() {
@@ -114,6 +152,46 @@ async function main() {
       console.log(`attribute ${attribute.name} — created`);
     }
     envLines.push(`${attribute.env}=${attribute.name}`);
+  }
+
+  // Sending identity. Contact capture works without this; campaigns do not.
+  const sender = await findSender(SENDER.email);
+  if (sender) {
+    console.log(`sender    ${SENDER.email} — exists (#${sender.id})`);
+  } else {
+    const created = await call("POST", "/senders", {
+      name: SENDER.name,
+      email: SENDER.email,
+    });
+    console.log(`sender    ${SENDER.email} — created (#${created.id})`);
+    console.log(
+      `            Brevo has emailed a verification link to ${SENDER.email}.`,
+    );
+    console.log("            The sender cannot be used until it is clicked.");
+  }
+
+  // Domain authentication is what keeps campaigns out of spam folders. It
+  // needs DNS records only the domain's owner can add, so print them and
+  // carry on — a failure here must not cost the list setup above.
+  const domainName = SENDER.email.split("@")[1];
+  try {
+    const existing = await findDomain(domainName);
+    if (existing) {
+      console.log(`domain    ${domainName} — already added to Brevo`);
+      if (existing.dns_records) printDnsRecords(existing.dns_records);
+    } else {
+      const created = await call("POST", "/senders/domains", {
+        name: domainName,
+      });
+      console.log(`domain    ${domainName} — added`);
+      console.log("            Add these DNS records at your DNS host:");
+      printDnsRecords(created.dns_records);
+    }
+  } catch (error) {
+    console.log(`domain    ${domainName} — skipped: ${error.message}`);
+    console.log(
+      "            Add it by hand under Senders \u2192 Domains in Brevo.",
+    );
   }
 
   console.log("\nAdd these to .env.local (and to the hosting environment):\n");
