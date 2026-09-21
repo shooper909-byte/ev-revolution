@@ -51,7 +51,7 @@ export function SiteHeader() {
       <Container className="flex h-20 max-w-[1366px] items-center justify-between gap-4">
         <Wordmark />
 
-        <nav aria-label="Primary" className="hidden items-center gap-3 xl:flex xl:gap-5">
+        <nav aria-label="Primary" className="hidden items-center gap-3 min-[1400px]:flex min-[1500px]:gap-5">
           <CareMenu active={careActive} />
           <Link
             href="/"
@@ -85,7 +85,7 @@ export function SiteHeader() {
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          className="hairline flex h-11 w-11 shrink-0 items-center justify-center rounded-full border xl:hidden"
+          className="hairline flex h-11 w-11 shrink-0 items-center justify-center rounded-full border min-[1400px]:hidden"
         >
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
           <svg
@@ -111,7 +111,7 @@ export function SiteHeader() {
       <div
         id="mobile-nav"
         hidden={!open}
-        className="border-t border-onyx-700 bg-onyx-900 xl:hidden"
+        className="border-t border-onyx-700 bg-onyx-900 min-[1400px]:hidden"
       >
         <Container className="grid gap-1 py-6">
           <Link
