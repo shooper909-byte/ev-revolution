@@ -22,7 +22,6 @@ export const mrsExperiences: MrsExperience[] = [
     priorities: ["Hormonal and metabolic health", "Weight-management goals", "Energy, sleep, stress, and intimacy", "Hair, scalp, and melanin-conscious skincare", "Healthy aging and ongoing wellness support", "Clinician-recommended labs and treatment, when appropriate"],
     addOns: [
       { name: "Flow & Fibroid Check", price: "$59/month", description: "Heavy-bleeding and anemia work-up, imaging-referral coordination, and an iron plan." },
-      { name: "Even Tone Skin", price: "$79/month", description: "A dark-spot and melasma regimen with prescription topicals and sunscreen guidance." },
       { name: "Heart & Pressure", price: "$59/month", description: "A home blood-pressure kit, lipid and A1c tracking, and vitamin D testing." },
     ],
   },
@@ -37,7 +36,6 @@ export const mrsExperiences: MrsExperience[] = [
     priorities: ["Hormonal balance", "Weight and body-composition goals", "Energy, sleep, and stress", "Skin, hair, and scalp wellness", "Intimate wellness", "Nutrition and healthy-aging support", "Clinician-recommended labs and treatment, when appropriate"],
     addOns: [
       { name: "Metabolic Shield", price: "$69/month", description: "Early A1c, cholesterol, triglyceride, and liver panels reviewed against the member’s individual risk profile, plus nutrition guidance." },
-      { name: "Even Tone Skin", price: "$79/month", description: "A dark-spot and melasma regimen with prescription topicals and sunscreen guidance." },
       { name: "PCOS Path", price: "$79/month", description: "A symptom and hormone work-up, metabolic labs, and a personalized treatment plan." },
     ],
   },
@@ -52,7 +50,6 @@ export const mrsExperiences: MrsExperience[] = [
     priorities: ["Perimenopause and menopause support", "Weight and metabolic health", "Bone, muscle, and heart-health considerations", "Sleep, energy, and intimate wellness", "Hair and age-supportive skincare", "Long-term wellness planning", "Clinician-recommended labs and treatment, when appropriate"],
     addOns: [
       { name: "Bone Strong", price: "$59/month", description: "A bone-health risk review, bone-density scan coordination, and a calcium and vitamin D plan." },
-      { name: "Radiance Rx", price: "$79/month", description: "A sun-damage and age-supportive skincare regimen with prescription retinoids and sunscreen guidance." },
       { name: "Skin Check", price: "$49/month", description: "Photo-based skin-check triage, dermatology-referral guidance, and yearly reminders." },
     ],
   },

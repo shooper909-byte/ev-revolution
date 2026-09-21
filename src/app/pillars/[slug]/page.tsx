@@ -151,7 +151,14 @@ export default async function PillarPage({ params }: Params) {
             </p>
             {/* A pillar with a subscription page sends people to the plans
                 and the assessment; the rest still open the contact form. */}
-            {pillar.carePath ? (
+            {pillar.slug === "skin-beauty" ? (
+              <Link
+                href="/eves-secret"
+                className="button-sheen brand-eyebrow mt-10 self-start bg-plum px-7 py-3.5 text-center text-[0.625rem] text-ivory transition-colors hover:bg-plum-600"
+              >
+                Explore Eve’s Secret
+              </Link>
+            ) : pillar.carePath ? (
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <Link
                   href={`${pillar.carePath}#get-started`}
@@ -177,6 +184,16 @@ export default async function PillarPage({ params }: Params) {
           </div>
         </Container>
       </section>
+
+      {pillar.slug === "hormones-menopause" && (
+        <section className="border-b border-champagne/30 bg-plum-900">
+          <Container className="py-10 text-center">
+            <Link href="/eves-secret" className="font-display text-2xl text-ivory transition-colors hover:text-champagne">
+              If it’s desire and comfort, that’s Eve’s Secret <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </Container>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="border-b border-onyx-700 bg-onyx-900">
