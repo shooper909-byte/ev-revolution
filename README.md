@@ -29,6 +29,45 @@ npm run dev                  # http://localhost:3000
 
 Other scripts: `npm run build`, `npm start`, `npm run typecheck`.
 
+## Email capture
+
+Three captures feed one list: the footer form, the journal form, and a
+site-wide popup (`EmailCapturePopup`). All three post to `/api/subscribe`,
+which writes the contact to Brevo server-side — the API key never reaches the
+browser and nothing is stored in this app.
+
+The popup opens on whichever comes first: exit intent, half the page scrolled,
+or thirty seconds of dwell. It opens once. Dismissing it buys thirty days of
+quiet; subscribing retires it permanently. It never opens on `/contact` or on
+the two care assessment pages, whose own forms are the point of the page.
+
+### Connecting Brevo
+
+```bash
+BREVO_API_KEY=xkeysib-... npm run brevo:setup
+```
+
+That creates the `Eve's Sisters` folder, the newsletter and popup lists, and
+the `EVS_SIGNUP_SOURCE` / `EVS_CONSENT_AT` contact attributes, then prints the
+environment lines to paste into `.env.local` and into the hosting environment.
+Re-running it is safe — it reports what already exists instead of duplicating
+it. Every variable is documented in `.env.example`.
+
+Note that the Brevo account is shared with another brand, so the setup script
+namespaces everything it creates under `Eve's Sisters` and `EVS_`.
+
+Until `BREVO_API_KEY` is set, `/api/subscribe` falls back to
+`EV_NEWSLETTER_WEBHOOK_URL`, and with neither configured it returns an explicit
+"not connected" message rather than silently accepting addresses.
+
+Two things still have to be done in the Brevo dashboard, because the API does
+not expose them: verifying a sender on the Eve's Sisters sending domain (the
+only verified sender today belongs to the other brand), and building any
+Brevo-hosted popup or form. The popup in this repo is the site's own, which is
+why it can match the brand system and respect reduced motion.
+
+---
+
 ## Brand
 
 The identity is a committed dark luxury system — the site does not invert with

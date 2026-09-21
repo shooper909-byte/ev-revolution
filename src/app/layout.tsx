@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SupportBubble } from "@/components/SupportBubble";
+import { EmailCapturePopup } from "@/components/EmailCapturePopup";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -52,6 +53,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <SiteFooter />
         <SupportBubble />
+        <EmailCapturePopup />
         <script
           dangerouslySetInnerHTML={{
             __html:
