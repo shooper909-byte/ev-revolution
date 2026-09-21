@@ -19,8 +19,8 @@ export function SiteFooter() {
       <Container className="py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <Link href="/" aria-label="Eve's Sisters — home" className="block w-72 max-w-full">
-              <Image src="/images/eves-sisters-logo.png" alt="Eve's Sisters — The Evolution of a Woman's Body" width={1280} height={1280} sizes="288px" className="h-auto w-full" />
+            <Link href="/" aria-label="Eve’s Sisters — home" className="block w-72 max-w-full">
+              <Image src="/images/eves-sisters-logo.png" alt="Eve’s Sisters — The Evolution of a Woman's Body" width={1280} height={1280} sizes="288px" className="h-auto w-full" />
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory-200/80">
               More than a clinic. A movement for women — evidence-led wellness
@@ -64,7 +64,7 @@ export function SiteFooter() {
             </ul>
 
             <Link
-              href="/contact"
+              href="/care/weight-management#get-started"
               className="button-sheen brand-eyebrow mt-8 inline-block bg-plum px-6 py-3 text-[0.5625rem] text-ivory transition-colors hover:bg-plum-600"
             >
               Get Started

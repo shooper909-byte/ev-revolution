@@ -101,6 +101,14 @@ export async function POST(request: Request) {
 
   const webhook =
     process.env.EV_CARE_LEAD_WEBHOOK_URL ?? process.env.EV_CONTACT_WEBHOOK_URL;
+  const availableStates = new Set(
+    (process.env.EV_WEIGHT_CARE_STATES ?? "")
+      .split(",")
+      .map((code) => code.trim().toUpperCase())
+      .filter((code) => /^[A-Z]{2}$/.test(code)),
+  );
+  const waitlist =
+    program.source === "/care/weight-management" && !availableStates.has(state);
 
   // A lead carrying a name, an email and a phone number never leaves over
   // plain HTTP, whatever a misconfigured environment asks for. A loopback
@@ -109,7 +117,14 @@ export async function POST(request: Request) {
     webhook ?? "",
   );
 
-  if (webhook && !webhook.startsWith("https://") && !isLoopback) {
+  if (!webhook) {
+    return NextResponse.json(
+      { message: "Assessment requests are temporarily unavailable. Please try again shortly." },
+      { status: 503 },
+    );
+  }
+
+  if (!webhook.startsWith("https://") && !isLoopback) {
     return NextResponse.json(
       { message: "We could not submit your request. Please try again shortly." },
       { status: 500 },
@@ -127,6 +142,7 @@ export async function POST(request: Request) {
     interest,
     ...(plan ? { plan } : {}),
     consent: true,
+    availability: waitlist ? "waitlist" : "service-area",
     source: program.source,
     submittedAt: new Date().toISOString(),
   });
@@ -136,7 +152,8 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({
-    message:
-      "Your request is with our care team. We will email you a secure link to complete your clinical assessment.",
+    message: waitlist
+      ? "Your contact request is on the waitlist for your state. We will email you if weight-care services become available there."
+      : "Your request is with our care team. We will email you a secure link to complete your clinical assessment.",
   });
 }

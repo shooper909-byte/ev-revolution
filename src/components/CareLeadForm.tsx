@@ -49,11 +49,13 @@ const labelClass = "brand-eyebrow block text-[0.5rem] text-taupe";
 export function CareLeadForm({
   program,
   labelledBy,
+  availableStateCodes = [],
   privacyNote = "Contact details only. Your health history is collected inside the clinical assessment.",
 }: {
   program: CareProgramKey;
   /** id of the heading this form belongs to. */
   labelledBy: string;
+  availableStateCodes?: readonly string[];
   privacyNote?: string;
 }) {
   const id = useId();
@@ -66,6 +68,7 @@ export function CareLeadForm({
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (status === "submitting") return;
     const form = event.currentTarget;
     const formData = new FormData(form);
 
@@ -138,7 +141,10 @@ export function CareLeadForm({
 
   return (
     <form
+      method="post"
+      action="/api/care-lead"
       onSubmit={handleSubmit}
+      aria-busy={status === "submitting"}
       aria-labelledby={labelledBy}
       className="hairline grid gap-6 rounded-3xl border bg-onyx-900/70 p-7 sm:p-9"
     >
@@ -206,7 +212,7 @@ export function CareLeadForm({
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor={`${id}-state`} className={labelClass}>
-            State
+            State (availability shown)
           </label>
           <select
             id={`${id}-state`}
@@ -221,7 +227,7 @@ export function CareLeadForm({
             </option>
             {states.map(([code, name]) => (
               <option key={code} value={code}>
-                {name}
+                {name}{availableStateCodes.includes(code) ? "" : " — Join waitlist"}
               </option>
             ))}
           </select>
@@ -287,8 +293,16 @@ export function CareLeadForm({
         >
           I agree that Eve&rsquo;s Sisters may contact me by email, phone or
           text about my assessment. Message rates may apply and I can opt out at
-          any time.
+          any time. I have reviewed the{" "}
+          <a href="#privacy-notice" className="text-champagne underline underline-offset-4">Privacy Policy</a>
+          {" "}and{" "}
+          <a href="#contact-terms" className="text-champagne underline underline-offset-4">Terms</a>.
         </label>
+      </div>
+
+      <div className="grid gap-3 text-xs leading-relaxed text-ivory-200/65 sm:grid-cols-2">
+        <p id="privacy-notice"><strong className="text-ivory">Privacy Policy:</strong> This form sends contact details and your selected program interest to the secure server-side lead handoff. Do not enter medical details. Form values are not placed in the URL or analytics.</p>
+        <p id="contact-terms"><strong className="text-ivory">Terms:</strong> Contact consent is explicit and may be withdrawn at any time. Consent does not guarantee treatment, a prescription or service availability.</p>
       </div>
 
       <div>

@@ -25,7 +25,7 @@ import { Steps } from "@/components/care/Steps";
    ------------------------------------------------------------------ */
 
 const canonical = "https://www.evevolutionhealth.com/care/energy-performance";
-const title = "Energy and Performance Care Plans | Eve's Sisters";
+const title = "Energy and Performance Care Plans | Eve’s Sisters";
 const description =
   "Explore personalized energy and performance plans for women experiencing fatigue, brain fog, sleep concerns or reduced stamina.";
 
@@ -201,7 +201,7 @@ const faqs: [string, string][] = [
     "It can be part of the picture. Fatigue around perimenopause and menopause often has several contributors at once, and a provider will consider hormonal change alongside sleep, iron, thyroid and everything else. If hormone care turns out to be the right route, that is handled through the menopause and hormone program.",
   ],
   [
-    "Can I combine Energy and Performance care with another Eve's Sisters program?",
+    "Can I combine Energy and Performance care with another Eve’s Sisters program?",
     "Yes, and it is worth telling your provider if you are enrolled elsewhere so your care is coordinated rather than duplicated. Each program is billed separately.",
   ],
   [
@@ -589,7 +589,7 @@ export default function EnergyPerformanceCarePage() {
                 "Hormones & Menopause",
                 "When the fatigue turns out to be a hormonal transition.",
               ],
-              ["/care", "All Care", "Every pathway Eve's Sisters supports."],
+              ["/care", "All Care", "Every pathway Eve’s Sisters supports."],
             ].map(([href, cardTitle, body]) => (
               <li key={href}>
                 <Link

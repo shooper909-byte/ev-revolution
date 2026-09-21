@@ -23,23 +23,30 @@ import { Steps } from "@/components/care/Steps";
    provider decides what — if anything — is appropriate.
    ------------------------------------------------------------------ */
 
-const canonical = "https://www.evevolutionhealth.com/care/weight-management";
+const canonical = "https://evevolutionhealth.com/care/weight-management";
 
 export const metadata: Metadata = {
-  // `absolute` because the root layout otherwise appends "| Eve's Sisters"
+  // `absolute` because the root layout otherwise appends "| Eve’s Sisters"
   // and the requested title already carries it.
-  title: { absolute: "Weight Management Plans and GLP-1 Care | Eve's Sisters" },
+  title: { absolute: "Weight Management Plans and GLP-1 Care | Eve’s Sisters" },
   description:
-    "Explore personalized weight-management plans from Eve's Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
+    "Explore personalized weight-management plans from Eve’s Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
   alternates: { canonical },
   openGraph: {
-    title: "Weight Management Plans and GLP-1 Care | Eve's Sisters",
+    title: "Weight Management Plans and GLP-1 Care | Eve’s Sisters",
     description:
-      "Explore personalized weight-management plans from Eve's Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
+      "Explore personalized weight-management plans from Eve’s Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
     url: canonical,
     type: "website",
+    images: ["/og-image"],
   },
+  twitter: { card: "summary_large_image", images: ["/og-image"] },
 };
+
+const availableStateCodes = (process.env.EV_WEIGHT_CARE_STATES ?? "")
+  .split(",")
+  .map((code) => code.trim().toUpperCase())
+  .filter((code) => /^[A-Z]{2}$/.test(code));
 
 const trustRow = [
   ["renew", "Licensed clinical care"],
@@ -117,6 +124,37 @@ const plans: Plan[] = [
   },
 ];
 
+const pageSchema = [{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Weight Management Plans and GLP-1 Care",
+  url: canonical,
+  description: "Weight-management plans, clinician evaluation and contact-only assessment request.",
+}, {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Eve’s Sisters Weight Management",
+  url: canonical,
+  serviceType: "Weight-management support",
+  description: "Subscription support with treatment eligibility determined independently by a licensed clinician.",
+  offers: plans.map((plan) => ({
+    "@type": "Offer",
+    name: plan.title,
+    price: plan.price.replace("$", ""),
+    priceCurrency: "USD",
+    url: `${canonical}#plans`,
+    description: `${plan.description} ${plan.footnote}`,
+  })),
+}, {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://evevolutionhealth.com/" },
+    { "@type": "ListItem", position: 2, name: "Care", item: "https://evevolutionhealth.com/care" },
+    { "@type": "ListItem", position: 3, name: "Weight Management", item: canonical },
+  ],
+}];
+
 const comparison: ComparisonRow[] = [
   {
     label: "Monthly price",
@@ -165,6 +203,7 @@ const steps: [string, string][] = [
 export default function WeightManagementCarePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
       {/* ---------------------------------------------------------------
           Hero
           --------------------------------------------------------------- */}
@@ -276,8 +315,8 @@ export default function WeightManagementCarePage() {
             <div className="relative">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-onyx-700 sm:aspect-[5/6]">
                 <Image
-                  src="/images/care/care-weight-management.webp"
-                  alt="A confident curvy woman in black, hand on her hip, in warm champagne light."
+                  src="/images/care/care-weight-management-glp1.png"
+                  alt="Weight-care medication formats arranged with a measuring tape in the Eve’s Sisters black, purple and gold palette."
                   fill
                   priority
                   sizes="(min-width: 1024px) 42vw, 92vw"
@@ -326,6 +365,17 @@ export default function WeightManagementCarePage() {
               heading="Compare the plans"
               intro="A plan is clinical support, not a prescription. Medication is included or accessed only when a licensed provider determines it is appropriate for you."
             />
+          </Reveal>
+
+          <Reveal>
+            <div className="mt-14 grid gap-5 border-t border-onyx/15 pt-10 text-sm leading-relaxed text-onyx-800/80 sm:grid-cols-2 lg:grid-cols-3">
+              <p><strong>Consultations and check-ins.</strong> The listed plan price covers only the services shown for that plan. Treatment still requires independent clinician evaluation.</p>
+              <p><strong>Medication and refills.</strong> Oral Weight Care includes one eligible generic medication only when prescribed. GLP-1 and Complete plan medication costs are separate. Refill management is included where listed; approval and supply are not guaranteed.</p>
+              <p><strong>Laboratory testing.</strong> Complete Weight Care includes one Annual Weight Management Panel per membership year when ordered as appropriate. It means the panel service, not every possible test. Additional labs may cost extra.</p>
+              <p><strong>Shipping.</strong> Any medication shipping availability and charge depend on the dispensing arrangement and must be disclosed before fulfillment.</p>
+              <p><strong>Cancellation.</strong> Renewal and cancellation timing must be reviewed in the enrollment terms before purchase; this page does not add a separate cancellation fee.</p>
+              <p><strong>Insurance.</strong> Insurance coverage or reimbursement is not promised. Confirm coverage and out-of-pocket costs before enrolling.</p>
+            </div>
           </Reveal>
         </Container>
       </section>
@@ -423,9 +473,10 @@ export default function WeightManagementCarePage() {
               Start Your Weight Care Assessment
             </h2>
             <p className="mt-7 max-w-md text-base leading-relaxed text-ivory-200/85">
-              Answer a few questions about your health, goals and treatment
-              preferences. A licensed provider will determine whether medical
-              weight management is appropriate for you.
+              Share contact information and the weight-care option you want to
+              explore. If service is verified in your state, the care team will
+              send the secure clinical next step; otherwise, this request joins
+              the availability waitlist.
             </p>
             <p className="hairline mt-9 border-t pt-6 text-xs leading-relaxed text-ivory-200/65">
               Please do not include medical details in this form. Your care team
@@ -437,6 +488,7 @@ export default function WeightManagementCarePage() {
           <CareLeadForm
             program="weight-management"
             labelledBy="get-started-heading"
+            availableStateCodes={availableStateCodes}
           />
         </Container>
       </section>
@@ -461,7 +513,7 @@ export default function WeightManagementCarePage() {
                 "Hormones & Menopause",
                 "Where weight, hormones and midlife meet.",
               ],
-              ["/care", "All Care", "Every pathway Eve's Sisters supports."],
+              ["/care", "All Care", "Every pathway Eve’s Sisters supports."],
             ].map(([href, title, body]) => (
               <li key={href}>
                 <Link

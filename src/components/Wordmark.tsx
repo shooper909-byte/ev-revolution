@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 /**
- * The Eve's Sisters curvature mark: a champagne-gold feminine silhouette with
+ * The Eve’s Sisters curvature mark: a champagne-gold feminine silhouette with
  * a single controlled deep-plum ribbon behind it. Gold and ivory carry the
  * mark — the plum is one detail, never a field.
  */

@@ -28,9 +28,9 @@ import { Steps } from "@/components/care/Steps";
    ------------------------------------------------------------------ */
 
 const canonical = "https://www.evevolutionhealth.com/care/skin-beauty";
-const title = "Prescription Skin and Hair Care Plans | Eve's Sisters";
+const title = "Prescription Skin and Hair Care Plans | Eve’s Sisters";
 const description =
-  "Explore personalized prescription skincare, hormonal-acne and hair-care plans from Eve's Sisters with licensed clinical support and ongoing treatment management.";
+  "Explore personalized prescription skincare, hormonal-acne and hair-care plans from Eve’s Sisters with licensed clinical support and ongoing treatment management.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -674,7 +674,7 @@ export default function SkinBeautyCarePage() {
                 "Hormones & Menopause",
                 "Hormonal shifts that often show up first in skin and hair.",
               ],
-              ["/care", "All Care", "Every pathway Eve's Sisters supports."],
+              ["/care", "All Care", "Every pathway Eve’s Sisters supports."],
             ].map(([href, title, body]) => (
               <li key={href}>
                 <Link

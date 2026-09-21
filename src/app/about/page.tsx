@@ -6,10 +6,10 @@ import { PillarIcon, type PillarIconName } from "@/components/PillarIcon";
 import s from "./about.module.css";
 export const metadata: Metadata = {
   title: {
-    absolute: "About Eve's Sisters | Women’s Wellness at Every Stage of Life",
+    absolute: "About Eve’s Sisters | Women’s Wellness at Every Stage of Life",
   },
   description:
-    "Discover Eve's Sisters, a modern women’s wellness platform focused on weight management, menopause and hormones, longevity, skin and beauty, energy, performance, and recovery across every stage of life.",
+    "Discover Eve’s Sisters, a modern women’s wellness platform focused on weight management, menopause and hormones, longevity, skin and beauty, energy, performance, and recovery across every stage of life.",
 };
 const philosophy = [
   [
@@ -163,7 +163,7 @@ export default function AboutPage() {
               </h2>
             </div>
             <p>
-              Eve's Sisters is built on a simple belief: women deserve
+              Eve’s Sisters is built on a simple belief: women deserve
               comprehensive, compassionate, and elevated care at every stage of
               life. We bring wellness, beauty, metabolic health, hormonal
               health, recovery, and healthy aging together in one modern
@@ -194,7 +194,7 @@ export default function AboutPage() {
             </h2>
             <p>
               From early adulthood through midlife, menopause and beyond,
-              Eve's Sisters brings women’s wellness together in one elevated,
+              Eve’s Sisters brings women’s wellness together in one elevated,
               personalized experience.
             </p>
             <Mini
@@ -216,7 +216,7 @@ export default function AboutPage() {
             <h2 id="inclusive">Inclusive By Design.</h2>
             <p>
               Women’s health is not one age, one body, one background, or one
-              experience. Eve's Sisters is designed to reflect the women we serve
+              experience. Eve’s Sisters is designed to reflect the women we serve
               across stages of life, cultures, goals, and wellness needs.
             </p>
             <Mini
@@ -238,7 +238,7 @@ export default function AboutPage() {
           <div className={s.intro}>
             <div>
               <Eyebrow>Our values</Eyebrow>
-              <h2 id="standard">The Eve's Sisters Standard.</h2>
+              <h2 id="standard">The Eve’s Sisters Standard.</h2>
             </div>
             <p>
               A higher standard in women’s wellness — where evidence,

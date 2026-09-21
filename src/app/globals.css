@@ -45,12 +45,14 @@
    The site does not invert with the viewer's theme. */
 html {
   color-scheme: dark;
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--color-onyx);
   color: var(--color-ivory);
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 

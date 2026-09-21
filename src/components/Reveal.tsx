@@ -42,6 +42,11 @@ export function Reveal({
     const node = ref.current;
     if (!node) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShown(true);
+      return;
+    }
+
     if (typeof IntersectionObserver === "undefined") {
       setShown(true);
       return;
@@ -58,7 +63,11 @@ export function Reveal({
     );
 
     observer.observe(node);
-    return () => observer.disconnect();
+    const failSafe = window.setTimeout(() => setShown(true), 1600);
+    return () => {
+      window.clearTimeout(failSafe);
+      observer.disconnect();
+    };
   }, []);
 
   return (
