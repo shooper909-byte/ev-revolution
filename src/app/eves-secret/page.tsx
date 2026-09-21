@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Container, Eyebrow } from "@/components/Container";
 import { Reveal } from "@/components/Reveal";
@@ -38,7 +39,9 @@ export default function EvesSecretPage() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-champagne/30 bg-[radial-gradient(circle_at_80%_25%,color-mix(in_oklab,var(--color-plum)_45%,transparent),transparent_38%),var(--color-onyx)]">
-        <Container className="relative py-24 sm:py-32 lg:py-40"><Reveal className="max-w-4xl"><Eyebrow>Eve’s Secret™</Eyebrow><h1 className="mt-6 font-display text-5xl leading-[1.02] text-ivory sm:text-7xl">Some things are better shared between sisters.</h1><p className="mt-7 font-display text-2xl text-champagne sm:text-4xl">Desire. Comfort. And the face in the mirror.</p><p className="mt-8 max-w-3xl text-base leading-8 text-ivory-200 sm:text-lg">Your sex drive didn’t disappear because something’s wrong with you. It changed because your hormones, your prescriptions, and your life changed — and almost no one has offered to look. We look.</p><div className="mt-10"><DesireCheckLink /></div></Reveal></Container>
+        <Image src="/images/eves-secret-hero.png" alt="Four women featured in the Eve’s Secret campaign." fill priority sizes="100vw" className="object-cover object-[68%_center] sm:object-center" />
+        <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,11,11,0.98)_0%,rgba(8,11,11,0.92)_42%,rgba(8,11,11,0.48)_72%,rgba(8,11,11,0.28)_100%)]" />
+        <Container className="relative z-10 py-24 sm:py-32 lg:py-40"><Reveal className="max-w-4xl"><Eyebrow>Eve’s Secret™</Eyebrow><h1 className="mt-6 font-display text-5xl leading-[1.02] text-ivory sm:text-7xl">Some things are better shared between sisters.</h1><p className="mt-7 font-display text-2xl text-champagne sm:text-4xl">Desire. Comfort. And the face in the mirror.</p><p className="mt-8 max-w-3xl text-base leading-8 text-ivory-200 sm:text-lg">Your sex drive didn’t disappear because something’s wrong with you. It changed because your hormones, your prescriptions, and your life changed — and almost no one has offered to look. We look.</p><div className="mt-10"><DesireCheckLink /></div></Reveal></Container>
       </section>
 
       <section className="bg-ivory text-onyx"><Container className="py-20 sm:py-24"><Reveal className="max-w-3xl"><Eyebrow className="text-plum">What Eve’s Secret is for</Eyebrow><h2 className="mt-5 font-display text-4xl sm:text-5xl">How she feels about her body.</h2><p className="mt-6 text-lg leading-8 text-onyx-700">Mrs. Collection is for how she feels in her body. Eve’s Secret is for how she feels about her body.</p></Reveal><div className="mt-12 grid gap-px bg-champagne-700/35 sm:grid-cols-2 lg:grid-cols-4">{areas.map((area, index) => <Reveal key={area.title} delay={index * 60} className="h-full bg-ivory p-7 sm:p-8"><p className="brand-eyebrow text-[0.5625rem] text-plum">{area.title}</p><h3 className="mt-5 font-display text-2xl leading-snug">{area.heading}</h3><p className="mt-4 text-sm leading-7 text-onyx-700">{area.body}</p></Reveal>)}</div></Container></section>
