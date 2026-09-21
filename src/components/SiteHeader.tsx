@@ -13,7 +13,6 @@ import { careLabel, pillars } from "@/lib/pillars";
    "Resources" points at the existing /journal route rather than adding a
    duplicate one. */
 const primaryNav = [
-  { href: "/care/weight-management#plans", label: "Packages" },
   { href: "/packages/mrs-collection", label: "The Mrs. Collection" },
   { href: "/eves-secret", label: "Eve’s Secret™" },
   { href: "/about#philosophy", label: "Our Approach" },
