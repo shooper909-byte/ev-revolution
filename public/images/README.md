@@ -35,3 +35,17 @@ spans a range of ages, skin tones and body types.
 
 Card images are keyed off `careImage` in `src/lib/pillars.ts` — to swap one,
 replace the file and keep the name, or point `careImage` at the new one.
+
+## `eves-secret/` — Eve’s Secret add-ons (`/eves-secret`)
+
+Cropped from the approved "Make it even more yours." design mockup and
+exported to `.webp` at 640px wide (~11:10).
+
+| File | Used by |
+| --- | --- |
+| `addon-even-tone.webp` | Even Tone card |
+| `addon-radiance-rx.webp` | Radiance Rx card |
+| `addon-lash-brow.webp` | Lash & Brow card |
+| `addon-crown.webp` | Crown card |
+| `addon-afterglow.webp` | Afterglow card |
+| `addon-together.webp` | Together card |
