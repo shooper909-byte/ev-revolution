@@ -38,13 +38,13 @@ After you change env vars, **Redeploy** the latest production deployment so the 
 ## Step 3 — Make it live on the WordPress domain
 
 1. Vercel → Deployments: the newest **Production** deployment is from the latest `main` commit and shows **Ready**.
-2. Open `https://ev-revolution.vercel.app/eves-secret` and confirm it shows "The finishing touches" with the portrait cards.
+2. Open the production deployment's URL (Vercel → Deployments → latest Production → Visit) at `/eves-secret` and confirm it shows "The finishing touches" with the portrait cards. Note: `ev-revolution.vercel.app` is **not** the current production alias. It 404s on `/longevity`, which is live on the domain.
 3. Purge caches on the WordPress side: the site's caching or proxy plugin cache, plus the host's edge cache (WordPress.com: Settings → Performance/Hosting → Clear cache; Pressable: MyPressable → site → Cache → Flush). If the proxy plugin has its own cache, clear that too.
 4. Check the live domain:
    - `https://evevolutionhealth.com/eves-secret`: shows "The finishing touches" and the portrait cards, not the old "Focused add-ons".
    - Home page, `/treatments`, `/care`, `/eves-secret`, `/peptide-care` and the weight-management page all load, and images render (`/_next/image` returns 200).
    - Test one email signup and confirm the contact shows up in the Brevo list.
-5. If the domain still shows old content after purging, the WordPress proxy is pointing at an old deployment URL. Point it at the Vercel **production** URL, `ev-revolution.vercel.app`, not a per-deployment `ev-revolution-xxxx.vercel.app` URL.
+5. If the domain still shows old content after purging, the WordPress proxy is pointing at an old deployment URL. Point it at the Vercel project's **production domain** (Vercel → Settings → Domains), not a per-deployment `ev-revolution-xxxx.vercel.app` URL.
 
 ## If WordPress is NOT proxying Vercel
 
