@@ -101,6 +101,11 @@ export function EnergyPerformance({ pillar }: { pillar: Pillar }) {
           </Reveal>
           <PlanCards plans={previewPlans} />
           <p className="mt-8 text-center text-sm leading-relaxed text-onyx-800/70">These prices are not active subscriptions. Exact inclusions will be published before enrollment.</p>
+          <p className="mt-5 text-center">
+            <Link href="/care/energy-performance#plans" className="brand-eyebrow text-[0.625rem] text-plum underline decoration-plum/35 underline-offset-[6px] transition-colors hover:text-plum-600">
+              Compare Plans
+            </Link>
+          </p>
         </Container>
       </section>
 
