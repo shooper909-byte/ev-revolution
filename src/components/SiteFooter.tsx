@@ -25,7 +25,9 @@ export function SiteFooter() {
       : pathname === "/pillars/longevity-healthspan" ||
           pathname === "/care/longevity-healthspan"
         ? "/care/longevity-healthspan#get-started"
-      : "/care/weight-management#get-started";
+        : pathname === "/about"
+          ? "/care"
+          : "/care/weight-management#get-started";
   return (
     <footer className="border-t border-onyx-700 bg-onyx-900">
       <Container className="py-16 sm:py-20">
@@ -35,8 +37,8 @@ export function SiteFooter() {
               <Image src="/images/eves-sisters-logo.png" alt="Eve’s Sisters — The Evolution of a Woman's Body" width={1280} height={1280} sizes="288px" className="h-auto w-full" />
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory-200/80">
-              More than a clinic. A movement for women — evidence-led wellness
-              and longevity for every stage.
+              A women&rsquo;s wellness brand for every stage of life — clear
+              information, thoughtful experiences, and support for what comes next.
             </p>
           </div>
 
