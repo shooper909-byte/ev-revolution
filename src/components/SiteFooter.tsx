@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { careLabel, pillars } from "@/lib/pillars";
@@ -14,6 +17,12 @@ const company = [
 ];
 
 export function SiteFooter() {
+  const pathname = usePathname();
+  const getStartedHref =
+    pathname === "/pillars/energy-performance" ||
+    pathname === "/care/energy-performance"
+      ? "/care/energy-performance#get-started"
+      : "/care/weight-management#get-started";
   return (
     <footer className="border-t border-onyx-700 bg-onyx-900">
       <Container className="py-16 sm:py-20">
@@ -64,7 +73,7 @@ export function SiteFooter() {
             </ul>
 
             <Link
-              href="/care/weight-management#get-started"
+              href={getStartedHref}
               className="button-sheen brand-eyebrow mt-8 inline-block bg-plum px-6 py-3 text-[0.5625rem] text-ivory transition-colors hover:bg-plum-600"
             >
               Get Started

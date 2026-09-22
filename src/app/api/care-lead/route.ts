@@ -4,21 +4,21 @@ import { forwardTo, isValidEmail } from "@/lib/forward";
 
 /* ------------------------------------------------------------------
    Assessment leads from the care subscription pages.
-   Serves /care/weight-management and /care/hormones-menopause.
+   Serves the care pages, including the contact-only Energy Care waitlist.
 
    The clinical intake vendor is not wired up yet, so these leads go through
    the site's existing secure workflow: an HTTPS webhook, server side, the
    same mechanism the contact and newsletter forms use. Nothing is stored in
    this app and nothing is emailed from the browser.
 
-   Only contact details and one area of interest are accepted. Symptoms,
-   medications, menstrual or surgical history and anything else clinical stay
-   out of this route by construction — they belong in the secure clinical
-   assessment — and none of it reaches an analytics destination.
+   Only the fields rendered by each approved form are accepted. Energy Care
+   collects contact details only; symptoms, medications and medical history
+   remain outside this route and never reach an analytics destination.
    ------------------------------------------------------------------ */
 
 type LeadBody = {
   program?: unknown;
+  name?: unknown;
   firstName?: unknown;
   lastName?: unknown;
   email?: unknown;
@@ -48,21 +48,24 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Invalid request." }, { status: 400 });
   }
 
-  const firstName = text(body?.firstName, 80);
-  const lastName = text(body?.lastName, 80);
+  const energyWaitlist = program.source === "/care/energy-performance";
+  const submittedName = text(body?.name, 160);
+  const nameParts = submittedName.split(/\s+/).filter(Boolean);
+  const firstName = energyWaitlist ? (nameParts[0] ?? "") : text(body?.firstName, 80);
+  const lastName = energyWaitlist ? nameParts.slice(1).join(" ") : text(body?.lastName, 80);
   const mobile = text(body?.mobile, 32);
   const state = text(body?.state, 2).toUpperCase();
   const interest = text(body?.interest, 60);
   const plan = text(body?.plan, 60);
 
-  if (!firstName || !lastName || !isValidEmail(body?.email)) {
+  if ((energyWaitlist ? !submittedName : !firstName || !lastName) || !isValidEmail(body?.email)) {
     return NextResponse.json(
       { message: "Please add your name and a valid email address." },
       { status: 400 },
     );
   }
 
-  if (!hasEnoughDigits(mobile)) {
+  if ((!energyWaitlist || mobile) && !hasEnoughDigits(mobile)) {
     return NextResponse.json(
       { message: "Please add a mobile number we can reach you on." },
       { status: 400 },
@@ -76,7 +79,7 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!program.interests.includes(interest)) {
+  if (!energyWaitlist && !program.interests.includes(interest)) {
     return NextResponse.json(
       { message: "Please choose the option that fits you best." },
       { status: 400 },
@@ -85,7 +88,7 @@ export async function POST(request: Request) {
 
   // A programme that offers a preferred-plan question requires one of its own
   // options; a programme that does not ask cannot have one smuggled in.
-  if (program.plans ? !program.plans.includes(plan) : plan) {
+  if (!energyWaitlist && (program.plans ? !program.plans.includes(plan) : plan)) {
     return NextResponse.json(
       { message: "Please choose the plan that fits you best." },
       { status: 400 },
@@ -94,7 +97,7 @@ export async function POST(request: Request) {
 
   if (body?.consent !== true) {
     return NextResponse.json(
-      { message: "Please confirm we may contact you about your assessment." },
+      { message: "Please confirm we may contact you about this request." },
       { status: 400 },
     );
   }
@@ -108,7 +111,8 @@ export async function POST(request: Request) {
       .filter((code) => /^[A-Z]{2}$/.test(code)),
   );
   const waitlist =
-    program.source === "/care/weight-management" && !availableStates.has(state);
+    energyWaitlist ||
+    (program.source === "/care/weight-management" && !availableStates.has(state));
 
   // A lead carrying a name, an email and a phone number never leaves over
   // plain HTTP, whatever a misconfigured environment asks for. A loopback
@@ -137,9 +141,9 @@ export async function POST(request: Request) {
     firstName,
     lastName,
     email: body.email,
-    mobile,
+    ...(mobile ? { mobile } : {}),
     state,
-    interest,
+    ...(interest ? { interest } : {}),
     ...(plan ? { plan } : {}),
     consent: true,
     availability: waitlist ? "waitlist" : "service-area",
@@ -152,7 +156,9 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({
-    message: waitlist
+    message: energyWaitlist
+      ? "Your contact details were saved to the Energy Care waitlist. We will contact you when enrollment becomes available."
+      : waitlist
       ? "Your contact request is on the waitlist for your state. We will email you if weight-care services become available there."
       : "Your request is with our care team. We will email you a secure link to complete your clinical assessment.",
   });
