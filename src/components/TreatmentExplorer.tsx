@@ -110,7 +110,9 @@ export function TreatmentExplorer() {
 
       <p aria-live="polite" className="mt-5 text-xs text-ivory-200/70">
         {count === 1 ? "1 treatment shown." : `${count} treatments shown.`}{" "}
-        <span className="italic">Availability for every listing is pending confirmation.</span>
+        {treatments.every((item) => item.status !== "confirmed") && (
+          <span className="italic">No listing is confirmed available yet.</span>
+        )}
       </p>
 
       {visible.length === 0 ? (
@@ -206,9 +208,10 @@ function TreatmentCard({ item, category }: { item: Treatment; category: Treatmen
     <article className="flex h-full flex-col rounded-xl border border-ivory-300/15 bg-onyx/50 p-5">
       <h3 className="font-display text-xl text-ivory">{item.name}</h3>
       <p className="mt-1.5 text-xs text-taupe">
-        {[item.form, item.formulation === "compounded" ? "Compounded formulation" : null]
-          .filter(Boolean)
-          .join(" · ")}
+        {item.form} ·{" "}
+        {item.formulation === "compounded"
+          ? "Compounded formulation"
+          : "Compounding status pending confirmation"}
       </p>
       <p className="mt-3 text-sm leading-relaxed text-ivory-200/90">{item.description}</p>
       {item.caution && (
