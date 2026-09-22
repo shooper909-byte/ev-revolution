@@ -5,7 +5,6 @@ import { Container, Eyebrow } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PillarCard } from "@/components/PillarCard";
 import { PillarIcon } from "@/components/PillarIcon";
-import { StagesLineup } from "@/components/StagesLineup";
 import { careLabel, pillars } from "@/lib/pillars";
 import { formatPostDate, posts } from "@/lib/posts";
 
@@ -69,13 +68,21 @@ export default function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationJsonLd, websiteJsonLd]) }} />
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-onyx-700 bg-[linear-gradient(115deg,var(--color-onyx)_0%,var(--color-onyx-900)_45%,var(--color-plum-900)_140%)]">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(115deg,var(--color-onyx)_0%,color-mix(in_oklab,var(--color-onyx)_92%,transparent)_45%,color-mix(in_oklab,var(--color-plum-900)_85%,transparent)_140%)]"
-        />
-        <Container className="relative grid grid-cols-[minmax(0,1fr)] items-center gap-12 py-16 lg:grid-cols-[1.15fr_minmax(0,1fr)] lg:py-20">
-          <div>
+      <section className="relative overflow-hidden border-b border-onyx-700 bg-onyx">
+        <div className="absolute inset-0 hidden lg:block">
+          <Image
+            src="/images/home/home-hero-women.webp"
+            alt="Five adult women of different ages and skin tones wearing elegant purple, black and champagne dresses."
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,11,11,0.98)_0%,rgba(8,11,11,0.9)_28%,rgba(8,11,11,0.28)_46%,rgba(8,11,11,0)_64%)]" />
+        </div>
+
+        <Container className="relative flex min-h-[39rem] flex-col justify-center py-16 lg:py-24">
+          <div className="max-w-xl">
             <Eyebrow>Women&rsquo;s wellness for every stage</Eyebrow>
             <h1 className="mt-7 font-display text-[2.5rem] leading-[1.06] text-ivory sm:text-5xl lg:text-[3.4rem]">
               Your body evolves.
@@ -107,11 +114,15 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="lg:pl-6">
-            <StagesLineup />
-            <p className="mt-10 text-center font-display text-2xl tracking-[0.12em] text-ivory sm:text-3xl">
-              Women. Evolved.
-            </p>
+          <div className="relative -mx-6 mt-12 aspect-[1983/793] overflow-hidden sm:-mx-8 lg:hidden">
+            <Image
+              src="/images/home/home-hero-women.webp"
+              alt="Five adult women of different ages and skin tones wearing elegant purple, black and champagne dresses."
+              fill
+              priority
+              sizes="100vw"
+              className="object-contain object-center"
+            />
           </div>
         </Container>
       </section>
