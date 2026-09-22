@@ -1,558 +1,144 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container, Eyebrow } from "@/components/Container";
-import { EnergyLine } from "@/components/EnergyLine";
-import { MotionScope } from "@/components/MotionScope";
-import { NewsletterSignup } from "@/components/NewsletterSignup";
-import { PillarIcon, type PillarIconName } from "@/components/PillarIcon";
 import { Reveal } from "@/components/Reveal";
-import { pillars, type Pillar } from "@/lib/pillars";
-import { posts } from "@/lib/posts";
+import { PlanCards, type Plan } from "@/components/care/PlanCards";
+import type { Pillar } from "@/lib/pillars";
 
-/* ------------------------------------------------------------------
-   /pillars/energy-performance — the educational pillar page.
-
-   This page teaches and points; it does not sell. The plans live at
-   /care/energy-performance, and this page links to them prominently
-   without turning into a sales page.
-
-   The core message is unchanged: fatigue is a signal, not a personality
-   trait. Everything here is framed as a possible contributor rather than a
-   diagnosis, because a symptom with this many causes cannot be resolved by
-   a web page.
-
-   Motion: the hero's travelling line and drifting glow only run while the
-   hero is on screen (MotionScope), the cards and timeline use the existing
-   scroll-reveal system, and every one of them stops under reduced motion.
-   Nothing animates layout, so there is no shift.
-   ------------------------------------------------------------------ */
-
-const contributors: [PillarIconName, string, string][] = [
-  [
-    "leaf",
-    "Iron and Nutrient Status",
-    "Low iron stores, vitamin B12, vitamin D and other nutritional factors can contribute to fatigue, weakness or reduced exercise tolerance.",
-  ],
-  [
-    "renew",
-    "Thyroid and Metabolic Health",
-    "Thyroid function, glucose regulation and other metabolic factors may affect energy, concentration and physical performance.",
-  ],
-  [
-    "lotus",
-    "Sleep and Recovery",
-    "Sleep duration, sleep quality, breathing disruptions, stress and inadequate recovery can affect how you feel throughout the day.",
-  ],
-  [
-    "infinity",
-    "Hormonal Changes",
-    "Perimenopause, menopause and other hormonal transitions may influence sleep, mood, body composition and perceived energy.",
-  ],
-  [
-    "honeycomb",
-    "Medications and Health Conditions",
-    "Certain medications and underlying medical conditions can contribute to persistent fatigue and should be considered during evaluation.",
-  ],
-  [
-    "bolt",
-    "Training and Daily Demands",
-    "Exercise load, work demands, caregiving, hydration, fueling and recovery habits can all affect performance and resilience.",
-  ],
+const previewPlans: Plan[] = [
+  {
+    id: "energy-essential-preview",
+    title: "Energy Essential",
+    pricePrefix: "Proposed",
+    price: "$79",
+    priceNote: "/month",
+    description: "A proposed starting tier for exploring persistent fatigue and changes in everyday energy.",
+    includes: ["Exact inclusions will be published before enrollment"],
+    cta: "View Energy Essential",
+    href: "/care/energy-performance#energy-essential",
+    footnote: "Laboratory tests, medications, and supplements are billed separately.",
+    image: "/images/energy/energy-essential.webp",
+    imageAlt: "Walking shoes, a water glass and an unbranded journal in warm morning light.",
+  },
+  {
+    id: "energy-performance-plus-preview",
+    title: "Energy and Performance Plus",
+    pricePrefix: "Proposed",
+    price: "$129",
+    priceNote: "/month",
+    badge: "Featured Plan",
+    featured: true,
+    description: "A proposed middle tier focused on energy, everyday movement and recovery.",
+    includes: ["Exact inclusions will be published before enrollment"],
+    cta: "View Performance Plus",
+    href: "/care/energy-performance#energy-performance-plus",
+    footnote: "Laboratory tests, medications, and supplements are billed separately.",
+    image: "/images/energy/energy-performance-plus.webp",
+    imageAlt: "An adult woman tying her walking shoes beside a sunlit doorway.",
+  },
+  {
+    id: "complete-energy-care-preview",
+    title: "Complete Energy Care",
+    pricePrefix: "Proposed",
+    price: "$169",
+    priceNote: "/month",
+    description: "A proposed higher tier whose final scope will be confirmed before enrollment opens.",
+    includes: ["Exact inclusions will be published before enrollment"],
+    cta: "View Complete Energy Care",
+    href: "/care/energy-performance#complete-energy-care",
+    footnote: "Laboratory tests, medications, and supplements are billed separately.",
+    image: "/images/energy/complete-energy-care.webp",
+    imageAlt: "A mature woman reviewing an unbranded weekly planner at home.",
+  },
 ];
 
-const focus: [string, string][] = [
-  [
-    "Rule Things Out First",
-    "A clinician can review common and testable contributors to persistent fatigue and determine whether laboratory testing or additional evaluation may be appropriate.",
-  ],
-  [
-    "Support Your Physiology",
-    "Build an achievable plan around sleep, nourishment, hydration, recovery and movement instead of forcing your body through exhaustion.",
-  ],
-  [
-    "Strengthen Cognitive Stamina",
-    "Explore how sleep, stress, nutrient status, mood and changing hormones may affect focus, motivation and mental endurance.",
-  ],
-];
-
-const evaluation: [string, string][] = [
-  [
-    "Health and Symptom Review",
-    "Medical history, medications, sleep, menstrual or menopause changes, nutrition, stress, exercise and the timing of symptoms.",
-  ],
-  [
-    "Appropriate Laboratory Testing",
-    "When clinically indicated, testing may include thyroid markers, iron status, vitamin levels, metabolic markers or other provider-selected tests.",
-  ],
-  [
-    "Personalized Recommendations",
-    "Your provider may recommend changes involving sleep, nourishment, recovery, supplements, medication management or additional medical evaluation.",
-  ],
-  [
-    "Ongoing Monitoring",
-    "Track symptoms, complete required follow-ups and communicate with the care team when something changes.",
-  ],
-];
-
-const addressed = [
-  "Persistent fatigue",
-  "Reduced exercise tolerance",
-  "Brain fog and concentration",
-  "Sleep and recovery",
-  "Nutrient-status concerns",
-  "Thyroid and metabolic review",
-  "Stress and overload",
-  "Performance planning",
-];
-
-const urgent = [
-  "Chest pain",
-  "Severe or sudden shortness of breath",
-  "Fainting",
-  "New confusion",
-  "New weakness on one side",
-  "Severe heart palpitations",
-  "Signs of significant bleeding",
-  "Thoughts of self-harm",
-];
+const contributors = [
+  ["Sleep and recovery", "Sleep duration, quality and patterns may influence daytime energy."],
+  ["Nutrition and daily demands", "Fueling, routines and sustained stress can shape how fatigue is experienced."],
+  ["Hormonal and health changes", "Hormonal transitions, medications and health conditions may also contribute."],
+] as const;
 
 export function EnergyPerformance({ pillar }: { pillar: Pillar }) {
-  const related = posts.filter((post) => post.pillar === pillar.name);
-  const others = pillars.filter((item) => item.slug !== pillar.slug);
-
   return (
     <>
-      {/* ---------------------------------------------------------------
-          Hero
-          --------------------------------------------------------------- */}
-      <MotionScope>
-        <section className="relative overflow-hidden border-b border-onyx-700 bg-[linear-gradient(120deg,var(--color-onyx)_0%,var(--color-onyx-900)_44%,var(--color-plum-900)_145%)]">
-          {/* Two slow-drifting glows. Purely decorative, never in flow. */}
-          <div
-            aria-hidden="true"
-            className="aurora pointer-events-none absolute -right-32 -top-40 h-[32rem] w-[32rem] rounded-full bg-plum/25 blur-[130px]"
-          />
-          <div
-            aria-hidden="true"
-            className="aurora pointer-events-none absolute -left-40 top-1/2 hidden h-[30rem] w-[30rem] rounded-full bg-mauve/15 blur-[120px] lg:block"
-            style={{ animationDelay: "-9s" }}
-          />
+      <section className="relative overflow-hidden border-b border-onyx-700 bg-onyx">
+        <Image src="/images/energy/energy-hero.webp" alt="An adult woman taking a calm morning walk through a city park." fill priority sizes="100vw" className="object-cover object-center lg:object-right" />
+        <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,11,11,0.98)_0%,rgba(8,11,11,0.88)_42%,rgba(8,11,11,0.25)_72%,rgba(8,11,11,0.08)_100%)]" />
+        <Container className="relative py-20 sm:py-24 lg:py-32">
+          <nav aria-label="Breadcrumb" className="brand-eyebrow text-[0.5625rem] text-taupe"><Link href="/care" className="hover:text-champagne">Care</Link><span aria-hidden="true" className="mx-2">/</span><span aria-current="page" className="text-ivory-200">{pillar.name}</span></nav>
+          <div className="mt-10 max-w-2xl">
+            <Eyebrow>Energy and Performance</Eyebrow>
+            <h1 className="mt-7 font-display text-[2.75rem] leading-[1.04] text-ivory sm:text-6xl lg:text-7xl">Understand Your Fatigue. Explore Your Next Step.</h1>
+            <p className="mt-7 max-w-xl text-base leading-relaxed text-ivory-200/90 sm:text-lg">Learn how a clinical evaluation may explore sleep, nutrition, hormonal changes, and other contributors to persistent fatigue.</p>
+            <p className="mt-5 text-sm font-semibold text-champagne">Energy care enrollment is not yet open.</p>
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+              <a href="#plans" className="button-sheen brand-eyebrow bg-plum px-8 py-4 text-center text-[0.625rem] text-ivory hover:bg-plum-600">Explore Proposed Plans</a>
+              <Link href="/care/energy-performance#get-started" className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne hover:bg-onyx-800">Join the Waitlist</Link>
+            </div>
+          </div>
+        </Container>
+      </section>
 
-          <Container className="relative py-20 sm:py-24">
-            <Link
-              href="/#pillars"
-              className="brand-eyebrow text-[0.5625rem] text-taupe transition-colors hover:text-champagne"
-            >
-              &larr; All pillars
+      <section className="border-b border-onyx-700 bg-ivory">
+        <Container className="py-20 sm:py-24">
+          <Reveal>
+            <p className="brand-eyebrow text-plum">Start with understanding</p>
+            <h2 className="mt-6 max-w-3xl font-display text-[2.2rem] leading-tight text-onyx sm:text-5xl">Fatigue is a symptom, not a diagnosis.</h2>
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-onyx-800/80">Persistent fatigue can have more than one contributor. Education can help you prepare for a thoughtful clinical conversation without promising a diagnosis, test or treatment.</p>
+          </Reveal>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {contributors.map(([title, copy], index) => <Reveal key={title} delay={index * 70}><article className="h-full rounded-3xl border border-onyx/10 bg-white/70 p-7"><span className="font-display text-3xl text-plum">0{index + 1}</span><h3 className="mt-5 font-display text-2xl text-onyx">{title}</h3><p className="mt-4 text-sm leading-relaxed text-onyx-800/75">{copy}</p></article></Reveal>)}
+          </div>
+        </Container>
+      </section>
+
+      <section id="plans" aria-labelledby="preview-plans-heading" className="scroll-mt-24 border-b border-onyx-700 bg-ivory-200/50">
+        <Container className="py-20 sm:py-24">
+          <Reveal>
+            <p className="brand-eyebrow text-plum">Energy Care preview</p>
+            <h2 id="preview-plans-heading" className="mt-6 font-display text-[2.2rem] leading-tight text-onyx sm:text-5xl">Three proposed ways to explore care.</h2>
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-onyx-800/75">Proposed monthly pricing. Services and availability are being finalized.</p>
+          </Reveal>
+          <PlanCards plans={previewPlans} />
+          <p className="mt-8 text-center text-sm leading-relaxed text-onyx-800/70">These prices are not active subscriptions. Exact inclusions will be published before enrollment.</p>
+          <p className="mt-5 text-center">
+            <Link href="/care/energy-performance#plans" className="brand-eyebrow text-[0.625rem] text-plum underline decoration-plum/35 underline-offset-[6px] transition-colors hover:text-plum-600">
+              Compare Plans
             </Link>
-
-            <div className="mt-10 flex items-center gap-4">
-              <PillarIcon
-                name={pillar.icon}
-                className={`h-7 w-7 ${pillar.accent.text}`}
-              />
-              <Eyebrow>Energy and Performance</Eyebrow>
-            </div>
-
-            <h1 className="brand-enter mt-8 max-w-3xl font-display text-[2.6rem] leading-[1.05] text-ivory sm:text-[3.4rem] lg:text-[4rem]">
-              Capacity You Can
-              <span className="mt-2 block italic text-mauve">Count On</span>
-            </h1>
-
-            {/* The travelling line. Fixed height, so it cannot shift copy. */}
-            <div aria-hidden="true" className="mt-8 h-12 max-w-xl">
-              <EnergyLine className="h-full w-full" />
-            </div>
-
-            <p
-              className="brand-enter max-w-2xl text-base leading-relaxed text-ivory-200/85 sm:text-lg"
-              style={{ "--enter-delay": "160ms" } as React.CSSProperties}
-            >
-              Persistent fatigue can be connected to sleep, nutrient status,
-              thyroid function, metabolic health, medications, stress, changing
-              hormones or training demands. Eve&rsquo;s Sisters helps women
-              explore those possibilities through personalized clinical care
-              and appropriate testing.
-            </p>
-
-            <div
-              className="brand-enter mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
-              style={{ "--enter-delay": "250ms" } as React.CSSProperties}
-            >
-              <Link
-                href="/care/energy-performance#plans"
-                className="button-sheen brand-eyebrow group bg-plum px-8 py-4 text-center text-[0.625rem] text-ivory transition-colors hover:bg-plum-600"
-              >
-                Explore Energy Plans
-                <span
-                  aria-hidden="true"
-                  className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1"
-                >
-                  &rarr;
-                </span>
-              </Link>
-              <Link
-                href="/care/energy-performance#get-started"
-                className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne transition-colors hover:bg-onyx-800"
-              >
-                Start Your Assessment
-              </Link>
-            </div>
-          </Container>
-        </section>
-      </MotionScope>
-
-      {/* ---------------------------------------------------------------
-          Fatigue has many possible contributors
-          --------------------------------------------------------------- */}
-      <section
-        aria-labelledby="contributors-heading"
-        className="border-b border-onyx-700 bg-onyx"
-      >
-        <Container className="py-20 sm:py-24">
-          <Reveal>
-            <Eyebrow>A closer look</Eyebrow>
-            <h2
-              id="contributors-heading"
-              className="mt-6 max-w-2xl font-display text-[2.1rem] leading-[1.1] text-ivory sm:text-[2.75rem]"
-            >
-              Fatigue Is a Symptom, Not a Diagnosis
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory-200/80">
-              Feeling exhausted does not automatically identify the cause. A
-              thoughtful evaluation considers the full pattern of your
-              symptoms, health history, medications, sleep, nutrition and daily
-              demands.
-            </p>
-          </Reveal>
-
-          <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {contributors.map(([icon, title, body], index) => (
-              <li key={title}>
-                <Reveal delay={index * 70} className="h-full">
-                  <div className="flex h-full flex-col rounded-2xl border border-onyx-700 bg-onyx-900 p-7 transition-colors hover:border-champagne/40">
-                    <PillarIcon
-                      name={icon}
-                      className="h-6 w-6 shrink-0 text-champagne"
-                    />
-                    <h3 className="mt-5 font-display text-xl leading-snug text-ivory">
-                      {title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-relaxed text-ivory-200/75">
-                      {body}
-                    </p>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+          </p>
         </Container>
       </section>
 
-      {/* ---------------------------------------------------------------
-          Three areas of support
-          --------------------------------------------------------------- */}
-      <section
-        aria-labelledby="focus-heading"
-        className="border-b border-onyx-700 bg-ivory"
-      >
-        <Container className="py-20 sm:py-24">
+      <section className="border-b border-onyx-700 bg-onyx">
+        <Container className="grid items-center gap-12 py-20 lg:grid-cols-2 lg:py-24">
           <Reveal>
-            <p className="brand-eyebrow text-plum">Our approach</p>
-            <h2
-              id="focus-heading"
-              className="mt-6 font-display text-[2.1rem] leading-[1.1] text-onyx sm:text-[2.75rem]"
-            >
-              Where We Focus
-            </h2>
+            <div className="relative aspect-[3/2] overflow-hidden rounded-3xl border border-champagne/35"><Image src="/images/home/review-your-options.webp" alt="A woman speaking with a female clinician during a telehealth consultation." fill sizes="(min-width: 1024px) 46vw, 92vw" className="object-cover" /></div>
+            <p className="mt-3 text-xs text-taupe">Illustrative scene. Models are not presented as actual clinicians or patients.</p>
           </Reveal>
-
-          <div className="mt-14 grid gap-10 lg:grid-cols-3 lg:gap-8">
-            {focus.map(([title, body], index) => (
-              <Reveal key={title} delay={index * 110}>
-                {/* The rule draws itself left to right as the column lands. */}
-                <span
-                  aria-hidden="true"
-                  className="gold-rule block h-px w-full bg-champagne"
-                />
-                <h3 className="mt-7 font-display text-2xl leading-snug text-onyx">
-                  {title}
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-onyx-800/75">
-                  {body}
-                </p>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ---------------------------------------------------------------
-          What an evaluation may include
-          --------------------------------------------------------------- */}
-      <section
-        aria-labelledby="evaluation-heading"
-        className="border-b border-onyx-700 bg-onyx"
-      >
-        <Container className="py-20 sm:py-24">
-          <Reveal>
-            <Eyebrow>What to expect</Eyebrow>
-            <h2
-              id="evaluation-heading"
-              className="mt-6 font-display text-[2.1rem] leading-[1.1] text-ivory sm:text-[2.75rem]"
-            >
-              A More Complete Look at Your Energy
-            </h2>
-          </Reveal>
-
-          <ol className="mt-14 grid gap-px bg-onyx-700/60">
-            {evaluation.map(([title, body], index) => (
-              <li key={title}>
-                <Reveal delay={index * 90}>
-                  <div className="grid gap-5 bg-onyx px-1 py-8 sm:grid-cols-[6rem_minmax(0,1fr)] sm:gap-8 sm:px-2">
-                    <span className="brand-eyebrow font-display text-3xl not-italic text-champagne">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <h3 className="font-display text-xl leading-snug text-ivory sm:text-2xl">
-                        {title}
-                      </h3>
-                      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory-200/75">
-                        {body}
-                      </p>
-                    </div>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
-        </Container>
-      </section>
-
-      {/* ---------------------------------------------------------------
-          Potential areas of care
-          --------------------------------------------------------------- */}
-      <section
-        aria-labelledby="addressed-heading"
-        className="border-b border-onyx-700 bg-ivory"
-      >
-        <Container className="py-20 sm:py-24">
-          <Reveal>
-            <p className="brand-eyebrow text-plum">Areas of care</p>
-            <h2
-              id="addressed-heading"
-              className="mt-6 max-w-2xl font-display text-[2.1rem] leading-[1.1] text-onyx sm:text-[2.75rem]"
-            >
-              What Energy and Performance Care May Address
-            </h2>
-          </Reveal>
-
-          <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {addressed.map((item, index) => (
-              <li key={item}>
-                <Reveal delay={index * 50}>
-                  <div className="h-full rounded-2xl border border-onyx/12 bg-white/70 px-6 py-5">
-                    <span className="text-sm leading-relaxed text-onyx-800/85">
-                      {item}
-                    </span>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-
-          <Reveal>
-            <p className="mt-9 max-w-3xl border-t border-onyx/12 pt-7 text-sm leading-relaxed text-onyx-800/70">
-              These are areas a clinician can help you explore. Eve&rsquo;s
-              Sisters does not diagnose or cure every cause of fatigue, and
-              some causes need evaluation beyond what remote care can offer.
-            </p>
+          <Reveal delay={80}>
+            <Eyebrow>A future clinical pathway</Eyebrow>
+            <h2 className="mt-6 font-display text-[2.2rem] leading-tight text-ivory sm:text-5xl">Clinical care begins only after launch and evaluation.</h2>
+            <p className="mt-6 text-base leading-relaxed text-ivory-200/85">When available, services may be provided by independent licensed clinicians. Joining the waitlist does not begin clinical care, establish eligibility or guarantee treatment.</p>
+            <Link href="/care/energy-performance#get-started" className="button-sheen brand-eyebrow mt-9 inline-block bg-plum px-8 py-4 text-[0.625rem] text-ivory hover:bg-plum-600">Join the Energy Care Waitlist</Link>
           </Reveal>
         </Container>
       </section>
 
-      {/* ---------------------------------------------------------------
-          When to seek immediate care
-          --------------------------------------------------------------- */}
-      <section
-        aria-labelledby="urgent-heading"
-        className="border-b border-onyx-700 bg-onyx"
-      >
-        <Container className="py-20 sm:py-24">
+      <section className="border-b border-onyx-700 bg-ivory">
+        <Container className="grid items-center gap-12 py-20 lg:grid-cols-[1fr_0.9fr] lg:py-24">
           <Reveal>
-            <div className="rounded-3xl border border-champagne/30 bg-onyx-900/70 p-8 sm:p-11">
-              <p className="brand-eyebrow text-[0.5rem] text-champagne">
-                Safety first
-              </p>
-              <h2
-                id="urgent-heading"
-                className="mt-6 font-display text-[1.9rem] leading-tight text-ivory sm:text-[2.3rem]"
-              >
-                Some Symptoms Should Not Wait
-              </h2>
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory-200/85">
-                Fatigue accompanied by certain symptoms may require urgent
-                in-person evaluation rather than routine telehealth care.
-              </p>
-
-              <ul className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
-                {urgent.map((symptom) => (
-                  <li key={symptom} className="flex items-start gap-3">
-                    <span
-                      aria-hidden="true"
-                      className="mt-2 h-1 w-1 shrink-0 rounded-full bg-champagne"
-                    />
-                    <span className="text-sm leading-relaxed text-ivory-200/85">
-                      {symptom}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="hairline mt-9 border-t pt-7 text-sm leading-relaxed text-ivory">
-                Call 911 or seek emergency care for severe or life-threatening
-                symptoms.
-              </p>
-            </div>
+            <p className="brand-eyebrow text-plum">Everyday movement and recovery</p>
+            <h2 className="mt-6 font-display text-[2.2rem] leading-tight text-onyx sm:text-5xl">Energy is more than pushing harder.</h2>
+            <p className="mt-6 text-base leading-relaxed text-onyx-800/80">Rest, movement, nutrition and the demands of daily life may all be relevant. The goal of a future evaluation is to understand context, not to promise performance enhancement.</p>
           </Reveal>
+          <Reveal delay={80}><div className="relative aspect-[3/2] overflow-hidden rounded-3xl border border-plum/20"><Image src="/images/energy/movement-recovery.webp" alt="A mature woman gently stretching at home after everyday movement." fill sizes="(min-width: 1024px) 42vw, 92vw" className="object-cover" /></div></Reveal>
         </Container>
       </section>
 
-      {/* ---------------------------------------------------------------
-          Packages CTA
-          --------------------------------------------------------------- */}
-      <section
-        aria-labelledby="packages-heading"
-        className="border-b border-onyx-700 bg-[linear-gradient(140deg,var(--color-plum-900)_0%,var(--color-onyx-900)_65%,var(--color-onyx)_100%)]"
-      >
-        <Container className="py-20 sm:py-24">
-          <Reveal>
-            <Eyebrow>Energy care options</Eyebrow>
-            <h2
-              id="packages-heading"
-              className="mt-6 max-w-3xl font-display text-[2.1rem] leading-[1.1] text-ivory sm:text-[2.75rem]"
-            >
-              Ready to Understand What Is Draining Your Energy?
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory-200/85">
-              Explore clinical support designed to help identify possible
-              contributors, guide appropriate testing and build a more
-              sustainable plan.
-            </p>
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Link
-                href="/care/energy-performance#plans"
-                className="button-sheen brand-eyebrow group bg-champagne px-8 py-4 text-center text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200"
-              >
-                Compare Energy Plans
-                <span
-                  aria-hidden="true"
-                  className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1"
-                >
-                  &rarr;
-                </span>
-              </Link>
-              <Link
-                href="/care/energy-performance#get-started"
-                className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne transition-colors hover:bg-onyx-800"
-              >
-                Start Your Assessment
-              </Link>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* ---------------------------------------------------------------
-          Journal
-          --------------------------------------------------------------- */}
-      {related.length > 0 && (
-        <section
-          aria-labelledby="journal-heading"
-          className="border-b border-onyx-700 bg-onyx-900"
-        >
-          <Container className="py-20 sm:py-24">
-            <h2 id="journal-heading" className="brand-eyebrow text-champagne">
-              From the Journal
-            </h2>
-
-            <ul className="mt-10 grid gap-px bg-onyx-700/60 md:grid-cols-2">
-              {related.map((post, index) => (
-                <li key={post.slug}>
-                  <Reveal delay={index * 80} className="h-full">
-                    {/* The whole card is the link, and the image lifts
-                        slightly on hover or keyboard focus — never on its
-                        own, and not at all under reduced motion. */}
-                    <Link
-                      href="/journal"
-                      className="media-lift group flex h-full flex-col bg-onyx transition-colors hover:bg-onyx-800"
-                    >
-                      <span className="relative block aspect-[16/9] overflow-hidden">
-                        <Image
-                          src="/images/care/care-energy-performance.webp"
-                          alt=""
-                          fill
-                          loading="lazy"
-                          sizes="(min-width: 768px) 46vw, 92vw"
-                          className="object-cover"
-                        />
-                      </span>
-                      <span className="flex flex-1 flex-col p-8">
-                        <span className="font-display text-2xl leading-snug text-ivory">
-                          {post.title}
-                        </span>
-                        <span className="mt-4 text-sm leading-relaxed text-ivory-200/75">
-                          {post.excerpt}
-                        </span>
-                        <span className="mt-6 text-xs text-taupe-700">
-                          {post.readingTime}
-                        </span>
-                      </span>
-                    </Link>
-                  </Reveal>
-                </li>
-              ))}
-            </ul>
-          </Container>
-        </section>
-      )}
-
-      {/* ---------------------------------------------------------------
-          Other pillars + newsletter, as on every pillar page
-          --------------------------------------------------------------- */}
-      <section className="border-b border-onyx-700">
-        <Container className="py-20 sm:py-24">
-          <Eyebrow>Continue</Eyebrow>
-          <ul className="mt-10 grid gap-px bg-onyx-700/60 sm:grid-cols-2 lg:grid-cols-5">
-            {others.map((item) => (
-              <li key={item.slug}>
-                <Link
-                  href={`/pillars/${item.slug}`}
-                  className="flex h-full flex-col gap-4 bg-onyx p-7 transition-colors hover:bg-onyx-800"
-                >
-                  <PillarIcon
-                    name={item.icon}
-                    className={`h-5 w-5 ${item.accent.text}`}
-                  />
-                  <span className="font-display text-lg leading-snug text-ivory">
-                    {item.name}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
-      <section className="bg-onyx-900">
-        <Container className="py-20">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <h2 className="font-display text-3xl leading-tight text-ivory sm:text-4xl">
-              Stay with us through every stage.
-            </h2>
-            <NewsletterSignup />
-          </div>
+      <section className="bg-plum-900">
+        <Container className="py-12 sm:py-14">
+          <p className="brand-eyebrow text-champagne">Urgent symptoms</p>
+          <p className="mt-4 max-w-4xl text-sm leading-relaxed text-ivory-200/90">Fatigue with chest pain, severe or sudden shortness of breath, fainting, new confusion, new one-sided weakness, severe palpitations, significant bleeding or thoughts of self-harm needs urgent in-person care. Call 911 or go to an emergency department for severe or life-threatening symptoms.</p>
         </Container>
       </section>
     </>

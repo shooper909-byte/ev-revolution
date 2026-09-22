@@ -34,6 +34,12 @@ export function SiteHeader() {
     pathname === "/care" ||
     pathname.startsWith("/pillars/") ||
     pathname === "/peptide-care";
+  const energyRoute =
+    pathname === "/pillars/energy-performance" ||
+    pathname === "/care/energy-performance";
+  const getStartedHref = energyRoute
+    ? "/care/energy-performance#get-started"
+    : "/care/weight-management#get-started";
 
   const isActive = (href: string) =>
     href === "/packages/mrs-collection"
@@ -72,7 +78,7 @@ export function SiteHeader() {
           ))}
 
           <Link
-            href="/care/weight-management#get-started"
+            href={getStartedHref}
             className="button-sheen brand-eyebrow whitespace-nowrap bg-plum px-5 py-3 text-xs tracking-[0.14em] text-ivory transition-colors hover:bg-plum-600"
           >
             Get Started
@@ -183,7 +189,7 @@ export function SiteHeader() {
           ))}
 
           <Link
-            href="/care/weight-management#get-started"
+            href={getStartedHref}
             onClick={() => setOpen(false)}
             className="brand-eyebrow mt-4 bg-plum px-6 py-4 text-center text-[0.625rem] text-ivory"
           >

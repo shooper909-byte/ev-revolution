@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 
 /* ------------------------------------------------------------------
@@ -25,6 +26,8 @@ export type Plan = {
   footnote: string;
   featured?: boolean;
   badge?: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 /* Champagne type does not meet contrast on ivory, so light sections take
@@ -60,12 +63,25 @@ export function PlanCards({ plans }: { plans: Plan[] }) {
       {plans.map((plan, index) => (
         <Reveal key={plan.id} delay={index * 90} className="h-full">
           <div
-            className={`relative flex h-full flex-col rounded-3xl p-8 sm:p-9 ${
+            id={plan.id}
+            className={`group relative flex h-full scroll-mt-28 flex-col rounded-3xl p-8 sm:p-9 ${
               plan.featured
                 ? "border border-champagne bg-plum-900 text-ivory shadow-[0_26px_70px_-40px_rgba(8,11,11,0.9)]"
                 : "border border-onyx/12 bg-white/70 text-onyx"
             }`}
           >
+            {plan.image && plan.imageAlt && (
+              <div className="relative -mx-8 -mt-8 mb-7 aspect-[4/3] overflow-hidden rounded-t-[calc(1.5rem-1px)] sm:-mx-9 sm:-mt-9">
+                <Image
+                  src={plan.image}
+                  alt={plan.imageAlt}
+                  fill
+                  sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
+                  className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
+                />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-onyx/35 to-transparent" />
+              </div>
+            )}
             {plan.badge && (
               <span
                 className={`brand-eyebrow absolute -top-3 left-8 rounded-full px-4 py-1.5 text-[0.5rem] ${
