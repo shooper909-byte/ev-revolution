@@ -87,6 +87,12 @@ export const carePrograms = {
       "Help me choose",
     ],
   },
+  "longevity-healthspan": {
+    label: "Longevity and healthspan",
+    source: "/care/longevity-healthspan",
+    interestLabel: "Area of interest",
+    interests: [],
+  },
   "peptide-care": {
     label: "Peptide care",
     source: "/peptide-care",

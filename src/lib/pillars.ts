@@ -286,26 +286,27 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "longevity-healthspan",
+    carePath: "/care/longevity-healthspan",
     name: "Longevity & Healthspan",
     navLabel: "Longevity",
     icon: "infinity",
     accent: champagne,
-    accentName: "Champagne Gold",
+    accentName: "Longevity & Healthspan",
     tagline: "Healthspan is the number that matters.",
     intro:
-      "Not lifespan — healthspan. Strength, bone density, cardiovascular and cognitive health and metabolic resilience are the levers with the strongest evidence behind them, and they are built decades before they are needed.",
+      "Healthspan means the years of life spent in good health. Everyday movement, strength, bone health, heart health, sleep and social connection can all be part of a thoughtful healthy-aging conversation.",
     focus: [
       {
         title: "Bone and muscle",
-        body: "Peak bone mass and lean tissue are the clearest predictors of independence later. Both are trainable.",
+        body: "Strength, balance and weight-bearing movement can support everyday function. The right approach depends on your health, mobility and risk factors.",
       },
       {
         title: "Cardiometabolic health",
-        body: "Cardiovascular disease is the leading cause of death in women and remains chronically under-discussed with them.",
+        body: "Blood pressure, blood lipids, blood glucose, activity, sleep and nicotine exposure are common parts of cardiovascular health discussions.",
       },
       {
-        title: "Cognitive reserve",
-        body: "Sleep, cardiovascular fitness, hearing, and social and intellectual load all feed long-term brain health.",
+        title: "Sleep and connection",
+        body: "Restful sleep, emotional wellbeing and social connection are important parts of healthy aging and everyday quality of life.",
       },
     ],
     covered: [
