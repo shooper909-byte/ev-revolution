@@ -22,15 +22,6 @@ export const posts: Post[] = [
     date: "2026-08-28",
   },
   {
-    slug: "muscle-is-the-longevity-organ",
-    title: "Muscle is a longevity organ",
-    excerpt:
-      "Lean mass predicts independence, metabolic health and fall risk decades out — and it is the asset women are least often told to build.",
-    pillar: "Longevity & Healthspan",
-    readingTime: "7 min",
-    date: "2026-08-14",
-  },
-  {
     slug: "reading-a-skincare-label",
     title: "How to read a skincare label without the marketing",
     excerpt:

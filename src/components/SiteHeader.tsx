@@ -32,14 +32,19 @@ export function SiteHeader() {
 
   const careActive =
     pathname === "/care" ||
+    pathname.startsWith("/care/") ||
     pathname.startsWith("/pillars/") ||
     pathname === "/peptide-care";
-  const energyRoute =
+  const waitlistRoute =
     pathname === "/pillars/energy-performance" ||
-    pathname === "/care/energy-performance";
-  const getStartedHref = energyRoute
-    ? "/care/energy-performance#get-started"
-    : "/care/weight-management#get-started";
+    pathname === "/care/energy-performance"
+      ? "/care/energy-performance#get-started"
+      : pathname === "/pillars/longevity-healthspan" ||
+          pathname === "/care/longevity-healthspan"
+        ? "/care/longevity-healthspan#get-started"
+        : null;
+  const getStartedHref =
+    waitlistRoute ?? "/care/weight-management#get-started";
 
   const isActive = (href: string) =>
     href === "/packages/mrs-collection"

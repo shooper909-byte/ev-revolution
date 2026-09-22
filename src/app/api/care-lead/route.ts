@@ -48,24 +48,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Invalid request." }, { status: 400 });
   }
 
-  const energyWaitlist = program.source === "/care/energy-performance";
+  const contactOnlyWaitlist =
+    program.source === "/care/energy-performance" ||
+    program.source === "/care/longevity-healthspan";
   const submittedName = text(body?.name, 160);
   const nameParts = submittedName.split(/\s+/).filter(Boolean);
-  const firstName = energyWaitlist ? (nameParts[0] ?? "") : text(body?.firstName, 80);
-  const lastName = energyWaitlist ? nameParts.slice(1).join(" ") : text(body?.lastName, 80);
+  const firstName = contactOnlyWaitlist ? (nameParts[0] ?? "") : text(body?.firstName, 80);
+  const lastName = contactOnlyWaitlist ? nameParts.slice(1).join(" ") : text(body?.lastName, 80);
   const mobile = text(body?.mobile, 32);
   const state = text(body?.state, 2).toUpperCase();
   const interest = text(body?.interest, 60);
   const plan = text(body?.plan, 60);
 
-  if ((energyWaitlist ? !submittedName : !firstName || !lastName) || !isValidEmail(body?.email)) {
+  if ((contactOnlyWaitlist ? !submittedName : !firstName || !lastName) || !isValidEmail(body?.email)) {
     return NextResponse.json(
       { message: "Please add your name and a valid email address." },
       { status: 400 },
     );
   }
 
-  if ((!energyWaitlist || mobile) && !hasEnoughDigits(mobile)) {
+  if ((!contactOnlyWaitlist || mobile) && !hasEnoughDigits(mobile)) {
     return NextResponse.json(
       { message: "Please add a mobile number we can reach you on." },
       { status: 400 },
@@ -79,7 +81,7 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!energyWaitlist && !program.interests.includes(interest)) {
+  if (!contactOnlyWaitlist && !program.interests.includes(interest)) {
     return NextResponse.json(
       { message: "Please choose the option that fits you best." },
       { status: 400 },
@@ -88,7 +90,7 @@ export async function POST(request: Request) {
 
   // A programme that offers a preferred-plan question requires one of its own
   // options; a programme that does not ask cannot have one smuggled in.
-  if (!energyWaitlist && (program.plans ? !program.plans.includes(plan) : plan)) {
+  if (!contactOnlyWaitlist && (program.plans ? !program.plans.includes(plan) : plan)) {
     return NextResponse.json(
       { message: "Please choose the plan that fits you best." },
       { status: 400 },
@@ -111,7 +113,7 @@ export async function POST(request: Request) {
       .filter((code) => /^[A-Z]{2}$/.test(code)),
   );
   const waitlist =
-    energyWaitlist ||
+    contactOnlyWaitlist ||
     (program.source === "/care/weight-management" && !availableStates.has(state));
 
   // A lead carrying a name, an email and a phone number never leaves over
@@ -156,8 +158,8 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({
-    message: energyWaitlist
-      ? "Your contact details were saved to the Energy Care waitlist. We will contact you when enrollment becomes available."
+    message: contactOnlyWaitlist
+      ? `Your contact details were saved to the ${program.label} waitlist. We will contact you when enrollment becomes available.`
       : waitlist
       ? "Your contact request is on the waitlist for your state. We will email you if weight-care services become available there."
       : "Your request is with our care team. We will email you a secure link to complete your clinical assessment.",

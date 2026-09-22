@@ -9,6 +9,7 @@ import { posts } from "@/lib/posts";
 import { WeightManagement } from "@/components/WeightManagement";
 import { EnergyPerformance } from "@/components/pillars/EnergyPerformance";
 import { SkinBeauty } from "@/components/pillars/SkinBeauty";
+import { LongevityHealthspan } from "@/components/pillars/LongevityHealthspan";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -62,6 +63,18 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     };
   }
 
+  if (slug === "longevity-healthspan") {
+    const title = "Longevity and Healthspan for Women | Eve’s Sisters";
+    const description =
+      "Explore education and proposed care pathways for strength, mobility, bone, heart, metabolic health, sleep and healthy aging.";
+    return {
+      title: { absolute: title },
+      description,
+      alternates: { canonical: "/pillars/longevity-healthspan" },
+      openGraph: { title, description },
+    };
+  }
+
   return {
     title: pillar.name,
     description: pillar.intro,
@@ -77,6 +90,7 @@ export default async function PillarPage({ params }: Params) {
   if (slug === "weight-loss") return <WeightManagement pillar={pillar} />;
   if (slug === "energy-performance") return <EnergyPerformance pillar={pillar} />;
   if (slug === "skin-beauty") return <SkinBeauty />;
+  if (slug === "longevity-healthspan") return <LongevityHealthspan />;
 
   const related = posts.filter((post) => post.pillar === pillar.name);
   const others = pillars.filter((item) => item.slug !== pillar.slug);

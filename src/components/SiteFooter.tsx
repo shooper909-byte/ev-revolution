@@ -22,6 +22,9 @@ export function SiteFooter() {
     pathname === "/pillars/energy-performance" ||
     pathname === "/care/energy-performance"
       ? "/care/energy-performance#get-started"
+      : pathname === "/pillars/longevity-healthspan" ||
+          pathname === "/care/longevity-healthspan"
+        ? "/care/longevity-healthspan#get-started"
       : "/care/weight-management#get-started";
   return (
     <footer className="border-t border-onyx-700 bg-onyx-900">
