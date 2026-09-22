@@ -45,7 +45,8 @@ export function SiteHeader() {
         ? "/care/longevity-healthspan#get-started"
         : null;
   const getStartedHref =
-    waitlistRoute ?? "/care/weight-management#get-started";
+    waitlistRoute ??
+    (pathname === "/about" ? "/care" : "/care/weight-management#get-started");
 
   const isActive = (href: string) =>
     href === "/packages/mrs-collection"
