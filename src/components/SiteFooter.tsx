@@ -92,7 +92,7 @@ export function SiteFooter() {
 
             <h2 className="brand-eyebrow mt-10 text-champagne">Newsletter</h2>
             <div className="mt-4">
-              <NewsletterSignup compact />
+              <NewsletterSignup compact source="footer" />
             </div>
           </div>
         </div>

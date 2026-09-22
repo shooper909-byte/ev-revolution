@@ -86,7 +86,7 @@ export default function JournalPage() {
             <h2 className="font-display text-3xl leading-tight text-ivory sm:text-4xl">
               Never miss a piece.
             </h2>
-            <NewsletterSignup />
+            <NewsletterSignup source="journal" />
           </div>
         </Container>
       </section>
