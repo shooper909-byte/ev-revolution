@@ -5,13 +5,14 @@ import { Container, Eyebrow } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PillarCard } from "@/components/PillarCard";
 import { PillarIcon } from "@/components/PillarIcon";
+import { mrsExperiences } from "@/lib/mrsCollection";
 import { careLabel, pillars } from "@/lib/pillars";
 import { formatPostDate, posts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://evevolutionhealth.com/" },
   title: "Eve’s Sisters — Women's Wellness for Every Stage",
-  description: "Evidence-led guidance and personalized wellness pathways for weight management, hormones, skin, energy, recovery and longevity.",
+  description: "Evidence-led guidance and personalized wellness pathways for weight management, hormones, skin, energy, recovery, longevity and sexual wellness.",
   openGraph: {
     title: "Eve’s Sisters — Women's Wellness for Every Stage",
     description: "Your body evolves. Your care should too.",
@@ -47,6 +48,10 @@ const steps = [
     imageAlt: "Woman opening a discreet wellness delivery while reviewing a follow-up message on her phone.",
   },
 ];
+
+const mrsHomepageExperiences = ["mrs-jones", "mrs-robinson", "mrs-golden"].map(
+  (slug) => mrsExperiences.find((experience) => experience.slug === slug)!,
+);
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -174,13 +179,13 @@ export default function HomePage() {
       <section id="pillars" className="scroll-mt-24 border-b border-onyx-700">
         <Container className="py-20 sm:py-28">
           <div className="max-w-2xl">
-            <Eyebrow>The six pillars</Eyebrow>
+            <Eyebrow>Care pathways</Eyebrow>
             <h2 className="mt-6 font-display text-4xl leading-tight text-ivory sm:text-5xl">
               Every stage. Every shape. Stronger.
             </h2>
             <p className="mt-6 text-base leading-relaxed text-ivory-200/80">
-              Six areas where the questions are most common and the plain
-              answers are hardest to find.
+              Explore six core areas of care plus Eve&rsquo;s Secret™, the
+              sexual-wellness pathway.
             </p>
           </div>
 
@@ -189,6 +194,72 @@ export default function HomePage() {
               <PillarCard key={pillar.slug} pillar={pillar} />
             ))}
           </div>
+
+          <Link
+            href="/eves-secret"
+            className="group relative mt-px flex min-h-[330px] overflow-hidden border border-mauve-700/60 bg-onyx-900 transition-colors hover:border-mauve focus-visible:border-mauve sm:min-h-[360px]"
+          >
+            <Image
+              src="/images/eves-secret-hero.png"
+              alt="Four adult women together in an elegant black and purple Eve’s Secret setting."
+              fill
+              sizes="(min-width: 1152px) 1152px, 100vw"
+              className="object-cover object-[72%_center] transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+            />
+            <span aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,11,11,0.99)_0%,rgba(8,11,11,0.94)_38%,rgba(8,11,11,0.55)_68%,rgba(8,11,11,0.16)_100%)]" />
+            <span aria-hidden="true" className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-ivory/0 transition-colors group-hover:ring-ivory/20 motion-reduce:transition-none" />
+            <span className="relative z-10 flex max-w-2xl flex-col justify-center p-8 sm:p-10 lg:p-12">
+              <PillarIcon name="lotus" className="h-7 w-7 text-mauve" />
+              <span className="brand-eyebrow mt-6 text-[0.5625rem] text-champagne">Sexual Wellness</span>
+              <span className="mt-3 font-display text-3xl leading-tight text-ivory sm:text-4xl">Eve&rsquo;s Secret™</span>
+              <span className="mt-5 max-w-xl text-base leading-relaxed text-ivory-200/90">An open conversation about desire, intimacy, and comfort through every stage of womanhood.</span>
+              <span className="brand-eyebrow mt-8 flex items-center gap-2 text-[0.625rem] text-champagne">
+                Explore Eve&rsquo;s Secret
+                <span aria-hidden="true" className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0">&rarr;</span>
+              </span>
+            </span>
+          </Link>
+        </Container>
+      </section>
+
+      {/* The Mrs. Collection is a curated collection, not a medical specialty. */}
+      <section aria-labelledby="mrs-collection-heading" className="border-b border-onyx-700 bg-plum-900/30">
+        <Container className="py-20 sm:py-28">
+          <div className="max-w-3xl">
+            <Eyebrow>Curated care options</Eyebrow>
+            <h2 id="mrs-collection-heading" className="mt-6 font-display text-4xl leading-tight text-ivory sm:text-5xl">Meet The Mrs. Collection</h2>
+            <p className="mt-6 text-base leading-relaxed text-ivory-200/85">Explore Mrs. Jones, Mrs. Robinson, and Mrs. Golden—three collections within Eve&rsquo;s Sisters, with care options guided by your individual needs.</p>
+            <p className="mt-4 text-sm leading-relaxed text-ivory-200/70">The Mrs. Collection organizes curated care options. Eve&rsquo;s Secret™ is the sexual-wellness pathway.</p>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {mrsHomepageExperiences.map((experience) => (
+              <Link
+                key={experience.slug}
+                href={`/packages/${experience.slug}`}
+                className="group relative min-h-[390px] overflow-hidden rounded-2xl border border-champagne/45 bg-onyx focus-visible:border-champagne sm:min-h-[440px]"
+              >
+                <Image
+                  src={experience.image}
+                  alt={experience.imageAlt}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                />
+                <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/20 to-transparent" />
+                <span className="absolute inset-x-0 bottom-0 z-10 p-7">
+                  <span className="block font-display text-3xl text-ivory">{experience.name}</span>
+                  <span className="mt-3 block text-sm leading-relaxed text-ivory-200/90">{experience.tagline}</span>
+                  <span className="brand-eyebrow mt-5 flex items-center gap-2 text-[0.5625rem] text-champagne">
+                    Explore {experience.name}
+                    <span aria-hidden="true" className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0">&rarr;</span>
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <Link href="/packages/mrs-collection" className="button-sheen brand-eyebrow mt-12 inline-block bg-plum px-8 py-4 text-xs text-ivory transition-colors hover:bg-plum-600">Explore The Mrs. Collection</Link>
         </Container>
       </section>
 
@@ -278,23 +349,6 @@ export default function HomePage() {
           </div>
 
           <p className="mt-9 text-xs leading-6 text-onyx-700">Services and treatment options vary by state and provider. Prescriptions, laboratory testing, and pharmacy charges may be separate. Individual results vary.</p>
-        </Container>
-      </section>
-
-      <section className="overflow-hidden border-b border-onyx-700 bg-[radial-gradient(circle_at_28%_30%,color-mix(in_oklab,var(--color-plum)_45%,transparent),transparent_40%),linear-gradient(120deg,var(--color-onyx),var(--color-plum-900))]">
-        <Container className="grid max-w-[1366px] items-stretch px-0 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
-          <div className="flex flex-col justify-center px-5 py-16 sm:px-8 sm:py-24 lg:py-28">
-            <Eyebrow>The Signature Experience</Eyebrow>
-            <h2 className="mt-6 font-display text-5xl text-ivory sm:text-6xl">Eve&rsquo;s Secret™</h2>
-            <p className="mt-4 font-display text-2xl text-champagne">Some things are better shared between sisters.</p>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory-200/90">A more elevated way to explore women&rsquo;s wellness—bringing multiple areas of care together in one thoughtfully designed experience.</p>
-            <ul className="mt-8 flex flex-wrap gap-3 text-base text-ivory"><li className="hairline border px-4 py-3">More personalized</li><li className="hairline border px-4 py-3">More connected</li><li className="hairline border px-4 py-3">Designed around your goals</li></ul>
-            <Link href="/eves-secret" className="button-sheen brand-eyebrow mt-10 inline-block w-fit bg-plum px-8 py-4 text-xs text-ivory transition-colors hover:bg-plum-600">Unlock Eve&rsquo;s Secret</Link>
-          </div>
-          <Link href="/eves-secret" aria-label="Explore Eve’s Secret" className="group relative block min-h-[360px] overflow-hidden border-t border-champagne/25 lg:min-h-[560px] lg:border-l lg:border-t-0">
-            <Image src="/images/eves-secret-hero.png" alt="Four women together in an elegant black and purple Eve’s Secret setting." width={1680} height={937} sizes="(min-width: 1024px) 58vw, 100vw" className="h-full w-full object-cover object-[72%_center] transition-transform duration-700 group-hover:scale-[1.02]" />
-            <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-onyx/20 via-transparent to-transparent" />
-          </Link>
         </Container>
       </section>
 
