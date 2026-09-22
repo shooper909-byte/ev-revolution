@@ -8,6 +8,7 @@ import { getPillar, pillars } from "@/lib/pillars";
 import { posts } from "@/lib/posts";
 import { WeightManagement } from "@/components/WeightManagement";
 import { EnergyPerformance } from "@/components/pillars/EnergyPerformance";
+import { SkinBeauty } from "@/components/pillars/SkinBeauty";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -49,6 +50,18 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     };
   }
 
+  if (slug === "skin-beauty") {
+    const title = "Prescription Skin Care Packages | Eve’s Sisters";
+    const description =
+      "Explore proposed prescription skincare packages and treatment options through independent licensed clinicians.";
+    return {
+      title: { absolute: title },
+      description,
+      alternates: { canonical: "/pillars/skin-beauty" },
+      openGraph: { title, description },
+    };
+  }
+
   return {
     title: pillar.name,
     description: pillar.intro,
@@ -63,6 +76,7 @@ export default async function PillarPage({ params }: Params) {
   if (!pillar) notFound();
   if (slug === "weight-loss") return <WeightManagement pillar={pillar} />;
   if (slug === "energy-performance") return <EnergyPerformance pillar={pillar} />;
+  if (slug === "skin-beauty") return <SkinBeauty />;
 
   const related = posts.filter((post) => post.pillar === pillar.name);
   const others = pillars.filter((item) => item.slug !== pillar.slug);
