@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const disclosure =
-  "Prescription required where applicable. Availability varies by state, clinical eligibility, and pharmacy. Not every listed treatment is available for enrollment. Compounded medications are not FDA-approved.";
+  "Treatment depends on clinical evaluation. Availability varies by state and pharmacy. A prescription is not guaranteed. Compounded medications are not FDA-approved.";
 
 const steps = [
   ["Explore options", "Browse treatments and learn what each one is."],
@@ -72,8 +72,8 @@ export default function TreatmentsPage() {
           <TreatmentExplorer />
           <p className="mt-10 text-xs leading-relaxed text-ivory-200/70">
             Descriptions are general information, not medical advice, and do not
-            include dosing. Listings reflect our clinical partner&rsquo;s catalog
-            and are not an offer to prescribe. See the{" "}
+            include dosing or prices. Listings reflect our clinical partner&rsquo;s
+            catalog (effective September 2026) and are not an offer to prescribe. See the{" "}
             <Link href="/disclaimer" className="text-champagne underline underline-offset-4">
               Medical Disclaimer
             </Link>
