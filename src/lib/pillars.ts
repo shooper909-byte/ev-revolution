@@ -243,7 +243,7 @@ export const pillars: Pillar[] = [
       "Energy, strength, focus and performance.",
     careImage: "care-energy-performance",
     careImageAlt:
-      "Warm-lit study of a strong, toned torso draped in deep plum silk.",
+      "A woman outdoors in bright daylight, hands behind her head, mid-stretch.",
   },
   {
     slug: "recovery-rejuvenation",
