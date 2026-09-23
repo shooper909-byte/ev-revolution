@@ -91,32 +91,35 @@ const faqs = [
 export function SkinBeauty() {
   return (
     <>
-      <section className="relative min-h-[650px] overflow-hidden border-b border-champagne/40 bg-onyx">
-        <Image
-          src="/images/skin-beauty/hero.webp"
-          alt="Three adult women of different ages and skin tones with natural skin texture."
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[68%_center]"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,11,11,.98)_0%,rgba(8,11,11,.9)_36%,rgba(8,11,11,.25)_70%,rgba(8,11,11,.08)_100%)]" />
-        <Container className="relative flex min-h-[650px] items-center py-20">
-          <div className="max-w-2xl">
-            <Eyebrow>Skin &amp; Beauty</Eyebrow>
-            <h1 className="mt-7 font-display text-[3rem] leading-[1.02] text-ivory sm:text-6xl lg:text-7xl">
-              Your skin evolves.<br />
-              <span className="text-champagne">Your care should too.</span>
-            </h1>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-ivory-200">
-              Explore personalized prescription skincare through independent licensed clinicians.
-            </p>
-            <Link
-              href="#packages"
-              className="button-sheen brand-eyebrow mt-9 inline-flex bg-plum px-7 py-4 text-[0.625rem] text-ivory transition-colors hover:bg-plum-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne"
-            >
-              Explore Skin Packages <span aria-hidden="true">&rarr;</span>
-            </Link>
+      <section className="relative overflow-hidden border-b border-champagne/40 bg-onyx">
+        <Container className="relative py-16 sm:py-20 lg:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="max-w-2xl">
+              <Eyebrow>Skin &amp; Beauty</Eyebrow>
+              <h1 className="mt-7 font-display text-[3rem] leading-[1.02] text-ivory sm:text-6xl lg:text-7xl">
+                Your skin evolves.<br />
+                <span className="text-champagne">Your care should too.</span>
+              </h1>
+              <p className="mt-7 max-w-xl text-lg leading-relaxed text-ivory-200">
+                Explore personalized prescription skincare through independent licensed clinicians.
+              </p>
+              <Link
+                href="#packages"
+                className="button-sheen cta-glow hover:cta-glow-hover brand-eyebrow mt-9 inline-flex rounded-full px-7 py-4 text-[0.625rem] text-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne"
+              >
+                Explore Skin Packages <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </div>
+            <div className="relative aspect-[3/2] w-full overflow-hidden bg-onyx-900">
+              <Image
+                src="/images/skin-beauty/hero.webp"
+                alt="Three adult women of different ages and skin tones with natural skin texture."
+                fill
+                priority
+                sizes="(max-width: 1023px) 92vw, 44vw"
+                className="object-cover object-[52%_22%]"
+              />
+            </div>
           </div>
         </Container>
       </section>
@@ -273,7 +276,7 @@ export function SkinBeauty() {
       <section className="bg-[radial-gradient(circle_at_center,var(--color-plum-900),var(--color-onyx)_75%)]">
         <Container className="py-20 text-center sm:py-24">
           <h2 className="font-display text-4xl text-ivory sm:text-6xl">A new chapter for your skin.</h2>
-          <Link href="#packages" className="button-sheen brand-eyebrow mt-8 inline-flex bg-plum px-8 py-4 text-[0.625rem] text-ivory transition-colors hover:bg-plum-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne">
+          <Link href="#packages" className="button-sheen cta-glow hover:cta-glow-hover brand-eyebrow mt-8 inline-flex rounded-full px-8 py-4 text-[0.625rem] text-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne">
             Explore Your Options <span aria-hidden="true">&rarr;</span>
           </Link>
         </Container>
