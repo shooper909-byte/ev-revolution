@@ -241,7 +241,7 @@ export const pillars: Pillar[] = [
     careLabel: "Energy & Performance",
     careSummary:
       "Energy, strength, focus and performance.",
-    careImage: "care-energy-performance",
+    careImage: "care-energy-performance-v2",
     careImageAlt:
       "A woman outdoors in bright daylight, hands behind her head, mid-stretch.",
   },
