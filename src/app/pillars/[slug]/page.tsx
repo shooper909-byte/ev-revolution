@@ -11,6 +11,7 @@ import { EnergyPerformance } from "@/components/pillars/EnergyPerformance";
 import { SkinBeauty } from "@/components/pillars/SkinBeauty";
 import { LongevityHealthspan } from "@/components/pillars/LongevityHealthspan";
 import { RecoveryRejuvenation } from "@/components/RecoveryRejuvenation";
+import { HormonesMenopause } from "@/components/pillars/HormonesMenopause";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -76,6 +77,18 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     };
   }
 
+  if (slug === "hormones-menopause") {
+    const title = "Hormones and Menopause Care for Women | Eve’s Sisters";
+    const description =
+      "Perimenopause, menopause and postmenopause explained plainly, with care plans and questions worth bringing to a menopause-trained clinician.";
+    return {
+      title: { absolute: title },
+      description,
+      alternates: { canonical: "/pillars/hormones-menopause" },
+      openGraph: { title, description },
+    };
+  }
+
   if (slug === "recovery-rejuvenation") {
     const title = "Recovery & Rejuvenation | Eve’s Sisters";
     const description =
@@ -104,6 +117,7 @@ export default async function PillarPage({ params }: Params) {
   if (slug === "energy-performance") return <EnergyPerformance pillar={pillar} />;
   if (slug === "skin-beauty") return <SkinBeauty />;
   if (slug === "longevity-healthspan") return <LongevityHealthspan />;
+  if (slug === "hormones-menopause") return <HormonesMenopause pillar={pillar} />;
   if (slug === "recovery-rejuvenation") return <RecoveryRejuvenation pillar={pillar} />;
 
   const related = posts.filter((post) => post.pillar === pillar.name);
@@ -226,16 +240,6 @@ export default async function PillarPage({ params }: Params) {
           </div>
         </Container>
       </section>
-
-      {pillar.slug === "hormones-menopause" && (
-        <section className="border-b border-champagne/30 bg-plum-900">
-          <Container className="py-10 text-center">
-            <Link href="/eves-secret" className="font-display text-2xl text-ivory transition-colors hover:text-champagne">
-              If it’s desire and comfort, that’s Eve’s Secret <span aria-hidden="true">&rarr;</span>
-            </Link>
-          </Container>
-        </section>
-      )}
 
       {related.length > 0 && (
         <section className="border-b border-onyx-700 bg-onyx-900">
