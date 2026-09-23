@@ -11,13 +11,14 @@ import { careLabel, pillars } from "@/lib/pillars";
 /* Care leads the navigation and owns the six pillar routes beneath it, so the
    header stays legible instead of listing all six pathways across the bar.
    "Resources" points at the existing /journal route rather than adding a
-   duplicate one. */
+   duplicate one. Items marked `wide` only fit on very wide screens; below
+   that they stay reachable from the footer and the logo (Home). */
 const primaryNav = [
   { href: "/treatments", label: "Treatments" },
   { href: "/packages/mrs-collection", label: "The Mrs. Collection" },
   { href: "/eves-secret", label: "Eve’s Secret™" },
-  { href: "/about#philosophy", label: "Our Approach" },
-  { href: "/journal", label: "Resources" },
+  { href: "/about#philosophy", label: "Our Approach", wide: true },
+  { href: "/journal", label: "Resources", wide: true },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -54,7 +55,7 @@ export function SiteHeader() {
       : pathname === href;
 
   const linkClass = (href: string) =>
-    `brand-eyebrow whitespace-nowrap text-xs tracking-[0.16em] transition-colors hover:text-champagne focus-visible:text-champagne ${
+    `brand-eyebrow whitespace-nowrap text-[0.6875rem] tracking-[0.12em] xl:text-xs xl:tracking-[0.16em] transition-colors hover:text-champagne focus-visible:text-champagne ${
       isActive(href) ? "text-champagne" : "text-ivory-200"
     }`;
 
@@ -63,11 +64,11 @@ export function SiteHeader() {
       <Container className="flex h-20 max-w-[1600px] items-center justify-between gap-4">
         <Wordmark />
 
-        <nav aria-label="Primary" className="hidden items-center gap-3 min-[1536px]:flex min-[1600px]:gap-5">
+        <nav aria-label="Primary" className="hidden items-center gap-3 lg:flex xl:gap-4 min-[1600px]:gap-5">
           <CareMenu active={careActive} />
           <Link
             href="/"
-            className={`${linkClass("/")} shrink-0`}
+            className={`${linkClass("/")} hidden shrink-0 min-[1536px]:inline`}
             aria-current={pathname === "/" ? "page" : undefined}
           >
             Home
@@ -77,7 +78,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className={linkClass(item.href)}
+              className={`${linkClass(item.href)} ${item.wide ? "hidden min-[1536px]:inline" : ""}`}
               aria-current={isActive(item.href) ? "page" : undefined}
             >
               {item.label}
@@ -86,7 +87,7 @@ export function SiteHeader() {
 
           <Link
             href={getStartedHref}
-            className="button-sheen brand-eyebrow whitespace-nowrap bg-plum px-5 py-3 text-xs tracking-[0.14em] text-ivory transition-colors hover:bg-plum-600"
+            className="button-sheen brand-eyebrow whitespace-nowrap bg-plum px-4 py-3 text-[0.6875rem] xl:px-5 xl:text-xs tracking-[0.14em] text-ivory transition-colors hover:bg-plum-600"
           >
             Get Started
           </Link>
@@ -97,7 +98,7 @@ export function SiteHeader() {
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          className="hairline flex h-11 w-11 shrink-0 items-center justify-center rounded-full border min-[1536px]:hidden"
+          className="hairline flex h-11 w-11 shrink-0 items-center justify-center rounded-full border lg:hidden"
         >
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
           <svg
@@ -123,7 +124,7 @@ export function SiteHeader() {
       <div
         id="mobile-nav"
         hidden={!open}
-        className="border-t border-onyx-700 bg-onyx-900 min-[1536px]:hidden"
+        className="border-t border-onyx-700 bg-onyx-900 lg:hidden"
       >
         <Container className="grid gap-1 py-6">
           <Link
