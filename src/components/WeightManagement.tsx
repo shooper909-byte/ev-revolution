@@ -48,6 +48,17 @@ function Action({ children = "Get Started", href = "/care/weight-management#get-
 function Portrait({ priority = false }: { priority?: boolean }) {
   return <div className={s.portrait}><Image src="/images/about-mature-campaign.png" alt="A woman looking ahead in warm light." width={1122} height={1402} sizes="(max-width: 767px) 200vw, 110vw" priority={priority} /></div>;
 }
+/** Simple line pictograms for the four How It Works steps. */
+function StepIcon({ index }: { index: number }) {
+  const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  const glyphs = [
+    <g key="book" {...common}><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M8 3v4M16 3v4M3 11h18M12 15v3M10.5 16.5h3" /></g>,
+    <g key="plan" {...common}><path d="M9 4h6v3H9zM7 4H5v17h14V4h-2" /><path d="M8 12h8M8 16h5" /></g>,
+    <g key="start" {...common}><rect x="3" y="9" width="12" height="7" rx="3.5" /><path d="M9 9v7" /><circle cx="18" cy="12.5" r="3" /></g>,
+    <g key="track" {...common}><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></g>,
+  ];
+  return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6">{glyphs[index] ?? glyphs[0]}</svg>;
+}
 export function WeightManagement({ pillar }: { pillar: Pillar }) {
   return <div className={s.page}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(weightSchema) }} />
@@ -62,13 +73,21 @@ export function WeightManagement({ pillar }: { pillar: Pillar }) {
           sizes="100vw"
         />
       </div>
-      <Container className={s.heroLead}>
+      <Container className={s.heroSplit}>
         <div className={s.heroCopy}>
           <Eyebrow>Weight Management</Eyebrow>
           <h1 id="weight-title">A Healthier You<br /><em>at Every Stage</em></h1>
           <p>Personalized weight management and metabolic wellness designed around your body, goals and stage of life.</p>
           <div className={s.actions}><Action /><Link className={s.secondary} href="/care/weight-management#plans">Compare Options <span aria-hidden="true">→</span></Link></div>
           <ul className={s.features}>{[[pillar.icon, "Personalized Approach"], ["renew", "Metabolic Wellness"], ["infinity", "Ongoing Support"]].map(([icon, label]) => <li key={label}><PillarIcon name={icon as PillarIconName} className="h-8 w-8" /><span>{label}</span></li>)}</ul>
+        </div>
+        <div className={s.heroPortrait}>
+          <Image
+            src="/images/care/care-weight-management.webp"
+            alt="A woman looking ahead in warm light."
+            fill
+            sizes="(max-width: 767px) 92vw, 44vw"
+          />
         </div>
       </Container>
     </section>
@@ -81,7 +100,7 @@ export function WeightManagement({ pillar }: { pillar: Pillar }) {
     </Container></section>
     <section className={s.options} aria-labelledby="options-title"><Container className={s.section}><Eyebrow>Explore Your Options</Eyebrow><h2 id="options-title">Choose the conversation that fits your goals.</h2><p>Every pathway begins with understanding your needs. Treatment eligibility and prescriptions require an independent evaluation by a licensed clinician.</p><ul className={s.optionGrid}>{options.map(([title, body]) => <li key={title}><h3>{title}</h3><p>{body}</p><Link href="/care/weight-management#plans">Explore This Option <span aria-hidden="true">→</span></Link></li>)}</ul></Container></section>
     <section className={s.banner}><Container className={s.bannerInner}><div><Eyebrow>Your Next Chapter Starts Here</Eyebrow><h2>Support for <em>every stage.</em></h2><p>Explore a wellness approach that works for your life.</p></div><Action>See Available Plans</Action></Container></section>
-    <section className={s.light} aria-labelledby="how-title"><Container className={s.section}><h2 id="how-title">How It Works</h2><p>Simple steps. Personal priorities.</p><ol className={s.steps}>{steps.map(([title, body], i) => <li key={title}><span className={s.number}>{String(i + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></li>)}</ol></Container></section>
-    <section aria-labelledby="faq-title"><Container className={s.faq}><div><Eyebrow>Your Questions</Eyebrow><h2 id="faq-title">Frequently Asked<br /><em>Questions</em></h2><p>Clear information for your next chapter.</p></div><div>{faqs.map(([question, answer]) => <details key={question} className={s.accordion}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></Container></section>
+    <section className={s.light} aria-labelledby="how-title"><Container className={s.section}><h2 id="how-title">How It Works</h2><p>Simple steps. Personal priorities.</p><ol className={s.steps}>{steps.map(([title, body], i) => <li key={title}><span className={s.stepIcon}><StepIcon index={i} /></span><p className={s.stepNumber}>{String(i + 1).padStart(2, "0")}</p><h3>{title}</h3><p>{body}</p></li>)}</ol></Container></section>
+    <section aria-labelledby="faq-title"><Container className={s.faq}><div className={s.faqImage}><Image src="/images/care/care-flexible.webp" alt="" fill sizes="(max-width: 767px) 92vw, 40vw" /></div><div><Eyebrow>Your Questions</Eyebrow><h2 id="faq-title">Frequently Asked<br /><em>Questions</em></h2><p>Clear information for your next chapter.</p><div className={s.faqList}>{faqs.map(([question, answer]) => <details key={question} className={s.accordion}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div></Container></section>
   </div>;
 }
