@@ -445,13 +445,24 @@ export default function CarePage() {
       </section>
 
       <section aria-labelledby="secret-heading" className="border-b border-onyx-700 bg-[radial-gradient(circle_at_80%_25%,color-mix(in_oklab,var(--color-plum)_45%,transparent),transparent_38%),linear-gradient(120deg,var(--color-onyx),var(--color-plum-900))]">
-        <Container className="py-20 sm:py-28">
+        <Container className="grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
           <Reveal>
             <Eyebrow>The Signature Experience</Eyebrow>
             <h2 id="secret-heading" className="mt-6 font-display text-5xl text-ivory sm:text-6xl">Eve&rsquo;s Secret™</h2>
             <p className="mt-4 font-display text-2xl text-champagne">Some things are better shared between sisters.</p>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory-200/90">A more elevated way to explore women&rsquo;s wellness—bringing multiple areas of care together in one thoughtfully designed experience.</p>
             <Link href="/eves-secret" className="button-sheen brand-eyebrow mt-10 inline-block bg-plum px-8 py-4 text-xs text-ivory transition-colors hover:bg-plum-600">Unlock Eve&rsquo;s Secret</Link>
+          </Reveal>
+          <Reveal delay={80}>
+            <div className="relative aspect-[848/482] overflow-hidden border border-champagne/30">
+              <Image
+                src="/images/care/care-eves-secret.webp"
+                alt="Four women in black and plum, each holding a finger to her lips."
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
           </Reveal>
         </Container>
       </section>

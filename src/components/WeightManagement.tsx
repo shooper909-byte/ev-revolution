@@ -52,7 +52,17 @@ export function WeightManagement({ pillar }: { pillar: Pillar }) {
   return <div className={s.page}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(weightSchema) }} />
     <section className={s.hero} aria-labelledby="weight-title">
-      <Container className={s.heroGrid}>
+      <div className={s.heroBanner}>
+        <Image
+          src="/images/care/care-weight-become-more-you.webp"
+          alt="Eve’s Sisters weight loss and maintenance banner: three women standing together beside the words “Become more you. Your body deserves care at every chapter.”"
+          width={1983}
+          height={793}
+          priority
+          sizes="100vw"
+        />
+      </div>
+      <Container className={s.heroLead}>
         <div className={s.heroCopy}>
           <Eyebrow>Weight Management</Eyebrow>
           <h1 id="weight-title">A Healthier You<br /><em>at Every Stage</em></h1>
@@ -60,7 +70,6 @@ export function WeightManagement({ pillar }: { pillar: Pillar }) {
           <div className={s.actions}><Action /><Link className={s.secondary} href="/care/weight-management#plans">Compare Options <span aria-hidden="true">→</span></Link></div>
           <ul className={s.features}>{[[pillar.icon, "Personalized Approach"], ["renew", "Metabolic Wellness"], ["infinity", "Ongoing Support"]].map(([icon, label]) => <li key={label}><PillarIcon name={icon as PillarIconName} className="h-8 w-8" /><span>{label}</span></li>)}</ul>
         </div>
-        <Portrait priority />
       </Container>
     </section>
     <section className={s.light} aria-label="Wellness priorities"><Container><ul className={s.benefits}>{benefits.map(([icon, label]) => <li key={label}><PillarIcon name={icon} className="h-8 w-8" /><span>{label}</span></li>)}</ul></Container></section>
