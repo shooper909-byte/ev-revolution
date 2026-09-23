@@ -454,10 +454,10 @@ export default function CarePage() {
             <Link href="/eves-secret" className="button-sheen brand-eyebrow mt-10 inline-block bg-plum px-8 py-4 text-xs text-ivory transition-colors hover:bg-plum-600">Unlock Eve&rsquo;s Secret</Link>
           </Reveal>
           <Reveal delay={80}>
-            <div className="relative aspect-[848/482] overflow-hidden border border-champagne/30">
+            <div className="relative aspect-square overflow-hidden border border-champagne/30">
               <Image
-                src="/images/care/care-eves-secret.webp"
-                alt="Four women in black and plum, each holding a finger to her lips."
+                src="/images/care/care-eves-secret-collection.webp"
+                alt="Eve’s Secret collection artwork: four women in plum and black, each holding a finger to her lips, above the words confidence, intimacy, beauty and wellness."
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
