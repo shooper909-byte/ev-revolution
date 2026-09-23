@@ -1,6 +1,138 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container, Eyebrow } from "@/components/Container";
+import type { Pillar } from "@/lib/pillars";
+
+/* Line pictograms for the focus bar and the steps. Drawn here rather than
+   pulled in as an icon set, so they inherit the champagne stroke and stay
+   consistent with the weight management page. */
+type GlyphName =
+  | "collagen"
+  | "barrier"
+  | "pigment"
+  | "hair"
+  | "sun"
+  | "transition"
+  | "calendar"
+  | "plan"
+  | "treatment"
+  | "review";
+
+const glyphs: Record<GlyphName, React.ReactNode> = {
+  collagen: (
+    <>
+      <path d="M8 3c0 4 8 6 8 9s-8 5-8 9" />
+      <path d="M16 3c0 4-8 6-8 9s8 5 8 9" />
+    </>
+  ),
+  barrier: <path d="M12 3 4.5 6v5.5c0 4.5 3.1 7.7 7.5 9.5 4.4-1.8 7.5-5 7.5-9.5V6Z" />,
+  pigment: (
+    <>
+      <circle cx="9.5" cy="12" r="6" />
+      <circle cx="14.5" cy="12" r="6" />
+    </>
+  ),
+  hair: (
+    <>
+      <path d="M6 21c0-7 1.5-12 6-18" />
+      <path d="M12 21c0-7 1.5-12 6-18" />
+      <path d="M4 21h16" />
+    </>
+  ),
+  sun: (
+    <>
+      <circle cx="12" cy="12" r="4.2" />
+      <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19" />
+    </>
+  ),
+  transition: (
+    <>
+      <path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 0 18" />
+      <path d="M12 21a9 9 0 0 1-6.4-2.6" />
+      <circle cx="12" cy="12" r="2.4" />
+    </>
+  ),
+  calendar: (
+    <>
+      <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+      <path d="M3.5 10h17M8 3v4M16 3v4" />
+    </>
+  ),
+  plan: (
+    <>
+      <rect x="5" y="3.5" width="14" height="17" rx="2" />
+      <path d="M9 2.5h6v3H9zM8.5 11h7M8.5 15h4.5" />
+    </>
+  ),
+  treatment: (
+    <>
+      <rect x="3.2" y="9" width="17.6" height="6" rx="3" transform="rotate(-38 12 12)" />
+      <path d="M9.4 14.6 14.6 9.4" />
+    </>
+  ),
+  review: (
+    <>
+      <path d="M4 20h16" />
+      <path d="M7 20v-6M12 20V8M17 20v-9" />
+    </>
+  ),
+};
+
+function Glyph({ name, className }: { name: GlyphName; className?: string }) {
+  return (
+    <span aria-hidden="true" className={className}>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-full w-full"
+      >
+        {glyphs[name]}
+      </svg>
+    </span>
+  );
+}
+
+/* The six areas this pillar covers, in the pillar record's own vocabulary
+   rather than as benefit promises. */
+const focusBar: { glyph: GlyphName; label: string }[] = [
+  { glyph: "collagen", label: "Collagen" },
+  { glyph: "barrier", label: "Barrier function" },
+  { glyph: "pigment", label: "Pigment and tone" },
+  { glyph: "hair", label: "Hair and scalp" },
+  { glyph: "sun", label: "Sun protection" },
+  { glyph: "transition", label: "Through the transition" },
+];
+
+const steps: { number: string; glyph: GlyphName; title: string; body: string }[] = [
+  {
+    number: "01",
+    glyph: "calendar",
+    title: "Choose a care option",
+    body: "Start with the package that matches what you are looking for.",
+  },
+  {
+    number: "02",
+    glyph: "plan",
+    title: "Complete a secure clinical evaluation",
+    body: "Medical information is collected only here, never through an ordinary contact form.",
+  },
+  {
+    number: "03",
+    glyph: "treatment",
+    title: "If prescribed, receive treatment at home",
+    body: "A licensed clinician selects an option only when it is appropriate.",
+  },
+  {
+    number: "04",
+    glyph: "review",
+    title: "Scheduled clinical reviews",
+    body: "Each proposed package includes reviews with the treating clinician.",
+  },
+];
 
 const packages = [
   {
@@ -88,9 +220,10 @@ const faqs = [
   ],
 ];
 
-export function SkinBeauty() {
+export function SkinBeauty({ pillar }: { pillar: Pillar }) {
   return (
     <>
+      {/* Hero -------------------------------------------------------------- */}
       <section className="relative overflow-hidden border-b border-champagne/40 bg-onyx">
         <Container className="relative py-16 sm:py-20 lg:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
@@ -109,18 +242,107 @@ export function SkinBeauty() {
               >
                 Explore Skin Packages <span aria-hidden="true">&rarr;</span>
               </Link>
+
+              <ul className="mt-12 grid gap-6 sm:grid-cols-3">
+                {pillar.focus.map((item) => (
+                  <li key={item.title}>
+                    <p className="font-display text-lg leading-snug text-ivory">{item.title}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-ivory-200/75">{item.body}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="relative aspect-[3/2] w-full overflow-hidden bg-onyx-900">
+
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-onyx-900">
               <Image
-                src="/images/skin-beauty/hero.webp"
-                alt="Three adult women of different ages and skin tones with natural skin texture."
+                src="/images/care/care-skin-beauty.webp"
+                alt={pillar.careImageAlt ?? "A woman photographed in close profile against an onyx background."}
                 fill
                 priority
                 sizes="(max-width: 1023px) 92vw, 44vw"
-                className="object-cover object-[52%_22%]"
+                className="object-cover"
               />
             </div>
           </div>
+        </Container>
+      </section>
+
+      {/* What this pillar covers ------------------------------------------- */}
+      <section aria-label="What skin and beauty care covers" className="border-b border-onyx/15 bg-ivory text-onyx">
+        <Container className="py-10 sm:py-12">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-9 sm:grid-cols-3 lg:grid-cols-6">
+            {focusBar.map((item) => (
+              <li key={item.label} className="flex flex-col items-center gap-3 text-center">
+                <Glyph name={item.glyph} className="block h-8 w-8 text-plum" />
+                <p className="text-sm leading-snug font-medium">{item.label}</p>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      {/* More than aesthetics ---------------------------------------------- */}
+      <section aria-labelledby="aesthetics-heading" className="border-b border-onyx-700 bg-onyx">
+        <div className="grid lg:grid-cols-2">
+          <div className="relative min-h-[380px] lg:min-h-[560px]">
+            <Image
+              src="/images/skin-beauty/hero.webp"
+              alt="Three adult women of different ages and skin tones with natural skin texture."
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover object-[62%_center]"
+            />
+          </div>
+          <div className="flex items-center px-6 py-16 sm:px-12 lg:px-16">
+            <div className="max-w-2xl">
+              <Eyebrow>More than aesthetics</Eyebrow>
+              <h2 id="aesthetics-heading" className="mt-6 font-display text-[2.2rem] leading-tight text-ivory sm:text-5xl">
+                {pillar.tagline}
+              </h2>
+              <p className="mt-6 text-base leading-relaxed text-ivory-200/90">{pillar.intro}</p>
+              <ul className="mt-9 space-y-4">
+                {pillar.covered.map((line) => (
+                  <li key={line} className="flex gap-3 text-sm leading-relaxed text-ivory-200">
+                    <span aria-hidden="true" className="mt-px text-champagne">&#10003;</span>
+                    {line}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="#packages"
+                className="button-sheen cta-glow hover:cta-glow-hover brand-eyebrow mt-10 inline-flex rounded-full px-8 py-4 text-[0.625rem] text-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne"
+              >
+                See the Proposed Packages <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Question band ------------------------------------------------------ */}
+      <section aria-label="The question we hear most" className="relative overflow-hidden border-b border-champagne/30">
+        <Image
+          src="/images/care/care-cta-silk.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(100deg,var(--color-plum-900)_10%,color-mix(in_oklab,var(--color-plum)_78%,transparent)_100%)]" />
+        <Container className="relative flex flex-col items-center gap-8 py-16 text-center sm:py-20 lg:flex-row lg:justify-between lg:text-left">
+          <div>
+            <p className="brand-eyebrow text-champagne">The question we hear most</p>
+            <p className="mt-5 font-display text-[1.9rem] leading-tight text-ivory sm:text-4xl">
+              &ldquo;{pillar.question}&rdquo;
+            </p>
+          </div>
+          <Link
+            href="#products"
+            className="hairline brand-eyebrow shrink-0 border px-8 py-4 text-[0.625rem] text-ivory hover:bg-onyx-900/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne"
+          >
+            See the Options <span aria-hidden="true">&rarr;</span>
+          </Link>
         </Container>
       </section>
 
@@ -184,7 +406,7 @@ export function SkinBeauty() {
         </Container>
       </section>
 
-      <section aria-labelledby="products-heading" className="border-b border-onyx-700 bg-onyx">
+      <section id="products" aria-labelledby="products-heading" className="scroll-mt-24 border-b border-onyx-700 bg-onyx">
         <Container className="py-20 sm:py-24">
           <div className="text-center">
             <Eyebrow>Product options</Eyebrow>
@@ -217,66 +439,75 @@ export function SkinBeauty() {
         </Container>
       </section>
 
+      {/* How it works ------------------------------------------------------ */}
       <section aria-labelledby="how-heading" className="border-b border-onyx/15 bg-ivory text-onyx">
-        <div className="grid lg:grid-cols-2">
-          <div className="relative min-h-[360px] lg:min-h-[520px]">
+        <Container className="py-20 sm:py-24">
+          <p className="brand-eyebrow text-plum">How it works</p>
+          <h2 id="how-heading" className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
+            Care that starts with a conversation
+          </h2>
+          <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step) => (
+              <li key={step.number}>
+                <span className="inline-grid h-14 w-14 place-items-center rounded-full bg-[color-mix(in_oklab,var(--color-champagne)_24%,transparent)] text-champagne-700">
+                  <Glyph name={step.glyph} className="block h-6 w-6" />
+                </span>
+                <p className="mt-5 font-display text-2xl text-plum">{step.number}</p>
+                <p className="mt-2 font-display text-xl leading-snug">{step.title}</p>
+                <p className="mt-3 text-sm leading-relaxed text-onyx-800/70">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-12 max-w-3xl text-sm leading-relaxed text-onyx-800/70">
+            Medical information is collected only within the secure clinical evaluation&mdash;not through an ordinary website contact form.
+          </p>
+        </Container>
+      </section>
+
+      {/* FAQ ---------------------------------------------------------------- */}
+      <section aria-labelledby="faq-heading" className="border-b border-onyx-700 bg-onyx-900">
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="relative min-h-[360px] lg:min-h-[540px]">
             <Image
               src="/images/skin-beauty/clinician-telehealth.webp"
               alt="Female clinician conducting a private telehealth visit from a warm office."
               fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              sizes="(min-width: 1024px) 42vw, 100vw"
               className="object-cover"
             />
           </div>
-          <div className="flex items-center px-6 py-16 sm:px-12 lg:px-16">
-            <div className="max-w-2xl">
-              <p className="brand-eyebrow text-plum">How it works</p>
-              <h2 id="how-heading" className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
-                Care that starts with a conversation
-              </h2>
-              <ol className="mt-10 grid gap-7 sm:grid-cols-3">
-                {[
-                  ["01", "Choose a care option."],
-                  ["02", "Complete a secure clinical evaluation."],
-                  ["03", "If prescribed, receive treatment at home."],
-                ].map(([number, label]) => (
-                  <li key={number} className="border-t border-plum/25 pt-5">
-                    <span className="font-display text-2xl text-plum">{number}</span>
-                    <p className="mt-4 font-display text-xl leading-snug">{label}</p>
-                  </li>
-                ))}
-              </ol>
-              <p className="mt-8 text-sm leading-relaxed text-onyx-800/70">
-                Medical information is collected only within the secure clinical evaluation—not through an ordinary website contact form.
-              </p>
+          <div className="px-6 py-16 sm:px-12 lg:px-16 lg:py-20">
+            <Eyebrow>Your questions</Eyebrow>
+            <h2 id="faq-heading" className="mt-5 font-display text-4xl text-ivory sm:text-5xl">Answered plainly</h2>
+            <div className="mt-10 grid gap-3">
+              {faqs.map(([question, answer]) => (
+                <details key={question} className="group rounded-xl border border-onyx-700 bg-onyx px-6">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 font-display text-xl text-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-champagne [&::-webkit-details-marker]:hidden">
+                    {question}<span aria-hidden="true" className="text-champagne transition-transform motion-reduce:transition-none group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="pb-6 text-sm leading-relaxed text-ivory-200/80">{answer}</p>
+                </details>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section aria-labelledby="faq-heading" className="border-b border-onyx-700 bg-onyx-900">
-        <Container className="grid gap-12 py-20 sm:py-24 lg:grid-cols-[0.7fr_1.3fr]">
-          <div>
-            <Eyebrow>Your questions</Eyebrow>
-            <h2 id="faq-heading" className="mt-5 font-display text-4xl text-ivory sm:text-5xl">Answered plainly</h2>
-          </div>
-          <div className="grid gap-3">
-            {faqs.map(([question, answer]) => (
-              <details key={question} className="group rounded-xl border border-onyx-700 bg-onyx px-6">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 font-display text-xl text-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-champagne [&::-webkit-details-marker]:hidden">
-                  {question}<span aria-hidden="true" className="text-champagne transition-transform motion-reduce:transition-none group-open:rotate-45">+</span>
-                </summary>
-                <p className="pb-6 text-sm leading-relaxed text-ivory-200/80">{answer}</p>
-              </details>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-[radial-gradient(circle_at_center,var(--color-plum-900),var(--color-onyx)_75%)]">
-        <Container className="py-20 text-center sm:py-24">
-          <h2 className="font-display text-4xl text-ivory sm:text-6xl">A new chapter for your skin.</h2>
-          <Link href="#packages" className="button-sheen cta-glow hover:cta-glow-hover brand-eyebrow mt-8 inline-flex rounded-full px-8 py-4 text-[0.625rem] text-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne">
+      {/* Closing band -------------------------------------------------------- */}
+      <section className="relative overflow-hidden">
+        <Image
+          src="/images/care/care-cta-silk.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(100deg,var(--color-plum-900)_5%,color-mix(in_oklab,var(--color-plum)_72%,transparent)_100%)]" />
+        <Container className="relative py-20 text-center sm:py-24">
+          <p className="brand-eyebrow text-champagne">Your next chapter starts here</p>
+          <h2 className="mt-5 font-display text-4xl text-ivory sm:text-6xl">A new chapter for your skin.</h2>
+          <Link href="#packages" className="button-sheen cta-glow hover:cta-glow-hover brand-eyebrow mt-9 inline-flex rounded-full px-8 py-4 text-[0.625rem] text-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne">
             Explore Your Options <span aria-hidden="true">&rarr;</span>
           </Link>
         </Container>

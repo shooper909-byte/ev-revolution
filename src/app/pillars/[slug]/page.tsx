@@ -102,7 +102,7 @@ export default async function PillarPage({ params }: Params) {
   if (!pillar) notFound();
   if (slug === "weight-loss") return <WeightManagement pillar={pillar} />;
   if (slug === "energy-performance") return <EnergyPerformance pillar={pillar} />;
-  if (slug === "skin-beauty") return <SkinBeauty />;
+  if (slug === "skin-beauty") return <SkinBeauty pillar={pillar} />;
   if (slug === "longevity-healthspan") return <LongevityHealthspan />;
   if (slug === "recovery-rejuvenation") return <RecoveryRejuvenation pillar={pillar} />;
 
