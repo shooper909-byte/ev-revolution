@@ -186,6 +186,17 @@ body {
 }
 
 /* A single champagne sheen that crosses a button on hover. */
+/* Brighter plum with a glow, for primary calls to action. */
+@utility cta-glow {
+  background: linear-gradient(135deg, var(--color-plum-600), var(--color-plum-400));
+  box-shadow: 0 6px 26px -6px color-mix(in oklab, var(--color-plum-400) 70%, transparent);
+  transition: background .25s ease, box-shadow .25s ease;
+}
+@utility cta-glow-hover {
+  background: linear-gradient(135deg, var(--color-plum-400), #b4579a);
+  box-shadow: 0 8px 34px -4px color-mix(in oklab, var(--color-plum-400) 92%, transparent);
+}
+
 @utility button-sheen {
   position: relative;
   overflow: hidden;

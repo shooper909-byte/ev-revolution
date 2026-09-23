@@ -62,18 +62,21 @@ export function EnergyPerformance({ pillar }: { pillar: Pillar }) {
   return (
     <>
       <section className="relative overflow-hidden border-b border-onyx-700 bg-onyx">
-        <Image src="/images/energy/energy-hero.webp" alt="An adult woman taking a calm morning walk through a city park." fill priority sizes="100vw" className="object-cover object-center lg:object-right" />
-        <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,11,11,0.98)_0%,rgba(8,11,11,0.88)_42%,rgba(8,11,11,0.25)_72%,rgba(8,11,11,0.08)_100%)]" />
-        <Container className="relative py-20 sm:py-24 lg:py-32">
+        <Container className="relative py-16 sm:py-20 lg:py-24">
           <nav aria-label="Breadcrumb" className="brand-eyebrow text-[0.5625rem] text-taupe"><Link href="/care" className="hover:text-champagne">Care</Link><span aria-hidden="true" className="mx-2">/</span><span aria-current="page" className="text-ivory-200">{pillar.name}</span></nav>
-          <div className="mt-10 max-w-2xl">
+          <div className="mt-10 grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="max-w-2xl">
             <Eyebrow>Energy and Performance</Eyebrow>
             <h1 className="mt-7 font-display text-[2.75rem] leading-[1.04] text-ivory sm:text-6xl lg:text-7xl">Understand Your Fatigue. Explore Your Next Step.</h1>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-ivory-200/90 sm:text-lg">Learn how a clinical evaluation may explore sleep, nutrition, hormonal changes, and other contributors to persistent fatigue.</p>
             <p className="mt-5 text-sm font-semibold text-champagne">Energy care enrollment is not yet open.</p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <a href="#plans" className="button-sheen brand-eyebrow bg-plum px-8 py-4 text-center text-[0.625rem] text-ivory hover:bg-plum-600">Explore Proposed Plans</a>
+              <a href="#plans" className="button-sheen cta-glow hover:cta-glow-hover brand-eyebrow rounded-full px-8 py-4 text-center text-[0.625rem] text-ivory">Explore Proposed Plans</a>
               <Link href="/care/energy-performance#get-started" className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne hover:bg-onyx-800">Join the Waitlist</Link>
+            </div>
+          </div>
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-onyx-900">
+              <Image src="/images/energy/energy-hero.webp" alt="An adult woman taking a calm morning walk through a city park." fill priority sizes="(max-width: 1023px) 92vw, 44vw" className="object-cover" />
             </div>
           </div>
         </Container>
@@ -119,7 +122,7 @@ export function EnergyPerformance({ pillar }: { pillar: Pillar }) {
             <Eyebrow>A future clinical pathway</Eyebrow>
             <h2 className="mt-6 font-display text-[2.2rem] leading-tight text-ivory sm:text-5xl">Clinical care begins only after launch and evaluation.</h2>
             <p className="mt-6 text-base leading-relaxed text-ivory-200/85">When available, services may be provided by independent licensed clinicians. Joining the waitlist does not begin clinical care, establish eligibility or guarantee treatment.</p>
-            <Link href="/care/energy-performance#get-started" className="button-sheen brand-eyebrow mt-9 inline-block bg-plum px-8 py-4 text-[0.625rem] text-ivory hover:bg-plum-600">Join the Energy Care Waitlist</Link>
+            <Link href="/care/energy-performance#get-started" className="button-sheen cta-glow hover:cta-glow-hover brand-eyebrow mt-9 inline-block rounded-full px-8 py-4 text-[0.625rem] text-ivory">Join the Energy Care Waitlist</Link>
           </Reveal>
         </Container>
       </section>
