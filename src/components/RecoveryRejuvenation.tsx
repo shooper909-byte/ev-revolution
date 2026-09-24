@@ -4,7 +4,6 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { Container, Eyebrow } from "@/components/Container";
 import { PillarIcon, type PillarIconName } from "@/components/PillarIcon";
-import type { Pillar } from "@/lib/pillars";
 import s from "./RecoveryRejuvenation.module.css";
 
 const benefits: [PillarIconName, string][] = [
@@ -31,30 +30,26 @@ const faqs = [
 function Action({ children }: { children: React.ReactNode }) {
   return <Link href="/contact" className={s.button}>{children}<span aria-hidden="true">→</span></Link>;
 }
-function Photo({ name, alt, hero = false, children }: {
-  name: "hero" | "stages" | "stretch" | "mitochondria"; alt: string; hero?: boolean; children?: React.ReactNode;
+function Photo({ name, alt, children }: {
+  name: "stages" | "stretch" | "mitochondria"; alt: string; children?: React.ReactNode;
 }) {
   const src = `/images/recovery/recovery-${name}.jpg`;
   // Missing approved photography uses CSS, without requesting a broken image URL.
   const available = existsSync(join(process.cwd(), "public", src));
   return <div className={`${s.photo} ${s[name]}`}>
-    {available ? <Image src={src} alt={alt} fill sizes={hero ? "(max-width: 767px) 100vw, 60vw" : "(max-width: 767px) 100vw, 50vw"} priority={hero} className={s.image} /> : <div className={s.fallback} aria-hidden="true"><span /></div>}
+    {available ? <Image src={src} alt={alt} fill sizes="(max-width: 767px) 100vw, 50vw" className={s.image} /> : <div className={s.fallback} aria-hidden="true"><span /></div>}
     {children}
   </div>;
 }
-export function RecoveryRejuvenation({ pillar }: { pillar: Pillar }) {
+export function RecoveryRejuvenation() {
   return <div className={s.page}>
     <section className={s.heroSection} aria-labelledby="recovery-title">
-      <Container className={s.heroGrid}>
-        <div className={s.heroCopy}>
-          <Eyebrow>Recovery &amp; Rejuvenation</Eyebrow>
-          <h1 id="recovery-title">Recover Stronger.<br /><em>Live Better.</em></h1>
-          <p>Recovery is part of performance. Explore practical support for sleep, mobility, muscle recovery, stress management and long-term wellness at every stage of life.</p>
-          <Action>Explore Recovery</Action>
-          <ul className={s.values}>{[[pillar.icon, "Recover Faster"], ["honeycomb", "Rebuild Stronger"], ["lotus", "Feel Better Longer"]].map(([icon, label]) => <li key={label}><PillarIcon name={icon as PillarIconName} className="h-8 w-8 shrink-0" /><span>{label}</span></li>)}</ul>
-        </div>
-        <Photo name="hero" hero alt="Adult women in athletic clothing sharing an active moment together."><p className={s.heroAside}>For every stage.<br />Every goal.<br />Every you.</p></Photo>
-      </Container>
+      <h1 id="recovery-title" className="sr-only">Recovery and Rejuvenation</h1>
+      <div className={s.heroBanner}>
+        <Image src="/images/recovery/recovery-hero-banner.webp" alt="Eve's Sisters: Recovery and Rejuvenation. Restore, replenish, rebalance, renew. Whole-person care to help you recover faster, rejuvenate deeper, and feel your best, inside and out. Four women relaxing on a terrace overlooking the sea at sunset. Recovery: heal faster, feel stronger. Restore: support muscle, joint and tissue health. Replenish: boost energy and vitality. Improve sleep: deeper rest for a brighter you. Rejuvenate: look and feel younger inside and out. Longevity: support lifelong health." fill sizes="(max-width: 1672px) 100vw, 1672px" priority className={s.image} />
+        {/* Sits over the "Explore Recovery & Rejuvenation" button drawn into the banner. */}
+        <Link href="/contact" className={s.heroCta}><span className="sr-only">Explore Recovery &amp; Rejuvenation</span></Link>
+      </div>
     </section>
     <section className={s.ivory} aria-label="Recovery and wellness priorities"><Container><ul className={s.benefits}>{benefits.map(([icon, label]) => <li key={label}><PillarIcon name={icon} className="h-8 w-8" /><span>{label}</span></li>)}</ul></Container></section>
     <section className={s.cellular} aria-labelledby="cellular-title">
