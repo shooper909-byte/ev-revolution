@@ -201,9 +201,9 @@ export const pillars: Pillar[] = [
     careLabel: "Skin & Beauty",
     careSummary:
       "Skin, hair and beauty-focused wellness.",
-    careImage: "care-skin-beauty",
+    careImage: "care-skin-beauty-v2",
     careImageAlt:
-      "Close profile of a woman with luminous deep brown skin against an onyx background.",
+      "A woman with luminous skin, head tilted back and one hand at her neck, in warm low light.",
   },
   {
     slug: "energy-performance",
