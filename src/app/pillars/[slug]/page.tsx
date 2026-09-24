@@ -118,7 +118,7 @@ export default async function PillarPage({ params }: Params) {
   if (slug === "skin-beauty") return <SkinBeauty pillar={pillar} />;
   if (slug === "longevity-healthspan") return <LongevityHealthspan />;
   if (slug === "hormones-menopause") return <HormonesMenopause pillar={pillar} />;
-  if (slug === "recovery-rejuvenation") return <RecoveryRejuvenation pillar={pillar} />;
+  if (slug === "recovery-rejuvenation") return <RecoveryRejuvenation />;
 
   const related = posts.filter((post) => post.pillar === pillar.name);
   const others = pillars.filter((item) => item.slug !== pillar.slug);
