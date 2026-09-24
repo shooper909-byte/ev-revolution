@@ -351,7 +351,7 @@ export default function SkinBeautyCarePage() {
             <div className="relative">
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-onyx-700 sm:aspect-[5/6]">
                 <Image
-                  src="/images/care/care-skin-beauty-v2.webp"
+                  src="/images/care/care-skin-beauty-v3.webp"
                   alt="A woman with luminous skin, head tilted back and one hand at her neck, in warm low light."
                   fill
                   priority

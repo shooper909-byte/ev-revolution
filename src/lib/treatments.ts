@@ -155,7 +155,7 @@ export const treatmentCategories: readonly TreatmentCategory[] = [
     id: "skin",
     label: "Skin & Beauty",
     eyebrow: "Healthy skin at every age",
-    image: "/images/care/care-skin-beauty-v2.webp",
+    image: "/images/care/care-skin-beauty-v3.webp",
     imageAlt: "A woman with luminous skin, head tilted back and one hand at her neck, in warm low light.",
     pathway: { href: "/care/skin-beauty", label: "Skin Care" },
     waitlistHref: "/care/skin-beauty#get-started",

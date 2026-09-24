@@ -255,7 +255,7 @@ export function SkinBeauty({ pillar }: { pillar: Pillar }) {
 
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-onyx-900">
               <Image
-                src="/images/care/care-skin-beauty-v2.webp"
+                src="/images/care/care-skin-beauty-v3.webp"
                 alt={pillar.careImageAlt ?? "A woman photographed in close profile against an onyx background."}
                 fill
                 priority
