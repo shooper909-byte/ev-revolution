@@ -22,7 +22,7 @@ export const business: Business = {
   /** Registered legal entity name, e.g. "Eve's Sisters LLC". */
   legalName: "",
   /** Support inbox patients use for questions and cancellations. */
-  email: "hello@evevolutionhealth.com",
+  email: "info@evevolutionhealth.com",
   /** Customer support phone number, e.g. "(555) 555-0100". */
   phone: "",
   /** Registered business mailing address, one line per entry. */
