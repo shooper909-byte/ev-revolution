@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { BusinessContact, policyLinks } from "@/components/PolicyPage";
 import { careLabel, pillars } from "@/lib/pillars";
 
 const company = [
@@ -12,8 +13,8 @@ const company = [
   { href: "/care", label: "Care" },
   { href: "/about", label: "About" },
   { href: "/journal", label: "Resources" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
-  { href: "/disclaimer", label: "Medical Disclaimer" },
 ];
 
 export function SiteFooter() {
@@ -99,7 +100,26 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="hairline mt-16 border-t pt-8">
+        <div className="hairline mt-16 grid gap-10 border-t pt-8 lg:grid-cols-[1.2fr_2fr]">
+          <div>
+            <h2 className="brand-eyebrow text-champagne">Contact</h2>
+            <BusinessContact className="text-sm" />
+          </div>
+          <nav aria-label="Policies">
+            <h2 className="brand-eyebrow text-champagne">Policies</h2>
+            <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+              {policyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-ivory-200 transition-colors hover:text-champagne">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        <div className="hairline mt-10 border-t pt-8">
           <p className="text-xs leading-relaxed text-taupe-700">
             Eve&rsquo;s Sisters publishes general wellness education. Nothing on this
             site is medical advice, diagnosis or treatment, and it is not a

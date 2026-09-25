@@ -1,3 +1,5 @@
+import { business } from "@/lib/business";
+
 /**
  * Forwards a submission to whatever service is configured for it.
  *
@@ -17,8 +19,7 @@ export async function forwardTo(
     return {
       ok: false,
       status: 503,
-      message:
-        "This form is not connected to a provider yet. Please email hello@ev-revolution.com in the meantime.",
+      message: `This form is not connected to a provider yet. Please email ${business.email} in the meantime.`,
     };
   }
 
