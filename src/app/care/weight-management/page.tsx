@@ -72,7 +72,7 @@ const plans: Plan[] = [
     ],
     treatments: {
       label: "Possible treatments",
-      body: "Metformin, topiramate or naltrexone/bupropion when clinically appropriate.",
+      body: "Metformin, topiramate or FDA-approved naltrexone/bupropion extended-release when clinically appropriate.",
     },
     cta: "Choose Oral Weight Care",
     footnote:
@@ -86,7 +86,7 @@ const plans: Plan[] = [
     badge: "Most popular",
     featured: true,
     description:
-      "Ongoing clinical support for eligible patients prescribed compounded semaglutide or compounded tirzepatide.",
+      "Ongoing clinical support for eligible patients prescribed an FDA-approved GLP-1 medication.",
     includes: [
       "GLP-1 eligibility evaluation",
       "Prescription and refill management",
@@ -97,11 +97,11 @@ const plans: Plan[] = [
     ],
     treatments: {
       label: "Potential medications",
-      body: "Compounded semaglutide or compounded tirzepatide when clinically appropriate and available.",
+      body: "FDA-approved semaglutide, tirzepatide or liraglutide when clinically appropriate and available.",
     },
     cta: "Choose GLP-1 Care",
     footnote:
-      "Medication cost is separate. Compounded medications are not FDA-approved. The FDA does not evaluate compounded medications for safety, effectiveness, or quality.",
+      "Medication cost is separate. Only FDA-approved GLP-1 medications are prescribed in this plan.",
   },
   {
     id: "complete-weight-care",
@@ -174,11 +174,12 @@ const comparison: ComparisonRow[] = [
 ];
 
 const treatments: [PillarIconName, string, string][] = [
-  ["renew", "Compounded Semaglutide", "GLP-1 · Compounded"],
-  ["honeycomb", "Compounded Tirzepatide", "GLP-1 / GIP · Compounded"],
+  ["renew", "Semaglutide", "GLP-1 · FDA-approved"],
+  ["honeycomb", "Tirzepatide", "GLP-1 / GIP · FDA-approved"],
+  ["lotus", "Liraglutide", "GLP-1 · FDA-approved"],
   ["leaf", "Metformin", "Oral"],
   ["bolt", "Topiramate", "Oral"],
-  ["infinity", "Naltrexone/Bupropion", "Oral"],
+  ["infinity", "Naltrexone/Bupropion ER", "Oral"],
 ];
 
 const steps: [string, string][] = [
@@ -423,11 +424,6 @@ export default function WeightManagementCarePage() {
 
           <Reveal>
             <p className="hairline mt-10 max-w-3xl border-t pt-7 text-sm leading-relaxed text-ivory-200/70">
-              <strong className="text-ivory-200">
-                Compounded medications are not FDA-approved. The FDA does not
-                evaluate compounded medications for safety, effectiveness, or
-                quality.
-              </strong>{" "}
               Medication is prescribed only when clinically appropriate
               following an evaluation by a licensed provider. Medication
               availability, eligibility and pricing may vary. Prescription
