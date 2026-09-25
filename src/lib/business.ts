@@ -20,13 +20,13 @@ type Business = {
 export const business: Business = {
   brand: "Eve’s Sisters",
   /** Registered legal entity name, e.g. "Eve's Sisters LLC". */
-  legalName: "",
+  legalName: "Eve’s Sisters",
   /** Support inbox patients use for questions and cancellations. */
   email: "info@evevolutionhealth.com",
   /** Customer support phone number, e.g. "(555) 555-0100". */
-  phone: "",
+  phone: "(832) 800-7818",
   /** Registered business mailing address, one line per entry. */
-  address: [],
+  address: ["3247 Woods Canyon Ct", "Missouri City, TX 77459"],
   domain: "evevolutionhealth.com",
 };
 
