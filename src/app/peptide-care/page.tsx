@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description,
     url: canonical,
     type: "website",
-    images: ["/og-image"],
+    images: ["/opengraph-image.png"],
   },
 };
 
@@ -105,7 +105,6 @@ const plans: Plan[] = [
       "Initial eligibility assessment",
       "Licensed-provider consultation",
       "Personalized care plan",
-      "Secure patient portal",
       "Prescription coordination when appropriate",
     ],
     cta: "Check My Eligibility",
@@ -164,7 +163,6 @@ const comparison: ComparisonRow[] = [
   { label: "Initial eligibility assessment", values: [true, true, true] },
   { label: "Licensed-provider consultation", values: [true, true, true] },
   { label: "Personalized care plan", values: [true, true, true] },
-  { label: "Secure patient portal", values: [true, true, true] },
   {
     label: "Prescription coordination",
     values: [
@@ -214,7 +212,7 @@ const steps: [string, string][] = [
 ];
 
 const disclaimer =
-  "Medical services are available only in supported states. Treatment is not guaranteed. Prescription medications require consultation and provider approval. Medication, laboratory, and pharmacy charges may be separate. Compounded medications are not FDA-approved. Availability and pricing may change.";
+  "Medical services are available only in supported states. Treatment is not guaranteed. Prescription medications require consultation and provider approval. Medication, laboratory, and pharmacy charges may be separate. Compounded medications are not FDA-approved. The FDA does not evaluate compounded medications for safety, effectiveness, or quality. Availability and pricing may change.";
 
 export default function PeptideCarePage() {
   return (

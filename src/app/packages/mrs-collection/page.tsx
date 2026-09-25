@@ -66,7 +66,7 @@ export default function MrsCollectionPage() {
         <Container className="py-20 text-center sm:py-24">
           <Reveal>
             <Eyebrow className="text-plum">A private circle of personalized women’s wellness</Eyebrow>
-            <h2 className="mx-auto mt-6 max-w-4xl font-display text-4xl sm:text-5xl">They can admire the transformation. The secret belongs to us.</h2>
+            <h2 className="mx-auto mt-6 max-w-4xl font-display text-4xl sm:text-5xl">They can admire your confidence. The details belong to you.</h2>
             <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-onyx-700">You are never required to choose according to your age, race, or complexion. Choose according to the experience and priorities that feel most like you.</p>
             <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link href="#experiences" className="brand-eyebrow rounded-full border border-plum px-8 py-4 text-[0.625rem] text-plum">Compare the Experiences</Link>

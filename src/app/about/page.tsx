@@ -128,8 +128,16 @@ export default function AboutPage() {
               Eve&rsquo;s Sisters provides the branded experience, educational
               resources, and nonclinical support. Clinical evaluations and
               treatment decisions are handled by independent licensed healthcare
-              providers. Prescribed medications, when appropriate, are dispensed
-              by licensed pharmacies.
+              providers affiliated with{" "}
+              <a href="https://elite-care.health" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+                Elite Care Health
+              </a>
+              , an independent physician group. Prescribed medications, when
+              appropriate, are fulfilled by our pharmacy partner{" "}
+              <a href="https://rxave.health" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+                Rx Ave Health
+              </a>
+              .
             </p>
             <p className={s.disclosure}>
               Availability varies by service and state. An evaluation does not

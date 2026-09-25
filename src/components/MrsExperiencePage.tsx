@@ -74,7 +74,7 @@ export function MrsExperiencePage({ experience }: { experience: MrsExperience })
         <Container className="py-20 sm:py-24">
           <Reveal>
             <p className="brand-eyebrow text-champagne">{experience.tagline}</p>
-            <h2 className="mx-auto mt-6 max-w-3xl font-display text-4xl text-ivory sm:text-5xl">They can admire the transformation. The secret belongs to us.</h2>
+            <h2 className="mx-auto mt-6 max-w-3xl font-display text-4xl text-ivory sm:text-5xl">They can admire your confidence. The details belong to you.</h2>
             <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link href={consultationHref} className="button-sheen brand-eyebrow rounded-full bg-champagne px-8 py-4 text-[0.625rem] text-onyx">Begin Your Private Consultation</Link>
               <Link href="/packages/mrs-collection" className="brand-eyebrow rounded-full border border-champagne px-8 py-4 text-[0.625rem] text-champagne hover:bg-champagne hover:text-onyx">View the Collection</Link>

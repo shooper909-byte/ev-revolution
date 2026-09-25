@@ -34,7 +34,7 @@ export const posts: Post[] = [
     slug: "tired-is-a-symptom",
     title: "Tired is a symptom, not a personality",
     excerpt:
-      "Ferritin, thyroid, B12, sleep architecture and training load — the common, testable explanations for fatigue that get missed in women.",
+      "Ferritin, thyroid, B12, sleep and daily demands — common, testable contributors to fatigue that can get missed in women.",
     pillar: "Energy & Performance",
     readingTime: "8 min",
     date: "2026-07-16",
@@ -43,8 +43,8 @@ export const posts: Post[] = [
     slug: "strength-training-after-forty",
     title: "Starting strength training after forty",
     excerpt:
-      "What to actually do in the first twelve weeks, how to load safely, and why bone responds to things cardio cannot touch.",
-    pillar: "Weight Loss",
+      "How to begin gradually, what to discuss with a clinician first, and how everyday movement may support bone health.",
+    pillar: "Weight Management",
     readingTime: "10 min",
     date: "2026-07-02",
   },

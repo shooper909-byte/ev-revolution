@@ -373,7 +373,7 @@ export default function HomePage() {
           <div className="mt-14 grid gap-px bg-onyx-700/60 md:grid-cols-3">
             {posts.slice(0, 3).map((post) => (
               <article key={post.slug} className="bg-onyx">
-                <Link href="/journal" className="group block h-full p-8 transition-colors hover:bg-onyx-800 focus-visible:bg-onyx-800" aria-label={`Read ${post.title}`}>
+                <div className="h-full p-8">
                 <p className="brand-eyebrow text-[0.5rem] text-mauve">
                   {post.pillar}
                 </p>
@@ -386,8 +386,7 @@ export default function HomePage() {
                 <p className="mt-6 text-xs text-taupe-700">
                   {formatPostDate(post.date)} &middot; {post.readingTime}
                 </p>
-                <span className="brand-eyebrow mt-6 block text-xs text-champagne group-hover:underline">Read article &rarr;</span>
-                </Link>
+                </div>
               </article>
             ))}
           </div>

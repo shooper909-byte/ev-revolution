@@ -5,29 +5,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
-import { careLabel, pillars } from "@/lib/pillars";
+import { BusinessContact, policyLinks } from "@/components/PolicyPage";
+import { careLabel, getStartedHref as getStartedHrefFor, pillars } from "@/lib/pillars";
 
 const company = [
   { href: "/", label: "Home" },
   { href: "/care", label: "Care" },
   { href: "/about", label: "About" },
   { href: "/journal", label: "Resources" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
-  { href: "/disclaimer", label: "Medical Disclaimer" },
 ];
 
 export function SiteFooter() {
   const pathname = usePathname();
-  const getStartedHref =
-    pathname === "/pillars/energy-performance" ||
-    pathname === "/care/energy-performance"
-      ? "/care/energy-performance#get-started"
-      : pathname === "/pillars/longevity-healthspan" ||
-          pathname === "/care/longevity-healthspan"
-        ? "/care/longevity-healthspan#get-started"
-        : pathname === "/about"
-          ? "/care"
-          : "/care/weight-management#get-started";
+  const getStartedHref = getStartedHrefFor(pathname);
   return (
     <footer className="border-t border-onyx-700 bg-onyx-900">
       <Container className="py-16 sm:py-20">
@@ -99,7 +91,26 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="hairline mt-16 border-t pt-8">
+        <div className="hairline mt-16 grid gap-10 border-t pt-8 lg:grid-cols-[1.2fr_2fr]">
+          <div>
+            <h2 className="brand-eyebrow text-champagne">Contact</h2>
+            <BusinessContact className="text-sm" />
+          </div>
+          <nav aria-label="Policies">
+            <h2 className="brand-eyebrow text-champagne">Policies</h2>
+            <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+              {policyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-ivory-200 transition-colors hover:text-champagne">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        <div className="hairline mt-10 border-t pt-8">
           <p className="text-xs leading-relaxed text-taupe-700">
             Eve&rsquo;s Sisters publishes general wellness education. Nothing on this
             site is medical advice, diagnosis or treatment, and it is not a

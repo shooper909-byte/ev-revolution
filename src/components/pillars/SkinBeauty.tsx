@@ -184,7 +184,7 @@ const products = [
     alt: "Illustrative unbranded ivory cream jar with a champagne lid and plum silk.",
     package: "Proposed for Skin Signature when selected and prescribed.",
     detail:
-      "Proposed compounded formulation: caffeine / GHK-Cu / niacinamide / tretinoin. Final formulation, availability and instructions must be confirmed by the treating clinician and dispensing pharmacy before enrollment.",
+      "Proposed compounded formulation: caffeine / GHK-Cu / niacinamide / tretinoin. Final formulation, availability and instructions must be confirmed by the treating clinician and dispensing pharmacy before enrollment. Compounded medications are not FDA-approved. The FDA does not evaluate compounded medications for safety, effectiveness, or quality.",
   },
   {
     id: "ghk-cu-cream",

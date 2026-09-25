@@ -38,9 +38,9 @@ export const metadata: Metadata = {
       "Explore personalized weight-management plans from Eve’s Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
     url: canonical,
     type: "website",
-    images: ["/og-image"],
+    images: ["/opengraph-image.png"],
   },
-  twitter: { card: "summary_large_image", images: ["/og-image"] },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
 };
 
 const availableStateCodes = (process.env.EV_WEIGHT_CARE_STATES ?? "")
@@ -61,7 +61,7 @@ const plans: Plan[] = [
     price: "$89",
     priceNote: "/month",
     description:
-      "An affordable medical weight-management option with access to eligible oral treatments.",
+      "A medical weight-management option with access to eligible oral treatments.",
     includes: [
       "Initial clinician evaluation",
       "Monthly clinical check-ins",
@@ -86,7 +86,7 @@ const plans: Plan[] = [
     badge: "Most popular",
     featured: true,
     description:
-      "Ongoing clinical support for eligible patients using an FDA-approved GLP-1 medication.",
+      "Ongoing clinical support for eligible patients prescribed an FDA-approved GLP-1 medication.",
     includes: [
       "GLP-1 eligibility evaluation",
       "Prescription and refill management",
@@ -100,7 +100,8 @@ const plans: Plan[] = [
       body: "Wegovy, Zepbound and Saxenda when clinically appropriate and available.",
     },
     cta: "Choose GLP-1 Care",
-    footnote: "Medication cost is separate.",
+    footnote:
+      "Medication cost is separate. Only FDA-approved GLP-1 medications are prescribed in this plan.",
   },
   {
     id: "complete-weight-care",

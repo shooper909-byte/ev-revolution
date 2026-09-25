@@ -24,7 +24,7 @@ const plans = [
   {
     id: "menopause-essential",
     title: "Menopause Essential",
-    copy: "Personalized menopause care with access to eligible lower-cost hormone therapies.",
+    copy: "Personalized menopause care with access to eligible hormone therapies.",
   },
   {
     id: "menopause-plus",

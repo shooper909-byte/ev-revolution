@@ -22,7 +22,7 @@ const previewPlans: Plan[] = [
   },
   {
     id: "energy-performance-plus-preview",
-    title: "Energy and Performance Plus",
+    title: "Energy Plus",
     pricePrefix: "Proposed",
     price: "$129",
     priceNote: "/month",
@@ -30,7 +30,7 @@ const previewPlans: Plan[] = [
     featured: true,
     description: "A proposed middle tier focused on energy, everyday movement and recovery.",
     includes: ["Exact inclusions will be published before enrollment"],
-    cta: "View Performance Plus",
+    cta: "View Energy Plus",
     href: "/care/energy-performance#energy-performance-plus",
     footnote: "Laboratory tests, medications, and supplements are billed separately.",
     image: "/images/energy/energy-performance-plus.webp",

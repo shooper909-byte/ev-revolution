@@ -18,9 +18,9 @@ export const metadata: Metadata = {
       "Six care pathways for women’s wellness — weight management, menopause and hormones, skin and beauty, energy and performance, recovery, and longevity.",
     type: "website",
     url: "https://evevolutionhealth.com/care",
-    images: ["/og-image"],
+    images: ["/opengraph-image.png"],
   },
-  twitter: { card: "summary_large_image", images: ["/og-image"] },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
 };
 
 const careSteps = [
@@ -258,7 +258,7 @@ export default function CarePage() {
             {careSteps.map(([title, body], index) => <Reveal as="li" key={title} delay={index * 80}><p className="font-display text-3xl text-champagne-700">{String(index + 1).padStart(2, "0")}</p><h3 className="hairline mt-5 border-t pt-5 font-display text-2xl text-ivory">{title}</h3><p className="mt-4 text-base leading-relaxed text-ivory-200/85">{body}</p></Reveal>)}
           </ol>
           <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Link href="/care/weight-management#get-started" className="button-sheen brand-eyebrow inline-block bg-plum px-8 py-4 text-center text-xs text-ivory transition-colors hover:bg-plum-600">Explore Intake Options</Link>
+            <Link href="#pathways" className="button-sheen brand-eyebrow inline-block bg-plum px-8 py-4 text-center text-xs text-ivory transition-colors hover:bg-plum-600">Explore Intake Options</Link>
             <Link href="/treatments" className="hairline brand-eyebrow inline-block border px-8 py-4 text-center text-xs text-champagne transition-colors hover:bg-onyx-800">View Treatments &amp; Medications</Link>
           </div>
         </Container>
@@ -539,7 +539,7 @@ export default function CarePage() {
               you.
             </p>
             <Link
-              href="/care/weight-management#get-started"
+              href="#pathways"
               className="button-sheen brand-eyebrow group mt-11 inline-block bg-champagne px-10 py-4 text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200"
             >
               Explore Intake Options
