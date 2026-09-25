@@ -72,7 +72,7 @@ const plans: Plan[] = [
     ],
     treatments: {
       label: "Possible treatments",
-      body: "Metformin, topiramate or FDA-approved naltrexone/bupropion extended-release when clinically appropriate.",
+      body: "Metformin, topiramate, Contrave or generic bupropion/naltrexone when clinically appropriate.",
     },
     cta: "Choose Oral Weight Care",
     footnote:
@@ -97,7 +97,7 @@ const plans: Plan[] = [
     ],
     treatments: {
       label: "Potential medications",
-      body: "FDA-approved semaglutide, tirzepatide or liraglutide when clinically appropriate and available.",
+      body: "Wegovy, Zepbound and Saxenda when clinically appropriate and available.",
     },
     cta: "Choose GLP-1 Care",
     footnote:
@@ -174,12 +174,12 @@ const comparison: ComparisonRow[] = [
 ];
 
 const treatments: [PillarIconName, string, string][] = [
-  ["renew", "Semaglutide", "GLP-1 · FDA-approved"],
-  ["honeycomb", "Tirzepatide", "GLP-1 / GIP · FDA-approved"],
-  ["lotus", "Liraglutide", "GLP-1 · FDA-approved"],
+  ["renew", "Wegovy", "GLP-1"],
+  ["honeycomb", "Zepbound", "GLP-1 / GIP"],
+  ["lotus", "Saxenda", "GLP-1"],
   ["leaf", "Metformin", "Oral"],
   ["bolt", "Topiramate", "Oral"],
-  ["infinity", "Naltrexone/Bupropion ER", "Oral"],
+  ["infinity", "Contrave", "Oral"],
 ];
 
 const steps: [string, string][] = [
