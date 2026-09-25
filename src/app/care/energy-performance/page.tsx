@@ -35,7 +35,7 @@ const plans: Plan[] = [
   },
   {
     id: "energy-performance-plus",
-    title: "Energy and Performance Plus",
+    title: "Energy Plus",
     pricePrefix: "Proposed",
     price: "$129",
     priceNote: "/month",

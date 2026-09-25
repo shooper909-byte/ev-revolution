@@ -88,22 +88,22 @@ export const pillars: Pillar[] = [
   {
     slug: "weight-loss",
     carePath: "/care/weight-management",
-    name: "Weight Loss",
+    name: "Weight Management",
     navLabel: "Weight",
     icon: "leaf",
     accent: plum,
     accentName: "Deep Plum",
     tagline: "Metabolic health, without the noise.",
     intro:
-      "Weight is a metabolic conversation, not a moral one. We look at the whole picture — glucose and insulin patterns, thyroid, sleep, stress load, muscle mass — and at how all of it shifts through a woman's decades.",
+      "Weight is a metabolic conversation, not a moral one. We look at the whole picture — glucose and insulin patterns, thyroid, sleep, stress load, daily activity — and at how all of it shifts through a woman's decades.",
     focus: [
       {
         title: "Metabolic context",
         body: "Why the same habits stop producing the same results after 35, and what is actually changing underneath.",
       },
       {
-        title: "Muscle as the anchor",
-        body: "Lean mass is the most protective asset most women are never told to build. We treat it as foundational, not optional.",
+        title: "Healthy habits as the anchor",
+        body: "Everyday movement, balanced nutrition and restful sleep are foundations most women are never given time to build. We treat them as foundational, not optional.",
       },
       {
         title: "Structure that survives real life",
@@ -113,7 +113,7 @@ export const pillars: Pillar[] = [
     covered: [
       "The metabolic markers worth understanding",
       "Protein, fibre and satiety in practice",
-      "Strength training for body composition",
+      "Everyday movement and activity",
       "Sleep and stress as metabolic inputs",
       "How to discuss medical options with your clinician",
     ],
@@ -213,34 +213,34 @@ export const pillars: Pillar[] = [
     icon: "bolt",
     accent: deepPlum,
     accentName: "Deep Plum, darkened",
-    tagline: "Capacity you can count on.",
+    tagline: "Energy for the life you lead.",
     intro:
-      "Fatigue is a signal, not a personality trait. Iron and ferritin, thyroid, B12, sleep architecture and training load all sit underneath how much you actually have to give.",
+      "Fatigue is a signal, not a personality trait. Iron and ferritin, thyroid, B12, sleep and daily demands can all be part of how energized you feel.",
     focus: [
       {
         title: "Rule things out first",
         body: "The common, testable causes of persistent fatigue in women — and why they are so often missed.",
       },
       {
-        title: "Train with your physiology",
-        body: "Strength, cardiovascular base, and structuring effort around a cycle or a transition rather than against it.",
+        title: "Move with your physiology",
+        body: "Everyday activity and rest, planned around a cycle or a transition rather than against it.",
       },
       {
-        title: "Cognitive stamina",
-        body: "Focus, mood and mental endurance as outputs of sleep, fuel and load — all of them trainable.",
+        title: "Everyday focus",
+        body: "Focus and mood can be shaped by sleep, nutrition and daily demands — all worth discussing with a clinician.",
       },
     ],
     covered: [
       "Common causes of persistent fatigue",
       "Iron, ferritin and what the numbers mean",
-      "Building a cardiovascular base after 40",
-      "Fuelling for output rather than restriction",
+      "Staying active after 40",
+      "Nourishing meals rather than restriction",
       "When fatigue warrants a clinical workup",
     ],
     question: "Why am I this tired, and is it something I can fix?",
     careLabel: "Energy & Performance",
     careSummary:
-      "Energy, strength, focus and performance.",
+      "Energy, focus and everyday vitality.",
     careImage: "care-energy-performance-v2",
     careImageAlt:
       "A woman outdoors in bright daylight, hands behind her head, mid-stretch.",
@@ -254,7 +254,7 @@ export const pillars: Pillar[] = [
     accentName: "Warm Taupe",
     tagline: "The half of the work that gets skipped.",
     intro:
-      "Adaptation happens in recovery. Sleep quality, nervous-system load and rest architecture decide how much benefit you actually keep from everything else you do.",
+      "Rest is part of wellness. Sleep quality, stress load and daily rhythms can all shape how you feel from day to day.",
     focus: [
       {
         title: "Sleep as infrastructure",
@@ -265,18 +265,18 @@ export const pillars: Pillar[] = [
         body: "Chronic stress load is measurable in ways that matter — and modifiable without a wellness retreat.",
       },
       {
-        title: "Deload and repair",
-        body: "Structured rest, mobility and soft-tissue work, and telling overreaching apart from genuine overtraining.",
+        title: "Rest and mobility",
+        body: "Structured rest, gentle mobility and everyday comfort, planned around your own routine.",
       },
     ],
     covered: [
       "Sleep habits that survive a real schedule",
       "Recovery metrics: what is useful, what is noise",
-      "Rest days, deloads and periodisation",
+      "Building rest into a busy week",
       "Stress physiology in plain language",
       "Joint and connective-tissue care",
     ],
-    question: "Am I under-recovering rather than under-training?",
+    question: "Am I getting the rest my body needs?",
     careLabel: "Recovery",
     careSummary:
       "Rest, recovery, mobility and whole-body wellness.",
@@ -297,7 +297,7 @@ export const pillars: Pillar[] = [
       "Healthspan means the years of life spent in good health. Everyday movement, strength, bone health, heart health, sleep and social connection can all be part of a thoughtful healthy-aging conversation.",
     focus: [
       {
-        title: "Bone and muscle",
+        title: "Bone health and balance",
         body: "Strength, balance and weight-bearing movement can support everyday function. The right approach depends on your health, mobility and risk factors.",
       },
       {
@@ -311,7 +311,7 @@ export const pillars: Pillar[] = [
     ],
     covered: [
       "Baselines and screening worth establishing early",
-      "Strength and bone loading across the decades",
+      "Bone health and activity across the decades",
       "Cardiovascular risk in women specifically",
       "Longevity evidence versus longevity marketing",
       "Building a clinical team that will actually listen",
@@ -338,4 +338,18 @@ export function careLabel(pillar: Pillar): string {
 /** The Care hub summary for a pillar, falling back to its tagline. */
 export function careSummary(pillar: Pillar): string {
   return pillar.careSummary ?? pillar.tagline;
+}
+
+/**
+ * Where "Get Started" leads from a page: the intake that matches the current
+ * care page (or the pillar's care page), otherwise the pathway selection.
+ */
+export function getStartedHref(pathname: string): string {
+  const carePage =
+    pathname.startsWith("/care/") || pathname === "/peptide-care"
+      ? pathname
+      : pillars.find((pillar) => pathname === `/pillars/${pillar.slug}`)?.carePath;
+  return carePage && (carePage.startsWith("/care/") || carePage === "/peptide-care")
+    ? `${carePage}#get-started`
+    : "/care#pathways";
 }

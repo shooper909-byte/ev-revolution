@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 const areas = [
   { title: "Desire", heading: "Wanting to want it is still wanting it", body: "There are now three real medical options for low desire in women, and most women have never been offered one." },
-  { title: "Arousal & Comfort", heading: "If it hurts, nothing else matters", body: "Dryness and pain with sex are the most treatable things on this page — and the most ignored." },
+  { title: "Arousal & Comfort", heading: "If it hurts, nothing else matters", body: "Dryness and pain with sex are common, often treatable concerns — and too often ignored." },
   { title: "Beauty", heading: "Feeling beautiful isn’t vanity", body: "It’s half of feeling desirable. We treat it like the clinical thing it is." },
   { title: "Confidence", heading: "Desire lives in the body and the head", body: "We work both." },
 ] as const;

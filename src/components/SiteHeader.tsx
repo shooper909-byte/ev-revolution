@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { CareMenu } from "@/components/CareMenu";
 import { Container } from "@/components/Container";
 import { Wordmark } from "@/components/Wordmark";
-import { careLabel, pillars } from "@/lib/pillars";
+import { careLabel, getStartedHref as getStartedHrefFor, pillars } from "@/lib/pillars";
 
 /* Care leads the navigation and owns the six pillar routes beneath it, so the
    header stays legible instead of listing all six pathways across the bar.
@@ -37,17 +37,7 @@ export function SiteHeader() {
     pathname.startsWith("/care/") ||
     pathname.startsWith("/pillars/") ||
     pathname === "/peptide-care";
-  const waitlistRoute =
-    pathname === "/pillars/energy-performance" ||
-    pathname === "/care/energy-performance"
-      ? "/care/energy-performance#get-started"
-      : pathname === "/pillars/longevity-healthspan" ||
-          pathname === "/care/longevity-healthspan"
-        ? "/care/longevity-healthspan#get-started"
-        : null;
-  const getStartedHref =
-    waitlistRoute ??
-    (pathname === "/about" ? "/care" : "/care/weight-management#get-started");
+  const getStartedHref = getStartedHrefFor(pathname);
 
   const isActive = (href: string) =>
     href === "/packages/mrs-collection"

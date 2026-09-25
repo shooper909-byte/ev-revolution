@@ -78,7 +78,7 @@ const plans: Plan[] = [
     },
     cta: "Choose Skin Essentials",
     footnote:
-      "Medication selection depends on clinical eligibility. Certain compounded products, shipping and laboratory services may cost extra.",
+      "Medication selection depends on clinical eligibility. Certain compounded products, shipping and laboratory services may cost extra. Compounded medications are not FDA-approved. The FDA does not evaluate compounded medications for safety, effectiveness, or quality.",
   },
   {
     id: "skin-hair-plus",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container, Eyebrow } from "@/components/Container";
 import { ContactForm } from "@/components/ContactForm";
+import { business, businessName, partners } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -25,28 +26,52 @@ export default function ContactPage() {
           <dl className="mt-12 space-y-8">
             <div>
               <dt className="brand-eyebrow text-[0.5rem] text-champagne">
-                General
+                Email
               </dt>
               <dd className="mt-3 text-sm text-ivory-200">
-                <a
-                  href="mailto:hello@ev-revolution.com"
-                  className="hover:text-champagne"
-                >
-                  hello@ev-revolution.com
+                <a href={`mailto:${business.email}`} className="hover:text-champagne">
+                  {business.email}
                 </a>
               </dd>
             </div>
+            {business.phone && (
+              <div>
+                <dt className="brand-eyebrow text-[0.5rem] text-champagne">
+                  Phone
+                </dt>
+                <dd className="mt-3 text-sm text-ivory-200">
+                  <a href={`tel:${business.phone.replace(/[^\d+]/g, "")}`} className="hover:text-champagne">
+                    {business.phone}
+                  </a>
+                </dd>
+              </div>
+            )}
+            {business.address.length > 0 && (
+              <div>
+                <dt className="brand-eyebrow text-[0.5rem] text-champagne">
+                  Mailing address
+                </dt>
+                <dd className="mt-3 text-sm leading-relaxed text-ivory-200">
+                  {businessName}
+                  {business.address.map((line) => (
+                    <span key={line} className="block">{line}</span>
+                  ))}
+                </dd>
+              </div>
+            )}
             <div>
               <dt className="brand-eyebrow text-[0.5rem] text-champagne">
-                Press &amp; partnerships
+                Care partners
               </dt>
-              <dd className="mt-3 text-sm text-ivory-200">
-                <a
-                  href="mailto:press@ev-revolution.com"
-                  className="hover:text-champagne"
-                >
-                  press@ev-revolution.com
-                </a>
+              <dd className="mt-3 space-y-2 text-sm leading-relaxed text-ivory-200">
+                <p>
+                  Clinical care:{" "}
+                  <a href={partners.clinical.url} className="hover:text-champagne">{partners.clinical.name}</a>
+                </p>
+                <p>
+                  Pharmacy:{" "}
+                  <a href={partners.pharmacy.url} className="hover:text-champagne">{partners.pharmacy.name}</a>
+                </p>
               </dd>
             </div>
           </dl>

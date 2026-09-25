@@ -64,7 +64,7 @@ const plans: Plan[] = [
     price: "$99",
     priceNote: "/month",
     description:
-      "Personalized menopause care with access to eligible lower-cost hormone therapies.",
+      "Personalized menopause care with access to eligible hormone therapies.",
     includes: [
       "Initial menopause evaluation",
       "Medical and symptom-history review",
@@ -122,11 +122,11 @@ const plans: Plan[] = [
     ],
     treatments: {
       label: "Potential treatments",
-      body: "Local vaginal therapy, selected compounded sexual-wellness products and low-dose testosterone only when supported by the clinical partner, permitted by applicable law and prescribed by an appropriately licensed provider.",
+      body: "Local vaginal therapy, selected compounded sexual-wellness products and low-dose testosterone only when supported by the clinical partner, permitted by applicable law and prescribed by an appropriately licensed provider. Testosterone requires lab testing and ongoing provider oversight and is never provided without prior testing.",
     },
     cta: "Explore Sexual Wellness",
     footnote:
-      "No medication is guaranteed. Certain treatments require additional screening and are not available in every state.",
+      "No medication is guaranteed. Certain treatments require additional screening and are not available in every state. Compounded medications are not FDA-approved. The FDA does not evaluate compounded medications for safety, effectiveness, or quality.",
   },
   {
     id: "complete-menopause-sexual-wellness",
@@ -195,7 +195,7 @@ const treatments: [PillarIconName, string, string][] = [
   ["lotus", "Vaginal Estradiol", "Local therapy"],
   ["leaf", "Micronized Progesterone", "Oral"],
   ["infinity", "Sexual Wellness Cream", "Topical"],
-  ["bolt", "Low-Dose Testosterone", "Where permitted"],
+  ["bolt", "Low-Dose Testosterone", "Lab testing required"],
 ];
 
 const steps: [string, string][] = [
@@ -228,7 +228,7 @@ const faqs: [string, string][] = [
   ],
   [
     "Will I need laboratory testing?",
-    "Not always. Testing is not required for every patient or every treatment. When it is clinically appropriate, your provider will explain what is needed and how the results affect your care.",
+    "Not always. Testing is not required for every patient or every treatment, but testosterone is never provided without prior lab testing. When it is clinically appropriate, your provider will explain what is needed and how the results affect your care.",
   ],
   [
     "Can I receive treatment if I still have regular periods?",
@@ -244,7 +244,7 @@ const faqs: [string, string][] = [
   ],
   [
     "Is testosterone automatically included?",
-    "No. Low-dose testosterone is never automatic. It is prescribed only where it is supported by the clinical partner, permitted by applicable law and considered appropriate by a licensed provider, and it may require additional screening or monitoring.",
+    "No. Low-dose testosterone is never automatic. It is prescribed only where it is supported by the clinical partner, permitted by applicable law and considered appropriate by a licensed provider. It requires lab testing before any prescription and ongoing provider oversight, and it is never provided without prior testing.",
   ],
 ];
 
@@ -513,8 +513,9 @@ export default function HormonesMenopauseCarePage() {
               Treatment options are determined by an independent licensed
               provider. Not every treatment is appropriate for every patient.
               Certain medications require additional screening, laboratory
-              monitoring or synchronous visits. Prescription approval is not
-              guaranteed.
+              monitoring or synchronous visits. Testosterone requires lab
+              testing and provider oversight and is never provided without
+              prior testing. Prescription approval is not guaranteed.
             </p>
           </Reveal>
         </Container>

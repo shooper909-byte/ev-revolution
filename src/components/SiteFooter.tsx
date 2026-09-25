@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { BusinessContact, policyLinks } from "@/components/PolicyPage";
-import { careLabel, pillars } from "@/lib/pillars";
+import { careLabel, getStartedHref as getStartedHrefFor, pillars } from "@/lib/pillars";
 
 const company = [
   { href: "/", label: "Home" },
@@ -19,16 +19,7 @@ const company = [
 
 export function SiteFooter() {
   const pathname = usePathname();
-  const getStartedHref =
-    pathname === "/pillars/energy-performance" ||
-    pathname === "/care/energy-performance"
-      ? "/care/energy-performance#get-started"
-      : pathname === "/pillars/longevity-healthspan" ||
-          pathname === "/care/longevity-healthspan"
-        ? "/care/longevity-healthspan#get-started"
-        : pathname === "/about"
-          ? "/care"
-          : "/care/weight-management#get-started";
+  const getStartedHref = getStartedHrefFor(pathname);
   return (
     <footer className="border-t border-onyx-700 bg-onyx-900">
       <Container className="py-16 sm:py-20">

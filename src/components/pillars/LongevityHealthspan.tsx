@@ -28,7 +28,7 @@ const careAreas = [
 ] as const;
 
 const focus = [
-  ["Strength and mobility", "Muscle-strengthening, aerobic and balance activities can support everyday function. The right plan should reflect your current health and mobility."],
+  ["Strength and mobility", "Strengthening, aerobic and balance activities can support everyday function. The right plan should reflect your current health and mobility."],
   ["Bone health", "Bone health changes across adulthood and after menopause. A clinician can help discuss personal risk factors and whether screening belongs in your care plan."],
   ["Heart and metabolic health", "Blood pressure, blood lipids, blood glucose, activity, sleep and nicotine exposure are common parts of cardiovascular health conversations."],
   ["Sleep and everyday wellbeing", "Restful sleep, emotional wellbeing and social connection are meaningful parts of healthy aging and daily quality of life."],

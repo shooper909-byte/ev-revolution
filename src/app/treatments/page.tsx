@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const disclosure =
-  "Treatment depends on clinical evaluation. Availability varies by state and pharmacy. A prescription is not guaranteed. Compounded medications are not FDA-approved.";
+  "Treatment depends on clinical evaluation. Availability varies by state and pharmacy. A prescription is not guaranteed. Compounded medications are not FDA-approved. The FDA does not evaluate compounded medications for safety, effectiveness, or quality.";
 
 const steps = [
   ["Explore options", "Browse treatments and learn what each one is."],

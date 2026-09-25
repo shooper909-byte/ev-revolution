@@ -3,8 +3,8 @@ import { Reveal } from "@/components/Reveal";
 
 const plans = [
   { name: "Essentials", price: "$199", features: ["45-minute clinician intake", "Baseline labs and yearly recheck", "Hormone prescriptions included when prescribed", "Message your care team at any time"] },
-  { name: "Signature", price: "$399", popular: true, features: ["Everything in Essentials", "Monthly check-ins for the first three months", "Quarterly lab panels", "Monthly coaching", "One add-on pack included", "Weight-loss medication evaluation and prescribing when clinically appropriate", "Medication billed separately"] },
-  { name: "Elite", price: "$799", subtitle: "Premium clinician-guided care", features: ["Everything in Signature", "Monthly one-on-one clinician visits", "Weight-loss medication included when prescribed", "Weekly coaching", "Two add-on packs included", "Same-day concierge messaging"] },
+  { name: "Signature", price: "$399", popular: true, features: ["Everything in Essentials", "Monthly check-ins for the first three months", "Quarterly lab panels", "Monthly coaching", "One add-on pack included", "Weight-management medication evaluation and prescribing when clinically appropriate", "Medication billed separately"] },
+  { name: "Elite", price: "$799", subtitle: "Premium clinician-guided care", features: ["Everything in Signature", "Monthly one-on-one clinician visits", "Weight-management medication included when prescribed", "Weekly coaching", "Two add-on packs included", "Same-day concierge messaging"] },
 ];
 
 export function PackageComparison({ compact = false }: { compact?: boolean }) {

@@ -82,7 +82,7 @@ export const carePrograms = {
     planLabel: "Preferred plan",
     plans: [
       "Energy Essential",
-      "Energy and Performance Plus",
+      "Energy Plus",
       "Complete Energy Care",
       "Help me choose",
     ],

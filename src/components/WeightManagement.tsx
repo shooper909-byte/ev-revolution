@@ -6,7 +6,7 @@ import type { Pillar } from "@/lib/pillars";
 import s from "./WeightManagement.module.css";
 
 const benefits: [PillarIconName, string][] = [
-  ["leaf", "Sustainable Progress"], ["honeycomb", "Preserve Lean Muscle"],
+  ["leaf", "Sustainable Progress"], ["honeycomb", "Healthy Habits"],
   ["bolt", "Support Energy"], ["renew", "Metabolic Wellness"],
   ["lotus", "Body Composition"], ["infinity", "Build Confidence"],
 ];
@@ -66,7 +66,7 @@ export function WeightManagement({ pillar }: { pillar: Pillar }) {
       <div className={s.heroBanner}>
         <Image
           src="/images/care/care-weight-become-more-you.webp"
-          alt="Eve’s Sisters weight loss and maintenance banner: three women standing together beside the words “Become more you. Your body deserves care at every chapter.”"
+          alt="Eve’s Sisters weight management banner: three women standing together beside the words “Become more you. Your body deserves care at every chapter.”"
           width={1983}
           height={793}
           priority
@@ -95,7 +95,7 @@ export function WeightManagement({ pillar }: { pillar: Pillar }) {
     <section id="program" className={s.program} aria-labelledby="program-title"><Container className={s.split}>
       <Portrait />
       <div className={s.copy}><Eyebrow>More Than a Number</Eyebrow><h2 id="program-title">Weight Management<br /><em>for a Healthier Life</em></h2><p>Weight management is about more than the scale. Eve&apos;s Sisters brings together metabolic wellness, nutrition, movement, body composition and sustainable habits in one personalized experience.</p>
-        <ul className={s.checks}>{["Personalized wellness pathway", "Metabolic health focus", "Nutrition and lifestyle support", "Strength and muscle preservation", "Progress tracking and ongoing support"].map(item => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul><Action>Review Weight-Care Plans</Action>
+        <ul className={s.checks}>{["Personalized wellness pathway", "Metabolic health focus", "Nutrition and lifestyle support", "Nutrition and activity guidance", "Progress tracking and ongoing support"].map(item => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}</ul><Action>Review Weight-Care Plans</Action>
       </div>
     </Container></section>
     <section className={s.options} aria-labelledby="options-title"><Container className={s.section}><Eyebrow>Explore Your Options</Eyebrow><h2 id="options-title">Choose the conversation that fits your goals.</h2><p>Every pathway begins with understanding your needs. Treatment eligibility and prescriptions require an independent evaluation by a licensed clinician.</p><ul className={s.optionGrid}>{options.map(([title, body]) => <li key={title}><h3>{title}</h3><p>{body}</p><Link href="/care/weight-management#plans">Explore This Option <span aria-hidden="true">→</span></Link></li>)}</ul></Container></section>

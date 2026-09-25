@@ -38,9 +38,9 @@ export const metadata: Metadata = {
       "Explore personalized weight-management plans from Eve’s Sisters, including oral treatment options, GLP-1 care and ongoing clinical support.",
     url: canonical,
     type: "website",
-    images: ["/og-image"],
+    images: ["/opengraph-image.png"],
   },
-  twitter: { card: "summary_large_image", images: ["/og-image"] },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
 };
 
 const availableStateCodes = (process.env.EV_WEIGHT_CARE_STATES ?? "")
@@ -61,7 +61,7 @@ const plans: Plan[] = [
     price: "$89",
     priceNote: "/month",
     description:
-      "An affordable medical weight-management option with access to eligible oral treatments.",
+      "A medical weight-management option with access to eligible oral treatments.",
     includes: [
       "Initial clinician evaluation",
       "Monthly clinical check-ins",
@@ -72,7 +72,7 @@ const plans: Plan[] = [
     ],
     treatments: {
       label: "Possible treatments",
-      body: "Metformin, topiramate, Contrave or generic bupropion/naltrexone when clinically appropriate.",
+      body: "Metformin, topiramate or naltrexone/bupropion when clinically appropriate.",
     },
     cta: "Choose Oral Weight Care",
     footnote:
@@ -86,7 +86,7 @@ const plans: Plan[] = [
     badge: "Most popular",
     featured: true,
     description:
-      "Ongoing clinical support for eligible patients using an FDA-approved GLP-1 medication.",
+      "Ongoing clinical support for eligible patients prescribed compounded semaglutide or compounded tirzepatide.",
     includes: [
       "GLP-1 eligibility evaluation",
       "Prescription and refill management",
@@ -97,10 +97,11 @@ const plans: Plan[] = [
     ],
     treatments: {
       label: "Potential medications",
-      body: "Wegovy, Zepbound and Saxenda when clinically appropriate and available.",
+      body: "Compounded semaglutide or compounded tirzepatide when clinically appropriate and available.",
     },
     cta: "Choose GLP-1 Care",
-    footnote: "Medication cost is separate.",
+    footnote:
+      "Medication cost is separate. Compounded medications are not FDA-approved. The FDA does not evaluate compounded medications for safety, effectiveness, or quality.",
   },
   {
     id: "complete-weight-care",
@@ -173,12 +174,11 @@ const comparison: ComparisonRow[] = [
 ];
 
 const treatments: [PillarIconName, string, string][] = [
-  ["renew", "Wegovy", "GLP-1"],
-  ["honeycomb", "Zepbound", "GLP-1 / GIP"],
-  ["lotus", "Saxenda", "GLP-1"],
+  ["renew", "Compounded Semaglutide", "GLP-1 · Compounded"],
+  ["honeycomb", "Compounded Tirzepatide", "GLP-1 / GIP · Compounded"],
   ["leaf", "Metformin", "Oral"],
   ["bolt", "Topiramate", "Oral"],
-  ["infinity", "Contrave", "Oral"],
+  ["infinity", "Naltrexone/Bupropion", "Oral"],
 ];
 
 const steps: [string, string][] = [
@@ -423,6 +423,11 @@ export default function WeightManagementCarePage() {
 
           <Reveal>
             <p className="hairline mt-10 max-w-3xl border-t pt-7 text-sm leading-relaxed text-ivory-200/70">
+              <strong className="text-ivory-200">
+                Compounded medications are not FDA-approved. The FDA does not
+                evaluate compounded medications for safety, effectiveness, or
+                quality.
+              </strong>{" "}
               Medication is prescribed only when clinically appropriate
               following an evaluation by a licensed provider. Medication
               availability, eligibility and pricing may vary. Prescription

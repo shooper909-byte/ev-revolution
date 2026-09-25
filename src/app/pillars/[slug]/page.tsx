@@ -36,16 +36,16 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
         description,
         type: "website",
         url: "https://evevolutionhealth.com/pillars/weight-loss",
-        images: ["/og-image"],
+        images: ["/opengraph-image.png"],
       },
-      twitter: { card: "summary_large_image", images: ["/og-image"] },
+      twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
     };
   }
 
   if (slug === "energy-performance") {
     const title = "Energy and Performance for Women | Eve’s Sisters";
     const description =
-      "Learn about common contributors to fatigue, brain fog and reduced performance and explore personalized energy-care options from Eve’s Sisters.";
+      "Learn about common contributors to fatigue, brain fog and low energy and explore personalized energy-care options from Eve’s Sisters.";
     return {
       title: { absolute: title },
       description,

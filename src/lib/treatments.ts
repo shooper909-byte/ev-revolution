@@ -226,7 +226,7 @@ export const treatments: readonly Treatment[] = [
     sources: [
       medline("a622044", "Tirzepatide Injection"),
       {
-        label: "DailyMed: Zepbound (tirzepatide) labeling",
+        label: "DailyMed: tirzepatide prescribing information",
         url: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=487cd7e7-434c-4925-99fa-aa80b1cc776b",
       },
     ],
