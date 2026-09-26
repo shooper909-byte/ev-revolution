@@ -11,7 +11,7 @@ export function PillarCard({ pillar }: { pillar: Pillar }) {
 
   return (
     <Link
-      href={`/pillars/${pillar.slug}`}
+      href={pillar.carePath ?? `/pillars/${pillar.slug}`}
       className={`group relative flex min-h-[285px] flex-col overflow-hidden border ${pillar.accent.border} bg-onyx-900/60 p-8 transition-colors hover:bg-onyx-800 sm:min-h-[300px] lg:min-h-[310px]`}
     >
       {pillar.careImage && imageAvailable && (

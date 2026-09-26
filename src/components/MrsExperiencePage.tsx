@@ -8,7 +8,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { ClinicalDisclaimer } from "@/components/ClinicalDisclaimer";
 import { collectionDisclaimer, type MrsExperience } from "@/lib/mrsCollection";
 
-const consultationHref = "/care/weight-management#get-started";
+const consultationHref = "/care/weight-management#pre-screen";
 
 export function MrsExperiencePage({ experience }: { experience: MrsExperience }) {
   return (

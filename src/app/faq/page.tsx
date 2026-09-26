@@ -42,7 +42,7 @@ const faqs: [string, string][] = [
   ],
   [
     "When is my card charged for medication?",
-    "Your card may be pre-authorized when you request a medication. The charge for the medication itself is processed only after a licensed provider approves the prescription. If the provider does not approve it, the pre-authorization is released.",
+    "A short treatment request does not charge your card. If payment authorization is needed for an approved pathway, the secure enrollment flow presents it before any charge.",
   ],
   [
     "Are refills automatic?",
@@ -50,7 +50,7 @@ const faqs: [string, string][] = [
   ],
   [
     "Do hormone therapies require lab work?",
-    "Yes. Hormone therapies, including any testosterone therapy, require lab testing and ongoing provider oversight, and are never provided without prior testing.",
+    "Some hormone pathways may require lab work and ongoing provider oversight. Testosterone and other controlled substances are not offered through this site.",
   ],
   [
     "How do I cancel my membership?",

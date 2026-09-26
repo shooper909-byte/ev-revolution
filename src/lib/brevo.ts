@@ -15,13 +15,14 @@ const API_BASE = "https://api.brevo.com/v3";
 const TIMEOUT_MS = 8_000;
 
 /** Where a capture happened. Each source can route to its own Brevo list. */
-export type CaptureSource = "footer" | "journal" | "popup" | "site";
+export type CaptureSource = "footer" | "journal" | "popup" | "site" | "waitlist";
 
 export const CAPTURE_SOURCES: readonly CaptureSource[] = [
   "footer",
   "journal",
   "popup",
   "site",
+  "waitlist",
 ];
 
 export function isCaptureSource(value: unknown): value is CaptureSource {

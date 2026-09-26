@@ -8,14 +8,12 @@ import { Container } from "@/components/Container";
 import { Wordmark } from "@/components/Wordmark";
 import { careLabel, getStartedHref as getStartedHrefFor, pillars } from "@/lib/pillars";
 
-/* Care leads the navigation and owns the six pillar routes beneath it, so the
-   header stays legible instead of listing all six pathways across the bar.
+/* Care leads the navigation and owns the six core routes beneath it, so the
+   header stays legible instead of listing every pathway across the bar.
    "Resources" points at the existing /journal route rather than adding a
    duplicate one. Items marked `wide` only fit on very wide screens; below
    that they stay reachable from the footer and the logo (Home). */
 const primaryNav = [
-  { href: "/treatments", label: "Treatments" },
-  { href: "/packages/mrs-collection", label: "The Mrs. Collection" },
   { href: "/eves-secret", label: "Eve’s Secret™" },
   { href: "/about#philosophy", label: "Our Approach", wide: true },
   { href: "/journal", label: "Resources", wide: true },
@@ -35,14 +33,10 @@ export function SiteHeader() {
   const careActive =
     pathname === "/care" ||
     pathname.startsWith("/care/") ||
-    pathname.startsWith("/pillars/") ||
-    pathname === "/peptide-care";
+    pathname.startsWith("/pillars/");
   const getStartedHref = getStartedHrefFor(pathname);
 
-  const isActive = (href: string) =>
-    href === "/packages/mrs-collection"
-      ? pathname.startsWith("/packages/mrs-")
-      : pathname === href;
+  const isActive = (href: string) => pathname === href;
 
   const linkClass = (href: string) =>
     `brand-eyebrow whitespace-nowrap text-[0.6875rem] tracking-[0.12em] xl:text-xs xl:tracking-[0.16em] transition-colors hover:text-champagne focus-visible:text-champagne ${
@@ -109,7 +103,7 @@ export function SiteHeader() {
         </button>
       </Container>
 
-      {/* Mobile: Care is a link with its six pathways listed beneath it, so
+          {/* Mobile: Care is a link with its core pathways listed beneath it, so
           nothing is hidden behind a second tap. */}
       <div
         id="mobile-nav"
@@ -142,14 +136,14 @@ export function SiteHeader() {
             {pillars.map((pillar) => (
               <li key={pillar.slug}>
                 <Link
-                  href={`/pillars/${pillar.slug}`}
+                  href={pillar.carePath ?? `/pillars/${pillar.slug}`}
                   className={`block py-3.5 text-sm ${
-                    pathname === `/pillars/${pillar.slug}`
+                    pathname === (pillar.carePath ?? `/pillars/${pillar.slug}`)
                       ? "text-champagne"
                       : "text-ivory-200"
                   }`}
                   aria-current={
-                    pathname === `/pillars/${pillar.slug}` ? "page" : undefined
+                    pathname === (pillar.carePath ?? `/pillars/${pillar.slug}`) ? "page" : undefined
                   }
                 >
                   {careLabel(pillar)}
@@ -158,16 +152,16 @@ export function SiteHeader() {
             ))}
             <li className="border-t border-onyx-800/80">
               <Link
-                href="/peptide-care"
+                href="/eves-secret"
                 className={`block py-3.5 text-sm ${
-                  pathname === "/peptide-care"
+                  pathname === "/eves-secret"
                     ? "text-champagne"
                     : "text-ivory-200"
                 }`}
-                aria-current={pathname === "/peptide-care" ? "page" : undefined}
+                aria-current={pathname === "/eves-secret" ? "page" : undefined}
                 onClick={() => setOpen(false)}
               >
-                Peptide Care
+                Eve&rsquo;s Secret™
               </Link>
             </li>
           </ul>

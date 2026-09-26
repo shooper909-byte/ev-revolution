@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
-import { pillars } from "@/lib/pillars";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://evevolutionhealth.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/care", "/care/weight-management", "/care/hormones-menopause", "/care/skin-beauty", "/care/energy-performance", "/care/longevity-healthspan", "/peptide-care", "/treatments", "/about", "/journal", "/contact", "/faq", "/privacy-policy", "/terms-of-service", "/telehealth-consent", "/subscription-cancellation", "/hipaa-policy", "/disclaimer"];
+  const staticRoutes = ["", "/care", "/care/weight-management", "/care/hormones-menopause", "/care/skin-beauty", "/care/energy-performance", "/care/recovery-rejuvenation", "/care/longevity-healthspan", "/eves-secret", "/about", "/journal", "/contact", "/faq", "/privacy-policy", "/terms-of-service", "/telehealth-consent", "/subscription-cancellation", "/hipaa-policy", "/disclaimer"];
 
   return [
     ...staticRoutes.map((route) => ({
@@ -16,15 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
           ? 1
           : route === "/care"
             ? 0.9
-            : route.startsWith("/care/") || route === "/peptide-care"
+            : route.startsWith("/care/") || route === "/eves-secret"
               ? 0.85
               : 0.7,
-    })),
-    ...pillars.map((pillar) => ({
-      url: `${baseUrl}/pillars/${pillar.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
     })),
   ];
 }

@@ -93,27 +93,6 @@ export const carePrograms = {
     interestLabel: "Area of interest",
     interests: [],
   },
-  "peptide-care": {
-    label: "Peptide care",
-    source: "/peptide-care",
-    interestLabel: "Primary area of interest",
-    interests: [
-      "Weight and metabolic health",
-      "Energy and vitality",
-      "Recovery and sleep",
-      "Skin and hair",
-      "Hormone and intimate wellness",
-      "Multiple areas",
-      "I am not sure",
-    ],
-    planLabel: "Preferred package",
-    plans: [
-      "Peptide Care Essentials",
-      "Peptide Care Plus",
-      "Eve's Secret Peptide Concierge",
-      "Help me choose",
-    ],
-  },
 } as const satisfies Record<string, CareProgram>;
 
 export type CareProgramKey = keyof typeof carePrograms;

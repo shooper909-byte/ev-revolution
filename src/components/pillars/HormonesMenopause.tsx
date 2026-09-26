@@ -153,7 +153,7 @@ export function HormonesMenopause({ pillar }: { pillar: Pillar }) {
             <p className="brand-eyebrow text-champagne">The question we hear most</p>
             <h2 className="mt-4 font-display text-3xl text-ivory sm:text-4xl">&ldquo;{pillar.question}&rdquo;</h2>
           </div>
-          <Link href={`${CARE}#get-started`} className="button-sheen brand-eyebrow shrink-0 bg-champagne px-8 py-4 text-[0.625rem] text-onyx hover:bg-champagne-200">Get Started</Link>
+          <Link href={`${CARE}#pre-screen`} className="button-sheen brand-eyebrow shrink-0 bg-champagne px-8 py-4 text-[0.625rem] text-onyx hover:bg-champagne-200">Request Care</Link>
         </Container>
       </section>
     </>
