@@ -1,41 +1,25 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId } from "react";
+import type { CaptureSource } from "@/lib/brevo";
+import { honeypotProps, useEmailCapture } from "@/components/emailCapture";
 
-type Status = "idle" | "submitting" | "success" | "error";
-
-export function NewsletterSignup({ compact = false }: { compact?: boolean }) {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<Status>("idle");
-  const [message, setMessage] = useState("");
+export function NewsletterSignup({
+  compact = false,
+  source = "site",
+}: {
+  compact?: boolean;
+  /** Which capture this is, so Brevo can route and report on it. */
+  source?: CaptureSource;
+}) {
+  const { email, setEmail, status, message, company, setCompany, submit } =
+    useEmailCapture(source);
   const formId = useId().replace(/:/g, "");
   const inputId = `newsletter-email-${formId}`;
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (status === "submitting") return;
-    setStatus("submitting");
-
-    try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      const data = (await response.json()) as { message?: string };
-
-      if (response.ok) {
-        setStatus("success");
-        setMessage(data.message ?? "You're on the list.");
-        setEmail("");
-      } else {
-        setStatus("error");
-        setMessage(data.message ?? "Something went wrong.");
-      }
-    } catch {
-      setStatus("error");
-      setMessage("Something went wrong. Please try again.");
-    }
+    await submit();
   }
 
   return (
@@ -54,6 +38,11 @@ export function NewsletterSignup({ compact = false }: { compact?: boolean }) {
           onChange={(event) => setEmail(event.target.value)}
           placeholder="your@email.com"
           className="hairline min-w-0 flex-1 border-b bg-transparent px-1 py-3 text-base text-ivory placeholder:text-taupe focus:border-champagne focus:outline-none"
+        />
+        <input
+          {...honeypotProps}
+          value={company}
+          onChange={(event) => setCompany(event.target.value)}
         />
         <button
           type="submit"
