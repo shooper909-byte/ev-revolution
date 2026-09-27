@@ -37,6 +37,7 @@ export type LaunchCareCategory = {
   intro: string;
   heroImage: string;
   heroAlt: string;
+  gallery?: { image: string; alt: string }[];
   whoItsFor: string[];
   plans: LaunchPlan[];
   addOns?: { name: string; price: string }[];
@@ -98,6 +99,9 @@ export const launchCareCategories: LaunchCareCategory[] = [
     heroImage: "/images/care/care-weight-management.webp",
     heroAlt:
       "A woman in a black evening gown standing confidently with one hand on her hip.",
+    gallery: [
+      { image: "/images/care/care-weight-management-glp1.png", alt: "Weight-care presentation with a measuring tape in the Eve’s Sisters palette." },
+    ],
     whoItsFor: [
       "Weight that stopped responding to what used to work",
       "A goal to maintain results after a period of weight change",
@@ -386,8 +390,12 @@ export const launchCareCategories: LaunchCareCategory[] = [
     highlightedHeadline: "you are building.",
     intro:
       "Explore clinician-guided energy-support options with clear boundaries: no disease claims, no anti-aging promises, just an option to request an evaluation.",
-    heroImage: "/images/care/care-energy-performance-v2.webp",
-    heroAlt: "A woman outdoors in bright daylight, stretching with confidence.",
+    heroImage: "/images/energy/energy-hero.webp",
+    heroAlt: "An adult woman taking a calm morning walk through a city park.",
+    gallery: [
+      { image: "/images/energy/movement-recovery.webp", alt: "A woman stretching gently at home." },
+      { image: "/images/home/review-your-options.webp", alt: "Illustrative telehealth conversation between a woman and a clinician." },
+    ],
     whoItsFor: [
       "A desire for more support around everyday energy",
       "A clinician-guided approach to performance and recovery",
@@ -490,8 +498,12 @@ export const launchCareCategories: LaunchCareCategory[] = [
     highlightedHeadline: "you are still becoming.",
     intro:
       "Explore clinician-guided options focused on healthspan and the capacity to keep showing up for the life you want. No anti-aging or disease-cure claims.",
-    heroImage: "/images/care/care-longevity.webp",
+    heroImage: "/images/longevity/longevity-hero.webp",
     heroAlt: "An active older woman enjoying a walk outside at golden hour.",
+    gallery: [
+      { image: "/images/mrs-collection/mrs-golden.png", alt: "Women of different backgrounds sharing a moment together." },
+      { image: "/images/home/review-your-options.webp", alt: "Illustrative telehealth conversation between a woman and a clinician." },
+    ],
     whoItsFor: [
       "A thoughtful approach to long-term health habits",
       "Interest in a clinician-guided peptide pathway, if appropriate",
@@ -543,8 +555,16 @@ export const launchCareCategories: LaunchCareCategory[] = [
     highlightedHeadline: "you should never have to hide.",
     intro:
       "A discreet, adult-facing care pathway for desire and intimacy concerns. You decide what to ask about; a licensed clinician decides what is appropriate.",
-    heroImage: "/images/care/care-eves-secret-collection.webp",
-    heroAlt: "A woman in rich plum fabric, photographed in a private, warm setting.",
+    heroImage: "/images/eves-secret-hero.png",
+    heroAlt: "Four women featured in the Eve’s Secret campaign.",
+    gallery: [
+      { image: "/images/eves-secret/addon-even-tone.webp", alt: "Woman in a plum satin blouse smiling softly." },
+      { image: "/images/eves-secret/addon-radiance-rx.webp", alt: "Woman resting her chin on her hand." },
+      { image: "/images/eves-secret/addon-lash-brow.webp", alt: "Portrait of a woman with long dark hair." },
+      { image: "/images/eves-secret/addon-crown.webp", alt: "Woman with curly hair and gold earrings." },
+      { image: "/images/eves-secret/addon-afterglow.webp", alt: "Woman in a plum satin robe." },
+      { image: "/images/eves-secret/addon-together.webp", alt: "A couple leaning toward each other." },
+    ],
     whoItsFor: [
       "Changes in desire you want to discuss privately",
       "Questions about intimate comfort or sexual wellness",
