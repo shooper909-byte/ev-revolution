@@ -79,6 +79,21 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
         </Container>
       </section>
 
+      {category.gallery && (
+        <section aria-label={`${category.label} portraits and scenes`} className="border-b border-onyx/10 bg-ivory">
+          <Container className="py-8 sm:py-12">
+            <div className={`grid gap-4 ${category.gallery.length > 2 ? "sm:grid-cols-2 lg:grid-cols-3" : "sm:grid-cols-2"}`}>
+              {category.gallery.map((item) => (
+                <div key={item.image} className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-onyx-900">
+                  <Image src={item.image} alt={item.alt} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover object-top" />
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs text-onyx-800/60">Campaign imagery is illustrative. Models are not presented as patients or clinicians.</p>
+          </Container>
+        </section>
+      )}
+
       <section id="plans" aria-labelledby="plans-heading" className="scroll-mt-24 border-b border-onyx/10 bg-ivory-200/40">
         <Container className="py-20 sm:py-24">
           <Reveal>
