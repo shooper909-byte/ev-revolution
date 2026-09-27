@@ -72,7 +72,7 @@ export function EnergyPerformance({ pillar }: { pillar: Pillar }) {
             <p className="mt-5 text-sm font-semibold text-champagne">Energy care enrollment is not yet open.</p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <a href="#plans" className="button-sheen cta-glow hover:cta-glow-hover brand-eyebrow rounded-full px-8 py-4 text-center text-[0.625rem] text-ivory">Explore Proposed Plans</a>
-              <Link href="/care/energy-performance#get-started" className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne hover:bg-onyx-800">Join the Waitlist</Link>
+              <Link href="/care/energy-performance#pre-screen" className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne hover:bg-onyx-800">Request Energy Care</Link>
             </div>
           </div>
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-onyx-900">
@@ -122,7 +122,7 @@ export function EnergyPerformance({ pillar }: { pillar: Pillar }) {
             <Eyebrow>A future clinical pathway</Eyebrow>
             <h2 className="mt-6 font-display text-[2.2rem] leading-tight text-ivory sm:text-5xl">Clinical care begins only after launch and evaluation.</h2>
             <p className="mt-6 text-base leading-relaxed text-ivory-200/85">When available, services may be provided by independent licensed clinicians. Joining the waitlist does not begin clinical care, establish eligibility or guarantee treatment.</p>
-            <Link href="/care/energy-performance#get-started" className="button-sheen cta-glow hover:cta-glow-hover brand-eyebrow mt-9 inline-block rounded-full px-8 py-4 text-[0.625rem] text-ivory">Join the Energy Care Waitlist</Link>
+            <Link href="/care/energy-performance#pre-screen" className="button-sheen cta-glow hover:cta-glow-hover brand-eyebrow mt-9 inline-block rounded-full px-8 py-4 text-[0.625rem] text-ivory">Request Energy Care</Link>
           </Reveal>
         </Container>
       </section>

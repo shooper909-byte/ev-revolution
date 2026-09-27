@@ -48,7 +48,7 @@ export function LongevityHealthspan() {
             <p className="mt-7 max-w-xl text-base leading-relaxed text-ivory-200/90 sm:text-lg">Explore healthy aging through strength, everyday habits, preventive care, and conversations with qualified clinicians.</p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <Link href="/care/longevity-healthspan" className="button-sheen brand-eyebrow bg-plum px-8 py-4 text-center text-[0.625rem] text-ivory hover:bg-plum-600">Explore Longevity Care</Link>
-              <Link href="/care/longevity-healthspan#get-started" className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne hover:bg-onyx-800">Join the Waitlist</Link>
+              <Link href="/care/longevity-healthspan#pre-screen" className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne hover:bg-onyx-800">Request Longevity Care</Link>
             </div>
           </div>
         </Container>
@@ -122,7 +122,7 @@ export function LongevityHealthspan() {
             <p className="brand-eyebrow text-champagne">Longevity Care waitlist</p>
             <h2 className="mt-4 font-display text-3xl text-ivory sm:text-4xl">Be first to know when enrollment opens.</h2>
           </div>
-          <Link href="/care/longevity-healthspan#get-started" className="button-sheen brand-eyebrow shrink-0 bg-champagne px-8 py-4 text-[0.625rem] text-onyx hover:bg-champagne-200">Join the Waitlist</Link>
+          <Link href="/care/longevity-healthspan#pre-screen" className="button-sheen brand-eyebrow shrink-0 bg-champagne px-8 py-4 text-[0.625rem] text-onyx hover:bg-champagne-200">Request Longevity Care</Link>
         </Container>
       </section>
     </>

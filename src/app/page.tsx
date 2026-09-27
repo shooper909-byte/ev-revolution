@@ -5,7 +5,6 @@ import { Container, Eyebrow } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PillarCard } from "@/components/PillarCard";
 import { PillarIcon } from "@/components/PillarIcon";
-import { mrsExperiences } from "@/lib/mrsCollection";
 import { careLabel, pillars } from "@/lib/pillars";
 import { formatPostDate, posts } from "@/lib/posts";
 
@@ -48,10 +47,6 @@ const steps = [
     imageAlt: "Woman opening a discreet wellness delivery while reviewing a follow-up message on her phone.",
   },
 ];
-
-const mrsHomepageExperiences = ["mrs-jones", "mrs-robinson", "mrs-golden"].map(
-  (slug) => mrsExperiences.find((experience) => experience.slug === slug)!,
-);
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -139,7 +134,7 @@ export default function HomePage() {
             {pillars.map((pillar) => (
               <li key={pillar.slug}>
                 <Link
-                  href={`/pillars/${pillar.slug}`}
+                  href={pillar.carePath ?? `/pillars/${pillar.slug}`}
                   className="flex h-full flex-col items-center gap-3 px-3 py-8 text-center transition-colors hover:bg-onyx-800"
                 >
                   <PillarIcon
@@ -222,47 +217,6 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* The Mrs. Collection is a curated collection, not a medical specialty. */}
-      <section aria-labelledby="mrs-collection-heading" className="border-b border-onyx-700 bg-plum-900/30">
-        <Container className="py-20 sm:py-28">
-          <div className="max-w-3xl">
-            <Eyebrow>Curated care options</Eyebrow>
-            <h2 id="mrs-collection-heading" className="mt-6 font-display text-4xl leading-tight text-ivory sm:text-5xl">Meet The Mrs. Collection</h2>
-            <p className="mt-6 text-base leading-relaxed text-ivory-200/85">Explore Mrs. Jones, Mrs. Robinson, and Mrs. Golden—three collections within Eve&rsquo;s Sisters, with care options guided by your individual needs.</p>
-            <p className="mt-4 text-sm leading-relaxed text-ivory-200/70">The Mrs. Collection organizes curated care options. Eve&rsquo;s Secret™ is the sexual-wellness pathway.</p>
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {mrsHomepageExperiences.map((experience) => (
-              <Link
-                key={experience.slug}
-                href={`/packages/${experience.slug}`}
-                className="group relative min-h-[390px] overflow-hidden rounded-2xl border border-champagne/45 bg-onyx focus-visible:border-champagne sm:min-h-[440px]"
-              >
-                <Image
-                  src={experience.image}
-                  alt={experience.imageAlt}
-                  fill
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                  className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                />
-                <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/20 to-transparent" />
-                <span className="absolute inset-x-0 bottom-0 z-10 p-7">
-                  <span className="block font-display text-3xl text-ivory">{experience.name}</span>
-                  <span className="mt-3 block text-sm leading-relaxed text-ivory-200/90">{experience.tagline}</span>
-                  <span className="brand-eyebrow mt-5 flex items-center gap-2 text-[0.5625rem] text-champagne">
-                    Explore {experience.name}
-                    <span aria-hidden="true" className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0">&rarr;</span>
-                  </span>
-                </span>
-              </Link>
-            ))}
-          </div>
-
-          <Link href="/packages/mrs-collection" className="button-sheen brand-eyebrow mt-12 inline-block bg-plum px-8 py-4 text-xs text-ivory transition-colors hover:bg-plum-600">Explore The Mrs. Collection</Link>
-        </Container>
-      </section>
-
       {/* How it works */}
       <section id="how-it-works" className="scroll-mt-24 border-b border-onyx-700 bg-onyx-900">
         <Container className="py-20 sm:py-28">
@@ -323,7 +277,7 @@ export default function HomePage() {
                 <p className="brand-eyebrow text-[0.5625rem] text-plum">Weight management</p>
                 <h3 className="mt-4 font-display text-3xl">GLP-1 Care</h3>
                 <p className="mt-4 flex-1 leading-7 text-onyx-700">Clinical evaluation, prescription coordination when appropriate, and ongoing support for eligible patients.</p>
-                <Link href="/care/weight-management#plans" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Explore GLP-1 Care &rarr;</Link>
+                <Link href="/care/weight-management#pre-screen" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Explore Weight Care &rarr;</Link>
               </div>
             </article>
 
@@ -333,22 +287,22 @@ export default function HomePage() {
                 <p className="brand-eyebrow text-[0.5625rem] text-plum">Energy and healthy aging</p>
                 <h3 className="mt-4 font-display text-3xl">NAD+ Support</h3>
                 <p className="mt-4 flex-1 leading-7 text-onyx-700">Ask a licensed clinician whether NAD+ support is available and appropriate for your goals, health history, and location.</p>
-                <Link href="/peptide-care#get-started" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Ask About NAD+ &rarr;</Link>
+                <Link href="/care/energy-performance#pre-screen" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Ask About NAD+ &rarr;</Link>
               </div>
             </article>
 
             <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-champagne-700/45 bg-ivory-200">
-              <Image src="/images/products/peptide-care.png" alt="Two unbranded wellness vials on black stone in warm champagne light." width={1536} height={1024} sizes="(min-width: 1024px) 33vw, 100vw" className="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+              <Image src="/images/recovery/recovery-hero-banner-v2.webp" alt="Four adult women resting together on a terrace at sunset." width={1536} height={1024} sizes="(min-width: 1024px) 33vw, 100vw" className="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
               <div className="flex flex-1 flex-col p-7">
-                <p className="brand-eyebrow text-[0.5625rem] text-plum">Personalized clinical pathway</p>
-                <h3 className="mt-4 font-display text-3xl">Peptide Care</h3>
-                <p className="mt-4 flex-1 leading-7 text-onyx-700">Explore clinician-guided peptide care with eligibility assessment, personalized planning, and ongoing monitoring.</p>
-                <Link href="/peptide-care" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Explore Peptide Care &rarr;</Link>
+                <p className="brand-eyebrow text-[0.5625rem] text-plum">Recovery and wellness</p>
+                <h3 className="mt-4 font-display text-3xl">Recovery Care</h3>
+                <p className="mt-4 flex-1 leading-7 text-onyx-700">Explore currently available recovery support and join an email-only waitlist for treatments that are not yet available.</p>
+                <Link href="/care/recovery-rejuvenation#pre-screen" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Explore Recovery Care &rarr;</Link>
               </div>
             </article>
           </div>
 
-          <p className="mt-9 text-xs leading-6 text-onyx-700">Services and treatment options vary by state and provider. Prescriptions, laboratory testing, and pharmacy charges may be separate. Individual results vary.</p>
+          <p className="mt-9 text-xs leading-6 text-onyx-700">Plan pricing is shown on each care page. Services and treatment options vary by state and provider. Prescription treatment is not guaranteed. Individual results vary.</p>
         </Container>
       </section>
 

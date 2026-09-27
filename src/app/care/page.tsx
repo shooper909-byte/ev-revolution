@@ -10,12 +10,12 @@ import { pillars } from "@/lib/pillars";
 export const metadata: Metadata = {
   title: { absolute: "Care | Eve’s Sisters Women’s Wellness" },
   description:
-    "Explore Eve’s Sisters care pathways for weight management, menopause and hormones, skin and beauty, energy and performance, recovery, and longevity at every stage of life.",
+    "Explore Eve’s Sisters care categories for weight management, menopause and hormones, skin and beauty, energy and performance, recovery, longevity, and intimate wellness.",
   alternates: { canonical: "/care" },
   openGraph: {
     title: "Care | Eve’s Sisters Women’s Wellness",
     description:
-      "Six care pathways for women’s wellness — weight management, menopause and hormones, skin and beauty, energy and performance, recovery, and longevity.",
+      "Seven care categories for women’s wellness — weight management, menopause and hormones, skin and beauty, energy and performance, recovery, longevity, and intimate wellness.",
     type: "website",
     url: "https://evevolutionhealth.com/care",
     images: ["/opengraph-image.png"],
@@ -35,7 +35,7 @@ const careSchema = [{
   "@type": "WebPage",
   name: "Care | Eve’s Sisters Women’s Wellness",
   url: "https://evevolutionhealth.com/care",
-  description: "Six women’s wellness pathways for every stage of life.",
+  description: "Seven women’s wellness care categories for every stage of life.",
 }, {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -113,7 +113,7 @@ const brandPillars = [
     body: "Built specifically around women’s wellness.",
   },
   {
-    label: "Six care areas",
+    label: "Seven care categories",
     body: "Connected support across the Eve’s Sisters ecosystem.",
   },
   {
@@ -177,7 +177,7 @@ export default function CarePage() {
               style={{ "--enter-delay": "270ms" } as React.CSSProperties}
             >
               <Link
-                href="/care/weight-management#get-started"
+                href="/care/weight-management#pre-screen"
                 className="button-sheen brand-eyebrow group bg-plum px-8 py-4 text-center text-[0.625rem] text-ivory transition-colors hover:bg-plum-600"
               >
                 Start With Weight Care
@@ -259,13 +259,13 @@ export default function CarePage() {
           </ol>
           <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link href="#pathways" className="button-sheen brand-eyebrow inline-block bg-plum px-8 py-4 text-center text-xs text-ivory transition-colors hover:bg-plum-600">Explore Intake Options</Link>
-            <Link href="/treatments" className="hairline brand-eyebrow inline-block border px-8 py-4 text-center text-xs text-champagne transition-colors hover:bg-onyx-800">View Treatments &amp; Medications</Link>
+            <Link href="#pathways" className="hairline brand-eyebrow inline-block border px-8 py-4 text-center text-xs text-champagne transition-colors hover:bg-onyx-800">View All Care Categories</Link>
           </div>
         </Container>
       </section>
 
       {/* ---------------------------------------------------------------
-          Six pathways
+          Six core pathways, plus Eve's Secret below.
           --------------------------------------------------------------- */}
       <section
         id="pathways"
@@ -281,15 +281,15 @@ export default function CarePage() {
               id="pathways-heading"
               className="mt-6 font-display text-[2.1rem] leading-[1.1] text-onyx sm:text-[2.75rem]"
             >
-              Six Pathways.
+              Seven Care Categories.
               <span className="block text-plum">
                 A Healthier, Brighter You.
               </span>
             </h2>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-onyx-800/75">
-              From weight management to hormone health, skin, energy, recovery
-              and longevity, Eve&rsquo;s Sisters brings women&rsquo;s wellness together
-              in one thoughtfully designed experience.
+              From weight management to hormone health, skin, energy, recovery,
+              longevity and intimate wellness, Eve&rsquo;s Sisters brings women&rsquo;s
+              wellness together in one thoughtfully designed experience.
             </p>
           </Reveal>
 

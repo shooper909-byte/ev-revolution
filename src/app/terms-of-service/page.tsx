@@ -44,9 +44,9 @@ const sections: PolicySection[] = [
     heading: "Fees and payment",
     body: [
       [
-        "Program and consultation fees are shown before you purchase. Medication, laboratory and pharmacy charges may be separate.",
-        "When you request a prescription medication, your card may be pre-authorized. The charge for the medication itself is processed only after a licensed provider approves the prescription. If the provider does not approve it, the pre-authorization is released.",
-        "Memberships renew automatically each billing period until you cancel. See our Subscription Cancellation policy.",
+        "Current care-page plan prices state the included program components. Any payment authorization is shown in the secure enrollment flow before it is collected.",
+        "A short treatment request does not charge your card. A licensed provider must still determine whether treatment is appropriate.",
+        "If you enroll in a recurring plan, renewal and cancellation terms are shown before authorization. See our Subscription Cancellation policy.",
         "Refills are reviewed by a provider and are never automatic.",
       ],
     ],

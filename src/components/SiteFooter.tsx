@@ -44,7 +44,7 @@ export function SiteFooter() {
               {pillars.map((pillar) => (
                 <li key={pillar.slug}>
                   <Link
-                    href={`/pillars/${pillar.slug}`}
+                    href={pillar.carePath ?? `/pillars/${pillar.slug}`}
                     className="text-sm text-ivory-200 transition-colors hover:text-champagne"
                   >
                     {careLabel(pillar)}
@@ -53,10 +53,10 @@ export function SiteFooter() {
               ))}
               <li>
                 <Link
-                  href="/treatments"
+                  href="/eves-secret"
                   className="text-sm text-ivory-200 transition-colors hover:text-champagne"
                 >
-                  Treatments &amp; Medications
+                  Eve&rsquo;s Secret™
                 </Link>
               </li>
             </ul>
@@ -112,6 +112,9 @@ export function SiteFooter() {
 
         <div className="hairline mt-10 border-t pt-8">
           <p className="text-xs leading-relaxed text-taupe-700">
+            Prescription treatment is not guaranteed and requires evaluation by a licensed clinician. Compounded medications are not FDA-approved. Services vary by state.
+          </p>
+          <p className="mt-4 text-xs leading-relaxed text-taupe-700">
             Eve&rsquo;s Sisters publishes general wellness education. Nothing on this
             site is medical advice, diagnosis or treatment, and it is not a
             substitute for care from a qualified clinician. Always speak with

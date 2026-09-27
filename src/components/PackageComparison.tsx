@@ -18,7 +18,7 @@ export function PackageComparison({ compact = false }: { compact?: boolean }) {
         <ul className={`mt-6 flex-1 space-y-3 text-sm leading-6 text-ivory-200 ${compact ? "lg:min-h-[12rem]" : ""}`}>
           {plan.features.map((feature) => <li key={feature} className="flex gap-3"><span aria-hidden="true" className="text-plum-400">●</span><span>{feature}</span></li>)}
         </ul>
-        <Link href="/care/weight-management#get-started" className={`brand-eyebrow mt-7 rounded-full px-5 py-4 text-center text-[0.625rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne ${plan.popular ? "button-sheen bg-champagne text-onyx" : "border border-champagne text-champagne hover:bg-champagne hover:text-onyx"}`}>Choose {plan.name}</Link>
+        <Link href="/care/weight-management#pre-screen" className={`brand-eyebrow mt-7 rounded-full px-5 py-4 text-center text-[0.625rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne ${plan.popular ? "button-sheen bg-champagne text-onyx" : "border border-champagne text-champagne hover:bg-champagne hover:text-onyx"}`}>Choose {plan.name}</Link>
       </article>
     </Reveal>)}
   </div>;

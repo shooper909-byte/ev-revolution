@@ -42,7 +42,7 @@ const weightSchema = [{
     { "@type": "ListItem", position: 3, name: "Weight Management", item: "https://evevolutionhealth.com/pillars/weight-loss" },
   ],
 }];
-function Action({ children = "Get Started", href = "/care/weight-management#get-started" }: { children?: React.ReactNode; href?: string }) {
+function Action({ children = "Get Started", href = "/care/weight-management#pre-screen" }: { children?: React.ReactNode; href?: string }) {
   return <Link href={href} className={s.button}>{children}<span aria-hidden="true"> →</span></Link>;
 }
 function Portrait({ priority = false }: { priority?: boolean }) {

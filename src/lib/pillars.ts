@@ -167,7 +167,7 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "skin-beauty",
-    carePath: "/eves-secret",
+    carePath: "/care/skin-beauty",
     name: "Skin & Beauty",
     navLabel: "Skin",
     icon: "honeycomb",
@@ -247,6 +247,7 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "recovery-rejuvenation",
+    carePath: "/care/recovery-rejuvenation",
     name: "Recovery & Rejuvenation",
     navLabel: "Recovery",
     icon: "renew",
@@ -346,10 +347,9 @@ export function careSummary(pillar: Pillar): string {
  */
 export function getStartedHref(pathname: string): string {
   const carePage =
-    pathname.startsWith("/care/") || pathname === "/peptide-care"
+    pathname.startsWith("/care/") || pathname === "/eves-secret"
       ? pathname
       : pillars.find((pillar) => pathname === `/pillars/${pillar.slug}`)?.carePath;
-  return carePage && (carePage.startsWith("/care/") || carePage === "/peptide-care")
-    ? `${carePage}#get-started`
-    : "/care#pathways";
+  if (carePage?.startsWith("/care/") || carePage === "/eves-secret") return `${carePage}#pre-screen`;
+  return "/care#pathways";
 }

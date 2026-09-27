@@ -36,7 +36,7 @@ const sections: PolicySection[] = [
     heading: "Prescriptions",
     body: [
       "Your provider decides, using independent clinical judgement, whether any medication is appropriate. Submitting an intake or choosing a treatment does not guarantee a prescription. The provider reviews your medical history, diagnosis, current medications, contraindications and risk factors, and may request lab work or a live consultation before deciding. Refills are reviewed by a provider and are never automatic.",
-      `Prescriptions are filled by ${partners.pharmacy.name}, a licensed pharmacy. Compounded medications are not FDA-approved; the FDA does not evaluate compounded medications for safety, effectiveness or quality. Hormone therapies, including any testosterone, require lab testing and provider oversight and are never provided without prior testing.`,
+      `Prescriptions are filled by ${partners.pharmacy.name}, a licensed pharmacy. Compounded medications are not FDA-approved; the FDA does not evaluate compounded medications for safety, effectiveness or quality. Some hormone pathways may require lab testing and provider oversight. Testosterone and other controlled substances are not offered through this site.`,
     ],
   },
   {

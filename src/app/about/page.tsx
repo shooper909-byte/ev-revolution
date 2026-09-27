@@ -133,15 +133,11 @@ export default function AboutPage() {
                 Elite Care Health
               </a>
               , an independent physician group. Prescribed medications, when
-              appropriate, are fulfilled by our pharmacy partner{" "}
-              <a href="https://rxave.health" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
-                Rx Ave Health
-              </a>
-              .
+              appropriate, are fulfilled by a licensed pharmacy.
             </p>
             <p className={s.disclosure}>
               Availability varies by service and state. An evaluation does not
-              guarantee a prescription. Enrollment is opening in phases.
+              guarantee a prescription. Prescription treatment is not guaranteed.
             </p>
           </div>
         </Container>
@@ -182,35 +178,24 @@ export default function AboutPage() {
             </article>
 
             <article className={s.collectionCard}>
-              <div
-                className={`${s.collectionImage} ${s.mrsImages}`}
-                aria-hidden="true"
-              >
-                {[
-                  "/images/mrs-collection/mrs-jones.png",
-                  "/images/mrs-collection/mrs-robinson.png",
-                  "/images/mrs-collection/mrs-golden.png",
-                ].map((src) => (
-                  <Image
-                    key={src}
-                    src={src}
-                    alt=""
-                    width={1122}
-                    height={1402}
-                    sizes="(min-width: 1024px) 17vw, 33vw"
-                  />
-                ))}
+              <div className={s.collectionImage}>
+                <Image
+                  src="/images/care/care-cta-silk.webp"
+                  alt="A woman in a flowing plum silk dress in soft light."
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className={s.cover}
+                />
               </div>
               <div className={s.collectionCopy}>
-                <p className={s.cardEyebrow}>Curated care options</p>
-                <h3>The Mrs. Collection</h3>
+                <p className={s.cardEyebrow}>Care categories</p>
+                <h3>Begin where you are</h3>
                 <p>
-                  Meet Mrs. Jones, Mrs. Robinson, and Mrs. Golden&mdash;collections
-                  designed to help you explore Eve&rsquo;s Sisters through different
-                  interests and chapters of life.
+                  Explore the seven care categories, current plan options and
+                  next steps for a clinician-guided request.
                 </p>
-                <ActionLink href="/packages/mrs-collection">
-                  Meet The Mrs. Collection
+                <ActionLink href="/care">
+                  Explore Care Categories
                 </ActionLink>
               </div>
             </article>

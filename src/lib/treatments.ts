@@ -131,7 +131,7 @@ export const treatmentCategories: readonly TreatmentCategory[] = [
     image: "/images/care/care-weight-management.webp",
     imageAlt: "A smiling woman with long dark hair in a black dress.",
     pathway: { href: "/care/weight-management", label: "Weight Care" },
-    waitlistHref: "/care/weight-management#get-started",
+    waitlistHref: "/care/weight-management#pre-screen",
   },
   {
     id: "hormones",
@@ -140,7 +140,7 @@ export const treatmentCategories: readonly TreatmentCategory[] = [
     image: "/images/care/care-menopause-hormones.webp",
     imageAlt: "A woman with silver-streaked hair looking upward in warm light.",
     pathway: { href: "/care/hormones-menopause", label: "Hormone Care" },
-    waitlistHref: "/care/hormones-menopause#get-started",
+    waitlistHref: "/care/hormones-menopause#pre-screen",
   },
   {
     id: "sexual",
@@ -149,7 +149,7 @@ export const treatmentCategories: readonly TreatmentCategory[] = [
     image: "/images/care/care-together.webp",
     imageAlt: "Four women of different ages and body types standing together.",
     pathway: { href: "/eves-secret", label: "Eve’s Secret™" },
-    waitlistHref: "/care/hormones-menopause#get-started",
+    waitlistHref: "/care/hormones-menopause#pre-screen",
   },
   {
     id: "skin",
@@ -158,7 +158,7 @@ export const treatmentCategories: readonly TreatmentCategory[] = [
     image: "/images/care/care-skin-beauty-v3.webp",
     imageAlt: "A woman with luminous skin, head tilted back and one hand at her neck, in warm low light.",
     pathway: { href: "/care/skin-beauty", label: "Skin Care" },
-    waitlistHref: "/care/skin-beauty#get-started",
+    waitlistHref: "/care/skin-beauty#pre-screen",
   },
   {
     id: "hair",
@@ -167,7 +167,7 @@ export const treatmentCategories: readonly TreatmentCategory[] = [
     image: "/images/care/care-longevity.webp",
     imageAlt: "A smiling woman with long silver hair in a black jacket.",
     pathway: { href: "/care/skin-beauty", label: "Hair Care" },
-    waitlistHref: "/care/skin-beauty#get-started",
+    waitlistHref: "/care/skin-beauty#pre-screen",
     pendingNote:
       "The hair-loss formulations listed by our clinical partner contain finasteride, which is FDA-approved for men only. They are under review for women-specific prescribing and are not published yet. A clinician can discuss hair-loss options with you.",
   },

@@ -109,7 +109,7 @@ export function CareMenu({ active }: { active: boolean }) {
           {pillars.map((pillar) => (
             <li key={pillar.slug}>
               <Link
-                href={`/pillars/${pillar.slug}`}
+                href={pillar.carePath ?? `/pillars/${pillar.slug}`}
                 className="group flex items-center justify-between gap-3 px-5 py-2.5 text-sm text-ivory-200 transition-colors hover:bg-onyx-800 hover:text-champagne"
               >
                 {careLabel(pillar)}
@@ -124,21 +124,10 @@ export function CareMenu({ active }: { active: boolean }) {
           ))}
           <li className="hairline mt-2 border-t pt-2">
             <Link
-              href="/peptide-care"
+              href="/eves-secret"
               className="group flex items-center justify-between gap-3 px-5 py-2.5 text-sm text-ivory-200 transition-colors hover:bg-onyx-800 hover:text-champagne"
             >
-              Peptide Care
-              <span aria-hidden="true" className="text-champagne opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100">
-                &rarr;
-              </span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/treatments"
-              className="group flex items-center justify-between gap-3 px-5 py-2.5 text-sm text-ivory-200 transition-colors hover:bg-onyx-800 hover:text-champagne"
-            >
-              Treatments &amp; Medications
+              Eve&rsquo;s Secret™
               <span aria-hidden="true" className="text-champagne opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100">
                 &rarr;
               </span>

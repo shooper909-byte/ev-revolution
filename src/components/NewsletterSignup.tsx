@@ -7,10 +7,13 @@ import { honeypotProps, useEmailCapture } from "@/components/emailCapture";
 export function NewsletterSignup({
   compact = false,
   source = "site",
+  hint,
 }: {
   compact?: boolean;
   /** Which capture this is, so Brevo can route and report on it. */
   source?: CaptureSource;
+  /** Context-specific help text when the form is embedded outside the newsletter. */
+  hint?: string;
 }) {
   const { email, setEmail, status, message, company, setCompany, submit } =
     useEmailCapture(source);
@@ -61,6 +64,7 @@ export function NewsletterSignup({
         }`}
       >
         {message ||
+          hint ||
           "Evidence-led guidance on hormones, metabolism and longevity. No spam, ever."}
       </p>
     </div>
