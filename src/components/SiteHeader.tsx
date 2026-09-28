@@ -14,6 +14,7 @@ import { careLabel, getStartedHref as getStartedHrefFor, launchedPillars } from 
    duplicate one. Items marked `wide` only fit on very wide screens; below
    that they stay reachable from the footer and the logo (Home). */
 const primaryNav = [
+  { href: "/treatments", label: "Treatments" },
   { href: "/packages/mrs-collection", label: "Mrs. Collection" },
   { href: "/eves-secret", label: "Eve’s Secret™" },
   { href: "/about#philosophy", label: "Our Approach", wide: true },

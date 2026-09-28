@@ -12,7 +12,7 @@ const sections: PolicySection[] = [
   {
     heading: "Agreement",
     body: [
-      `These Terms of Service are an agreement between you and ${businessName} (“we”, “us”). By using this website or our services you agree to these terms, our Privacy Policy and our Telehealth Consent. If you do not agree, please do not use the services.`,
+      `These Terms of Service are an agreement between you and ${businessName} (“we”, “us”). Eve’s Sisters is a trade name of ${businessName}. By using this website or our services you agree to these terms, our Privacy Policy and our Telehealth Consent. If you do not agree, please do not use the services.`,
     ],
   },
   {

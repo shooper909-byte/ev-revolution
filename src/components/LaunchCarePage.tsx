@@ -12,10 +12,10 @@ const howItWorks: [string, string][] = [
   ["Choose your plan", "Choose the care pathway you would like to request. You are not purchasing a prescription."],
   ["Complete a short pre-screen", "Answer a few private, high-level questions. Those answers stay in your browser and are not submitted."],
   ["A licensed provider reviews", "Complete the secure clinical intake. A licensed clinician decides whether treatment is appropriate."],
-  ["Discreet delivery", "If approved and enrolled, the pharmacy coordinates discreet shipment and the secure portal manages follow-up."],
+  ["Discreet delivery", "If approved and enrolled, the pharmacy coordinates discreet shipment and secure care-team messaging supports follow-up."],
 ];
 
-function toPlanCard(plan: LaunchCareCategory["plans"][number]): Plan {
+function toPlanCard(plan: LaunchCareCategory["plans"][number], isEvesSecret: boolean): Plan {
   const monthlyPrice = plan.monthly.replace(" / month", "");
   return {
     id: plan.id,
@@ -27,14 +27,15 @@ function toPlanCard(plan: LaunchCareCategory["plans"][number]): Plan {
     treatments: plan.treatment,
     cta: "Request this treatment",
     href: "#pre-screen",
-    footnote: `3-month option: ${plan.prepaid}. Your card may be pre-authorized, but no medication-inclusive amount is captured unless and until a licensed provider approves treatment.`,
+    footnote: isEvesSecret ? undefined : `3-month option: ${plan.prepaid}. Your card may be pre-authorized, but no medication-inclusive amount is captured unless and until a licensed provider approves treatment.`,
     featured: plan.featured,
     badge: plan.badge,
   };
 }
 
 export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
-  const planCards = category.plans.map(toPlanCard);
+  const isEvesSecret = category.slug === "eves-secret";
+  const planCards = category.plans.map((plan) => toPlanCard(plan, isEvesSecret));
 
   return (
     <div className="overflow-x-clip">
@@ -99,7 +100,7 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
           <Reveal>
             <Eyebrow className="text-plum">Treatment options</Eyebrow>
             <h2 id="plans-heading" className="mt-6 max-w-3xl font-display text-[2.25rem] leading-tight text-onyx sm:text-5xl">Choose a plan to request.</h2>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-onyx-800/75">After provider approval, each published plan price includes the medication if prescribed, provider review, shipping and secure messaging. Required labs are quoted separately. A treatment request creates no charge.</p>
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-onyx-800/75">{isEvesSecret ? "The consultation fee covers the clinician visit and messaging. Any medication is quoted separately and charged only after provider approval." : "After provider approval, each published plan price includes the medication if prescribed, provider review, shipping and secure messaging. Required labs are quoted separately. A treatment request creates no charge."}</p>
             {category.slug === "weight-management" && <p className="mt-4 max-w-3xl text-sm leading-relaxed text-onyx-800/75">Compounded GLP-1s are prescribed only when a licensed provider documents a patient-specific clinical need — not for cost or preference. Compounded medications are not FDA-approved.</p>}
           </Reveal>
           <PlanCards plans={planCards} />
@@ -201,7 +202,7 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
           </Reveal>
           <Reveal delay={80}>
             <div className="grid gap-4 sm:grid-cols-2">
-              {["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"].map((item) => <div key={item} className="rounded-2xl border border-ivory-300/15 bg-onyx p-5 text-sm text-ivory-200">{item}</div>)}
+              {(isEvesSecret ? ["Licensed-provider consultation", "Secure care-team messaging", "Medication quoted separately if prescribed"] : ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"]).map((item) => <div key={item} className="rounded-2xl border border-ivory-300/15 bg-onyx p-5 text-sm text-ivory-200">{item}</div>)}
             </div>
             <p className="mt-7 text-sm leading-relaxed text-ivory-200/80">Labs are quoted separately only when required. {category.labNote ?? "Your clinician explains any required lab work during the secure intake."}</p>
             <p className="mt-4 text-xs leading-relaxed text-ivory-200/60">The private pre-screen and treatment request below do not take payment or authorize a card. Payment authorization, renewal terms, cancellation and refund details belong in the secure enrollment flow after clinical approval.</p>

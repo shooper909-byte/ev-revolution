@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     heading: "This is education, not medical advice",
-    body: "Everything published by Eve’s Sisters — on this site, in the Journal, and in our emails — is general wellness and longevity education. It is not medical advice, diagnosis or treatment, and it does not create a clinician–patient relationship. It cannot account for your history, your medications, your labs or your circumstances.",
+    body: "Everything published by Eve’s Sisters — on this site and in our emails — is general wellness and longevity education. It is not medical advice, diagnosis or treatment, and it does not create a clinician–patient relationship. It cannot account for your history, your medications, your labs or your circumstances.",
   },
   {
     heading: "Always involve a qualified clinician",

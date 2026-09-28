@@ -58,6 +58,14 @@ export function SiteFooter() {
                   Eve&rsquo;s Secret™
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/treatments"
+                  className="text-sm text-ivory-200 transition-colors hover:text-champagne"
+                >
+                  Treatments
+                </Link>
+              </li>
             </ul>
           </nav>
 
@@ -117,7 +125,7 @@ export function SiteFooter() {
             States we serve: all 50 U.S. states through our nationwide clinical partner network, subject to provider, program, pharmacy, and state-specific requirements.
           </p>
           <p className="mt-4 text-xs leading-relaxed text-taupe-700">
-            Eve&rsquo;s Sisters by Evevolution Health.
+            Eve&rsquo;s Sisters is a trade name of Eve&rsquo;s Sisters LLC.
           </p>
           <p className="mt-4 text-xs leading-relaxed text-taupe-700">
             Eve&rsquo;s Sisters publishes general wellness education. Nothing on this
