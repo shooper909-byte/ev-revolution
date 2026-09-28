@@ -22,7 +22,7 @@ const sections: PolicySection[] = [
   {
     heading: "How to cancel",
     body: [
-      `You can cancel at any time, for any reason. To cancel, ${contactLine} from the address on your account and ask us to cancel your membership. We will confirm your cancellation in writing. There is no cancellation fee.`,
+      `You can cancel at any time, for any reason. Submit the online form at https://evevolutionhealth.com/contact and choose “Cancel a membership,” or ${contactLine} from the address on your account. We will confirm your cancellation in writing. There is no cancellation fee.`,
       "Please cancel at least 24 hours before your next billing date to avoid being charged for the next period.",
     ],
   },

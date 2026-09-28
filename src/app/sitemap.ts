@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://evevolutionhealth.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/care", "/care/weight-management", "/care/hormones-menopause", "/care/skin-beauty", "/care/energy-performance", "/care/recovery-rejuvenation", "/care/longevity-healthspan", "/eves-secret", "/packages/mrs-collection", "/packages/mrs-jones", "/packages/mrs-golden", "/packages/mrs-robinson", "/about", "/journal", "/contact", "/faq", "/privacy-policy", "/terms-of-service", "/telehealth-consent", "/subscription-cancellation", "/hipaa-policy", "/disclaimer"];
+  const staticRoutes = ["", "/care", "/care/weight-management", "/care/hormones-menopause", "/care/skin-beauty", "/eves-secret", "/treatments", "/packages/mrs-collection", "/packages/mrs-jones", "/packages/mrs-golden", "/packages/mrs-robinson", "/about", "/contact", "/faq", "/privacy-policy", "/terms-of-service", "/telehealth-consent", "/subscription-cancellation", "/hipaa-policy", "/disclaimer"];
 
   return [
     ...staticRoutes.map((route) => ({

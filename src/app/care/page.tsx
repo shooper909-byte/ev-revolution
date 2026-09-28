@@ -5,17 +5,17 @@ import { CareCard } from "@/components/CareCard";
 import { Container, Eyebrow } from "@/components/Container";
 import { PrincipleCarousel } from "@/components/PrincipleCarousel";
 import { Reveal } from "@/components/Reveal";
-import { pillars } from "@/lib/pillars";
+import { launchedPillars } from "@/lib/pillars";
 
 export const metadata: Metadata = {
   title: { absolute: "Care | Eve’s Sisters Women’s Wellness" },
   description:
-    "Explore Eve’s Sisters care categories for weight management, menopause and hormones, skin and beauty, energy and performance, recovery, longevity, and intimate wellness.",
+    "Explore Eve’s Sisters care categories for weight management, menopause and hormones, skin and beauty, and intimate wellness.",
   alternates: { canonical: "/care" },
   openGraph: {
     title: "Care | Eve’s Sisters Women’s Wellness",
     description:
-      "Seven care categories for women’s wellness — weight management, menopause and hormones, skin and beauty, energy and performance, recovery, longevity, and intimate wellness.",
+      "Four launched care categories for women’s wellness — weight management, menopause and hormones, skin and beauty, and intimate wellness.",
     type: "website",
     url: "https://evevolutionhealth.com/care",
     images: ["/opengraph-image.png"],
@@ -35,7 +35,7 @@ const careSchema = [{
   "@type": "WebPage",
   name: "Care | Eve’s Sisters Women’s Wellness",
   url: "https://evevolutionhealth.com/care",
-  description: "Seven women’s wellness care categories for every stage of life.",
+  description: "Four launched women’s wellness care categories for every stage of life.",
 }, {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -113,7 +113,7 @@ const brandPillars = [
     body: "Built specifically around women’s wellness.",
   },
   {
-    label: "Seven care categories",
+    label: "Four care categories",
     body: "Connected support across the Eve’s Sisters ecosystem.",
   },
   {
@@ -265,7 +265,7 @@ export default function CarePage() {
       </section>
 
       {/* ---------------------------------------------------------------
-          Six core pathways, plus Eve's Secret below.
+          Three core pathways, plus Eve's Secret below.
           --------------------------------------------------------------- */}
       <section
         id="pathways"
@@ -281,20 +281,20 @@ export default function CarePage() {
               id="pathways-heading"
               className="mt-6 font-display text-[2.1rem] leading-[1.1] text-onyx sm:text-[2.75rem]"
             >
-              Seven Care Categories.
+              Four Care Categories.
               <span className="block text-plum">
                 A Healthier, Brighter You.
               </span>
             </h2>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-onyx-800/75">
-              From weight management to hormone health, skin, energy, recovery,
-              longevity and intimate wellness, Eve&rsquo;s Sisters brings women&rsquo;s
+              From weight management to hormone health, skin and intimate
+              wellness, Eve&rsquo;s Sisters brings women&rsquo;s
               wellness together in one thoughtfully designed experience.
             </p>
           </Reveal>
 
           <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {pillars.map((pillar, index) => (
+            {launchedPillars.map((pillar, index) => (
               <Reveal
                 as="li"
                 key={pillar.slug}

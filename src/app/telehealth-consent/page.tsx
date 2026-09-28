@@ -12,7 +12,7 @@ const sections: PolicySection[] = [
   {
     heading: "What telehealth is",
     body: [
-      `Telehealth means receiving healthcare remotely, through secure online forms, messaging, audio or video, rather than in person. Care arranged through ${businessName} is delivered by licensed providers affiliated with ${partners.clinical.name}, an independent physician group. Depending on your state and your needs, care may be delivered asynchronously (a provider reviews your intake without a live visit) or through a real-time audio or video consultation.`,
+      `Telehealth means receiving healthcare remotely, through secure online forms, messaging, audio or video, rather than in person. Care arranged through ${businessName} is delivered by licensed providers affiliated with ${partners.clinical.name}, an independent physician group. Based on your state and your needs, care may be delivered asynchronously (a provider reviews your intake without a live visit) or through a real-time audio or video consultation.`,
     ],
   },
   {

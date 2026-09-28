@@ -111,7 +111,7 @@ export const launchCareCategories: LaunchCareCategory[] = [
     plans: [
       {
         id: "semaglutide",
-        title: "Semaglutide",
+        title: "Compounded semaglutide",
         monthly: "$199 / month",
         prepaid: "$537 prepaid for 3 months ($179 / month)",
         description:
@@ -129,7 +129,7 @@ export const launchCareCategories: LaunchCareCategory[] = [
       },
       {
         id: "tirzepatide",
-        title: "Tirzepatide",
+        title: "Compounded tirzepatide",
         monthly: "$279 / month",
         prepaid: "$747 prepaid for 3 months ($249 / month)",
         description:
@@ -149,7 +149,7 @@ export const launchCareCategories: LaunchCareCategory[] = [
       },
       {
         id: "semaglutide-maintenance",
-        title: "Metabolic Maintenance",
+        title: "Compounded semaglutide maintenance",
         monthly: "$149 / month",
         prepaid: "$402 prepaid for 3 months ($134 / month)",
         description:
@@ -163,7 +163,7 @@ export const launchCareCategories: LaunchCareCategory[] = [
       },
       {
         id: "tirzepatide-maintenance",
-        title: "Tirzepatide Maintenance",
+        title: "Compounded tirzepatide maintenance",
         monthly: "$179 / month",
         prepaid: "$483 prepaid for 3 months ($161 / month)",
         description:
@@ -345,29 +345,9 @@ export const launchCareCategories: LaunchCareCategory[] = [
         description: "Tretinoin cream 0.02% or gel 0.01%, if prescribed after review.",
         includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
       },
-      {
-        id: "copper-peptide-cream",
-        title: "Copper Peptide Cream",
-        monthly: "$119 / month",
-        prepaid: "$321 prepaid for 3 months ($107 / month)",
-        description: "GHK-Cu 0.5% cream in a clinician-guided skin-care pathway, if prescribed.",
-        includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
-      },
-      {
-        id: "cashmere-glow",
-        title: "Cashmere Glow",
-        monthly: "$159 / month",
-        prepaid: "$429 prepaid for 3 months ($143 / month)",
-        description: "A caffeine, GHK-Cu, niacinamide and tretinoin cream pathway, if prescribed.",
-        includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
-        featured: true,
-        badge: "Signature routine",
-      },
     ],
     addOns: [
       { name: "Tretinoin with another plan", price: "$59" },
-      { name: "GHK-Cu cream with another plan", price: "$99" },
-      { name: "Cashmere Glow with another plan", price: "$139" },
     ],
     preScreen: {
       questions: [pregnancyQuestion],
@@ -573,22 +553,12 @@ export const launchCareCategories: LaunchCareCategory[] = [
     ],
     plans: [
       {
-        id: "desire-troche",
-        title: "Desire Troche",
-        monthly: "$89 / month",
-        prepaid: "$240 prepaid for 3 months ($80 / month)",
-        description: "A clinician-selected desire-support troche pathway, if prescribed after evaluation.",
-        includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
-      },
-      {
-        id: "pt-141",
-        title: "PT-141",
-        monthly: "$99 / month",
-        prepaid: "$267 prepaid for 3 months ($89 / month)",
-        description: "A PT-141 10 mg/mL pathway, if prescribed after a clinician evaluation.",
-        includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
-        featured: true,
-        badge: "Private care",
+        id: "sexual-wellness-consultation",
+        title: "Sexual wellness consultation",
+        monthly: "$89",
+        prepaid: "No prepaid medication plan",
+        description: "A private clinician consultation. Any medication recommended after evaluation is quoted separately and charged only after approval and consent.",
+        includes: ["Licensed-provider consultation", "Personalized care recommendations", "Secure care-team messaging"],
       },
     ],
     preScreen: {
@@ -613,8 +583,21 @@ export const launchCareBySlug = Object.fromEntries(
   launchCareCategories.map((category) => [category.slug, category]),
 ) as Record<string, LaunchCareCategory>;
 
+export const activeLaunchCareSlugs = [
+  "weight-management",
+  "hormones-menopause",
+  "skin-beauty",
+  "eves-secret",
+] as const;
+
+export const activeLaunchCareCategories = launchCareCategories.filter((category) =>
+  activeLaunchCareSlugs.includes(category.slug as (typeof activeLaunchCareSlugs)[number]),
+);
+
 export function getLaunchCareCategory(slug: unknown) {
-  return typeof slug === "string" ? launchCareBySlug[slug] : undefined;
+  return typeof slug === "string" && activeLaunchCareSlugs.includes(slug as (typeof activeLaunchCareSlugs)[number])
+    ? launchCareBySlug[slug]
+    : undefined;
 }
 
 export function requireLaunchCareCategory(slug: string): LaunchCareCategory {

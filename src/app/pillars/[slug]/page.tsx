@@ -1,5 +1,5 @@
-import { notFound, permanentRedirect } from "next/navigation";
-import { getPillar, pillars } from "@/lib/pillars";
+import { permanentRedirect } from "next/navigation";
+import { pillars } from "@/lib/pillars";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -12,8 +12,10 @@ export function generateStaticParams() {
  */
 export default async function PillarPage({ params }: Params) {
   const { slug } = await params;
-  const pillar = getPillar(slug);
-
-  if (!pillar) notFound();
-  permanentRedirect(pillar.carePath ?? "/care");
+  const redirects: Record<string, string> = {
+    "weight-loss": "/care/weight-management",
+    "hormones-menopause": "/care/hormones-menopause",
+    "skin-beauty": "/care/skin-beauty",
+  };
+  permanentRedirect(redirects[slug] ?? "/care");
 }
