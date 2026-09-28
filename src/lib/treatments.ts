@@ -177,8 +177,8 @@ export const treatmentCategories: readonly TreatmentCategory[] = [
     eyebrow: "Under review",
     image: "/images/home/review-your-options.webp",
     imageAlt: "A woman at home on a video visit with a clinician.",
-    pathway: { href: "/care", label: "All Care" },
-    waitlistHref: "/contact",
+    pathway: { href: "/peptide-care", label: "Peptide Care" },
+    waitlistHref: "/peptide-care#get-started",
     pendingNote:
       "Other treatments listed by our clinical partner — including peptides, some marked coming soon — are still being reviewed for clinical scope and lawful availability. None are published yet.",
   },
@@ -204,34 +204,6 @@ export const treatments: readonly Treatment[] = [
       "Semaglutide Microdose",
     ],
     sources: [medline("a618008", "Semaglutide Injection")],
-    verified: CHECKED,
-  },
-  {
-    id: "mic-b12",
-    name: "MIC-B12 Injection",
-    category: "weight",
-    form: "Injectable (Weight Management add-on)",
-    formulation: "compounded",
-    description: "A compounded injection of methionine, inositol, choline and vitamin B12, offered as a Weight Management add-on when a clinician finds it appropriate.",
-    caution: "Compounded medications are not FDA-approved.",
-    status: "pending",
-    availability: PENDING,
-    catalogItems: ["MIC-B12 Lipostat"],
-    sources: [medline("a604029", "Cyanocobalamin Injection")],
-    verified: CHECKED,
-  },
-  {
-    id: "nad-nasal-spray",
-    name: "NAD+ Nasal Spray",
-    category: "weight",
-    form: "Nasal spray (Weight Management add-on)",
-    formulation: "compounded",
-    description: "A compounded NAD+ nasal spray, offered as a Weight Management add-on when a clinician finds it appropriate.",
-    caution: "Compounded medications are not FDA-approved.",
-    status: "pending",
-    availability: PENDING,
-    catalogItems: ["NAD+ Nasal Spray"],
-    sources: [],
     verified: CHECKED,
   },
   {
@@ -400,24 +372,6 @@ export const treatments: readonly Treatment[] = [
     verified: CHECKED,
   },
 
-  {
-    id: "eves-secret-troche",
-    name: "Eve’s Secret Troche",
-    category: "sexual",
-    form: "Troche (Eve’s Secret™)",
-    formulation: "compounded",
-    description: "A compounded troche containing tadalafil, oxytocin and bremelanotide (PT-141), offered through Eve’s Secret™ when a clinician finds it appropriate.",
-    caution: "Compounded medications are not FDA-approved.",
-    status: "pending",
-    availability: PENDING,
-    catalogItems: [],
-    sources: [
-      medline("a604008", "Tadalafil"),
-      medline("a619054", "Bremelanotide Injection"),
-    ],
-    verified: CHECKED,
-  },
-
   // Skin & Beauty — the two tretinoin vehicles are separate formulations.
   {
     id: "tretinoin-cream",
@@ -508,6 +462,12 @@ export const withheldTreatments: readonly WithheldTreatment[] = [
         "Compounded oral tablet; exact formulation and lawful availability not confirmed. Must not be presented as interchangeable with an FDA-approved oral drug.",
     }),
   ),
+  {
+    catalogItem: "MIC-B12 Lipostat",
+    catalogSection: "Weight Loss (GLP-1)",
+    flags: ["Clinical scope"],
+    reason: "No confirmed clinical use or supportable plain-language description.",
+  },
 
   // Sexual health
   ...["Sildenafil 55mg PRN", "Tadalafil 25mg PRN", "Tadalafil 5mg Daily"].map(
@@ -526,7 +486,7 @@ export const withheldTreatments: readonly WithheldTreatment[] = [
   },
 
   // Peptides
-  ...["Sermorelin", "Tesamorelin", "NAD+", "Glutathione"].map(
+  ...["Sermorelin", "Tesamorelin", "NAD+", "Glutathione", "NAD+ Nasal Spray"].map(
     (catalogItem): WithheldTreatment => ({
       catalogItem,
       catalogSection: "Peptides",
