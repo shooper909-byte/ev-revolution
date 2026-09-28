@@ -178,7 +178,7 @@ export default function HomePage() {
               Every stage. Every shape. Stronger.
             </h2>
             <p className="mt-6 text-base leading-relaxed text-ivory-200/80">
-              Explore three core areas of care plus Eve&rsquo;s Secret™, the
+              Explore four care categories, including Eve&rsquo;s Secret™, the
               sexual-wellness pathway.
             </p>
           </div>

@@ -191,7 +191,7 @@ export default function AboutPage() {
                 <p className={s.cardEyebrow}>Care categories</p>
                 <h3>Begin where you are</h3>
                 <p>
-                  Explore the seven care categories, current plan options and
+                  Explore the four care categories, current plan options and
                   next steps for a clinician-guided request.
                 </p>
                 <ActionLink href="/care">

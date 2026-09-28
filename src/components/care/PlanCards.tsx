@@ -23,7 +23,7 @@ export type Plan = {
   cta: string;
   /** Where the card's button goes. Defaults to the assessment form. */
   href?: string;
-  footnote: string;
+  footnote?: string;
   featured?: boolean;
   badge?: string;
   image?: string;
@@ -183,6 +183,7 @@ export function PlanCards({ plans }: { plans: Plan[] }) {
               >
                 {plan.cta}
               </a>
+              {plan.footnote && (
               <p
                 className={`mt-4 text-xs leading-relaxed ${
                   plan.featured ? "text-ivory-200/75" : "text-onyx-800/70"
@@ -190,6 +191,7 @@ export function PlanCards({ plans }: { plans: Plan[] }) {
               >
                 {plan.footnote}
               </p>
+              )}
             </div>
           </div>
         </Reveal>

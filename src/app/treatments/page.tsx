@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   alternates: { canonical: "/treatments" },
 };
 
+/* Compounded items listed under a category's plans on this page. */
+const compoundedListings: Record<string, { heading: string; items: string[] }> = {
+  "weight-management": {
+    heading: "Weight Management add-ons",
+    items: ["MIC-B12 injection (compounded)", "NAD+ nasal spray (compounded)"],
+  },
+  "eves-secret": {
+    heading: "Eve’s Secret™",
+    items: ["Eve’s Secret troche (compounded; contains tadalafil, oxytocin and bremelanotide (PT-141))"],
+  },
+};
+
 export default function TreatmentsPage() {
   return (
     <main>
@@ -40,6 +52,17 @@ export default function TreatmentsPage() {
                   </li>
                 ))}
               </ul>
+              {compoundedListings[category.slug] && (
+                <div className="mt-6 border-t border-onyx-700 pt-4">
+                  <h3 className="brand-eyebrow text-[0.625rem] text-champagne">{compoundedListings[category.slug].heading}</h3>
+                  <ul className="mt-3 space-y-2">
+                    {compoundedListings[category.slug].items.map((item) => (
+                      <li key={item} className="text-sm leading-relaxed text-ivory-200/85">{item}</li>
+                    ))}
+                  </ul>
+                  <p className="mt-3 text-xs leading-relaxed text-ivory-200/65">Compounded medications are not FDA-approved.</p>
+                </div>
+              )}
               <Link href={category.path} className="brand-eyebrow mt-8 text-[0.625rem] text-champagne hover:underline">
                 Review {category.label} eligibility and pricing &rarr;
               </Link>

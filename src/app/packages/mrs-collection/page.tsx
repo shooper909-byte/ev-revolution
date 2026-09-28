@@ -5,7 +5,7 @@ import { Container, Eyebrow } from "@/components/Container";
 import { mrsExperiences } from "@/lib/mrsCollection";
 
 export const metadata: Metadata = {
-  title: "The Mrs. Collection | Eve’s Sisters",
+  title: "The Mrs. Collection",
   description: "Meet Mrs. Jones, Mrs. Golden and Mrs. Robinson. Three stories, with care chosen for your individual needs.",
 };
 

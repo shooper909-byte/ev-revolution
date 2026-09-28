@@ -19,7 +19,7 @@ export default function ContactPage() {
             Let&rsquo;s talk.
           </h1>
           <p className="mt-8 max-w-md text-base leading-relaxed text-ivory-200/85">
-            Whether it is a question about one of the six pillars, a press
+            Whether it is a question about one of our four care categories, a press
             enquiry, or a partnership — we would like to hear from you.
           </p>
 
