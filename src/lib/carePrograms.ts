@@ -93,6 +93,24 @@ export const carePrograms = {
     interestLabel: "Area of interest",
     interests: [],
   },
+  "mrs-jones": {
+    label: "Mrs. Jones collection",
+    source: "/packages/mrs-jones",
+    interestLabel: "Preferred care level",
+    interests: ["Essentials", "Signature", "Elite", "Help me choose"],
+  },
+  "mrs-golden": {
+    label: "Mrs. Golden collection",
+    source: "/packages/mrs-golden",
+    interestLabel: "Preferred care level",
+    interests: ["Essentials", "Signature", "Elite", "Help me choose"],
+  },
+  "mrs-robinson": {
+    label: "Mrs. Robinson collection",
+    source: "/packages/mrs-robinson",
+    interestLabel: "Preferred care level",
+    interests: ["Essentials", "Signature", "Elite", "Help me choose"],
+  },
 } as const satisfies Record<string, CareProgram>;
 
 export type CareProgramKey = keyof typeof carePrograms;

@@ -5,13 +5,12 @@ import { Container, Eyebrow } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PillarCard } from "@/components/PillarCard";
 import { PillarIcon } from "@/components/PillarIcon";
-import { careLabel, pillars } from "@/lib/pillars";
-import { formatPostDate, posts } from "@/lib/posts";
+import { careLabel, launchedPillars } from "@/lib/pillars";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://evevolutionhealth.com/" },
   title: "Eve’s Sisters — Women's Wellness for Every Stage",
-  description: "Evidence-led guidance and personalized wellness pathways for weight management, hormones, skin, energy, recovery, longevity and sexual wellness.",
+  description: "Evidence-led guidance and personalized wellness pathways for weight management, hormones, skin and sexual wellness.",
   openGraph: {
     title: "Eve’s Sisters — Women's Wellness for Every Stage",
     description: "Your body evolves. Your care should too.",
@@ -90,8 +89,8 @@ export default function HomePage() {
             </h1>
             <p className="mt-8 max-w-lg text-base leading-relaxed text-ivory-200/85 sm:text-lg">
               Evidence-led guidance and personalized wellness pathways for weight
-              management, hormones and menopause, skin, energy, recovery and
-              longevity—created for the changing needs of women.
+              management, hormones and menopause, skin and intimate wellness—
+              created for the changing needs of women.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -130,8 +129,8 @@ export default function HomePage() {
       {/* Pillar icon bar — the lockup from the brand board. */}
       <section className="border-b border-onyx-700 bg-onyx-900">
         <Container>
-          <ul className="grid grid-cols-2 divide-x divide-y divide-onyx-700/70 sm:grid-cols-3 lg:grid-cols-6 lg:divide-y-0">
-            {pillars.map((pillar) => (
+          <ul className="grid grid-cols-1 divide-y divide-onyx-700/70 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {launchedPillars.map((pillar) => (
               <li key={pillar.slug}>
                 <Link
                   href={pillar.carePath ?? `/pillars/${pillar.slug}`}
@@ -179,13 +178,13 @@ export default function HomePage() {
               Every stage. Every shape. Stronger.
             </h2>
             <p className="mt-6 text-base leading-relaxed text-ivory-200/80">
-              Explore six core areas of care plus Eve&rsquo;s Secret™, the
+              Explore three core areas of care plus Eve&rsquo;s Secret™, the
               sexual-wellness pathway.
             </p>
           </div>
 
           <div className="mt-14 grid gap-px bg-onyx-700/60 sm:grid-cols-2 lg:grid-cols-3">
-            {pillars.map((pillar) => (
+            {launchedPillars.map((pillar) => (
               <PillarCard key={pillar.slug} pillar={pillar} />
             ))}
           </div>
@@ -270,9 +269,9 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6">
             <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-champagne-700/45 bg-ivory-200">
-              <Image src="/images/care/care-weight-management-glp1.png" alt="Women discussing personalized weight-management and GLP-1 care options." width={1536} height={1024} sizes="(min-width: 1024px) 33vw, 100vw" className="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+              <Image src="/images/care/care-weight-management.webp" alt="Woman standing confidently in an elegant black dress." width={1536} height={1024} sizes="100vw" className="aspect-[3/2] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
               <div className="flex flex-1 flex-col p-7">
                 <p className="brand-eyebrow text-[0.5625rem] text-plum">Weight management</p>
                 <h3 className="mt-4 font-display text-3xl">GLP-1 Care</h3>
@@ -281,69 +280,9 @@ export default function HomePage() {
               </div>
             </article>
 
-            <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-champagne-700/45 bg-ivory-200">
-              <Image src="/images/products/nad-plus-support.png" alt="Unbranded amber wellness vial and glass dropper in champagne light." width={1536} height={1024} sizes="(min-width: 1024px) 33vw, 100vw" className="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
-              <div className="flex flex-1 flex-col p-7">
-                <p className="brand-eyebrow text-[0.5625rem] text-plum">Energy and healthy aging</p>
-                <h3 className="mt-4 font-display text-3xl">NAD+ Support</h3>
-                <p className="mt-4 flex-1 leading-7 text-onyx-700">Ask a licensed clinician whether NAD+ support is available and appropriate for your goals, health history, and location.</p>
-                <Link href="/care/energy-performance#pre-screen" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Ask About NAD+ &rarr;</Link>
-              </div>
-            </article>
-
-            <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-champagne-700/45 bg-ivory-200">
-              <Image src="/images/recovery/recovery-hero-banner-v2.webp" alt="Four adult women resting together on a terrace at sunset." width={1536} height={1024} sizes="(min-width: 1024px) 33vw, 100vw" className="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
-              <div className="flex flex-1 flex-col p-7">
-                <p className="brand-eyebrow text-[0.5625rem] text-plum">Recovery and wellness</p>
-                <h3 className="mt-4 font-display text-3xl">Recovery Care</h3>
-                <p className="mt-4 flex-1 leading-7 text-onyx-700">Explore currently available recovery support and join an email-only waitlist for treatments that are not yet available.</p>
-                <Link href="/care/recovery-rejuvenation#pre-screen" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Explore Recovery Care &rarr;</Link>
-              </div>
-            </article>
           </div>
 
           <p className="mt-9 text-xs leading-6 text-onyx-700">Plan pricing is shown on each care page. Services and treatment options vary by state and provider. Prescription treatment is not guaranteed. Individual results vary.</p>
-        </Container>
-      </section>
-
-      {/* Journal preview */}
-      <section className="border-b border-onyx-700">
-        <Container className="py-20 sm:py-28">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <Eyebrow>The Journal</Eyebrow>
-              <h2 className="mt-6 font-display text-4xl leading-tight text-ivory sm:text-5xl">
-                Modern medicine. Timeless you.
-              </h2>
-            </div>
-            <Link
-              href="/journal"
-              className="brand-eyebrow text-[0.5625rem] text-champagne hover:underline"
-            >
-              All articles &rarr;
-            </Link>
-          </div>
-
-          <div className="mt-14 grid gap-px bg-onyx-700/60 md:grid-cols-3">
-            {posts.slice(0, 3).map((post) => (
-              <article key={post.slug} className="bg-onyx">
-                <div className="h-full p-8">
-                <p className="brand-eyebrow text-[0.5rem] text-mauve">
-                  {post.pillar}
-                </p>
-                <h3 className="mt-5 font-display text-2xl leading-snug text-ivory">
-                  {post.title}
-                </h3>
-                <p className="mt-4 text-base leading-relaxed text-ivory-200/85">
-                  {post.excerpt}
-                </p>
-                <p className="mt-6 text-xs text-taupe-700">
-                  {formatPostDate(post.date)} &middot; {post.readingTime}
-                </p>
-                </div>
-              </article>
-            ))}
-          </div>
         </Container>
       </section>
 

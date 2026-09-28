@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { LaunchCarePage } from "@/components/LaunchCarePage";
-import { requireLaunchCareCategory } from "@/lib/launchCare";
-
-const category = requireLaunchCareCategory("longevity-healthspan");
+import { notFound } from "next/navigation";
 
 const canonical = "https://evevolutionhealth.com/care/longevity-healthspan";
 
@@ -14,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function LongevityHealthspanCarePage() {
-  return <LaunchCarePage category={category} />;
+  notFound();
 }

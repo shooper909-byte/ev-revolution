@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const faqs: [string, string][] = [
   [
     "Where are telehealth services available?",
-    `Telehealth services may be available in all 50 states where clinically appropriate and permitted by applicable law. Clinical care is provided by licensed medical providers affiliated with an independent physician group, ${partners.clinical.name}.`,
+    `States we serve: all 50 U.S. states through the nationwide provider network of ${partners.clinical.name}, subject to provider, program, pharmacy, and state-specific requirements.`,
   ],
   [
     "Is treatment guaranteed?",
@@ -22,7 +22,7 @@ const faqs: [string, string][] = [
   ],
   [
     "Do I need to speak with a provider?",
-    "Your intake is reviewed by a licensed medical provider. Depending on your health history, goals, treatment request, and applicable requirements, the provider may request additional information, lab work, or a consultation before making a treatment decision.",
+    "Your intake is reviewed by a licensed medical provider. Based on your health history, goals, treatment request, and applicable requirements, the provider may request additional information, lab work, or a consultation before making a treatment decision.",
   ],
   [
     "Are compounded medications FDA-approved?",
@@ -42,7 +42,7 @@ const faqs: [string, string][] = [
   ],
   [
     "When is my card charged for medication?",
-    "A short treatment request does not charge your card. If payment authorization is needed for an approved pathway, the secure enrollment flow presents it before any charge.",
+    "A short treatment request does not charge your card. Your card may be pre-authorized in the secure enrollment flow, but medication-inclusive amounts are captured only after a licensed provider approves treatment. If treatment is declined, the pre-authorization is released.",
   ],
   [
     "Are refills automatic?",

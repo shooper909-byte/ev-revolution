@@ -44,8 +44,8 @@ const sections: PolicySection[] = [
     heading: "Fees and payment",
     body: [
       [
-        "Current care-page plan prices state the included program components. Any payment authorization is shown in the secure enrollment flow before it is collected.",
-        "A short treatment request does not charge your card. A licensed provider must still determine whether treatment is appropriate.",
+        "Current care-page plan prices state the included program components. A short treatment request does not charge your card.",
+        "Your card may be pre-authorized in the secure enrollment flow, but medication-inclusive amounts are captured only after a licensed provider approves treatment. If treatment is declined, the pre-authorization is released.",
         "If you enroll in a recurring plan, renewal and cancellation terms are shown before authorization. See our Subscription Cancellation policy.",
         "Refills are reviewed by a provider and are never automatic.",
       ],
@@ -78,7 +78,7 @@ const sections: PolicySection[] = [
   {
     heading: "Governing law",
     body: [
-      `These terms are governed by the laws of the state in which ${businessName} is organized, without regard to conflict-of-law rules, and by applicable federal law.`,
+      "These terms are governed by the laws of Texas, without regard to conflict-of-law rules, and by applicable federal law.",
     ],
   },
 ];

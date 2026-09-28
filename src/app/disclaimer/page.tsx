@@ -29,10 +29,6 @@ const sections = [
     heading: "No outcome is promised",
     body: "Individual results vary. Nothing on this site should be read as a promise of a particular health, weight, appearance or longevity outcome.",
   },
-  {
-    heading: "A note on our sister company",
-    body: "Eve’s Sisters is a consumer wellness and longevity brand. It is operated separately from any research-use-only laboratory business under common ownership, and nothing published by such a business should be read as a therapeutic claim, a consumer health service, or an offer of treatment.",
-  },
 ];
 
 export default function DisclaimerPage() {

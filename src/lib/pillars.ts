@@ -327,6 +327,11 @@ export const pillars: Pillar[] = [
   },
 ];
 
+/** Public care pathways cleared for the current launch. */
+export const launchedPillars = pillars.filter((pillar) =>
+  ["weight-loss", "hormones-menopause", "skin-beauty"].includes(pillar.slug),
+);
+
 export function getPillar(slug: string): Pillar | undefined {
   return pillars.find((pillar) => pillar.slug === slug);
 }

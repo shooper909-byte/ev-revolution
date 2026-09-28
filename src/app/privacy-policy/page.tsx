@@ -70,7 +70,7 @@ const sections: PolicySection[] = [
   {
     heading: "Your choices and rights",
     body: [
-      "Depending on where you live, you may have the right to access, correct, delete or receive a copy of your personal information, and to opt out of marketing. Rights over your medical records are described in our HIPAA Policy. To make a request, contact us using the details below; we will verify your identity before responding.",
+      "Based on where you live, you may have the right to access, correct, delete or receive a copy of your personal information, and to opt out of marketing. Rights over your medical records are described in our HIPAA Policy. To make a request, contact us using the details below; we will verify your identity before responding.",
     ],
   },
   {

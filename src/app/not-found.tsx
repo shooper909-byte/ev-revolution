@@ -12,8 +12,8 @@ export default function NotFound() {
           This page has evolved elsewhere.
         </h1>
         <p className="mt-6 max-w-md text-base leading-relaxed text-ivory-200/80">
-          The page you were looking for is not here. The six pillars are a good
-          place to pick the thread back up.
+          The page you were looking for is not here. Our current care pathways
+          are a good place to pick the thread back up.
         </p>
         <Link
           href="/"

@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import { CareMenu } from "@/components/CareMenu";
 import { Container } from "@/components/Container";
 import { Wordmark } from "@/components/Wordmark";
-import { careLabel, getStartedHref as getStartedHrefFor, pillars } from "@/lib/pillars";
+import { careLabel, getStartedHref as getStartedHrefFor, launchedPillars } from "@/lib/pillars";
 
-/* Care leads the navigation and owns the six core routes beneath it, so the
+/* Care leads the navigation and owns the launched routes beneath it, so the
    header stays legible instead of listing every pathway across the bar.
    "Resources" points at the existing /journal route rather than adding a
    duplicate one. Items marked `wide` only fit on very wide screens; below
@@ -17,7 +17,6 @@ const primaryNav = [
   { href: "/packages/mrs-collection", label: "Mrs. Collection" },
   { href: "/eves-secret", label: "Eve’s Secret™" },
   { href: "/about#philosophy", label: "Our Approach", wide: true },
-  { href: "/journal", label: "Resources", wide: true },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -134,7 +133,7 @@ export function SiteHeader() {
           </Link>
 
           <ul className="border-b border-onyx-800 py-1 pl-4">
-            {pillars.map((pillar) => (
+            {launchedPillars.map((pillar) => (
               <li key={pillar.slug}>
                 <Link
                   href={pillar.carePath ?? `/pillars/${pillar.slug}`}

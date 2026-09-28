@@ -27,7 +27,7 @@ function toPlanCard(plan: LaunchCareCategory["plans"][number]): Plan {
     treatments: plan.treatment,
     cta: "Request this treatment",
     href: "#pre-screen",
-    footnote: `3-month option: ${plan.prepaid}`,
+    footnote: `3-month option: ${plan.prepaid}. Your card may be pre-authorized, but no medication-inclusive amount is captured unless and until a licensed provider approves treatment.`,
     featured: plan.featured,
     badge: plan.badge,
   };
@@ -99,7 +99,8 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
           <Reveal>
             <Eyebrow className="text-plum">Treatment options</Eyebrow>
             <h2 id="plans-heading" className="mt-6 max-w-3xl font-display text-[2.25rem] leading-tight text-onyx sm:text-5xl">Choose a plan to request.</h2>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-onyx-800/75">Every published price is all-in after approval: medication if prescribed, asynchronous provider review, shipping and secure messaging. Required labs are quoted separately.</p>
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-onyx-800/75">After provider approval, each published plan price includes the medication if prescribed, provider review, shipping and secure messaging. Required labs are quoted separately. A treatment request creates no charge.</p>
+            {category.slug === "weight-management" && <p className="mt-4 max-w-3xl text-sm leading-relaxed text-onyx-800/75">Compounded GLP-1s are prescribed only when a licensed provider documents a patient-specific clinical need — not for cost or preference. Compounded medications are not FDA-approved.</p>}
           </Reveal>
           <PlanCards plans={planCards} />
 

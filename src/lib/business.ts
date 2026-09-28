@@ -54,4 +54,4 @@ export const partners = {
 export const recordRetentionYears = 7;
 
 /** Date shown on every policy page; update it whenever a policy changes. */
-export const policiesEffectiveDate = "September 25, 2026";
+export const policiesEffectiveDate = "September 28, 2026";

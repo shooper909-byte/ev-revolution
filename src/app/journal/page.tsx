@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Container, Eyebrow } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { formatPostDate, posts } from "@/lib/posts";
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function JournalPage() {
+  notFound();
   const [lead, ...rest] = posts;
 
   return (

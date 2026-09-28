@@ -1,9 +1,8 @@
-import { permanentRedirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 /**
- * Legacy links now land on the recovery page, where only the currently
- * available plan and the appropriate email-only waitlists are presented.
+ * This route stays unpublished until a pharmacy-confirmed peptide program exists.
  */
 export default function PeptideCarePage() {
-  permanentRedirect("/care/recovery-rejuvenation");
+  notFound();
 }

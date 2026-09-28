@@ -6,13 +6,12 @@ import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { BusinessContact, policyLinks } from "@/components/PolicyPage";
-import { careLabel, getStartedHref as getStartedHrefFor, pillars } from "@/lib/pillars";
+import { careLabel, getStartedHref as getStartedHrefFor, launchedPillars } from "@/lib/pillars";
 
 const company = [
   { href: "/", label: "Home" },
   { href: "/care", label: "Care" },
   { href: "/about", label: "About" },
-  { href: "/journal", label: "Resources" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
@@ -41,7 +40,7 @@ export function SiteFooter() {
               </Link>
             </h2>
             <ul className="mt-5 space-y-3">
-              {pillars.map((pillar) => (
+              {launchedPillars.map((pillar) => (
                 <li key={pillar.slug}>
                   <Link
                     href={pillar.carePath ?? `/pillars/${pillar.slug}`}
@@ -113,6 +112,12 @@ export function SiteFooter() {
         <div className="hairline mt-10 border-t pt-8">
           <p className="text-xs leading-relaxed text-taupe-700">
             Prescription treatment is not guaranteed and requires evaluation by a licensed clinician. Compounded medications are not FDA-approved. Services vary by state.
+          </p>
+          <p className="mt-4 text-xs leading-relaxed text-taupe-700">
+            States we serve: all 50 U.S. states through our nationwide clinical partner network, subject to provider, program, pharmacy, and state-specific requirements.
+          </p>
+          <p className="mt-4 text-xs leading-relaxed text-taupe-700">
+            Eve&rsquo;s Sisters by Evevolution Health.
           </p>
           <p className="mt-4 text-xs leading-relaxed text-taupe-700">
             Eve&rsquo;s Sisters publishes general wellness education. Nothing on this

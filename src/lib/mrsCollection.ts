@@ -14,7 +14,7 @@ export const mrsExperiences: MrsExperience[] = [
   {
     slug: "mrs-jones",
     name: "Mrs. Jones",
-    eyebrow: "Everybody notices. Nobody needs to know.",
+    eyebrow: "Private care, centered on you.",
     tagline: "There’s something about Mrs. Jones.",
     description: "Personalized care for changing hormones, persistent symptoms, skin concerns, heart health, and the parts of womanhood that are too often overlooked.",
     image: "/images/mrs-collection/mrs-jones.png",
@@ -28,7 +28,7 @@ export const mrsExperiences: MrsExperience[] = [
   {
     slug: "mrs-golden",
     name: "Mrs. Golden",
-    eyebrow: "They’ll call it luck. We’ll know better.",
+    eyebrow: "Care shaped around your whole story.",
     tagline: "Her beauty lives between the lines. Her care should too.",
     description: "Care that starts with your whole story—not an average. Your plan considers your results, risks, goals, hormones, metabolism, and skin concerns together.",
     image: "/images/mrs-collection/mrs-golden.png",

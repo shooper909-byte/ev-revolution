@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { pillars } from "@/lib/pillars";
+import { launchedPillars } from "@/lib/pillars";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -92,11 +92,13 @@ export function ContactForm() {
           className={`${fieldClass} mt-3`}
         >
           <option value="General">General enquiry</option>
-          {pillars.map((pillar) => (
+          {launchedPillars.map((pillar) => (
             <option key={pillar.slug} value={pillar.name}>
               {pillar.name}
             </option>
           ))}
+          <option value="Eve's Secret">Eve&rsquo;s Secret</option>
+          <option value="Cancellation">Cancel a membership</option>
           <option value="Press">Press &amp; partnerships</option>
         </select>
       </div>

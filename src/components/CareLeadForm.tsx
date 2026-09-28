@@ -25,7 +25,7 @@ const states: [string, string][] = [
 const fieldClass = "hairline w-full rounded-xl border bg-onyx/40 px-4 py-3.5 text-sm text-ivory placeholder:text-taupe-700 transition-colors focus:border-champagne focus:outline-none";
 const labelClass = "brand-eyebrow block text-[0.5rem] text-taupe";
 
-export function CareLeadForm({ program, labelledBy, availableStateCodes = [], privacyNote = "Contact details only. Please do not submit medical information." }: {
+export function CareLeadForm({ program, labelledBy, availableStateCodes = states.map(([code]) => code), privacyNote = "Contact details only. Please do not submit medical information." }: {
   program: CareProgramKey;
   labelledBy: string;
   availableStateCodes?: readonly string[];
