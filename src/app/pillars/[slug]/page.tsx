@@ -17,6 +17,7 @@ export default async function PillarPage({ params }: Params) {
     "hormones-menopause": "/care/hormones-menopause",
     "skin-beauty": "/care/skin-beauty",
     "longevity-healthspan": "/care/longevity-healthspan",
+    "energy-performance": "/care/energy-performance",
     "recovery-rejuvenation": "/care/recovery-rejuvenation",
   };
   permanentRedirect(redirects[slug] ?? "/care");

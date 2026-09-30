@@ -418,12 +418,19 @@ export const launchCareCategories: LaunchCareCategory[] = [
       },
     ],
     preScreen: { questions: [pregnancyQuestion] },
+    availabilityPending:
+      "NAD+ Injection, NAD+ Nasal Spray and MIC-B12 are listed in our pharmacy partner’s current catalog, but their availability has not yet been confirmed. They cannot be requested, prescribed or purchased yet.",
     faq: [
+      [
+        "Are these treatments available now?",
+        "Not yet. Each option is listed in our pharmacy partner’s current catalog, but availability is pending written confirmation. Join the availability waitlist for an email update; no request, prescription or payment is taken in the meantime.",
+      ],
       [
         "Do these plans treat fatigue or a medical condition?",
         "No. These are clinician-guided energy-support pathways, not a diagnosis or a cure. New, severe or worsening symptoms need appropriate medical care.",
       ],
-      ...standardFaqs,
+      // Only the standard answers that hold while enrollment is not open.
+      ...standardFaqs.filter(([question]) => question === "Will I be approved?" || question === "Are services available in every state?"),
     ],
   },
   {

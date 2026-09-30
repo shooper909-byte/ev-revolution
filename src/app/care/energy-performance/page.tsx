@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { LaunchCarePage } from "@/components/LaunchCarePage";
+import { launchCareBySlug } from "@/lib/launchCare";
+
+/* Read directly: energy is not in `activeLaunchCareSlugs`, so it cannot be
+   requested while its availability is pending. */
+const category = launchCareBySlug["energy-performance"];
 
 const canonical = "https://evevolutionhealth.com/care/energy-performance";
+const title = "Energy & Performance Care Plans | Eve’s Sisters";
+const description =
+  "Explore clinician-guided energy-support plans. Availability is pending confirmation; join the email waitlist for updates.";
 
 export const metadata: Metadata = {
-  title: { absolute: "Energy & Performance Care Plans | Eve’s Sisters" },
-  description: "Explore clinician-guided energy-support treatment requests with clear, all-in plan pricing.",
+  title: { absolute: title },
+  description,
   alternates: { canonical },
-  openGraph: { title: "Energy & Performance Care Plans | Eve’s Sisters", description: "Clinician-guided energy-support treatment requests from Eve’s Sisters.", url: canonical, type: "website" },
+  openGraph: { title, description, url: canonical, type: "website" },
 };
 
 export default function EnergyPerformanceCarePage() {
-  notFound();
+  return <LaunchCarePage category={category} />;
 }

@@ -329,7 +329,7 @@ export const pillars: Pillar[] = [
 
 /** Public education pages remain visible without enabling treatment enrollment. */
 export const publicPillars = pillars.filter((pillar) =>
-  ["weight-loss", "hormones-menopause", "skin-beauty", "longevity-healthspan", "recovery-rejuvenation"].includes(pillar.slug),
+  ["weight-loss", "hormones-menopause", "skin-beauty", "energy-performance", "longevity-healthspan", "recovery-rejuvenation"].includes(pillar.slug),
 );
 
 /** Public treatment pathways cleared for the current launch. */
