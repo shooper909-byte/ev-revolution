@@ -269,7 +269,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6">
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
             <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-champagne-700/45 bg-ivory-200">
               <Image src="/images/care/care-weight-management.webp" alt="Woman standing confidently in an elegant black dress." width={1536} height={1024} sizes="100vw" className="aspect-[3/2] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
               <div className="flex flex-1 flex-col p-7">
@@ -277,6 +277,16 @@ export default function HomePage() {
                 <h3 className="mt-4 font-display text-3xl">GLP-1 Care</h3>
                 <p className="mt-4 flex-1 leading-7 text-onyx-700">Clinical evaluation, prescription coordination when appropriate, and ongoing support for eligible patients.</p>
                 <Link href="/care/weight-management#pre-screen" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Explore Weight Care &rarr;</Link>
+              </div>
+            </article>
+
+            <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-champagne-700/45 bg-ivory-200">
+              <Image src="/images/products/peptide-care.png" alt="Two unbranded wellness vials on black stone in warm champagne light." width={1536} height={1024} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+              <div className="flex flex-1 flex-col p-7">
+                <p className="brand-eyebrow text-[0.5625rem] text-plum">Personalized clinical pathway</p>
+                <h3 className="mt-4 font-display text-3xl">Peptide Care</h3>
+                <p className="mt-4 flex-1 leading-7 text-onyx-700">Explore clinician-guided peptide care with eligibility assessment, personalized planning, and ongoing monitoring. Availability pending confirmation.</p>
+                <Link href="/peptide-care" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Explore Peptide Care &rarr;</Link>
               </div>
             </article>
 

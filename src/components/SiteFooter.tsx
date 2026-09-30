@@ -60,6 +60,14 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link
+                  href="/peptide-care"
+                  className="text-sm text-ivory-200 transition-colors hover:text-champagne"
+                >
+                  Peptide Care
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/treatments"
                   className="text-sm text-ivory-200 transition-colors hover:text-champagne"
                 >

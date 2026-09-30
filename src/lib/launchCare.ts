@@ -50,6 +50,13 @@ export type LaunchCareCategory = {
   };
   labNote?: string;
   faq: [string, string][];
+  /**
+   * Set while none of the category's plans is confirmed available by the
+   * pharmacy partner (see `src/lib/treatments.ts`). Plans stay visible with
+   * their pricing, but every call to action goes to an email-only waitlist and
+   * no treatment request or payment is offered.
+   */
+  availabilityPending?: string;
 };
 
 export type LaunchRequestOption = {
@@ -518,12 +525,19 @@ export const launchCareCategories: LaunchCareCategory[] = [
       ],
     },
     labNote: "A baseline or 90-day Peptide Panel 2 may be offered as a $149 add-on when clinically appropriate.",
+    availabilityPending:
+      "Sermorelin, Tesamorelin and the Peptide Panel 2 add-on are listed in our pharmacy partner’s current catalog, but their availability has not yet been confirmed. They cannot be requested, prescribed or purchased yet.",
     faq: [
+      [
+        "Are these treatments available now?",
+        "Not yet. Each option is listed in our pharmacy partner’s current catalog, but availability is pending written confirmation. Join the availability waitlist for an email update; no request, prescription or payment is taken in the meantime.",
+      ],
       [
         "Do these plans promise anti-aging or disease prevention?",
         "No. They are individual clinician-guided pathways. They are not promises of anti-aging, disease prevention or a specific health outcome.",
       ],
-      ...standardFaqs,
+      // Only the standard answers that hold while enrollment is not open.
+      ...standardFaqs.filter(([question]) => question === "Will I be approved?" || question === "Are services available in every state?"),
     ],
   },
   {
