@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { CareMenu } from "@/components/CareMenu";
 import { Container } from "@/components/Container";
 import { Wordmark } from "@/components/Wordmark";
-import { careLabel, getStartedHref as getStartedHrefFor, launchedPillars } from "@/lib/pillars";
+import { careLabel, getStartedHref as getStartedHrefFor, publicPillars } from "@/lib/pillars";
 
 /* Care leads the navigation and owns the launched routes beneath it, so the
    header stays legible instead of listing every pathway across the bar.
@@ -134,7 +134,7 @@ export function SiteHeader() {
           </Link>
 
           <ul className="border-b border-onyx-800 py-1 pl-4">
-            {launchedPillars.map((pillar) => (
+            {publicPillars.map((pillar) => (
               <li key={pillar.slug}>
                 <Link
                   href={pillar.carePath ?? `/pillars/${pillar.slug}`}

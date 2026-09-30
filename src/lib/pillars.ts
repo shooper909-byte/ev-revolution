@@ -278,9 +278,9 @@ export const pillars: Pillar[] = [
       "Joint and connective-tissue care",
     ],
     question: "Am I getting the rest my body needs?",
-    careLabel: "Recovery",
+    careLabel: "Recovery & Rejuvenation",
     careSummary:
-      "Rest, recovery, mobility and whole-body wellness.",
+      "Wellness education on rest, recovery, mobility and everyday wellbeing.",
     careImage: "care-recovery",
     careImageAlt:
       "A rolled towel resting on a dark floor in a quiet, low-lit recovery space.",
@@ -320,14 +320,19 @@ export const pillars: Pillar[] = [
     question: "What should I be doing now for the woman I will be at 70?",
     careLabel: "Longevity",
     careSummary:
-      "Healthy aging, prevention and long-term vitality.",
+      "Wellness education on strength, mobility, sleep and healthy aging.",
     careImage: "care-longevity",
     careImageAlt:
       "A silver-haired woman in a black blazer, relaxed and smiling at the camera.",
   },
 ];
 
-/** Public care pathways cleared for the current launch. */
+/** Public education pages remain visible without enabling treatment enrollment. */
+export const publicPillars = pillars.filter((pillar) =>
+  ["weight-loss", "hormones-menopause", "skin-beauty", "longevity-healthspan", "recovery-rejuvenation"].includes(pillar.slug),
+);
+
+/** Public treatment pathways cleared for the current launch. */
 export const launchedPillars = pillars.filter((pillar) =>
   ["weight-loss", "hormones-menopause", "skin-beauty"].includes(pillar.slug),
 );
@@ -351,6 +356,7 @@ export function careSummary(pillar: Pillar): string {
  * care page (or the pillar's care page), otherwise the pathway selection.
  */
 export function getStartedHref(pathname: string): string {
+  if (pathname === "/care/longevity-healthspan" || pathname === "/care/recovery-rejuvenation") return "/contact";
   const carePage =
     pathname.startsWith("/care/") || pathname === "/eves-secret"
       ? pathname

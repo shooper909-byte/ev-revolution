@@ -5,7 +5,7 @@ import { Container, Eyebrow } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PillarCard } from "@/components/PillarCard";
 import { PillarIcon } from "@/components/PillarIcon";
-import { careLabel, launchedPillars } from "@/lib/pillars";
+import { careLabel, publicPillars } from "@/lib/pillars";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://evevolutionhealth.com/" },
@@ -130,7 +130,7 @@ export default function HomePage() {
       <section className="border-b border-onyx-700 bg-onyx-900">
         <Container>
           <ul className="grid grid-cols-1 divide-y divide-onyx-700/70 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {launchedPillars.map((pillar) => (
+            {publicPillars.map((pillar) => (
               <li key={pillar.slug}>
                 <Link
                   href={pillar.carePath ?? `/pillars/${pillar.slug}`}
@@ -178,13 +178,13 @@ export default function HomePage() {
               Every stage. Every shape. Stronger.
             </h2>
             <p className="mt-6 text-base leading-relaxed text-ivory-200/80">
-              Explore four care categories, including Eve&rsquo;s Secret™, the
+              Explore care categories and wellness education, including Eve&rsquo;s Secret™, the
               sexual-wellness pathway.
             </p>
           </div>
 
           <div className="mt-14 grid gap-px bg-onyx-700/60 sm:grid-cols-2 lg:grid-cols-3">
-            {launchedPillars.map((pillar) => (
+            {publicPillars.map((pillar) => (
               <PillarCard key={pillar.slug} pillar={pillar} />
             ))}
           </div>

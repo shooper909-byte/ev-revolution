@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
-import { careLabel, launchedPillars } from "@/lib/pillars";
+import { careLabel, publicPillars } from "@/lib/pillars";
 
 /**
  * The desktop "Care" navigation item: a link to the Care hub that also opens
@@ -106,7 +106,7 @@ export function CareMenu({ active }: { active: boolean }) {
         className="absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 pt-4"
       >
         <ul className="hairline border bg-onyx-900/98 py-2 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.9)] backdrop-blur-md">
-          {launchedPillars.map((pillar) => (
+          {publicPillars.map((pillar) => (
             <li key={pillar.slug}>
               <Link
                 href={pillar.carePath ?? `/pillars/${pillar.slug}`}
