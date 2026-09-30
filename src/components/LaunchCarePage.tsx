@@ -29,12 +29,13 @@ function toPlanCard(plan: LaunchCareCategory["plans"][number], isEvesSecret: boo
     id: plan.id,
     title: plan.title,
     price: monthlyPrice,
-    priceNote: "/month",
+    priceNote: isEvesSecret ? "/consultation" : "/month",
     description: plan.description,
     includes: plan.includes,
     treatments: plan.treatment,
     cta: pending ? "Join the availability waitlist" : "Request this treatment",
     href: "#pre-screen",
+    requestPlan: pending ? undefined : plan.id,
     footnote: pending
       ? `3-month option: ${plan.prepaid}. Availability pending confirmation: no request, prescription or payment is taken yet.`
       : isEvesSecret ? undefined : `3-month option: ${plan.prepaid}. Your card may be pre-authorized, but no medication-inclusive amount is captured unless and until a licensed provider approves treatment.`,
@@ -122,7 +123,7 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
             <div className="mt-10 rounded-3xl border border-plum/20 bg-ivory px-6 py-6 sm:px-8">
               <p className="brand-eyebrow text-plum">Add-ons</p>
               <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
-                {category.addOns.map((item) => <p key={item.name} className="text-sm text-onyx-800/80"><span className="font-medium text-onyx">{item.name}</span><span className="mx-2 text-taupe">·</span>{item.price}{pending && <span className="ml-2 text-xs font-semibold text-plum">Availability pending</span>}</p>)}
+                {category.addOns.map((item) => <p key={item.name} className="text-sm text-onyx-800/80"><span className="font-medium text-onyx">{item.name}</span><span className="mx-2 text-taupe">·</span>{item.price}{(pending || item.availabilityPending) && <span className="ml-2 text-xs font-semibold text-plum">Availability pending</span>}</p>)}
               </div>
               <p className="mt-4 text-xs leading-relaxed text-onyx-800/65">Add-ons selected with the first order may share one provider review and shipment. Adding an item later may require a new review.</p>
             </div>
@@ -166,7 +167,7 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
               {category.bundles.map((bundle, index) => (
                 <Reveal key={bundle.title} delay={index * 80} className="h-full">
                   <article className={`flex h-full flex-col rounded-3xl border p-8 sm:p-9 ${bundle.featured ? "border-champagne bg-plum-900 text-ivory" : "border-ivory-300/20 bg-onyx-900 text-ivory"}`}>
-                    <p className="brand-eyebrow text-[0.5625rem] text-champagne">{bundle.label}</p>
+                    <p className="brand-eyebrow text-[0.5625rem] text-champagne">{bundle.availabilityPending ? "Availability pending" : bundle.label}</p>
                     <h3 className="mt-5 font-display text-4xl">{bundle.title}</h3>
                     <p className="mt-4 max-w-xl text-sm leading-relaxed text-ivory-200/85">{bundle.body}</p>
                     <div className="mt-7 grid gap-3 sm:grid-cols-2">
@@ -177,13 +178,17 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
                     <ul className="mt-7 grid gap-3 text-sm leading-relaxed text-ivory-200/85">
                       {bundle.includes.map((item) => <li key={item} className="flex gap-3"><span aria-hidden="true" className="text-champagne">✦</span>{item}</li>)}
                     </ul>
-                    <a href="#pre-screen" className="button-sheen brand-eyebrow mt-auto rounded-full bg-champagne px-7 py-4 text-center text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200">Request this bundle</a>
+                    {bundle.availabilityPending ? <div className="mt-auto pt-7"><p className="mb-4 text-sm leading-relaxed text-ivory-200/85">{bundle.availabilityPending}</p><a href="#bundle-waitlist" className="button-sheen brand-eyebrow block rounded-full bg-champagne px-7 py-4 text-center text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200">Join the availability waitlist</a></div> : <a href="#pre-screen" data-request-plan={bundle.id} className="button-sheen brand-eyebrow mt-auto rounded-full bg-champagne px-7 py-4 text-center text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200">Request this bundle</a>}
                   </article>
                 </Reveal>
               ))}
             </div>
           </Container>
         </section>
+      )}
+
+      {category.bundles?.some((bundle) => bundle.availabilityPending) && (
+        <section id="bundle-waitlist" className="scroll-mt-24 border-b border-onyx-700 bg-onyx-900"><Container className="py-12"><h2 className="font-display text-3xl text-ivory">Bundle availability updates</h2><p className="mt-4 mb-6 max-w-2xl text-sm text-ivory-200/85">Leave your email for an update when these bundles are confirmed. No treatment request, enrollment or payment is taken.</p><NewsletterSignup source="waitlist" hint="Email only. Availability updates do not start clinical care." /></Container></section>
       )}
 
       {category.relatedCare && (

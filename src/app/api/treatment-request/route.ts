@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   const state = text(body?.state, 2).toUpperCase();
   const billing = body?.billing === "prepaid" ? "three months prepaid" : body?.billing === "monthly" ? "month to month" : "";
 
-  if (!category || !requestOption || !billing) {
+  if (!category || !requestOption || !billing || (category.slug === "eves-secret" && billing !== "month to month")) {
     return NextResponse.json({ message: "Please choose a valid treatment request." }, { status: 400 });
   }
 
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
   const isLoopback = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?\//.test(webhook ?? "");
   if (!webhook) {
     return NextResponse.json(
-      { message: "Treatment requests are temporarily unavailable. Please try again shortly." },
+      { message: "Treatment requests are temporarily unavailable. Please contact our team through the Contact page for next steps. Do not share medical information there." },
       { status: 503 },
     );
   }
@@ -86,7 +86,7 @@ export async function POST(request: Request) {
     category: category.label,
     requestedPlan: requestOption.title,
     requestType: requestOption.kind,
-    billingPreference: billing,
+    billingPreference: category.slug === "eves-secret" ? "one consultation" : billing,
     firstName,
     lastName,
     email: body.email,

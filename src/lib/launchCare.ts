@@ -20,6 +20,7 @@ export type LaunchBundle = {
   price?: string;
   includes: string[];
   featured?: boolean;
+  availabilityPending?: string;
 };
 
 export type PreScreenQuestion = {
@@ -40,7 +41,7 @@ export type LaunchCareCategory = {
   gallery?: { image: string; alt: string }[];
   whoItsFor: string[];
   plans: LaunchPlan[];
-  addOns?: { name: string; price: string }[];
+  addOns?: { name: string; price: string; availabilityPending?: boolean }[];
   bundles?: LaunchBundle[];
   relatedCare?: { label: string; href: string; body: string };
   waitlist?: { name: string; body: string }[];
@@ -184,13 +185,14 @@ export const launchCareCategories: LaunchCareCategory[] = [
       },
     ],
     addOns: [
-      { name: "MIC-B12", price: "$89" },
-      { name: "Eve’s Secret troche", price: "$69" },
-      { name: "NAD+ nasal spray", price: "$99" },
+      { name: "MIC-B12", price: "$89", availabilityPending: true },
+      { name: "Eve’s Secret troche", price: "$69", availabilityPending: true },
+      { name: "NAD+ nasal spray", price: "$99", availabilityPending: true },
     ],
     bundles: [
       {
         id: "signature-bundle",
+        availabilityPending: "Availability of the included add-ons is pending confirmation. This bundle is not open for treatment requests or payment.",
         title: "Signature",
         label: "Most Popular",
         body: "GLP-1 pathway plus one selected add-on: Eve’s Secret troche or tretinoin.",
@@ -201,6 +203,7 @@ export const launchCareCategories: LaunchCareCategory[] = [
       },
       {
         id: "elite-bundle",
+        availabilityPending: "Availability of the included add-ons is pending confirmation. This bundle is not open for treatment requests or payment.",
         title: "Elite",
         label: "More complete care",
         body: "GLP-1 pathway plus Eve’s Secret troche and NAD+ nasal spray.",
@@ -290,12 +293,13 @@ export const launchCareCategories: LaunchCareCategory[] = [
       },
     ],
     addOns: [
-      { name: "Eve’s Secret troche", price: "$69" },
+      { name: "Eve’s Secret troche", price: "$69", availabilityPending: true },
       { name: "Vaginal estradiol with another HRT plan", price: "$59" },
     ],
     bundles: [
       {
         id: "hormone-signature-bundle",
+        availabilityPending: "Availability of the included add-ons is pending confirmation. This bundle is not open for treatment requests or payment.",
         title: "Hormone Signature",
         label: "Coordinated care",
         body: "Oral HRT plus an Eve’s Secret troche, when each is clinically appropriate.",
@@ -636,7 +640,7 @@ export function getLaunchCareRequestOption(
   const plan = category.plans.find((item) => item.id === optionId);
   if (plan) return { id: plan.id, title: plan.title, kind: "plan" };
 
-  const bundle = category.bundles?.find((item) => item.id === optionId);
+  const bundle = category.bundles?.find((item) => item.id === optionId && !item.availabilityPending);
   if (bundle) return { id: bundle.id, title: bundle.title, kind: "bundle" };
 
   return undefined;
