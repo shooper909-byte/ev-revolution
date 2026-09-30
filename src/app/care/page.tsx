@@ -5,12 +5,12 @@ import { CareCard } from "@/components/CareCard";
 import { Container, Eyebrow } from "@/components/Container";
 import { PrincipleCarousel } from "@/components/PrincipleCarousel";
 import { Reveal } from "@/components/Reveal";
-import { launchedPillars } from "@/lib/pillars";
+import { publicPillars } from "@/lib/pillars";
 
 export const metadata: Metadata = {
   title: { absolute: "Care | Eve’s Sisters Women’s Wellness" },
   description:
-    "Explore Eve’s Sisters care categories for weight management, menopause and hormones, skin and beauty, and intimate wellness.",
+    "Explore Eve’s Sisters care categories and wellness education for longevity, recovery and rejuvenation.",
   alternates: { canonical: "/care" },
   openGraph: {
     title: "Care | Eve’s Sisters Women’s Wellness",
@@ -113,7 +113,7 @@ const brandPillars = [
     body: "Built specifically around women’s wellness.",
   },
   {
-    label: "Four care categories",
+    label: "Care & wellness",
     body: "Connected support across the Eve’s Sisters ecosystem.",
   },
   {
@@ -281,7 +281,7 @@ export default function CarePage() {
               id="pathways-heading"
               className="mt-6 font-display text-[2.1rem] leading-[1.1] text-onyx sm:text-[2.75rem]"
             >
-              Four Care Categories.
+              Care & Wellness Categories.
               <span className="block text-plum">
                 A Healthier, Brighter You.
               </span>
@@ -294,7 +294,7 @@ export default function CarePage() {
           </Reveal>
 
           <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {launchedPillars.map((pillar, index) => (
+            {publicPillars.map((pillar, index) => (
               <Reveal
                 as="li"
                 key={pillar.slug}

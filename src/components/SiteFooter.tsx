@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { BusinessContact, policyLinks } from "@/components/PolicyPage";
-import { careLabel, getStartedHref as getStartedHrefFor, launchedPillars } from "@/lib/pillars";
+import { careLabel, getStartedHref as getStartedHrefFor, publicPillars } from "@/lib/pillars";
 
 const company = [
   { href: "/", label: "Home" },
@@ -40,7 +40,7 @@ export function SiteFooter() {
               </Link>
             </h2>
             <ul className="mt-5 space-y-3">
-              {launchedPillars.map((pillar) => (
+              {publicPillars.map((pillar) => (
                 <li key={pillar.slug}>
                   <Link
                     href={pillar.carePath ?? `/pillars/${pillar.slug}`}

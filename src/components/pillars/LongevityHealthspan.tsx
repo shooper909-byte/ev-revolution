@@ -47,8 +47,8 @@ export function LongevityHealthspan() {
             <h1 className="mt-7 font-display text-[2.7rem] leading-[1.04] text-ivory sm:text-6xl lg:text-7xl">More Strength. More Possibility. Through Every Stage.</h1>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-ivory-200/90 sm:text-lg">Explore healthy aging through strength, everyday habits, preventive care, and conversations with qualified clinicians.</p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <Link href="/care/longevity-healthspan" className="button-sheen brand-eyebrow bg-plum px-8 py-4 text-center text-[0.625rem] text-ivory hover:bg-plum-600">Explore Longevity Care</Link>
-              <Link href="/care/longevity-healthspan#pre-screen" className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne hover:bg-onyx-800">Request Longevity Care</Link>
+              <Link href="#wellness-topics" className="button-sheen brand-eyebrow bg-plum px-8 py-4 text-center text-[0.625rem] text-ivory hover:bg-plum-600">Explore Longevity Care</Link>
+              <Link href="/contact" className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne hover:bg-onyx-800">Ask About Availability</Link>
             </div>
           </div>
         </Container>
@@ -89,7 +89,7 @@ export function LongevityHealthspan() {
         </Container>
       </section>
 
-      <section className="border-b border-onyx-700 bg-ivory-200/50">
+      <section id="wellness-topics" className="border-b border-onyx-700 bg-ivory-200/50">
         <Container className="py-20 sm:py-24">
           <Reveal>
             <p className="brand-eyebrow text-plum">Proposed care areas</p>
@@ -107,7 +107,7 @@ export function LongevityHealthspan() {
                   <div className="flex flex-1 flex-col p-7">
                     <h3 className="font-display text-2xl text-onyx">{area.title}</h3>
                     <p className="mt-4 flex-1 text-sm leading-relaxed text-onyx-800/75">{area.copy}</p>
-                    <Link href={`/care/longevity-healthspan#${area.id}`} className="brand-eyebrow mt-7 text-[0.5625rem] text-plum">Explore proposed pathway <span aria-hidden="true">&rarr;</span></Link>
+                    <Link href="/contact" className="brand-eyebrow mt-7 text-[0.5625rem] text-plum">Explore proposed pathway <span aria-hidden="true">&rarr;</span></Link>
                   </div>
                 </article>
               </Reveal>
@@ -119,10 +119,10 @@ export function LongevityHealthspan() {
       <section className="bg-plum-900">
         <Container className="flex flex-col items-start justify-between gap-7 py-14 sm:flex-row sm:items-center">
           <div>
-            <p className="brand-eyebrow text-champagne">Longevity Care waitlist</p>
-            <h2 className="mt-4 font-display text-3xl text-ivory sm:text-4xl">Be first to know when enrollment opens.</h2>
+            <p className="brand-eyebrow text-champagne">Future Longevity Care</p>
+            <h2 className="mt-4 font-display text-3xl text-ivory sm:text-4xl">Ask about future program availability.</h2>
           </div>
-          <Link href="/care/longevity-healthspan#pre-screen" className="button-sheen brand-eyebrow shrink-0 bg-champagne px-8 py-4 text-[0.625rem] text-onyx hover:bg-champagne-200">Request Longevity Care</Link>
+          <Link href="/contact" className="button-sheen brand-eyebrow shrink-0 bg-champagne px-8 py-4 text-[0.625rem] text-onyx hover:bg-champagne-200">Ask About Availability</Link>
         </Container>
       </section>
     </>
