@@ -21,7 +21,7 @@ export function MrsEditorialPage({ experience }: { experience: MrsExperience }) 
             <h1 className="mt-6 max-w-xl font-display text-5xl leading-tight sm:text-7xl">{experience.eyebrow}</h1>
             <p className="mt-6 font-display text-2xl text-champagne">{experience.tagline}</p>
             <p className="mt-6 max-w-xl leading-8 text-ivory-200">{experience.description}</p>
-            <Link href="#consultation" className="button-sheen brand-eyebrow mt-9 inline-block rounded-full bg-champagne px-8 py-4 text-xs text-onyx">Begin your private consultation</Link>
+            <Link href="#consultation" className="button-sheen brand-eyebrow mt-9 inline-block rounded-full bg-champagne px-8 py-4 text-xs text-onyx">View consultation availability</Link>
           </div>
           <Image src={experience.image} alt={experience.imageAlt} width={1122} height={1402} priority sizes="(min-width: 1024px) 55vw, 100vw" className="max-h-[760px] w-full rounded-2xl object-cover object-top" />
         </Container>
@@ -43,7 +43,7 @@ export function MrsEditorialPage({ experience }: { experience: MrsExperience }) 
           <div>
             <Eyebrow>Private consultation request</Eyebrow>
             <h2 id="mrs-consultation-heading" className="mt-5 font-display text-4xl sm:text-5xl">Begin with {experience.name}.</h2>
-            <p className="mt-6 max-w-xl leading-8 text-ivory-200">Choose the care category you want to discuss. This form collects contact details only and creates no charge.</p>
+            <p className="mt-6 max-w-xl leading-8 text-ivory-200">Review your preferred care category. Online consultation requests will open once secure clinical intake is connected.</p>
           </div>
           <CareLeadForm program={experience.slug} labelledBy="mrs-consultation-heading" privacyNote="Contact details only. Please do not submit symptoms, medications, or medical history here." />
         </Container>

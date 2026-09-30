@@ -124,6 +124,17 @@ export function TreatmentRequestPanel({ category }: { category: LaunchCareCatego
     }
   }
 
+  if (process.env.NEXT_PUBLIC_EV_TREATMENT_REQUESTS_OPEN !== "true") {
+    return (
+      <div className="hairline rounded-3xl border border-champagne/35 bg-onyx-900/70 p-7 sm:p-9">
+        <p className="brand-eyebrow text-champagne">Online requests are not open yet</p>
+        <h3 className="mt-5 font-display text-3xl leading-tight text-ivory">Secure clinical intake is being connected.</h3>
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-ivory-200/85">Please contact our team for availability updates and general questions. No treatment request, enrollment or payment is accepted here yet. Do not send medical information through Contact or email.</p>
+        <Link href="/contact" className="button-sheen brand-eyebrow mt-7 inline-block rounded-full bg-champagne px-6 py-3 text-[0.5625rem] text-onyx hover:bg-champagne-200">Contact our team</Link>
+      </div>
+    );
+  }
+
   if (screenStatus === "referred") {
     return (
       <div className="hairline rounded-3xl border border-champagne/35 bg-onyx-900/70 p-7 sm:p-9">

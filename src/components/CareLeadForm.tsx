@@ -80,6 +80,17 @@ export function CareLeadForm({ program, labelledBy, availableStateCodes = states
     }
   }
 
+  if (process.env.NEXT_PUBLIC_EV_TREATMENT_REQUESTS_OPEN !== "true") {
+    return (
+      <div className="hairline rounded-3xl border border-champagne/35 bg-onyx-900/70 p-7 sm:p-9">
+        <p className="brand-eyebrow text-champagne">Online requests are not open yet</p>
+        <h3 className="mt-5 font-display text-3xl leading-tight text-ivory">Secure clinical intake is being connected.</h3>
+        <p className="mt-5 text-sm leading-relaxed text-ivory-200/85">Contact our team for availability updates and general questions. Please do not send medical information through Contact or email.</p>
+        <Link href="/contact" className="brand-eyebrow mt-7 inline-block text-xs text-champagne underline">Contact our team</Link>
+      </div>
+    );
+  }
+
   if (status === "success") {
     return (
       <div role="status" className="hairline flex flex-col justify-center rounded-3xl border bg-onyx-900/70 p-9 sm:p-11">
