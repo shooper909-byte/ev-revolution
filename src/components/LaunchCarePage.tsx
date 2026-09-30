@@ -15,7 +15,15 @@ const howItWorks: [string, string][] = [
   ["Discreet delivery", "If approved and enrolled, the pharmacy coordinates discreet shipment and secure care-team messaging supports follow-up."],
 ];
 
-function toPlanCard(plan: LaunchCareCategory["plans"][number], isEvesSecret: boolean): Plan {
+/* Used instead of `howItWorks` while a category's availability is pending. */
+const pendingSteps: [string, string][] = [
+  ["Join the availability waitlist", "Leave your email address only. No health information, treatment request or payment is taken."],
+  ["Availability is confirmed", "We email you if and when our pharmacy partner confirms these options can be offered."],
+  ["A licensed provider reviews", "Once enrollment opens, complete the secure clinical intake. A licensed clinician decides whether treatment is appropriate."],
+  ["Discreet delivery", "If approved and enrolled, the pharmacy coordinates discreet shipment and secure care-team messaging supports follow-up."],
+];
+
+function toPlanCard(plan: LaunchCareCategory["plans"][number], isEvesSecret: boolean, pending: boolean): Plan {
   const monthlyPrice = plan.monthly.replace(" / month", "");
   return {
     id: plan.id,
@@ -25,17 +33,20 @@ function toPlanCard(plan: LaunchCareCategory["plans"][number], isEvesSecret: boo
     description: plan.description,
     includes: plan.includes,
     treatments: plan.treatment,
-    cta: "Request this treatment",
+    cta: pending ? "Join the availability waitlist" : "Request this treatment",
     href: "#pre-screen",
-    footnote: isEvesSecret ? undefined : `3-month option: ${plan.prepaid}. Your card may be pre-authorized, but no medication-inclusive amount is captured unless and until a licensed provider approves treatment.`,
+    footnote: pending
+      ? `3-month option: ${plan.prepaid}. Availability pending confirmation: no request, prescription or payment is taken yet.`
+      : isEvesSecret ? undefined : `3-month option: ${plan.prepaid}. Your card may be pre-authorized, but no medication-inclusive amount is captured unless and until a licensed provider approves treatment.`,
     featured: plan.featured,
-    badge: plan.badge,
+    badge: pending ? "Availability pending" : plan.badge,
   };
 }
 
 export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
   const isEvesSecret = category.slug === "eves-secret";
-  const planCards = category.plans.map((plan) => toPlanCard(plan, isEvesSecret));
+  const pending = Boolean(category.availabilityPending);
+  const planCards = category.plans.map((plan) => toPlanCard(plan, isEvesSecret, pending));
 
   return (
     <div className="overflow-x-clip">
@@ -55,9 +66,10 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
               <span className="mt-2 block italic text-mauve">{category.highlightedHeadline}</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base leading-relaxed text-ivory-200/90 sm:text-lg">{category.intro}</p>
+            {pending && <p className="mt-5 text-sm font-semibold text-champagne">Availability pending confirmation. No treatment request or enrollment is open yet.</p>}
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a href="#plans" className="button-sheen brand-eyebrow bg-plum px-8 py-4 text-center text-[0.625rem] text-ivory transition-colors hover:bg-plum-600">See treatment options</a>
-              <a href="#pre-screen" className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne transition-colors hover:bg-onyx-800">Start a private request</a>
+              <a href="#pre-screen" className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne transition-colors hover:bg-onyx-800">{pending ? "Join the availability waitlist" : "Start a private request"}</a>
             </div>
           </div>
         </Container>
@@ -99,8 +111,9 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
         <Container className="py-20 sm:py-24">
           <Reveal>
             <Eyebrow className="text-plum">Treatment options</Eyebrow>
-            <h2 id="plans-heading" className="mt-6 max-w-3xl font-display text-[2.25rem] leading-tight text-onyx sm:text-5xl">Choose a plan to request.</h2>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-onyx-800/75">{isEvesSecret ? "The consultation fee covers the clinician visit and messaging. Any medication is quoted separately and charged only after provider approval." : "After provider approval, each published plan price includes the medication if prescribed, provider review, shipping and secure messaging. Required labs are quoted separately. A treatment request creates no charge."}</p>
+            <h2 id="plans-heading" className="mt-6 max-w-3xl font-display text-[2.25rem] leading-tight text-onyx sm:text-5xl">{pending ? "Treatment options, pending availability." : "Choose a plan to request."}</h2>
+            {pending && <p className="mt-6 max-w-3xl rounded-2xl border border-plum/25 bg-ivory px-5 py-4 text-sm font-medium leading-relaxed text-onyx">{category.availabilityPending}</p>}
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-onyx-800/75">{pending ? "Once available, each plan price includes the medication if prescribed, provider review, shipping and secure messaging. Required labs are quoted separately." : isEvesSecret ? "The consultation fee covers the clinician visit and messaging. Any medication is quoted separately and charged only after provider approval." : "After provider approval, each published plan price includes the medication if prescribed, provider review, shipping and secure messaging. Required labs are quoted separately. A treatment request creates no charge."}</p>
             {category.slug === "weight-management" && <p className="mt-4 max-w-3xl text-sm leading-relaxed text-onyx-800/75">Compounded GLP-1s are prescribed only when a licensed provider documents a patient-specific clinical need — not for cost or preference. Compounded medications are not FDA-approved.</p>}
           </Reveal>
           <PlanCards plans={planCards} />
@@ -109,7 +122,7 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
             <div className="mt-10 rounded-3xl border border-plum/20 bg-ivory px-6 py-6 sm:px-8">
               <p className="brand-eyebrow text-plum">Add-ons</p>
               <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
-                {category.addOns.map((item) => <p key={item.name} className="text-sm text-onyx-800/80"><span className="font-medium text-onyx">{item.name}</span><span className="mx-2 text-taupe">·</span>{item.price}</p>)}
+                {category.addOns.map((item) => <p key={item.name} className="text-sm text-onyx-800/80"><span className="font-medium text-onyx">{item.name}</span><span className="mx-2 text-taupe">·</span>{item.price}{pending && <span className="ml-2 text-xs font-semibold text-plum">Availability pending</span>}</p>)}
               </div>
               <p className="mt-4 text-xs leading-relaxed text-onyx-800/65">Add-ons selected with the first order may share one provider review and shipment. Adding an item later may require a new review.</p>
             </div>
@@ -190,7 +203,7 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
             <Eyebrow className="text-plum">How it works</Eyebrow>
             <h2 className="mt-6 font-display text-[2.25rem] leading-tight text-onyx sm:text-5xl">Clear steps, no pressure.</h2>
           </Reveal>
-          <Steps steps={howItWorks} />
+          <Steps steps={pending ? pendingSteps : howItWorks} />
         </Container>
       </section>
 
@@ -205,7 +218,7 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
               {(isEvesSecret ? ["Licensed-provider consultation", "Secure care-team messaging", "Medication quoted separately if prescribed"] : ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"]).map((item) => <div key={item} className="rounded-2xl border border-ivory-300/15 bg-onyx p-5 text-sm text-ivory-200">{item}</div>)}
             </div>
             <p className="mt-7 text-sm leading-relaxed text-ivory-200/80">Labs are quoted separately only when required. {category.labNote ?? "Your clinician explains any required lab work during the secure intake."}</p>
-            <p className="mt-4 text-xs leading-relaxed text-ivory-200/60">The private pre-screen and treatment request below do not take payment or authorize a card. Payment authorization, renewal terms, cancellation and refund details belong in the secure enrollment flow after clinical approval.</p>
+            <p className="mt-4 text-xs leading-relaxed text-ivory-200/60">{pending ? "While availability is pending, nothing on this page takes payment, authorizes a card or starts a treatment request." : <>The private pre-screen and treatment request below do not take payment or authorize a card. Payment authorization, renewal terms, cancellation and refund details belong in the secure enrollment flow after clinical approval.</>}</p>
           </Reveal>
         </Container>
       </section>
@@ -214,10 +227,10 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
         <Container className="grid gap-12 py-20 lg:grid-cols-[0.75fr_1.25fr] lg:py-24">
           <Reveal>
             <Eyebrow>Start here</Eyebrow>
-            <h2 id="pre-screen-heading" className="mt-6 font-display text-[2.25rem] leading-tight text-ivory sm:text-5xl">Request this treatment privately.</h2>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-ivory-200/85">This free pre-screen helps us keep the public request flow simple. It does not make a medical decision, accept payment, or replace your clinician’s secure assessment.</p>
+            <h2 id="pre-screen-heading" className="mt-6 font-display text-[2.25rem] leading-tight text-ivory sm:text-5xl">{pending ? "Join the availability waitlist." : "Request this treatment privately."}</h2>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-ivory-200/85">{pending ? "These options are not open for requests yet. Leave your email address and we’ll let you know if availability is confirmed. Please do not share symptoms, medications or medical history here." : "This free pre-screen helps us keep the public request flow simple. It does not make a medical decision, accept payment, or replace your clinician’s secure assessment."}</p>
           </Reveal>
-          <Reveal delay={80}><TreatmentRequestPanel category={category} /></Reveal>
+          <Reveal delay={80}>{pending ? <div className="lg:pt-16"><NewsletterSignup source="waitlist" hint="Email only. We’ll share an availability update, not a treatment offer." /></div> : <TreatmentRequestPanel category={category} />}</Reveal>
         </Container>
       </section>
 

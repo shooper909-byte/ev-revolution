@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 /* Routes retired from the public site. Each one answers 404, with or without
    a trailing slash, so nothing outside the launched care pathways is served. */
-const retiredRoutes = ["/peptide-care", "/shop", "/cart", "/checkout", "/my-account", "/get-started"];
+const retiredRoutes = ["/shop", "/cart", "/checkout", "/my-account", "/get-started"];
 
 function isRetired(pathname: string) {
   const path = pathname.replace(/\/+$/, "") || "/";
@@ -19,5 +19,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?:peptide-care|shop|cart|checkout|my-account|get-started)(?:/.*)?|wp-sitemap.*)"],
+  matcher: ["/((?:shop|cart|checkout|my-account|get-started)(?:/.*)?|wp-sitemap.*)"],
 };

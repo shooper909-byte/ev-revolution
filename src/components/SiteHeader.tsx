@@ -34,7 +34,8 @@ export function SiteHeader() {
   const careActive =
     pathname === "/care" ||
     pathname.startsWith("/care/") ||
-    pathname.startsWith("/pillars/");
+    pathname.startsWith("/pillars/") ||
+    pathname === "/peptide-care";
   const getStartedHref = getStartedHrefFor(pathname);
 
   const isActive = (href: string) => pathname === href;
@@ -163,6 +164,20 @@ export function SiteHeader() {
                 onClick={() => setOpen(false)}
               >
                 Eve&rsquo;s Secret™
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/peptide-care"
+                className={`block py-3.5 text-sm ${
+                  pathname === "/peptide-care"
+                    ? "text-champagne"
+                    : "text-ivory-200"
+                }`}
+                aria-current={pathname === "/peptide-care" ? "page" : undefined}
+                onClick={() => setOpen(false)}
+              >
+                Peptide Care
               </Link>
             </li>
           </ul>
