@@ -96,19 +96,19 @@ export const carePrograms = {
   "mrs-jones": {
     label: "Mrs. Jones collection",
     source: "/packages/mrs-jones",
-    interestLabel: "Preferred care level",
+    interestLabel: "Preferred care category",
     interests: ["Weight Management", "Menopause & Hormones", "Skin & Beauty", "Eve’s Secret", "Not sure"],
   },
   "mrs-golden": {
     label: "Mrs. Golden collection",
     source: "/packages/mrs-golden",
-    interestLabel: "Preferred care level",
+    interestLabel: "Preferred care category",
     interests: ["Weight Management", "Menopause & Hormones", "Skin & Beauty", "Eve’s Secret", "Not sure"],
   },
   "mrs-robinson": {
     label: "Mrs. Robinson collection",
     source: "/packages/mrs-robinson",
-    interestLabel: "Preferred care level",
+    interestLabel: "Preferred care category",
     interests: ["Weight Management", "Menopause & Hormones", "Skin & Beauty", "Eve’s Secret", "Not sure"],
   },
 } as const satisfies Record<string, CareProgram>;

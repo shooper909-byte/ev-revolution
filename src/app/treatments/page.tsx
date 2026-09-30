@@ -9,18 +9,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/treatments" },
 };
 
-/* Compounded items listed under a category's plans on this page. */
-const compoundedListings: Record<string, { heading: string; items: string[] }> = {
-  "weight-management": {
-    heading: "Weight Management add-ons",
-    items: ["MIC-B12 injection (compounded)", "NAD+ nasal spray (compounded)"],
-  },
-  "eves-secret": {
-    heading: "Eve’s Secret™",
-    items: ["Eve’s Secret troche (compounded; contains tadalafil, oxytocin and bremelanotide (PT-141))"],
-  },
-};
-
 export default function TreatmentsPage() {
   return (
     <main>
@@ -52,17 +40,6 @@ export default function TreatmentsPage() {
                   </li>
                 ))}
               </ul>
-              {compoundedListings[category.slug] && (
-                <div className="mt-6 border-t border-onyx-700 pt-4">
-                  <h3 className="brand-eyebrow text-[0.625rem] text-champagne">{compoundedListings[category.slug].heading}</h3>
-                  <ul className="mt-3 space-y-2">
-                    {compoundedListings[category.slug].items.map((item) => (
-                      <li key={item} className="text-sm leading-relaxed text-ivory-200/85">{item}</li>
-                    ))}
-                  </ul>
-                  <p className="mt-3 text-xs leading-relaxed text-ivory-200/65">Compounded medications are not FDA-approved.</p>
-                </div>
-              )}
               <Link href={category.path} className="brand-eyebrow mt-8 text-[0.625rem] text-champagne hover:underline">
                 Review {category.label} eligibility and pricing &rarr;
               </Link>
@@ -70,6 +47,7 @@ export default function TreatmentsPage() {
           ))}
         </Container>
       </section>
+      <section className="border-t border-onyx-700 bg-onyx-900"><Container className="py-16"><Eyebrow>Availability pending</Eyebrow><h2 className="mt-6 font-display text-3xl text-ivory">Programs and add-ons awaiting confirmation</h2><p className="mt-5 max-w-3xl text-sm leading-relaxed text-ivory-200/85">MIC-B12, NAD+ injection and nasal spray, Sermorelin, Tesamorelin and Eve’s Secret troche are pending partner confirmation. They are not available for treatment requests, enrollment or payment. Published prices on their care pages are proposed.</p><div className="mt-7 flex flex-wrap gap-6"><Link href="/care/energy-performance" className="text-champagne underline">Energy availability</Link><Link href="/care/longevity-healthspan" className="text-champagne underline">Longevity availability</Link><Link href="/peptide-care" className="text-champagne underline">Peptide Care waitlist</Link></div></Container></section>
     </main>
   );
 }

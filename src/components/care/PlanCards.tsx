@@ -23,6 +23,8 @@ export type Plan = {
   cta: string;
   /** Where the card's button goes. Defaults to the assessment form. */
   href?: string;
+  /** Keep the chosen option in local form state, out of URLs and analytics. */
+  requestPlan?: string;
   footnote?: string;
   featured?: boolean;
   badge?: string;
@@ -175,6 +177,7 @@ export function PlanCards({ plans }: { plans: Plan[] }) {
             <div className="mt-auto pt-8">
               <a
                 href={plan.href ?? "#get-started"}
+                data-request-plan={plan.requestPlan}
                 className={`button-sheen brand-eyebrow block rounded-full px-7 py-4 text-center text-[0.625rem] transition-colors ${
                   plan.featured
                     ? "bg-champagne text-onyx hover:bg-champagne-200"

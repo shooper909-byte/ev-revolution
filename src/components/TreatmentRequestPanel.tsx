@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useState } from "react";
-import type { LaunchCareCategory } from "@/lib/launchCare";
+import { useEffect, useId, useState } from "react";
+import { getLaunchCareRequestOption, type LaunchCareCategory } from "@/lib/launchCare";
 
 type ScreenAnswer = "yes" | "no" | "not-sure";
 type ScreenStatus = "questions" | "eligible" | "referred";
@@ -32,7 +32,7 @@ export function TreatmentRequestPanel({ category }: { category: LaunchCareCatego
   const id = useId();
   const requestOptions = [
     ...category.plans.map((plan) => ({ id: plan.id, label: plan.title, price: plan.monthly, kind: "plan" as const })),
-    ...(category.bundles ?? []).map((bundle) => ({
+    ...(category.bundles ?? []).filter((bundle) => !bundle.availabilityPending).map((bundle) => ({
       id: bundle.id,
       label: `${bundle.title} bundle`,
       price: bundle.price ?? `from ${bundle.semaglutidePrice ?? bundle.tirzepatidePrice}`,
@@ -46,6 +46,22 @@ export function TreatmentRequestPanel({ category }: { category: LaunchCareCatego
   const [submitMessage, setSubmitMessage] = useState("");
   const [selectedPlan, setSelectedPlan] = useState(requestOptions[0]?.id ?? "");
   const [billing, setBilling] = useState("monthly");
+
+  useEffect(() => {
+    function selectRequestedPlan(event: MouseEvent) {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const link = target.closest<HTMLAnchorElement>("a[data-request-plan]");
+      const option = getLaunchCareRequestOption(category, link?.dataset.requestPlan);
+      if (option) {
+        setSelectedPlan(option.id);
+        setSubmitStatus("idle");
+        setSubmitMessage("");
+      }
+    }
+    document.addEventListener("click", selectRequestedPlan);
+    return () => document.removeEventListener("click", selectRequestedPlan);
+  }, [category]);
 
   function restart() {
     setAnswers({});
@@ -104,7 +120,7 @@ export function TreatmentRequestPanel({ category }: { category: LaunchCareCatego
       form.reset();
     } catch {
       setSubmitStatus("error");
-      setSubmitMessage("We could not submit your request. Please check your connection and try again.");
+      setSubmitMessage("We could not submit your request. Please try again or contact our team using the link below. Do not email medical information.");
     }
   }
 
@@ -188,8 +204,8 @@ export function TreatmentRequestPanel({ category }: { category: LaunchCareCatego
           <div>
             <label htmlFor={`${id}-billing`} className={labelClass}>Billing preference</label>
             <select id={`${id}-billing`} value={billing} onChange={(event) => setBilling(event.target.value)} className={`${fieldClass} mt-3`}>
-              <option value="monthly">Month to month</option>
-              <option value="prepaid">Three months prepaid</option>
+              <option value="monthly">{category.slug === "eves-secret" ? "One consultation" : "Month to month"}</option>
+              {category.slug !== "eves-secret" && <option value="prepaid">Three months prepaid</option>}
             </select>
           </div>
         </div>
@@ -229,6 +245,7 @@ export function TreatmentRequestPanel({ category }: { category: LaunchCareCatego
             <span aria-hidden="true" className="ml-2">→</span>
           </button>
           <p aria-live="polite" className={`mt-5 text-xs leading-relaxed ${submitStatus === "error" ? "text-mauve" : "text-ivory-200/65"}`}>{submitMessage}</p>
+          {submitStatus === "error" && <Link href="/contact" className="mt-4 inline-block text-sm text-champagne underline">Contact our team about this request</Link>}
         </div>
       </form>
     );

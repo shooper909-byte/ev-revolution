@@ -43,7 +43,7 @@ export function MrsEditorialPage({ experience }: { experience: MrsExperience }) 
           <div>
             <Eyebrow>Private consultation request</Eyebrow>
             <h2 id="mrs-consultation-heading" className="mt-5 font-display text-4xl sm:text-5xl">Begin with {experience.name}.</h2>
-            <p className="mt-6 max-w-xl leading-8 text-ivory-200">Choose the collection level you want to discuss. This form collects contact details only and creates no charge.</p>
+            <p className="mt-6 max-w-xl leading-8 text-ivory-200">Choose the care category you want to discuss. This form collects contact details only and creates no charge.</p>
           </div>
           <CareLeadForm program={experience.slug} labelledBy="mrs-consultation-heading" privacyNote="Contact details only. Please do not submit symptoms, medications, or medical history here." />
         </Container>

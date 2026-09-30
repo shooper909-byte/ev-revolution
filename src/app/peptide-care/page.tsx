@@ -63,7 +63,7 @@ const atAGlance = [
   "Care delivered by licensed clinical providers",
   "Plans personalized to your history and goals",
   "Treatment only where appropriate and legally available",
-  "Medication, laboratory and pharmacy charges billed separately",
+  "Medication, laboratory and pharmacy charges billed separately; these care-coordination fees are separate from medication-inclusive Longevity plans",
 ];
 
 /* ------------------------------------------------------------------

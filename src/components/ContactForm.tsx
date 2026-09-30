@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { launchedPillars } from "@/lib/pillars";
+import { publicPillars } from "@/lib/pillars";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -92,12 +92,13 @@ export function ContactForm() {
           className={`${fieldClass} mt-3`}
         >
           <option value="General">General enquiry</option>
-          {launchedPillars.map((pillar) => (
+          {publicPillars.map((pillar) => (
             <option key={pillar.slug} value={pillar.name}>
               {pillar.name}
             </option>
           ))}
           <option value="Eve's Secret">Eve&rsquo;s Secret</option>
+          <option value="Peptide Care">Peptide Care availability</option>
           <option value="Cancellation">Cancel a membership</option>
           <option value="Press">Press &amp; partnerships</option>
         </select>
@@ -116,7 +117,7 @@ export function ContactForm() {
           required
           rows={5}
           className={`${fieldClass} mt-3 resize-y`}
-          placeholder="How can we help?"
+          placeholder="How can we help? Please do not include symptoms, medications or medical history."
         />
       </div>
 
@@ -135,7 +136,7 @@ export function ContactForm() {
           }`}
         >
           {message ||
-            "We read everything. We cannot give individual medical advice."}
+            "For general, account and billing questions. Please do not share medical information here."}
         </p>
       </div>
     </form>
