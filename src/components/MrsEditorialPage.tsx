@@ -21,6 +21,7 @@ export function MrsEditorialPage({ experience }: { experience: MrsExperience }) 
             <h1 className="mt-6 max-w-xl font-display text-5xl leading-tight sm:text-7xl">{experience.eyebrow}</h1>
             <p className="mt-6 font-display text-2xl text-champagne">{experience.tagline}</p>
             <p className="mt-6 max-w-xl leading-8 text-ivory-200">{experience.description}</p>
+            <p className="mt-6 font-display text-2xl text-ivory">Starting at {experience.startingAt}</p>
             <Link href="#consultation" className="button-sheen brand-eyebrow mt-9 inline-block rounded-full bg-champagne px-8 py-4 text-xs text-onyx">View consultation availability</Link>
           </div>
           <Image src={experience.image} alt={experience.imageAlt} width={1122} height={1402} priority sizes="(min-width: 1024px) 55vw, 100vw" className="max-h-[760px] w-full rounded-2xl object-cover object-top" />
@@ -30,11 +31,12 @@ export function MrsEditorialPage({ experience }: { experience: MrsExperience }) 
         <Container className="py-16 sm:py-24">
           <Eyebrow>Choose your care</Eyebrow>
           <h2 className="mt-5 max-w-2xl font-display text-4xl sm:text-5xl">The plan is yours to choose.</h2>
-          <p className="mt-6 max-w-3xl leading-8 text-ivory-200">The Mrs. Collection is an introduction to Eve’s Sisters, available to women of every background. Each care page lists its own plans and prices. A licensed clinician determines whether any treatment is appropriate.</p>
+          <p className="mt-6 max-w-3xl leading-8 text-ivory-200">The Mrs. Collection is an introduction to Eve’s Sisters, available to women of every background. Plans and prices are listed on each care page. Each treatment is prescribed only if your provider determines it’s appropriate.</p>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-ivory-200/75">Individual results vary. A consultation request creates no charge, enrollment, or prescription. Any medication-inclusive amount is authorized and captured only after provider approval.</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {pathways.map((item) => <Link key={item.href} href={item.href} className="rounded-2xl border border-champagne/30 bg-onyx p-7 font-display text-2xl text-champagne transition-colors hover:bg-plum-900">{item.label} →</Link>)}
+            {experience.recommendedPlans.map((item) => <Link key={`${item.name}-${item.price}`} href={item.href} className="rounded-2xl border border-champagne/30 bg-onyx p-7 transition-colors hover:bg-plum-900"><span className="block font-display text-2xl text-champagne">{item.name}</span><span className="mt-2 block text-sm text-ivory-200">{item.price}</span></Link>)}
           </div>
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">{pathways.map((item) => <Link key={item.href} href={item.href} className="text-sm text-champagne underline underline-offset-4">Explore {item.label}</Link>)}</div>
           <Link href="/packages/mrs-collection" className="brand-eyebrow mt-10 inline-block text-xs text-ivory-200">See all three collections →</Link>
         </Container>
       </section>

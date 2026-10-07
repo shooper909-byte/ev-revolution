@@ -2,7 +2,9 @@ export type LaunchPlan = {
   id: string;
   title: string;
   monthly: string;
-  prepaid: string;
+  prepaid?: string;
+  priceNote?: string;
+  comingSoon?: boolean;
   description: string;
   includes: string[];
   treatment?: { label: string; body: string };
@@ -18,6 +20,8 @@ export type LaunchBundle = {
   semaglutidePrice?: string;
   tirzepatidePrice?: string;
   price?: string;
+  prepaid?: string;
+  href?: string;
   includes: string[];
   featured?: boolean;
   availabilityPending?: string;
@@ -50,6 +54,7 @@ export type LaunchCareCategory = {
     extraNote?: string;
   };
   labNote?: string;
+  planNote?: string;
   faq: [string, string][];
   /**
    * Set while none of the category's plans is confirmed available by the
@@ -120,10 +125,10 @@ export const launchCareCategories: LaunchCareCategory[] = [
       {
         id: "semaglutide",
         title: "Compounded semaglutide",
-        monthly: "$199 / month",
-        prepaid: "$537 prepaid for 3 months ($179 / month)",
+        monthly: "$219 / month",
+        prepaid: "$624 prepaid for 3 months ($208 / month)",
         description:
-          "A clinician-guided weekly injection pathway, if prescribed after evaluation.",
+          "A clinician-guided weekly injection pathway with the same published price at every dose, if prescribed after a clinician evaluation.",
         includes: [
           "Medication if prescribed",
           "Asynchronous provider review",
@@ -138,8 +143,8 @@ export const launchCareCategories: LaunchCareCategory[] = [
       {
         id: "tirzepatide",
         title: "Compounded tirzepatide",
-        monthly: "$279 / month",
-        prepaid: "$747 prepaid for 3 months ($249 / month)",
+        monthly: "$319 / month",
+        prepaid: "$909 prepaid for 3 months ($303 / month)",
         description:
           "A clinician-guided weekly injection pathway with the same published price at every dose, if prescribed.",
         includes: [
@@ -157,9 +162,9 @@ export const launchCareCategories: LaunchCareCategory[] = [
       },
       {
         id: "semaglutide-maintenance",
-        title: "Compounded semaglutide maintenance",
-        monthly: "$149 / month",
-        prepaid: "$402 prepaid for 3 months ($134 / month)",
+        title: "Compounded semaglutide — lower-dose maintenance",
+        monthly: "$179 / month",
+        prepaid: "$510 prepaid for 3 months ($170 / month)",
         description:
           "A lower-dose semaglutide pathway for clinician-guided maintenance after goal weight, if prescribed.",
         includes: [
@@ -171,9 +176,9 @@ export const launchCareCategories: LaunchCareCategory[] = [
       },
       {
         id: "tirzepatide-maintenance",
-        title: "Compounded tirzepatide maintenance",
-        monthly: "$179 / month",
-        prepaid: "$483 prepaid for 3 months ($161 / month)",
+        title: "Compounded tirzepatide — lower-dose maintenance",
+        monthly: "$219 / month",
+        prepaid: "$624 prepaid for 3 months ($208 / month)",
         description:
           "A lower-dose tirzepatide pathway for clinician-guided maintenance, if prescribed.",
         includes: [
@@ -185,21 +190,41 @@ export const launchCareCategories: LaunchCareCategory[] = [
       },
     ],
     addOns: [
-      { name: "MIC-B12", price: "$89", availabilityPending: true },
+      { name: "MIC-B12", price: "$99 / month", availabilityPending: true },
       { name: "Eve’s Secret troche", price: "$69", availabilityPending: true },
       { name: "NAD+ nasal spray", price: "$99", availabilityPending: true },
     ],
     bundles: [
       {
+        id: "eve-complete",
+        availabilityPending: "Online requests are not open yet. This bundle is not open for treatment requests or payment.",
+        title: "Eve Complete",
+        label: "Flagship",
+        body: "Weight management and menopause support in one plan — one provider review, one shipment, one monthly price. Each treatment is prescribed only if your provider determines it’s appropriate.",
+        price: "$329 / month",
+        prepaid: "$938 prepaid for 3 months ($313 / month)",
+        includes: ["Compounded semaglutide", "Estradiol and progesterone (oral HRT)", "Each treatment is prescribed only if your provider determines it’s appropriate."],
+        featured: true,
+      },
+      {
+        id: "eve-complete-plus",
+        availabilityPending: "Online requests are not open yet. This bundle is not open for treatment requests or payment.",
+        title: "Eve Complete Plus",
+        label: "Complete care",
+        body: "Compounded tirzepatide and oral HRT in one coordinated plan. Each treatment is prescribed only if your provider determines it’s appropriate.",
+        price: "$429 / month",
+        prepaid: "$1,223 prepaid for 3 months ($408 / month)",
+        includes: ["Compounded tirzepatide", "Estradiol and progesterone (oral HRT)", "Each treatment is prescribed only if your provider determines it’s appropriate."],
+      },
+      {
         id: "signature-bundle",
         availabilityPending: "Availability of the included add-ons is pending confirmation. This bundle is not open for treatment requests or payment.",
         title: "Signature",
         label: "Most Popular",
-        body: "GLP-1 pathway plus one selected add-on: Eve’s Secret troche or tretinoin.",
-        semaglutidePrice: "$249 / month",
-        tirzepatidePrice: "$329 / month",
-        includes: ["One multi-service provider review", "One coordinated shipment", "One selected add-on"],
-        featured: true,
+        body: "GLP-1 pathway plus Eve’s Secret troche.",
+        semaglutidePrice: "$269 / month",
+        tirzepatidePrice: "$369 / month",
+        includes: ["One multi-service provider review", "One coordinated shipment", "Eve’s Secret troche", "Each treatment is prescribed only if your provider determines it’s appropriate."],
       },
       {
         id: "elite-bundle",
@@ -209,7 +234,7 @@ export const launchCareCategories: LaunchCareCategory[] = [
         body: "GLP-1 pathway plus Eve’s Secret troche and NAD+ nasal spray.",
         semaglutidePrice: "$379 / month",
         tirzepatidePrice: "$449 / month",
-        includes: ["One multi-service provider review", "One coordinated shipment", "Two selected add-ons"],
+        includes: ["One multi-service provider review", "One coordinated shipment", "Eve’s Secret troche and NAD+ nasal spray", "Each treatment is prescribed only if your provider determines it’s appropriate."],
       },
     ],
     preScreen: {
@@ -256,45 +281,37 @@ export const launchCareCategories: LaunchCareCategory[] = [
       {
         id: "oral-hrt",
         title: "Oral HRT",
-        monthly: "$129 / month",
-        prepaid: "$348 prepaid for 3 months ($116 / month)",
+        monthly: "$159 / month",
+        prepaid: "$453 prepaid for 3 months ($151 / month)",
         description:
           "An estradiol-capsule and progesterone pathway, if prescribed after a clinician evaluation.",
         includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
+        featured: true,
+        badge: "Most popular",
       },
       {
         id: "patch-hrt",
         title: "Patch HRT",
-        monthly: "$159 / month",
-        prepaid: "$429 prepaid for 3 months ($143 / month)",
+        monthly: "$199 / month",
+        prepaid: "$567 prepaid for 3 months ($189 / month)",
         description:
           "An estradiol-patch and progesterone pathway, if prescribed after a clinician evaluation.",
         includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
-        featured: true,
-        badge: "Most requested",
       },
       {
         id: "cream-hrt",
         title: "Cream HRT",
-        monthly: "$139 / month",
-        prepaid: "$375 prepaid for 3 months ($125 / month)",
+        monthly: "$159 / month",
+        prepaid: "$453 prepaid for 3 months ($151 / month)",
         description:
           "A BIEST (20:80) cream and progesterone pathway, if prescribed after a clinician evaluation.",
-        includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
-      },
-      {
-        id: "vaginal-comfort",
-        title: "Vaginal Comfort",
-        monthly: "$69 / month",
-        prepaid: "$186 prepaid for 3 months ($62 / month)",
-        description:
-          "An estradiol-vaginal-insert pathway for intimate comfort, if prescribed.",
         includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
       },
     ],
     addOns: [
       { name: "Eve’s Secret troche", price: "$69", availabilityPending: true },
       { name: "Vaginal estradiol with another HRT plan", price: "$59" },
+      { name: "DHEA cream (30g)", price: "$69 / month", availabilityPending: true },
     ],
     bundles: [
       {
@@ -303,8 +320,17 @@ export const launchCareCategories: LaunchCareCategory[] = [
         title: "Hormone Signature",
         label: "Coordinated care",
         body: "Oral HRT plus an Eve’s Secret troche, when each is clinically appropriate.",
-        price: "$179 / month",
-        includes: ["One multi-service provider review", "One coordinated shipment", "Secure care-team messaging"],
+        price: "$209 / month",
+        includes: ["One multi-service provider review", "One coordinated shipment", "Secure care-team messaging", "Each treatment is prescribed only if your provider determines it’s appropriate."],
+      },
+      {
+        id: "eve-complete-cross-link",
+        title: "Eve Complete",
+        label: "Weight + menopause care",
+        body: "Compounded semaglutide plus oral HRT in one coordinated plan. Each treatment is prescribed only if your provider determines it’s appropriate.",
+        price: "$329 / month",
+        includes: ["One provider review", "One coordinated shipment", "Each treatment is prescribed only if your provider determines it’s appropriate."],
+        href: "/care/weight-management#plans",
       },
     ],
     preScreen: {
@@ -317,7 +343,7 @@ export const launchCareCategories: LaunchCareCategory[] = [
       ],
       extraNote: "The secure intake may request cycle history and a symptom checklist. A hormone panel may be required before treatment.",
     },
-    labNote: "A hormone panel may be required before treatment. If required, it is quoted separately.",
+    labNote: "Hormone lab panel: $179 — required before starting hormone care and every 9–12 months, if your provider orders it.",
     faq: [
       [
         "Do these plans include testosterone?",
@@ -351,15 +377,14 @@ export const launchCareCategories: LaunchCareCategory[] = [
       {
         id: "tretinoin",
         title: "Tretinoin",
-        monthly: "$79 / month",
-        prepaid: "$213 prepaid for 3 months ($71 / month)",
+        monthly: "Coming soon",
+        priceNote: "Join the waitlist",
+        comingSoon: true,
         description: "Tretinoin cream 0.02% or gel 0.01%, if prescribed after review.",
         includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
       },
     ],
-    addOns: [
-      { name: "Tretinoin with another plan", price: "$59" },
-    ],
+    waitlist: [{ name: "Tretinoin", body: "Coming soon — join the waitlist. No price, purchase or prescription request is offered at this time." }],
     preScreen: {
       questions: [pregnancyQuestion],
       extraNote: "The secure intake may request front and side face photos so the clinician can review your concern.",
@@ -397,33 +422,26 @@ export const launchCareCategories: LaunchCareCategory[] = [
       {
         id: "nad-injection",
         title: "NAD+ Injection",
-        monthly: "$169 / month",
-        prepaid: "$456 prepaid for 3 months ($152 / month)",
+        monthly: "$199 / month",
+        prepaid: "$567 prepaid for 3 months ($189 / month)",
         description: "NAD+ 100 mg/mL, three vials and two shipments, if prescribed.",
         includes: ["Medication if prescribed", "Asynchronous provider review", "Supplies and discreet shipping", "Secure care-team messaging"],
       },
       {
         id: "nad-nasal-spray",
         title: "NAD+ Nasal Spray",
-        monthly: "$129 / month",
-        prepaid: "$348 prepaid for 3 months ($116 / month)",
+        monthly: "$149 / month",
+        prepaid: "$425 prepaid for 3 months ($142 / month)",
         description: "NAD+ 300 mg/mL nasal spray, if prescribed after clinician review.",
         includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
         featured: true,
         badge: "Easy add-on",
       },
-      {
-        id: "mic-b12",
-        title: "MIC-B12",
-        monthly: "$119 / month",
-        prepaid: "$321 prepaid for 3 months ($107 / month)",
-        description: "Methionine, inositol, choline and B12 injection pathway, if prescribed.",
-        includes: ["Medication if prescribed", "Asynchronous provider review", "Supplies and discreet shipping", "Secure care-team messaging"],
-      },
     ],
+    planNote: "MIC-B12 is available as a $99 / month add-on with a weight-management plan.",
     preScreen: { questions: [pregnancyQuestion] },
     availabilityPending:
-      "NAD+ Injection, NAD+ Nasal Spray and MIC-B12 are listed in our pharmacy partner’s current catalog, but their availability has not yet been confirmed. They cannot be requested, prescribed or purchased yet.",
+      "NAD+ Injection and NAD+ Nasal Spray are listed in our pharmacy partner’s current catalog, but their availability has not yet been confirmed. They cannot be requested, prescribed or purchased yet.",
     faq: [
       [
         "Are these treatments available now?",
@@ -512,23 +530,27 @@ export const launchCareCategories: LaunchCareCategory[] = [
       {
         id: "sermorelin",
         title: "Sermorelin",
-        monthly: "$179 / month",
-        prepaid: "$483 prepaid for 3 months ($161 / month)",
+        monthly: "$199 / month",
+        prepaid: "$567 prepaid for 3 months ($189 / month)",
         description: "Sermorelin 3 mg/mL, three-vial pathway, if prescribed after a clinician evaluation.",
         includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
       },
+    ],
+    addOns: [
+      { name: "Peptide Panel 2", price: "$149" },
+      { name: "Glutathione", price: "$99 / month", availabilityPending: true },
+    ],
+    bundles: [
       {
-        id: "tesamorelin",
-        title: "Tesamorelin",
-        monthly: "$179 / month",
-        prepaid: "$483 prepaid for 3 months ($161 / month)",
-        description: "Tesamorelin 2 mg/mL, three-vial pathway, if prescribed after a clinician evaluation.",
-        includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
-        featured: true,
-        badge: "Clinician-guided",
+        id: "eve-radiance",
+        title: "Eve Radiance",
+        label: "Members only",
+        body: "NAD+ injection plus glutathione. Available to current Eve’s Sisters members. Each treatment is prescribed only if your provider determines it’s appropriate.",
+        price: "$269 / month",
+        includes: ["One coordinated review", "One coordinated shipment", "Each treatment is prescribed only if your provider determines it’s appropriate."],
+        availabilityPending: "Availability pending. No standalone checkout is offered.",
       },
     ],
-    addOns: [{ name: "Baseline or 90-day check-in panel", price: "$149" }],
     preScreen: {
       questions: [
         pregnancyQuestion,
@@ -537,7 +559,7 @@ export const launchCareCategories: LaunchCareCategory[] = [
     },
     labNote: "A baseline or 90-day Peptide Panel 2 may be offered as a $149 add-on when clinically appropriate.",
     availabilityPending:
-      "Sermorelin, Tesamorelin and the Peptide Panel 2 add-on are listed in our pharmacy partner’s current catalog, but their availability has not yet been confirmed. They cannot be requested, prescribed or purchased yet.",
+      "Sermorelin, Glutathione, Eve Radiance and the Peptide Panel 2 add-on are listed in our pharmacy partner’s current catalog, but their availability has not yet been confirmed. They cannot be requested, prescribed or purchased yet.",
     faq: [
       [
         "Are these treatments available now?",
@@ -578,14 +600,41 @@ export const launchCareCategories: LaunchCareCategory[] = [
     ],
     plans: [
       {
-        id: "sexual-wellness-consultation",
-        title: "Sexual wellness consultation",
-        monthly: "$89",
-        prepaid: "No prepaid medication plan",
-        description: "A private clinician consultation. Any medication recommended after evaluation is quoted separately and charged only after approval and consent.",
-        includes: ["Licensed-provider consultation", "Personalized care recommendations", "Secure care-team messaging"],
+        id: "eve-desire",
+        title: "Eve Desire",
+        monthly: "$179 / month",
+        prepaid: "$510 prepaid for 3 months ($170 / month)",
+        description: "Fem Max troche (30 doses) plus an estradiol vaginal insert, if prescribed.",
+        includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
+        featured: true,
+        badge: "Most popular",
+      },
+      {
+        id: "eves-secret-troche",
+        title: "Eve’s Secret Troche (Fem Max)",
+        monthly: "$149 / month",
+        prepaid: "$425 prepaid for 3 months ($142 / month)",
+        description: "Tadalafil, oxytocin and PT-141 troche, 30 doses, if prescribed.",
+        includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
+      },
+      {
+        id: "olympus-troche",
+        title: "Olympus Troche",
+        monthly: "$119 / month",
+        prepaid: "$339 prepaid for 3 months ($113 / month)",
+        description: "Oxytocin, tadalafil and PT-141 troche, 30 doses, if prescribed.",
+        includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
+      },
+      {
+        id: "pt-141-starter",
+        title: "PT-141 Starter",
+        monthly: "$129",
+        priceNote: "one-time per 90 days",
+        description: "One vial intended as a 90-day supply, if prescribed.",
+        includes: ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"],
       },
     ],
+    availabilityPending: "Availability pending. Online requests are not open yet, and no treatment request or payment is taken.",
     preScreen: {
       questions: [
         pregnancyQuestion,
