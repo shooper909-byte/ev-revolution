@@ -30,6 +30,8 @@ export default function MrsCollectionPage() {
                   <h2 className="font-display text-3xl text-champagne">{item.name}</h2>
                   <p className="mt-3 font-display text-xl">{item.eyebrow}</p>
                   <p className="mt-5 flex-1 text-sm leading-7 text-ivory-200">{item.description}</p>
+                  <p className="mt-5 font-display text-xl text-ivory">Starting at {item.startingAt}</p>
+                  <ul className="mt-4 space-y-2 text-sm text-ivory-200">{item.recommendedPlans.map((plan) => <li key={`${plan.name}-${plan.price}`}>{plan.name} · {plan.price}</li>)}</ul>
                   <Link href={`/packages/${item.slug}`} className="brand-eyebrow mt-7 inline-block text-xs text-champagne">Explore {item.name} →</Link>
                 </div>
               </article>

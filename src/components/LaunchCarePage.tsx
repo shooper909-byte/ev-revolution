@@ -23,31 +23,35 @@ const pendingSteps: [string, string][] = [
   ["Discreet delivery", "If approved and enrolled, the pharmacy coordinates discreet shipment and secure care-team messaging supports follow-up."],
 ];
 
-function toPlanCard(plan: LaunchCareCategory["plans"][number], isEvesSecret: boolean, pending: boolean): Plan {
+function toPlanCard(plan: LaunchCareCategory["plans"][number], pending: boolean): Plan {
   const monthlyPrice = plan.monthly.replace(" / month", "");
+  const unavailable = pending || plan.comingSoon;
   return {
     id: plan.id,
     title: plan.title,
     price: monthlyPrice,
-    priceNote: isEvesSecret ? "/consultation" : "/month",
+    priceNote: plan.priceNote ?? "/month",
     description: plan.description,
     includes: plan.includes,
     treatments: plan.treatment,
-    cta: pending ? "Join the availability waitlist" : "Request this treatment",
-    href: "#pre-screen",
-    requestPlan: pending ? undefined : plan.id,
-    footnote: pending
-      ? `3-month option: ${plan.prepaid}. Availability pending confirmation: no request, prescription or payment is taken yet.`
-      : isEvesSecret ? undefined : `3-month option: ${plan.prepaid}. Your card may be pre-authorized, but no medication-inclusive amount is captured unless and until a licensed provider approves treatment.`,
+    cta: unavailable ? "Join the availability waitlist" : "Request this treatment",
+    href: plan.comingSoon ? "#waitlist" : "#pre-screen",
+    requestPlan: unavailable ? undefined : plan.id,
+    footnote: plan.prepaid
+      ? pending
+        ? `3-month option: ${plan.prepaid}. Availability pending confirmation: no request, prescription or payment is taken yet.`
+        : `3-month option: ${plan.prepaid}. Your card may be pre-authorized, but no medication-inclusive amount is captured unless and until a licensed provider approves treatment.`
+      : unavailable
+        ? "Coming soon — join the waitlist. No payment or treatment request is taken."
+        : "Your card may be pre-authorized, but no medication-inclusive amount is captured unless and until a licensed provider approves treatment.",
     featured: plan.featured,
-    badge: pending ? "Availability pending" : plan.badge,
+    badge: pending ? "Availability pending" : plan.comingSoon ? "Coming soon" : plan.badge,
   };
 }
 
 export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
-  const isEvesSecret = category.slug === "eves-secret";
   const pending = Boolean(category.availabilityPending);
-  const planCards = category.plans.map((plan) => toPlanCard(plan, isEvesSecret, pending));
+  const planCards = category.plans.map((plan) => toPlanCard(plan, pending));
 
   return (
     <div className="overflow-x-clip">
@@ -114,10 +118,11 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
             <Eyebrow className="text-plum">Treatment options</Eyebrow>
             <h2 id="plans-heading" className="mt-6 max-w-3xl font-display text-[2.25rem] leading-tight text-onyx sm:text-5xl">{pending ? "Treatment options, pending availability." : "Choose a plan to request."}</h2>
             {pending && <p className="mt-6 max-w-3xl rounded-2xl border border-plum/25 bg-ivory px-5 py-4 text-sm font-medium leading-relaxed text-onyx">{category.availabilityPending}</p>}
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-onyx-800/75">{pending ? "Once available, each plan price includes the medication if prescribed, provider review, shipping and secure messaging. Required labs are quoted separately." : isEvesSecret ? "The consultation fee covers the clinician visit and messaging. Any medication is quoted separately and charged only after provider approval." : "After provider approval, each published plan price includes the medication if prescribed, provider review, shipping and secure messaging. Required labs are quoted separately. A treatment request creates no charge."}</p>
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-onyx-800/75">{pending ? "Once available, each plan price includes the medication if prescribed, provider review, shipping and secure messaging. Required labs are quoted separately." : "After provider approval, each published plan price includes the medication if prescribed, provider review, shipping and secure messaging. Required labs are quoted separately. A treatment request creates no charge."}</p>
             {category.slug === "weight-management" && <p className="mt-4 max-w-3xl text-sm leading-relaxed text-onyx-800/75">Compounded GLP-1s are prescribed only when a licensed provider documents a patient-specific clinical need — not for cost or preference. Compounded medications are not FDA-approved.</p>}
           </Reveal>
           <PlanCards plans={planCards} />
+          {category.planNote && <p className="mt-8 max-w-3xl rounded-2xl border border-plum/20 bg-ivory px-5 py-4 text-sm font-medium leading-relaxed text-onyx">{category.planNote}</p>}
 
           {category.addOns && (
             <div className="mt-10 rounded-3xl border border-plum/20 bg-ivory px-6 py-6 sm:px-8">
@@ -132,7 +137,7 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
       </section>
 
       {category.waitlist && (
-        <section className="border-b border-onyx-700 bg-onyx-900">
+        <section id="waitlist" className="scroll-mt-24 border-b border-onyx-700 bg-onyx-900">
           <Container className="grid gap-12 py-20 lg:grid-cols-[0.7fr_1.3fr] lg:py-24">
             <Reveal>
               <Eyebrow>Not available yet</Eyebrow>
@@ -167,18 +172,19 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
               {category.bundles.map((bundle, index) => (
                 <Reveal key={bundle.title} delay={index * 80} className="h-full">
                   <article className={`flex h-full flex-col rounded-3xl border p-8 sm:p-9 ${bundle.featured ? "border-champagne bg-plum-900 text-ivory" : "border-ivory-300/20 bg-onyx-900 text-ivory"}`}>
-                    <p className="brand-eyebrow text-[0.5625rem] text-champagne">{bundle.availabilityPending ? "Availability pending" : bundle.label}</p>
+                    <p className="brand-eyebrow text-[0.5625rem] text-champagne">{bundle.label}</p>
                     <h3 className="mt-5 font-display text-4xl">{bundle.title}</h3>
                     <p className="mt-4 max-w-xl text-sm leading-relaxed text-ivory-200/85">{bundle.body}</p>
                     <div className="mt-7 grid gap-3 sm:grid-cols-2">
                       {bundle.semaglutidePrice && <p className="rounded-2xl bg-onyx/30 px-4 py-3 text-sm text-ivory-200"><span className="block text-xs text-ivory-200/65">Semaglutide base</span><span className="mt-1 block font-display text-xl text-champagne">{bundle.semaglutidePrice}</span></p>}
                       {bundle.tirzepatidePrice && <p className="rounded-2xl bg-onyx/30 px-4 py-3 text-sm text-ivory-200"><span className="block text-xs text-ivory-200/65">Tirzepatide base</span><span className="mt-1 block font-display text-xl text-champagne">{bundle.tirzepatidePrice}</span></p>}
                       {bundle.price && <p className="rounded-2xl bg-onyx/30 px-4 py-3 text-sm text-ivory-200"><span className="block text-xs text-ivory-200/65">Monthly</span><span className="mt-1 block font-display text-xl text-champagne">{bundle.price}</span></p>}
+                      {bundle.prepaid && <p className="rounded-2xl bg-onyx/30 px-4 py-3 text-sm text-ivory-200 sm:col-span-2"><span className="block text-xs text-ivory-200/65">3-month option</span><span className="mt-1 block font-display text-xl text-champagne">{bundle.prepaid}</span></p>}
                     </div>
                     <ul className="mt-7 grid gap-3 text-sm leading-relaxed text-ivory-200/85">
                       {bundle.includes.map((item) => <li key={item} className="flex gap-3"><span aria-hidden="true" className="text-champagne">✦</span>{item}</li>)}
                     </ul>
-                    {bundle.availabilityPending ? <div className="mt-auto pt-7"><p className="mb-4 text-sm leading-relaxed text-ivory-200/85">{bundle.availabilityPending}</p><a href="#bundle-waitlist" className="button-sheen brand-eyebrow block rounded-full bg-champagne px-7 py-4 text-center text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200">Join the availability waitlist</a></div> : <a href="#pre-screen" data-request-plan={bundle.id} className="button-sheen brand-eyebrow mt-auto rounded-full bg-champagne px-7 py-4 text-center text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200">Request this bundle</a>}
+                    {bundle.href ? <Link href={bundle.href} className="button-sheen brand-eyebrow mt-auto rounded-full bg-champagne px-7 py-4 text-center text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200">View this plan</Link> : bundle.availabilityPending ? <div className="mt-auto pt-7"><p className="mb-4 text-sm leading-relaxed text-ivory-200/85">{bundle.availabilityPending}</p><a href="#bundle-waitlist" className="button-sheen brand-eyebrow block rounded-full bg-champagne px-7 py-4 text-center text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200">Join the availability waitlist</a></div> : <a href="#pre-screen" data-request-plan={bundle.id} className="button-sheen brand-eyebrow mt-auto rounded-full bg-champagne px-7 py-4 text-center text-[0.625rem] text-onyx transition-colors hover:bg-champagne-200">Request this bundle</a>}
                   </article>
                 </Reveal>
               ))}
@@ -220,7 +226,7 @@ export function LaunchCarePage({ category }: { category: LaunchCareCategory }) {
           </Reveal>
           <Reveal delay={80}>
             <div className="grid gap-4 sm:grid-cols-2">
-              {(isEvesSecret ? ["Licensed-provider consultation", "Secure care-team messaging", "Medication quoted separately if prescribed"] : ["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"]).map((item) => <div key={item} className="rounded-2xl border border-ivory-300/15 bg-onyx p-5 text-sm text-ivory-200">{item}</div>)}
+              {["Medication if prescribed", "Asynchronous provider review", "Discreet shipping", "Secure care-team messaging"].map((item) => <div key={item} className="rounded-2xl border border-ivory-300/15 bg-onyx p-5 text-sm text-ivory-200">{item}</div>)}
             </div>
             <p className="mt-7 text-sm leading-relaxed text-ivory-200/80">Labs are quoted separately only when required. {category.labNote ?? "Your clinician explains any required lab work during the secure intake."}</p>
             <p className="mt-4 text-xs leading-relaxed text-ivory-200/60">{pending ? "While availability is pending, nothing on this page takes payment, authorizes a card or starts a treatment request." : <>The private pre-screen and treatment request below do not take payment or authorize a card. Payment authorization, renewal terms, cancellation and refund details belong in the secure enrollment flow after clinical approval.</>}</p>

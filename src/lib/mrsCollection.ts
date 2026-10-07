@@ -6,6 +6,8 @@ export type MrsExperience = {
   description: string;
   image: string;
   imageAlt: string;
+  startingAt: string;
+  recommendedPlans: { name: string; price: string; href: string }[];
   priorities: string[];
   addOns: { name: string; price: string; description: string }[];
 };
@@ -19,6 +21,12 @@ export const mrsExperiences: MrsExperience[] = [
     description: "Personalized care for changing hormones, persistent symptoms, skin concerns, heart health, and the parts of womanhood that are too often overlooked.",
     image: "/images/mrs-collection/mrs-jones.png",
     imageAlt: "Three confident Black women of different ages in elegant black, purple and gold attire.",
+    startingAt: "$159 / month",
+    recommendedPlans: [
+      { name: "Oral HRT", price: "$159 / month", href: "/care/hormones-menopause#plans" },
+      { name: "Cream HRT", price: "$159 / month", href: "/care/hormones-menopause#plans" },
+      { name: "Hormone Signature", price: "$209 / month", href: "/care/hormones-menopause#plans" },
+    ],
     priorities: ["Hormonal and metabolic health", "Weight-management goals", "Energy, sleep, stress, and intimacy", "Hair, scalp, and melanin-conscious skincare", "Healthy aging and ongoing wellness support", "Clinician-recommended labs and treatment, when appropriate"],
     addOns: [
       { name: "Flow & Fibroid Check", price: "$59/month", description: "Heavy-bleeding and anemia work-up, imaging-referral coordination, and an iron plan." },
@@ -33,6 +41,12 @@ export const mrsExperiences: MrsExperience[] = [
     description: "Care that starts with your whole story—not an average. Your plan considers your results, risks, goals, hormones, metabolism, and skin concerns together.",
     image: "/images/mrs-collection/mrs-golden.png",
     imageAlt: "Four women from different cultural backgrounds in elegant black, purple and champagne attire.",
+    startingAt: "$219 / month",
+    recommendedPlans: [
+      { name: "Eve Complete", price: "$329 / month", href: "/care/weight-management#plans" },
+      { name: "Eve Complete Plus", price: "$429 / month", href: "/care/weight-management#plans" },
+      { name: "Compounded semaglutide", price: "$219 / month", href: "/care/weight-management#plans" },
+    ],
     priorities: ["Hormonal balance", "Weight and body-composition goals", "Energy, sleep, and stress", "Skin, hair, and scalp wellness", "Intimate wellness", "Nutrition and healthy-aging support", "Clinician-recommended labs and treatment, when appropriate"],
     addOns: [
       { name: "Metabolic Shield", price: "$69/month", description: "Early A1c, cholesterol, triglyceride, and liver panels reviewed against the member’s individual risk profile, plus nutrition guidance." },
@@ -47,6 +61,13 @@ export const mrsExperiences: MrsExperience[] = [
     description: "Support for bone strength, changing skin, metabolic health, and a smoother menopause transition—with a plan designed for the years ahead.",
     image: "/images/mrs-collection/mrs-robinson.png",
     imageAlt: "Three confident women in midlife and beyond wearing elegant black and deep purple attire.",
+    startingAt: "$159 / month",
+    recommendedPlans: [
+      { name: "Oral HRT", price: "$159 / month", href: "/care/hormones-menopause#plans" },
+      { name: "Patch HRT", price: "$199 / month", href: "/care/hormones-menopause#plans" },
+      { name: "Eve Complete", price: "$329 / month", href: "/care/weight-management#plans" },
+      { name: "Eve Desire", price: "$179 / month", href: "/eves-secret#plans" },
+    ],
     priorities: ["Perimenopause and menopause support", "Weight and metabolic health", "Bone, joint, and heart-health considerations", "Sleep, energy, and intimate wellness", "Hair and age-supportive skincare", "Long-term wellness planning", "Clinician-recommended labs and treatment, when appropriate"],
     addOns: [
       { name: "Bone Strong", price: "$59/month", description: "A bone-health risk review, bone-density scan coordination, and a calcium and vitamin D plan." },
@@ -57,4 +78,4 @@ export const mrsExperiences: MrsExperience[] = [
 
 export const collectionDisclaimer = "The Mrs. Collection is available to adult women of every background. Services, testing, prescriptions, and treatment eligibility are determined by an independent licensed healthcare professional.";
 
-export const clinicalDisclaimer = "Eve’s Sisters clinical services are provided by telehealth through licensed healthcare providers affiliated with Elite Care Health, an independent physician group (https://elite-care.health). Prescriptions, when issued, are fulfilled by our pharmacy partner Rx Ave Health (https://rxave.health). Evaluation does not guarantee treatment. Prescriptions, laboratory testing, and weight-management medication are provided only when clinically appropriate and at the treating clinician’s discretion. Elite includes eligible weight-management medication only when prescribed. Signature medication costs are billed separately. Prices are monthly and subject to change. Results vary. This service is not for emergencies; call 911 for emergency assistance.";
+export const clinicalDisclaimer = "Eve’s Sisters clinical services are provided by telehealth through licensed healthcare providers affiliated with Elite Care Health, an independent physician group (https://elite-care.health). Prescriptions, when issued, are fulfilled by our pharmacy partner Rx Ave Health (https://rxave.health). Evaluation does not guarantee treatment. Medication is included only when prescribed and clinically appropriate; labs are separate. Prices are monthly and subject to change. Results vary. This service is not for emergencies; call 911 for emergency assistance.";
