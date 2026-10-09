@@ -17,6 +17,10 @@ const faqs: [string, string][] = [
     `States we serve: all 50 U.S. states through the nationwide provider network of ${partners.clinical.name}, subject to provider, program, pharmacy, and state-specific requirements.`,
   ],
   [
+    "Where do I start a consultation?",
+    "On our secure telehealth platform. Use any Start Consultation button on this site to continue there.",
+  ],
+  [
     "Is treatment guaranteed?",
     "No. Completing an intake form or selecting a program does not guarantee treatment. Prescription medications are only provided when a licensed medical provider determines they are clinically appropriate.",
   ],
@@ -42,7 +46,7 @@ const faqs: [string, string][] = [
   ],
   [
     "When is my card charged for medication?",
-    "A short treatment request does not charge your card. Your card may be pre-authorized in the secure enrollment flow, but medication-inclusive amounts are captured only after a licensed provider approves treatment. If treatment is declined, the pre-authorization is released.",
+    "Payment terms are shown on our telehealth platform before you authorize anything. Your card may be pre-authorized in the secure enrollment flow, but medication-inclusive amounts are captured only after a licensed provider approves treatment. If treatment is declined, the pre-authorization is released.",
   ],
   [
     "Are refills automatic?",

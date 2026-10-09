@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { PillarIcon, type PillarIconName } from "@/components/PillarIcon";
 import s from "./about.module.css";
+import { telehealthUrl } from "@/lib/telehealth";
 
 export const metadata: Metadata = {
   title: {
@@ -74,7 +75,7 @@ export default function AboutPage() {
               clear information, and thoughtfully designed access to care.
             </p>
             <div className={s.actions}>
-              <ActionLink href="/care">Explore Care</ActionLink>
+              <ActionLink href={telehealthUrl("/about")}>Start Your Consultation</ActionLink>
               <ActionLink href="/contact" secondary>
                 Contact Us
               </ActionLink>
@@ -171,7 +172,7 @@ export default function AboutPage() {
                   A space for open conversations about intimacy, desire, and
                   comfort.
                 </p>
-                <ActionLink href="/eves-secret">
+                <ActionLink href={telehealthUrl("/eves-secret")}>
                   Explore Eve&rsquo;s Secret
                 </ActionLink>
               </div>
@@ -191,10 +192,10 @@ export default function AboutPage() {
                 <p className={s.cardEyebrow}>Care categories</p>
                 <h3>Begin where you are</h3>
                 <p>
-                  Explore our care categories, current plan options and
-                  next steps for a clinician-guided request.
+                  Explore care categories, plan options and next steps on
+                  our secure telehealth platform.
                 </p>
-                <ActionLink href="/care">
+                <ActionLink href={telehealthUrl("/care")}>
                   Explore Care Categories
                 </ActionLink>
               </div>
@@ -257,9 +258,9 @@ export default function AboutPage() {
         <Container>
           <Eyebrow>A brighter tomorrow</Eyebrow>
           <h2 id="next-chapter">Your Next Chapter Starts Here.</h2>
-          <p>Explore the care options and collections that speak to you.</p>
+          <p>Begin a private consultation on our secure telehealth platform.</p>
           <div className={s.actions}>
-            <ActionLink href="/care">Explore Care</ActionLink>
+            <ActionLink href={telehealthUrl("/about")}>Start Your Consultation</ActionLink>
           </div>
         </Container>
       </section>

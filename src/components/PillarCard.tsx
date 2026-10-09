@@ -1,17 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { PillarIcon } from "@/components/PillarIcon";
 import type { Pillar } from "@/lib/pillars";
+import { telehealthUrl } from "@/lib/telehealth";
 
 export function PillarCard({ pillar }: { pillar: Pillar }) {
   const [imageAvailable, setImageAvailable] = useState(Boolean(pillar.careImage));
 
   return (
-    <Link
-      href={pillar.carePath ?? `/pillars/${pillar.slug}`}
+    <a
+      href={telehealthUrl(pillar.carePath ?? "/care")}
       className={`group relative flex min-h-[285px] flex-col overflow-hidden border ${pillar.accent.border} bg-onyx-900/60 p-8 transition-colors hover:bg-onyx-800 sm:min-h-[300px] lg:min-h-[310px]`}
     >
       {pillar.careImage && imageAvailable && (
@@ -63,6 +63,6 @@ export function PillarCard({ pillar }: { pillar: Pillar }) {
           </span>
         </span>
       </div>
-    </Link>
+    </a>
   );
 }

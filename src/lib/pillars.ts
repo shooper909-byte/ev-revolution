@@ -1,4 +1,5 @@
 import type { PillarIconName } from "@/components/PillarIcon";
+import { telehealthUrl } from "@/lib/telehealth";
 
 export type Accent = {
   /** Written as literal class strings so Tailwind detects them. */
@@ -352,15 +353,11 @@ export function careSummary(pillar: Pillar): string {
 }
 
 /**
- * Where "Get Started" leads from a page: the intake that matches the current
- * care page (or the pillar's care page), otherwise the pathway selection.
+ * Where the header's consultation button leads from a page: the matching page
+ * on the telehealth site for the current care page (or the pillar's care
+ * page), otherwise the telehealth consultation start.
  */
 export function getStartedHref(pathname: string): string {
-  if (pathname === "/care/longevity-healthspan" || pathname === "/care/recovery-rejuvenation") return "/contact";
-  const carePage =
-    pathname.startsWith("/care/") || pathname === "/eves-secret"
-      ? pathname
-      : pillars.find((pillar) => pathname === `/pillars/${pillar.slug}`)?.carePath;
-  if (carePage?.startsWith("/care/") || carePage === "/eves-secret") return `${carePage}#pre-screen`;
-  return "/care#pathways";
+  const carePage = pillars.find((pillar) => pathname === `/pillars/${pillar.slug}`)?.carePath ?? pathname;
+  return telehealthUrl(carePage);
 }

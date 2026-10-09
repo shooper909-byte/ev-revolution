@@ -5,7 +5,9 @@ import { Container, Eyebrow } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PillarCard } from "@/components/PillarCard";
 import { PillarIcon } from "@/components/PillarIcon";
+import { TelehealthHandoff } from "@/components/TelehealthHandoff";
 import { careLabel, publicPillars } from "@/lib/pillars";
+import { handoffNote, telehealthUrl } from "@/lib/telehealth";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://evevolutionhealth.com/" },
@@ -94,12 +96,12 @@ export default function HomePage() {
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Link
-                href="/care"
+              <a
+                href={telehealthUrl("/")}
                 className="brand-eyebrow bg-plum px-8 py-4 text-center text-[0.625rem] text-ivory transition-colors hover:bg-plum-600"
               >
-                Explore Your Care Options
-              </Link>
+                Start Your Consultation
+              </a>
               <Link
                 href="#how-it-works"
                 className="hairline brand-eyebrow border px-8 py-4 text-center text-[0.625rem] text-champagne transition-colors hover:bg-onyx-800"
@@ -107,6 +109,7 @@ export default function HomePage() {
                 How It Works
               </Link>
             </div>
+            <p className="mt-4 text-xs text-ivory-200/65">{handoffNote}</p>
 
             <p className="brand-eyebrow mt-12 text-[0.5625rem] text-taupe">
               Every stage. Every shift. Every woman.
@@ -132,8 +135,8 @@ export default function HomePage() {
           <ul className="grid grid-cols-1 divide-y divide-onyx-700/70 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {publicPillars.map((pillar) => (
               <li key={pillar.slug}>
-                <Link
-                  href={pillar.carePath ?? `/pillars/${pillar.slug}`}
+                <a
+                  href={telehealthUrl(pillar.carePath ?? "/care")}
                   className="flex h-full flex-col items-center gap-3 px-3 py-8 text-center transition-colors hover:bg-onyx-800"
                 >
                   <PillarIcon
@@ -143,7 +146,7 @@ export default function HomePage() {
                   <span className="brand-eyebrow text-[0.5rem] text-ivory-200">
                     {careLabel(pillar)}
                   </span>
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -178,8 +181,8 @@ export default function HomePage() {
               Every stage. Every shape. Stronger.
             </h2>
             <p className="mt-6 text-base leading-relaxed text-ivory-200/80">
-              Explore care categories and wellness education, including Eve&rsquo;s Secret™, the
-              sexual-wellness pathway.
+              Choose the area of care that fits where you are, including Eve&rsquo;s Secret™, the
+              sexual-wellness pathway. Each pathway opens on our secure telehealth platform.
             </p>
           </div>
 
@@ -189,8 +192,8 @@ export default function HomePage() {
             ))}
           </div>
 
-          <Link
-            href="/eves-secret"
+          <a
+            href={telehealthUrl("/eves-secret")}
             className="group relative mt-px flex min-h-[330px] overflow-hidden border border-mauve-700/60 bg-onyx-900 transition-colors hover:border-mauve focus-visible:border-mauve sm:min-h-[360px]"
           >
             <Image
@@ -212,7 +215,7 @@ export default function HomePage() {
                 <span aria-hidden="true" className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0">&rarr;</span>
               </span>
             </span>
-          </Link>
+          </a>
         </Container>
       </section>
 
@@ -252,47 +255,7 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <Link href="/care" className="button-sheen brand-eyebrow mt-12 inline-block bg-plum px-8 py-4 text-xs text-ivory transition-colors hover:bg-plum-600">Explore Care Options</Link>
-        </Container>
-      </section>
-
-      {/* Featured care options */}
-      <section className="border-b border-onyx-700 bg-ivory text-onyx">
-        <Container className="py-20 sm:py-28">
-          <div className="max-w-3xl">
-            <Eyebrow className="text-plum">Featured care options</Eyebrow>
-            <h2 className="mt-6 font-display text-4xl leading-tight sm:text-5xl">
-              Modern options. Thoughtful clinical guidance.
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-onyx-700">
-              Explore care pathways that begin with your goals and health history. Prescription treatment is never guaranteed and requires an independent evaluation by a licensed clinician.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-champagne-700/45 bg-ivory-200">
-              <Image src="/images/care/care-weight-management.webp" alt="Woman standing confidently in an elegant black dress." width={1536} height={1024} sizes="100vw" className="aspect-[3/2] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
-              <div className="flex flex-1 flex-col p-7">
-                <p className="brand-eyebrow text-[0.5625rem] text-plum">Weight management</p>
-                <h3 className="mt-4 font-display text-3xl">GLP-1 Care</h3>
-                <p className="mt-4 flex-1 leading-7 text-onyx-700">Clinical evaluation, prescription coordination when appropriate, and ongoing support for eligible patients.</p>
-                <Link href="/care/weight-management#pre-screen" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Explore Weight Care &rarr;</Link>
-              </div>
-            </article>
-
-            <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-champagne-700/45 bg-ivory-200">
-              <Image src="/images/products/peptide-care.png" alt="Two unbranded wellness vials on black stone in warm champagne light." width={1536} height={1024} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
-              <div className="flex flex-1 flex-col p-7">
-                <p className="brand-eyebrow text-[0.5625rem] text-plum">Personalized clinical pathway</p>
-                <h3 className="mt-4 font-display text-3xl">Peptide Care</h3>
-                <p className="mt-4 flex-1 leading-7 text-onyx-700">Explore clinician-guided peptide care with eligibility assessment, personalized planning, and ongoing monitoring. Availability pending confirmation.</p>
-                <Link href="/peptide-care" className="brand-eyebrow mt-7 w-fit text-[0.625rem] text-plum hover:underline">Explore Peptide Care &rarr;</Link>
-              </div>
-            </article>
-
-          </div>
-
-          <p className="mt-9 text-xs leading-6 text-onyx-700">Plan pricing is shown on each care page. Services and treatment options vary by state and provider. Prescription treatment is not guaranteed. Individual results vary.</p>
+          <TelehealthHandoff from="/" className="mt-12" />
         </Container>
       </section>
 

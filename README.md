@@ -29,6 +29,29 @@ npm run dev                  # http://localhost:3000
 
 Other scripts: `npm run build`, `npm start`, `npm run typecheck`.
 
+## Telehealth handoff
+
+This site is the brand site: Home, About, FAQ, Contact and policies.
+Treatments, prices, the Mrs. Collection, intake, membership and checkout all
+live on the telehealth site, evevolutionwellness.com. The old care URLs
+(`/care/*`, `/treatments`, `/peptide-care`, `/eves-secret`, `/packages/*`,
+`/pillars/*`) redirect there from `src/middleware.ts`; a host that serves
+prerendered HTML instead of running the middleware needs the same redirects
+in its own config. Every "start
+care" button goes through `telehealthUrl()` in `src/lib/telehealth.ts`, which
+adds UTM tags (`utm_source=evevolutionhealth`, `utm_content=<page>`) and shows
+the "Continues on evevolutionwellness.com" line beside the button. This site
+collects no intake or health information of its own.
+
+Links use the app's Vercel address (eve-sisters.vercel.app) until
+evevolutionwellness.com is connected; then set `connected` to `true` in
+`src/lib/telehealth.ts`.
+
+`telehealth.deepLinks` is off while the telehealth app only answers its
+homepage on a direct visit. Once `https://evevolutionwellness.com/start` loads
+in a fresh tab, set it to `true` and each care page hands off to its matching
+telehealth page.
+
 ## Email capture
 
 Three captures feed one list: the footer form, the journal form, and a
@@ -38,7 +61,7 @@ browser and nothing is stored in this app.
 
 The popup opens on whichever comes first: exit intent, half the page scrolled,
 or thirty seconds of dwell. It opens once. Dismissing it buys thirty days of
-quiet; subscribing retires it permanently. It never opens on `/contact` or on
+quiet; subscribing retires it permanently. It never opens on `/contact`, whose own form is the point of the page.
 the two care assessment pages, whose own forms are the point of the page.
 
 ### Connecting Brevo

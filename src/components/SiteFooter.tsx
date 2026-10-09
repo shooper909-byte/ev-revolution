@@ -7,10 +7,10 @@ import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { BusinessContact, policyLinks } from "@/components/PolicyPage";
 import { careLabel, getStartedHref as getStartedHrefFor, publicPillars } from "@/lib/pillars";
+import { handoffNote, telehealth, telehealthUrl } from "@/lib/telehealth";
 
 const company = [
   { href: "/", label: "Home" },
-  { href: "/care", label: "Care" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
@@ -35,45 +35,26 @@ export function SiteFooter() {
 
           <nav aria-label="Care">
             <h2 className="brand-eyebrow text-champagne">
-              <Link href="/care" className="transition-colors hover:text-champagne-200">
+              <a href={telehealthUrl("/care")} className="transition-colors hover:text-champagne-200">
                 Care
-              </Link>
+              </a>
             </h2>
+            {telehealth.connected && <p className="mt-2 text-xs text-ivory-200/60">On {telehealth.domain}</p>}
             <ul className="mt-5 space-y-3">
-              {publicPillars.map((pillar) => (
-                <li key={pillar.slug}>
-                  <Link
-                    href={pillar.carePath ?? `/pillars/${pillar.slug}`}
+              {[
+                ...publicPillars.map((pillar) => ({ from: pillar.carePath ?? "/care", label: careLabel(pillar) })),
+                { from: "/eves-secret", label: "Eve’s Secret™" },
+                { from: "/packages/mrs-collection", label: "The Mrs. Collection" },
+              ].map((item) => (
+                <li key={item.from}>
+                  <a
+                    href={telehealthUrl(item.from)}
                     className="text-sm text-ivory-200 transition-colors hover:text-champagne"
                   >
-                    {careLabel(pillar)}
-                  </Link>
+                    {item.label}
+                  </a>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/eves-secret"
-                  className="text-sm text-ivory-200 transition-colors hover:text-champagne"
-                >
-                  Eve&rsquo;s Secret™
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/peptide-care"
-                  className="text-sm text-ivory-200 transition-colors hover:text-champagne"
-                >
-                  Peptide Care
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/treatments"
-                  className="text-sm text-ivory-200 transition-colors hover:text-champagne"
-                >
-                  Treatments
-                </Link>
-              </li>
             </ul>
           </nav>
 
@@ -92,12 +73,13 @@ export function SiteFooter() {
               ))}
             </ul>
 
-            <Link
+            <a
               href={getStartedHref}
               className="button-sheen brand-eyebrow mt-8 inline-block bg-plum px-6 py-3 text-[0.5625rem] text-ivory transition-colors hover:bg-plum-600"
             >
-              Get Started
-            </Link>
+              Start Your Consultation
+            </a>
+            <p className="mt-3 max-w-xs text-xs leading-relaxed text-ivory-200/60">{handoffNote}</p>
 
             <h2 className="brand-eyebrow mt-10 text-champagne">Newsletter</h2>
             <div className="mt-4">

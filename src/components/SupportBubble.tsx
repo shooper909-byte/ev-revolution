@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { business } from "@/lib/business";
+import { telehealthUrl } from "@/lib/telehealth";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -11,7 +12,7 @@ const fieldClass =
 const quickLinks = [
   { href: "/faq", label: "Read the FAQ" },
   { href: "/subscription-cancellation", label: "Cancel or change a subscription" },
-  { href: "/care", label: "Explore care options" },
+  { href: telehealthUrl("/support"), label: "Start a consultation" },
 ];
 
 /**
