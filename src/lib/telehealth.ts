@@ -24,6 +24,8 @@ export const handoffNote = `Continues on ${telehealth.domain}, our secure telehe
 
 /** Pages on this site mapped to the matching page on the telehealth site. */
 const pageMap: Record<string, string> = {
+  "/care": "/care",
+  "/treatments": "/care",
   "/care/weight-management": "/care/weight-management",
   "/care/hormones-menopause": "/care/hormones-menopause",
   "/care/skin-beauty": "/care/skin-beauty",
@@ -53,3 +55,9 @@ export function telehealthUrl(from = "/", target?: string): string {
   url.searchParams.set("utm_content", source === "/" ? "home" : source.replace(/^\//, "").replace(/\//g, "-"));
   return url.toString();
 }
+
+/**
+ * Care pages that used to live on this site. They now redirect to the
+ * matching telehealth page so old links and search results still reach care.
+ */
+export const handedOffPrefixes = ["/care", "/treatments", "/peptide-care", "/eves-secret", "/packages", "/pillars"] as const;

@@ -22,11 +22,7 @@ const DWELL_MS = 30_000;
 const SCROLL_TRIGGER = 0.5;
 
 /** Routes where a capture form is already the primary action. */
-const EXCLUDED_PATHS = [
-  "/contact",
-  "/care/weight-management",
-  "/care/hormones-menopause",
-];
+const EXCLUDED_PATHS = ["/contact"];
 
 type Suppression = { state: "dismissed" | "subscribed"; at: number };
 

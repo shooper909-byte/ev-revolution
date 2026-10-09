@@ -3,23 +3,19 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CareMenu } from "@/components/CareMenu";
 import { Container } from "@/components/Container";
 import { Wordmark } from "@/components/Wordmark";
-import { careLabel, getStartedHref as getStartedHrefFor, publicPillars } from "@/lib/pillars";
+import { getStartedHref as getStartedHrefFor } from "@/lib/pillars";
 import { handoffNote } from "@/lib/telehealth";
 
-/* Care leads the navigation and owns the launched routes beneath it, so the
-   header stays legible instead of listing every pathway across the bar.
-   "Resources" points at the existing /journal route rather than adding a
-   duplicate one. Items marked `wide` only fit on very wide screens; below
-   that they stay reachable from the footer and the logo (Home). */
+/* This site tells the brand story; care itself lives on the telehealth site,
+   which the consultation button opens. Items marked `wide` only fit on very
+   wide screens; below that they stay reachable from the footer and the logo
+   (Home). */
 const primaryNav = [
-  { href: "/treatments", label: "Treatments" },
-  { href: "/packages/mrs-collection", label: "Mrs. Collection" },
-  { href: "/eves-secret", label: "Eve’s Secret™" },
-  { href: "/about#philosophy", label: "Our Approach", wide: true },
   { href: "/about", label: "About" },
+  { href: "/about#philosophy", label: "Our Approach", wide: true },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -32,11 +28,6 @@ export function SiteHeader() {
     setOpen(false);
   }, [pathname]);
 
-  const careActive =
-    pathname === "/care" ||
-    pathname.startsWith("/care/") ||
-    pathname.startsWith("/pillars/") ||
-    pathname === "/peptide-care";
   const getStartedHref = getStartedHrefFor(pathname);
 
   const isActive = (href: string) => pathname === href;
@@ -52,10 +43,9 @@ export function SiteHeader() {
         <Wordmark />
 
         <nav aria-label="Primary" className="hidden items-center gap-3 lg:flex xl:gap-4 min-[1600px]:gap-5">
-          <CareMenu active={careActive} />
           <Link
             href="/"
-            className={`${linkClass("/")} hidden shrink-0 min-[1536px]:inline`}
+            className={`${linkClass("/")} shrink-0`}
             aria-current={pathname === "/" ? "page" : undefined}
           >
             Home
@@ -107,8 +97,6 @@ export function SiteHeader() {
         </button>
       </Container>
 
-          {/* Mobile: Care is a link with its core pathways listed beneath it, so
-          nothing is hidden behind a second tap. */}
       <div
         id="mobile-nav"
         hidden={!open}
@@ -122,67 +110,6 @@ export function SiteHeader() {
           >
             Home
           </Link>
-
-          <Link
-            href="/care"
-            className={`flex items-center justify-between border-b border-onyx-800 py-3 font-display text-lg ${
-              careActive ? "text-champagne" : "text-ivory"
-            }`}
-            aria-current={pathname === "/care" ? "page" : undefined}
-          >
-            Care
-            <span aria-hidden="true" className="text-sm text-champagne">
-              &rarr;
-            </span>
-          </Link>
-
-          <ul className="border-b border-onyx-800 py-1 pl-4">
-            {publicPillars.map((pillar) => (
-              <li key={pillar.slug}>
-                <Link
-                  href={pillar.carePath ?? `/pillars/${pillar.slug}`}
-                  className={`block py-3.5 text-sm ${
-                    pathname === (pillar.carePath ?? `/pillars/${pillar.slug}`)
-                      ? "text-champagne"
-                      : "text-ivory-200"
-                  }`}
-                  aria-current={
-                    pathname === (pillar.carePath ?? `/pillars/${pillar.slug}`) ? "page" : undefined
-                  }
-                >
-                  {careLabel(pillar)}
-                </Link>
-              </li>
-            ))}
-            <li className="border-t border-onyx-800/80">
-              <Link
-                href="/eves-secret"
-                className={`block py-3.5 text-sm ${
-                  pathname === "/eves-secret"
-                    ? "text-champagne"
-                    : "text-ivory-200"
-                }`}
-                aria-current={pathname === "/eves-secret" ? "page" : undefined}
-                onClick={() => setOpen(false)}
-              >
-                Eve&rsquo;s Secret™
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/peptide-care"
-                className={`block py-3.5 text-sm ${
-                  pathname === "/peptide-care"
-                    ? "text-champagne"
-                    : "text-ivory-200"
-                }`}
-                aria-current={pathname === "/peptide-care" ? "page" : undefined}
-                onClick={() => setOpen(false)}
-              >
-                Peptide Care
-              </Link>
-            </li>
-          </ul>
 
           {primaryNav.map((item) => (
             <Link
