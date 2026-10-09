@@ -39,7 +39,7 @@ export function SiteFooter() {
                 Care
               </a>
             </h2>
-            <p className="mt-2 text-xs text-ivory-200/60">On {telehealth.domain}</p>
+            {telehealth.connected && <p className="mt-2 text-xs text-ivory-200/60">On {telehealth.domain}</p>}
             <ul className="mt-5 space-y-3">
               {[
                 ...publicPillars.map((pillar) => ({ from: pillar.carePath ?? "/care", label: careLabel(pillar) })),

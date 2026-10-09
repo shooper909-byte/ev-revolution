@@ -18,7 +18,7 @@ const faqs: [string, string][] = [
   ],
   [
     "Where do I start a consultation?",
-    "On evevolutionwellness.com, our secure telehealth platform. Use any Start Consultation button on this site to continue there.",
+    "On our secure telehealth platform. Use any Start Consultation button on this site to continue there.",
   ],
   [
     "Is treatment guaranteed?",
@@ -46,7 +46,7 @@ const faqs: [string, string][] = [
   ],
   [
     "When is my card charged for medication?",
-    "Payment terms are shown on evevolutionwellness.com before you authorize anything. Your card may be pre-authorized in the secure enrollment flow, but medication-inclusive amounts are captured only after a licensed provider approves treatment. If treatment is declined, the pre-authorization is released.",
+    "Payment terms are shown on our telehealth platform before you authorize anything. Your card may be pre-authorized in the secure enrollment flow, but medication-inclusive amounts are captured only after a licensed provider approves treatment. If treatment is declined, the pre-authorization is released.",
   ],
   [
     "Are refills automatic?",

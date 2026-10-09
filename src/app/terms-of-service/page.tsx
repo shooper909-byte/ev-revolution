@@ -44,7 +44,7 @@ const sections: PolicySection[] = [
     heading: "Fees and payment",
     body: [
       [
-        "Plan prices and their included program components are shown on evevolutionwellness.com, our telehealth platform, before you enroll.",
+        "Plan prices and their included program components are shown on our telehealth platform before you enroll.",
         "Your card may be pre-authorized in the secure enrollment flow, but medication-inclusive amounts are captured only after a licensed provider approves treatment. If treatment is declined, the pre-authorization is released.",
         "If you enroll in a recurring plan, renewal and cancellation terms are shown before authorization. See our Subscription Cancellation policy.",
         "Refills are reviewed by a provider and are never automatic.",

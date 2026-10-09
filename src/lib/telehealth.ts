@@ -7,8 +7,17 @@
  * lands on the matching page and arrives tagged for attribution.
  */
 
+/**
+ * evevolutionwellness.com is not connected to the telehealth app yet, so
+ * links go to the app's Vercel address until it is. Once
+ * https://evevolutionwellness.com loads with a valid certificate, set
+ * `connected` to true.
+ */
+const connected = false;
+
 export const telehealth = {
-  origin: "https://evevolutionwellness.com",
+  connected,
+  origin: connected ? "https://evevolutionwellness.com" : "https://eve-sisters.vercel.app",
   domain: "evevolutionwellness.com",
   /**
    * The telehealth site is a single-page app. Until its host rewrites every
@@ -20,7 +29,9 @@ export const telehealth = {
 } as const;
 
 /** The line shown beside every handoff button, so leaving the site is expected. */
-export const handoffNote = `Continues on ${telehealth.domain}, our secure telehealth platform.`;
+export const handoffNote = telehealth.connected
+  ? `Continues on ${telehealth.domain}, our secure telehealth platform.`
+  : "Continues on our secure telehealth platform.";
 
 /** Pages on this site mapped to the matching page on the telehealth site. */
 const pageMap: Record<string, string> = {

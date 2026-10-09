@@ -43,6 +43,10 @@ adds UTM tags (`utm_source=evevolutionhealth`, `utm_content=<page>`) and shows
 the "Continues on evevolutionwellness.com" line beside the button. This site
 collects no intake or health information of its own.
 
+Links use the app's Vercel address (eve-sisters.vercel.app) until
+evevolutionwellness.com is connected; then set `connected` to `true` in
+`src/lib/telehealth.ts`.
+
 `telehealth.deepLinks` is off while the telehealth app only answers its
 homepage on a direct visit. Once `https://evevolutionwellness.com/start` loads
 in a fresh tab, set it to `true` and each care page hands off to its matching

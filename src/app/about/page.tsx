@@ -258,7 +258,7 @@ export default function AboutPage() {
         <Container>
           <Eyebrow>A brighter tomorrow</Eyebrow>
           <h2 id="next-chapter">Your Next Chapter Starts Here.</h2>
-          <p>Begin a private consultation on evevolutionwellness.com, our secure telehealth platform.</p>
+          <p>Begin a private consultation on our secure telehealth platform.</p>
           <div className={s.actions}>
             <ActionLink href={telehealthUrl("/about")}>Start Your Consultation</ActionLink>
           </div>
