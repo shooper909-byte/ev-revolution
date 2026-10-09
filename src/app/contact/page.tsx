@@ -49,7 +49,7 @@ export default function ContactPage() {
             {business.address.length > 0 && (
               <div>
                 <dt className="brand-eyebrow text-[0.5rem] text-champagne">
-                  Mailing address
+                  Location
                 </dt>
                 <dd className="mt-3 text-sm leading-relaxed text-ivory-200">
                   {businessName}
