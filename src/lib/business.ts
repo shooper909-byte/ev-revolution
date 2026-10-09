@@ -25,8 +25,8 @@ export const business: Business = {
   email: "info@evevolutionhealth.com",
   /** Customer support phone number, e.g. "(555) 555-0100". */
   phone: "(832) 800-7818",
-  /** Registered business mailing address, one line per entry. */
-  address: ["3247 Woods Canyon Ct", "Missouri City, TX 77459"],
+  /** Business location shown on the site, one line per entry. */
+  address: ["Houston, Texas"],
   domain: "evevolutionhealth.com",
 };
 
