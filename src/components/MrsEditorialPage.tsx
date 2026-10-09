@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container, Eyebrow } from "@/components/Container";
-import { CareLeadForm } from "@/components/CareLeadForm";
+import { TelehealthHandoff } from "@/components/TelehealthHandoff";
 import type { MrsExperience } from "@/lib/mrsCollection";
 
 const pathways = [
@@ -22,7 +22,7 @@ export function MrsEditorialPage({ experience }: { experience: MrsExperience }) 
             <p className="mt-6 font-display text-2xl text-champagne">{experience.tagline}</p>
             <p className="mt-6 max-w-xl leading-8 text-ivory-200">{experience.description}</p>
             <p className="mt-6 font-display text-2xl text-ivory">Starting at {experience.startingAt}</p>
-            <Link href="#consultation" className="button-sheen brand-eyebrow mt-9 inline-block rounded-full bg-champagne px-8 py-4 text-xs text-onyx">View consultation availability</Link>
+            <Link href="#consultation" className="button-sheen brand-eyebrow mt-9 inline-block rounded-full bg-champagne px-8 py-4 text-xs text-onyx">Begin your consultation</Link>
           </div>
           <Image src={experience.image} alt={experience.imageAlt} width={1122} height={1402} priority sizes="(min-width: 1024px) 55vw, 100vw" className="max-h-[760px] w-full rounded-2xl object-cover object-top" />
         </Container>
@@ -32,7 +32,7 @@ export function MrsEditorialPage({ experience }: { experience: MrsExperience }) 
           <Eyebrow>Choose your care</Eyebrow>
           <h2 className="mt-5 max-w-2xl font-display text-4xl sm:text-5xl">The plan is yours to choose.</h2>
           <p className="mt-6 max-w-3xl leading-8 text-ivory-200">The Mrs. Collection is an introduction to Eve’s Sisters, available to women of every background. Plans and prices are listed on each care page. Each treatment is prescribed only if your provider determines it’s appropriate.</p>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-ivory-200/75">Individual results vary. A consultation request creates no charge, enrollment, or prescription. Any medication-inclusive amount is authorized and captured only after provider approval.</p>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-ivory-200/75">Individual results vary. Consultations, enrollment and payment happen on our secure telehealth platform, and treatment is prescribed only after provider approval.</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {experience.recommendedPlans.map((item) => <Link key={`${item.name}-${item.price}`} href={item.href} className="rounded-2xl border border-champagne/30 bg-onyx p-7 transition-colors hover:bg-plum-900"><span className="block font-display text-2xl text-champagne">{item.name}</span><span className="mt-2 block text-sm text-ivory-200">{item.price}</span></Link>)}
           </div>
@@ -43,11 +43,11 @@ export function MrsEditorialPage({ experience }: { experience: MrsExperience }) 
       <section id="consultation" aria-labelledby="mrs-consultation-heading" className="scroll-mt-24 border-t border-champagne/30 bg-onyx">
         <Container className="grid gap-12 py-16 sm:py-24 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <Eyebrow>Private consultation request</Eyebrow>
+            <Eyebrow>Private consultation</Eyebrow>
             <h2 id="mrs-consultation-heading" className="mt-5 font-display text-4xl sm:text-5xl">Begin with {experience.name}.</h2>
-            <p className="mt-6 max-w-xl leading-8 text-ivory-200">Review your preferred care category. Online consultation requests will open once secure clinical intake is connected.</p>
+            <p className="mt-6 max-w-xl leading-8 text-ivory-200">Your intake, clinician review and enrollment happen on our secure telehealth platform, so your health information stays in one private place.</p>
           </div>
-          <CareLeadForm program={experience.slug} labelledBy="mrs-consultation-heading" privacyNote="Contact details only. Please do not submit symptoms, medications, or medical history here." />
+          <TelehealthHandoff from={`/packages/${experience.slug}`} label={`Begin with ${experience.name}`} className="lg:pt-14" />
         </Container>
       </section>
     </main>

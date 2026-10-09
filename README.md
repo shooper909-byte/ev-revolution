@@ -29,6 +29,20 @@ npm run dev                  # http://localhost:3000
 
 Other scripts: `npm run build`, `npm start`, `npm run typecheck`.
 
+## Telehealth handoff
+
+This site explains and builds trust; consultations, intake, membership and
+checkout happen on the telehealth site, evevolutionwellness.com. Every "start
+care" button goes through `telehealthUrl()` in `src/lib/telehealth.ts`, which
+adds UTM tags (`utm_source=evevolutionhealth`, `utm_content=<page>`) and shows
+the "Continues on evevolutionwellness.com" line beside the button. This site
+collects no intake or health information of its own.
+
+`telehealth.deepLinks` is off while the telehealth app only answers its
+homepage on a direct visit. Once `https://evevolutionwellness.com/start` loads
+in a fresh tab, set it to `true` and each care page hands off to its matching
+telehealth page.
+
 ## Email capture
 
 Three captures feed one list: the footer form, the journal form, and a

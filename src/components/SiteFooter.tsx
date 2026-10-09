@@ -7,6 +7,7 @@ import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { BusinessContact, policyLinks } from "@/components/PolicyPage";
 import { careLabel, getStartedHref as getStartedHrefFor, publicPillars } from "@/lib/pillars";
+import { handoffNote } from "@/lib/telehealth";
 
 const company = [
   { href: "/", label: "Home" },
@@ -92,12 +93,13 @@ export function SiteFooter() {
               ))}
             </ul>
 
-            <Link
+            <a
               href={getStartedHref}
               className="button-sheen brand-eyebrow mt-8 inline-block bg-plum px-6 py-3 text-[0.5625rem] text-ivory transition-colors hover:bg-plum-600"
             >
-              Get Started
-            </Link>
+              Start Your Consultation
+            </a>
+            <p className="mt-3 max-w-xs text-xs leading-relaxed text-ivory-200/60">{handoffNote}</p>
 
             <h2 className="brand-eyebrow mt-10 text-champagne">Newsletter</h2>
             <div className="mt-4">

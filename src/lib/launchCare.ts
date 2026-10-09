@@ -78,8 +78,8 @@ const pregnancyQuestion: PreScreenQuestion = {
 
 const standardFaqs: [string, string][] = [
   [
-    "What happens after I request a treatment?",
-    "After the short pre-screen, we collect only the contact details needed to send your secure clinical-assessment link. A licensed clinician reviews your completed intake and decides whether treatment is appropriate.",
+    "Where do I start a consultation?",
+    "Consultations start on evevolutionwellness.com, the secure telehealth platform for Eve’s Sisters. You complete your intake there, and a licensed clinician reviews it and decides whether treatment is appropriate.",
   ],
   [
     "Will I be approved?",
@@ -87,7 +87,7 @@ const standardFaqs: [string, string][] = [
   ],
   [
     "When will I be charged?",
-    "Your request and pre-screen do not charge you. Payment authorization and any renewal details are presented in the secure enrollment flow after the clinical pathway is confirmed.",
+    "Nothing on this site charges you. Payment authorization and any renewal details are presented on evevolutionwellness.com during enrollment, after the clinical pathway is confirmed.",
   ],
   [
     "Can I cancel?",

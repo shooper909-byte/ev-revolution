@@ -7,6 +7,7 @@ import { CareMenu } from "@/components/CareMenu";
 import { Container } from "@/components/Container";
 import { Wordmark } from "@/components/Wordmark";
 import { careLabel, getStartedHref as getStartedHrefFor, publicPillars } from "@/lib/pillars";
+import { handoffNote } from "@/lib/telehealth";
 
 /* Care leads the navigation and owns the launched routes beneath it, so the
    header stays legible instead of listing every pathway across the bar.
@@ -71,12 +72,13 @@ export function SiteHeader() {
             </Link>
           ))}
 
-          <Link
+          <a
             href={getStartedHref}
+            title={handoffNote}
             className="button-sheen brand-eyebrow whitespace-nowrap bg-plum px-4 py-3 text-[0.6875rem] xl:px-5 xl:text-xs tracking-[0.14em] text-ivory transition-colors hover:bg-plum-600"
           >
-            Get Started
-          </Link>
+            Start Consultation
+          </a>
         </nav>
 
         <button
@@ -196,13 +198,14 @@ export function SiteHeader() {
             </Link>
           ))}
 
-          <Link
+          <a
             href={getStartedHref}
             onClick={() => setOpen(false)}
             className="brand-eyebrow mt-4 bg-plum px-6 py-4 text-center text-[0.625rem] text-ivory"
           >
-            Get Started
-          </Link>
+            Start Your Consultation
+          </a>
+          <p className="mt-3 text-center text-xs text-ivory-200/70">{handoffNote}</p>
         </Container>
       </div>
     </header>
