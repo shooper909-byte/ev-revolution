@@ -1,0 +1,66 @@
+<?php
+/** WordPress transport for the approved early-access form. */
+if (!defined('ABSPATH')) { exit; }
+
+function eves_sisters_early_access_endpoint() {
+    if (is_admin()) { return; }
+    $path = rtrim((string) parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+    if ($path !== '/api/early-access') { return; }
+    nocache_headers();
+    header('Content-Type: application/json; charset=' . get_bloginfo('charset'));
+    if (strtoupper((string) $_SERVER['REQUEST_METHOD']) !== 'POST') {
+        status_header(405);
+        header('Allow: POST');
+        echo wp_json_encode(array('message' => 'Method not allowed.'));
+        exit;
+    }
+    $raw = (string) file_get_contents('php://input');
+    $body = json_decode($raw, true);
+    if (strlen($raw) > 4096 || !is_array($body)) {
+        status_header(400);
+        echo wp_json_encode(array('message' => 'Invalid request.'));
+        exit;
+    }
+    // Preserve the exact consent boolean. Do not collect or forward extra fields.
+    $payload = array();
+    foreach (array('firstName', 'email', 'state', 'serviceInterest', 'company', 'marketingConsent') as $field) {
+        if (array_key_exists($field, $body)) { $payload[$field] = $body[$field]; }
+    }
+    $response = wp_remote_post('https://ev-revolution.vercel.app/api/early-access', array(
+        'timeout' => 55,
+        'redirection' => 0,
+        'headers' => array('Content-Type' => 'application/json', 'Accept' => 'application/json'),
+        'body' => wp_json_encode($payload),
+    ));
+    if (is_wp_error($response)) {
+        status_header(502);
+        echo wp_json_encode(array('message' => 'Signup is temporarily unavailable. Please try again shortly.'));
+        exit;
+    }
+    $code = wp_remote_retrieve_response_code($response);
+    $result = json_decode(wp_remote_retrieve_body($response), true);
+    if (!is_array($result) || !isset($result['message']) || !is_string($result['message']) || $code < 200 || $code > 599) {
+        status_header(502);
+        echo wp_json_encode(array('message' => 'We could not confirm your signup. Please try again shortly.'));
+        exit;
+    }
+    status_header($code);
+    $safe = array('message' => $result['message']);
+    if (isset($result['pendingConfirmation'])) { $safe['pendingConfirmation'] = (bool) $result['pendingConfirmation']; }
+    echo wp_json_encode($safe);
+    exit;
+}
+add_action('template_redirect', 'eves_sisters_early_access_endpoint', -1950);
+
+function eves_sisters_release_sitemap() {
+    if (is_admin()) { return; }
+    $path = (string) parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    if ($path !== '/sitemap.xml') { return; }
+    $file = get_template_directory() . '/static-pages/sitemap.xml';
+    if (!is_readable($file)) { return; }
+    status_header(200);
+    header('Content-Type: application/xml; charset=UTF-8');
+    readfile($file);
+    exit;
+}
+add_action('template_redirect', 'eves_sisters_release_sitemap', -1950);
