@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { campaignHost, findCampaign } from "@/lib/campaigns";
+import { campaignHandoffs, campaignHost, findCampaign } from "@/lib/campaigns";
 import { pillars } from "@/lib/pillars";
 import { handedOffPrefixes, telehealth, telehealthUrl } from "@/lib/telehealth";
 
@@ -31,13 +31,18 @@ function campaignResponse(request: NextRequest, path: string) {
     return NextResponse.rewrite(new URL(`/us/${slug}`, request.url));
   }
 
-  const target = new URL(path === "/" ? "/early-access" : path, brandOrigin);
+  const handoff = path === "/" ? "/early-access" : campaignHandoffs[slug];
+  const target = new URL(handoff ?? path, brandOrigin);
   target.search = request.nextUrl.search;
-  if (path === "/") {
-    target.searchParams.set("utm_source", "evevolutionwellness_us");
-    target.searchParams.set("utm_medium", "redirect");
+  if (handoff) {
+    // Campaign entry points stay attributable after leaving the .us host.
+    // An ad's own UTM tags win; these only fill the gaps.
+    const tags = { utm_source: "evevolutionwellness_us", utm_medium: "redirect", ...(path !== "/" && { utm_campaign: slug }) };
+    for (const [key, value] of Object.entries(tags)) {
+      if (!target.searchParams.has(key)) target.searchParams.set(key, value);
+    }
   }
-  return NextResponse.redirect(target, path === "/" ? 307 : 308);
+  return NextResponse.redirect(target, handoff ? 307 : 308);
 }
 
 function isCampaignHost(request: NextRequest) {

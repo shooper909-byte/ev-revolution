@@ -156,38 +156,16 @@ export const campaigns: Campaign[] = [
     careFrom: "/eves-secret",
     formHint: "Get early access to Eve’s Secret. Email only — no health information.",
   },
-  {
-    slug: "inclusive",
-    source: "us_inclusive",
-    eyebrow: "Inclusive Care",
-    title: "Inclusive Care — Join the Waitlist",
-    headline: "Care for every woman. Coming soon.",
-    intro:
-      "We are building LGBTQ+ inclusive and gender-affirming care with providers who have the experience to offer it well. It is not available yet. Join the waitlist and we will let you know as soon as it is.",
-    points: [
-      {
-        title: "Not available yet",
-        body: "We will open this care only once qualified providers are confirmed in your state.",
-      },
-      {
-        title: "Built with care",
-        body: "Respectful intake, the names and pronouns you use, and clinicians with relevant experience.",
-      },
-      {
-        title: "First to know",
-        body: "Waitlist members hear first when care opens.",
-      },
-    ],
-    image: {
-      src: "/images/care/care-together.webp",
-      alt: "Four adult women together in an editorial portrait.",
-      width: 1440,
-      height: 900,
-    },
-    waitlistOnly: true,
-    formHint: "Join the Inclusive Care waitlist. Email only — no health information.",
-  },
 ];
+
+/**
+ * .us paths that hand off to a full page on the brand site instead of a
+ * landing page here. Inclusive Care has its own page and early-access form
+ * there (state, service interest, consent), so one list stays the source.
+ */
+export const campaignHandoffs: Record<string, string> = {
+  inclusive: "/gender-affirming-care",
+};
 
 export function findCampaign(slug: string): Campaign | undefined {
   return campaigns.find((campaign) => campaign.slug === slug);

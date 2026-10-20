@@ -24,7 +24,6 @@ const LISTS = [
   { env: "BREVO_LIST_ID_US_MENOPAUSE", name: "Eve's Sisters — .us Menopause & Hormones" },
   { env: "BREVO_LIST_ID_US_LONGEVITY", name: "Eve's Sisters — .us Longevity & Beauty" },
   { env: "BREVO_LIST_ID_US_EVES_SECRET", name: "Eve's Sisters — .us Eve's Secret" },
-  { env: "BREVO_LIST_ID_US_INCLUSIVE", name: "Eve's Sisters — .us Inclusive Care Waitlist" },
 ];
 
 const ATTRIBUTES = [

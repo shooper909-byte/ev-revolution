@@ -26,8 +26,7 @@ export type CaptureSource =
   | "us_weight"
   | "us_menopause"
   | "us_longevity"
-  | "us_eves_secret"
-  | "us_inclusive";
+  | "us_eves_secret";
 
 export const CAPTURE_SOURCES: readonly CaptureSource[] = [
   "footer",
@@ -40,7 +39,6 @@ export const CAPTURE_SOURCES: readonly CaptureSource[] = [
   "us_menopause",
   "us_longevity",
   "us_eves_secret",
-  "us_inclusive",
 ];
 
 export function isCaptureSource(value: unknown): value is CaptureSource {
