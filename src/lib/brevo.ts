@@ -15,7 +15,18 @@ const API_BASE = "https://api.brevo.com/v3";
 const TIMEOUT_MS = 8_000;
 
 /** Where a capture happened. Each source can route to its own Brevo list. */
-export type CaptureSource = "footer" | "journal" | "popup" | "site" | "waitlist";
+export type CaptureSource =
+  | "footer"
+  | "journal"
+  | "popup"
+  | "site"
+  | "waitlist"
+  // evevolutionwellness.us landing pages, one per campaign
+  | "us_weight"
+  | "us_menopause"
+  | "us_longevity"
+  | "us_eves_secret"
+  | "us_inclusive";
 
 export const CAPTURE_SOURCES: readonly CaptureSource[] = [
   "footer",
@@ -23,6 +34,11 @@ export const CAPTURE_SOURCES: readonly CaptureSource[] = [
   "popup",
   "site",
   "waitlist",
+  "us_weight",
+  "us_menopause",
+  "us_longevity",
+  "us_eves_secret",
+  "us_inclusive",
 ];
 
 export function isCaptureSource(value: unknown): value is CaptureSource {

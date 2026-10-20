@@ -52,6 +52,27 @@ homepage on a direct visit. Once `https://evevolutionwellness.com/start` loads
 in a fresh tab, set it to `true` and each care page hands off to its matching
 telehealth page.
 
+## Campaign landing pages (evevolutionwellness.us)
+
+evevolutionwellness.us is the patient-acquisition funnel, served by this same
+app. Add the domain (and `www.`) to the Vercel project; `src/middleware.ts`
+recognises the host and:
+
+- serves `/weight`, `/menopause`, `/longevity`, `/eves-secret` and
+  `/inclusive` from `src/app/us/[slug]` (content in `src/lib/campaigns.ts`);
+- sends `/` to the brand site's `/early-access`, and every other path to the
+  same path on evevolutionhealth.com, so brand pages are never duplicated.
+
+Each page has an email-only early-access form with its own capture source
+(`us_weight`, `us_menopause`, `us_longevity`, `us_eves_secret`,
+`us_inclusive`), routed to its Brevo list by `BREVO_LIST_ID_US_*` and stamped
+on `BREVO_SOURCE_ATTRIBUTE`. "Start your consultation" links go to the
+telehealth site with `utm_source=evevolutionwellness_us` and
+`utm_campaign=<slug>`. Inclusive Care is waitlist-only and has no enrollment
+button until providers are confirmed. The pages are `noindex` with a
+canonical on the .us host; before the domain is connected they can be
+previewed at `/us/<slug>` on any host.
+
 ## Email capture
 
 Three captures feed one list: the footer form, the journal form, and a
