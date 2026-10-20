@@ -19,6 +19,11 @@ const FOLDER_NAME = "Eve's Sisters";
 const LISTS = [
   { env: "BREVO_LIST_ID", name: "Eve's Sisters — Newsletter" },
   { env: "BREVO_LIST_ID_POPUP", name: "Eve's Sisters — Popup" },
+  // evevolutionwellness.us campaign landing pages
+  { env: "BREVO_LIST_ID_US_WEIGHT", name: "Eve's Sisters — .us Weight Management" },
+  { env: "BREVO_LIST_ID_US_MENOPAUSE", name: "Eve's Sisters — .us Menopause & Hormones" },
+  { env: "BREVO_LIST_ID_US_LONGEVITY", name: "Eve's Sisters — .us Longevity & Beauty" },
+  { env: "BREVO_LIST_ID_US_EVES_SECRET", name: "Eve's Sisters — .us Eve's Secret" },
 ];
 
 const ATTRIBUTES = [
