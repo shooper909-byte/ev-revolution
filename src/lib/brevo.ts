@@ -15,7 +15,7 @@ const API_BASE = "https://api.brevo.com/v3";
 const TIMEOUT_MS = 8_000;
 
 /** Where a capture happened. Each source can route to its own Brevo list. */
-export type CaptureSource = "footer" | "journal" | "popup" | "site" | "waitlist";
+export type CaptureSource = "footer" | "journal" | "popup" | "site" | "waitlist" | "early_access";
 
 export const CAPTURE_SOURCES: readonly CaptureSource[] = [
   "footer",
@@ -23,6 +23,7 @@ export const CAPTURE_SOURCES: readonly CaptureSource[] = [
   "popup",
   "site",
   "waitlist",
+  "early_access",
 ];
 
 export function isCaptureSource(value: unknown): value is CaptureSource {
@@ -45,7 +46,7 @@ export function isBrevoConfigured(): boolean {
  * configured (BREVO_LIST_ID_POPUP and friends), otherwise the default list.
  */
 function listIdsFor(source: CaptureSource): number[] {
-  const perSource = process.env[`BREVO_LIST_ID_${source.toUpperCase()}`];
+  const perSource = process.env[`BREVO_LIST_ID_${source.toUpperCase()}`] || (source === "early_access" ? process.env.BREVO_LIST_ID_WAITLIST : undefined);
   const ids = parseListIds(perSource) ?? parseListIds(process.env.BREVO_LIST_ID);
   return ids ?? [];
 }
@@ -75,6 +76,16 @@ function buildAttributes(input: SubscribeInput): Record<string, string> {
   const consentAttribute = process.env.BREVO_CONSENT_ATTRIBUTE;
   if (consentAttribute) attributes[consentAttribute] = input.submittedAt;
 
+  if (input.source === "early_access" && input.marketingConsent) {
+    attributes.EVS_SIGNUP_SOURCE = "gender-affirming-care-early-access";
+    attributes.EVS_CONSENT_AT = input.submittedAt;
+    attributes.EVS_CONSENT_TEXT = input.marketingConsent.text;
+    attributes.EVS_CONSENT_VERSION = input.marketingConsent.version;
+    // Do not erase previously supplied preferences when optional fields are blank.
+    if (input.state) attributes.EVS_EARLY_ACCESS_STATE = input.state;
+    if (input.serviceInterest) attributes.EVS_SERVICE_INTEREST = input.serviceInterest;
+  }
+
   return attributes;
 }
 
@@ -83,6 +94,9 @@ export type SubscribeInput = {
   firstName?: string;
   source: CaptureSource;
   submittedAt: string;
+  state?: string;
+  serviceInterest?: string;
+  marketingConsent?: { text: string; version: string };
 };
 
 type BrevoError = { code?: string; message?: string };
@@ -115,12 +129,20 @@ export async function subscribeToBrevo(
   }
 
   const attributes = buildAttributes(input);
+  if (input.source === "early_access") {
+    if (!input.marketingConsent) return { ok: false, status: 400, message: "Marketing consent is required for early-access emails." };
+    // Provision only this form's namespaced text fields. Never silently discard
+    // consent metadata if the provider rejects an attribute.
+    const ready = await ensureEarlyAccessAttributes(apiKey);
+    if (!ready) return { ok: false, status: 503, message: "Signup is temporarily unavailable. Please try again later." };
+  }
   const firstAttempt = await send(apiKey, input, listIds, attributes);
 
   // A custom attribute that does not exist in Brevo yet should cost us the
   // attribute, not the subscriber: retry once with the built-in fields only.
   if (
     !firstAttempt.ok &&
+    input.source !== "early_access" &&
     firstAttempt.retryWithoutAttributes &&
     Object.keys(attributes).length > 0
   ) {
@@ -136,6 +158,28 @@ export async function subscribeToBrevo(
   }
 
   return firstAttempt.result;
+}
+
+let earlyAccessAttributesReady = false;
+async function ensureEarlyAccessAttributes(apiKey: string): Promise<boolean> {
+  if (earlyAccessAttributesReady) return true;
+  const names = ["EVS_SIGNUP_SOURCE", "EVS_CONSENT_AT", "EVS_CONSENT_TEXT", "EVS_CONSENT_VERSION", "EVS_EARLY_ACCESS_STATE", "EVS_SERVICE_INTEREST"];
+  const headers = { "api-key": apiKey, "content-type": "application/json", accept: "application/json" };
+  try {
+    const current = await fetch(`${API_BASE}/contacts/attributes`, { headers, signal: AbortSignal.timeout(TIMEOUT_MS) });
+    if (!current.ok) return false;
+    const body = await current.json() as { attributes?: { name: string; category: string; type: string }[] };
+    for (const name of names) {
+      const existing = body.attributes?.find(attribute => attribute.name === name);
+      if (existing) { if (existing.type !== "text" || existing.category !== "normal") return false; continue; }
+      const created = await fetch(`${API_BASE}/contacts/attributes/normal/${name}`, { method: "POST", headers, body: JSON.stringify({ type: "text" }), signal: AbortSignal.timeout(TIMEOUT_MS) });
+      // A concurrent request may have created the same attribute; a later
+      // submission can retry safely, without accepting incomplete consent.
+      if (!created.ok) return false;
+    }
+    earlyAccessAttributesReady = true;
+    return true;
+  } catch { return false; }
 }
 
 type SendOutcome =
@@ -201,6 +245,25 @@ async function send(
   }
 
   if (response.ok) {
+    if (input.source === "early_access" && !doubleOptIn) {
+      // Confirm the saved list and consent, including updates to an existing
+      // contact. A provider write response alone is not proof of enrollment.
+      try {
+        const saved = await fetch(`${API_BASE}/contacts/${encodeURIComponent(input.email)}`, {
+          headers: { accept: "application/json", "api-key": apiKey },
+          cache: "no-store", signal: AbortSignal.timeout(TIMEOUT_MS),
+        });
+        if (!saved.ok) throw new Error("Contact readback failed");
+        const contact = await saved.json() as { listIds?: number[]; attributes?: Record<string, string> };
+        if (!listIds.every(id => contact.listIds?.includes(id)) ||
+            !Object.entries(attributes).every(([key, value]) => contact.attributes?.[key] === value)) {
+          throw new Error("Saved membership or consent did not match");
+        }
+        console.info("[brevo] early-access list membership and consent verified");
+      } catch {
+        return { ok: false, retryWithoutAttributes: false, detail: "Enrollment verification failed", result: { ok: false, status: 502, message: "We could not confirm your signup. Please try again shortly." } };
+      }
+    }
     return {
       ok: true,
       result: {
@@ -216,7 +279,7 @@ async function send(
 
   // Brevo reports an existing contact as a 400. Confirming a subscription
   // someone already has is not a failure the visitor should see.
-  if (response.status === 400 && isDuplicate(error)) {
+  if (response.status === 400 && isDuplicate(error) && input.source !== "early_access") {
     return {
       ok: true,
       result: { ok: true, alreadySubscribed: true, pendingConfirmation: false },

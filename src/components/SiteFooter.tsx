@@ -18,6 +18,7 @@ const company = [
 
 export function SiteFooter() {
   const pathname = usePathname();
+  const isPlannedCare = pathname === "/gender-affirming-care";
   const getStartedHref = getStartedHrefFor(pathname);
   return (
     <footer className="border-t border-onyx-700 bg-onyx-900">
@@ -41,6 +42,8 @@ export function SiteFooter() {
             </h2>
             {telehealth.connected && <p className="mt-2 text-xs text-ivory-200/60">On {telehealth.domain}</p>}
             <ul className="mt-5 space-y-3">
+              <li><Link href="/services" className="text-sm text-ivory-200 hover:text-champagne">Services overview</Link></li>
+              <li><Link href="/gender-affirming-care" className="text-sm text-ivory-200 hover:text-champagne">Gender-Affirming Care · Planned</Link></li>
               {[
                 ...publicPillars.map((pillar) => ({ from: pillar.carePath ?? "/care", label: careLabel(pillar) })),
                 { from: "/eves-secret", label: "Eve’s Secret™" },
@@ -74,12 +77,12 @@ export function SiteFooter() {
             </ul>
 
             <a
-              href={getStartedHref}
+              href={isPlannedCare ? "#early-access" : getStartedHref}
               className="button-sheen brand-eyebrow mt-8 inline-block bg-plum px-6 py-3 text-[0.5625rem] text-ivory transition-colors hover:bg-plum-600"
             >
-              Start Your Consultation
+              {isPlannedCare ? "Join Early Access" : "Start Your Consultation"}
             </a>
-            <p className="mt-3 max-w-xs text-xs leading-relaxed text-ivory-200/60">{handoffNote}</p>
+            <p className="mt-3 max-w-xs text-xs leading-relaxed text-ivory-200/60">{isPlannedCare ? "Registration is for launch updates, not treatment." : handoffNote}</p>
 
             <h2 className="brand-eyebrow mt-10 text-champagne">Newsletter</h2>
             <div className="mt-4">
@@ -112,7 +115,7 @@ export function SiteFooter() {
             Prescription treatment is not guaranteed and requires evaluation by a licensed clinician. Compounded medications are not FDA-approved. Services vary by state.
           </p>
           <p className="mt-4 text-xs leading-relaxed text-taupe-700">
-            States we serve: all 50 U.S. states through our nationwide clinical partner network, subject to provider, program, pharmacy, and state-specific requirements.
+            {isPlannedCare ? "Gender-affirming care is under development. No clinical partner is currently contracted for these services. Future availability will depend on licensed provider partnerships, medical eligibility, and applicable state regulations." : "States we serve: all 50 U.S. states through our nationwide clinical partner network, subject to provider, program, pharmacy, and state-specific requirements."}
           </p>
           <p className="mt-4 text-xs leading-relaxed text-taupe-700">
             Eve&rsquo;s Sisters is a trade name of Eve&rsquo;s Sisters LLC.
