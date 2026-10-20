@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://evevolutionhealth.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/about", "/contact", "/faq", "/privacy-policy", "/terms-of-service", "/telehealth-consent", "/subscription-cancellation", "/hipaa-policy", "/disclaimer"];
+  const staticRoutes = ["", "/about", "/contact", "/early-access", "/faq", "/privacy-policy", "/terms-of-service", "/telehealth-consent", "/subscription-cancellation", "/hipaa-policy", "/disclaimer"];
 
   return [
     ...staticRoutes.map((route) => ({
