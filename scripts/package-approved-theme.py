@@ -14,13 +14,15 @@ import zipfile
 root = Path(__file__).resolve().parents[1]
 args = argparse.ArgumentParser()
 args.add_argument('--base', type=Path, required=True)
-base = args.parse_args().base.resolve()
+args.add_argument('--refresh', action='store_true', help='Refresh this script\'s existing 2.15.0 package after a new build')
+options = args.parse_args()
+base = options.base.resolve()
 build = root / '.next'
 assert (build / 'BUILD_ID').is_file(), 'Run a successful next build first'
 assert (base / 'functions.php').is_file(), 'Existing theme runtime required'
 target = root / 'wordpress-theme/eves-sisters-2.15.0'
-assert not target.exists(), 'Refusing to overwrite an existing package'
-shutil.copytree(base, target)
+assert not target.exists() or options.refresh, 'Use --refresh to update this package'
+if not target.exists(): shutil.copytree(base, target)
 shutil.copytree(build / 'static', target / 'assets/next/static', dirs_exist_ok=True)
 shutil.copytree(root / 'public/images', target / 'assets/images', dirs_exist_ok=True)
 for source, destination in [('src/app/opengraph-image.png', 'opengraph-image.png'), ('src/app/icon.svg', 'site-icon.svg')]:
@@ -39,12 +41,12 @@ shutil.copy2(sitemap, target / 'static-pages/sitemap.xml')
 for route in ('gender-affirming-care', 'services', 'resources'):
     assert (target / 'static-pages' / (route + '.html')).is_file()
 
-runtime = (target / 'functions.php').read_text(encoding='utf-8')
+runtime = (base / 'functions.php').read_text(encoding='utf-8')
 runtime = runtime.replace('next-asset-v2140', 'next-asset-v2150')
 runtime = runtime.replace("$path === '/next-asset-v2150'", "$path === '/next-asset-v2140' || $path === '/next-asset-v2150'", 1)
 marker = "    $pages = array("
 assert runtime.count(marker) == 1
-runtime = runtime.replace(marker, marker + "\n        'gender-affirming-care' => 'gender-affirming-care.html',\n        'services' => 'services.html',\n        'resources' => 'resources.html',", 1)
+runtime = runtime.replace(marker, marker + "\n        'gender-affirming-care' => 'gender-affirming-care.html',\n        'early-access' => 'early-access.html',\n        'services' => 'services.html',\n        'resources' => 'resources.html',", 1)
 runtime += "\nrequire_once __DIR__ . '/early-access.php';\n"
 (target / 'functions.php').write_text(runtime, encoding='utf-8')
 shutil.copy2(root / 'scripts/pressable/early-access.php', target / 'early-access.php')
