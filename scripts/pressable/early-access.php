@@ -63,4 +63,5 @@ function eves_sisters_release_sitemap() {
     readfile($file);
     exit;
 }
-add_action('template_redirect', 'eves_sisters_release_sitemap', -1950);
+// Serve the release sitemap before the legacy MU plugin's init-priority-0 sitemap.
+add_action('init', 'eves_sisters_release_sitemap', -1);
