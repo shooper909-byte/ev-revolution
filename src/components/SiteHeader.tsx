@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/Container";
 import { Wordmark } from "@/components/Wordmark";
 import { getStartedHref as getStartedHrefFor } from "@/lib/pillars";
@@ -13,8 +13,12 @@ import { handoffNote } from "@/lib/telehealth";
    wide screens; below that they stay reachable from the footer and the logo
    (Home). */
 const primaryNav = [
+  { href: "/services", label: "Services" },
+  { href: "/gender-affirming-care", label: "Gender-Affirming Care" },
+  { href: "/packages/mrs-collection", label: "Packages" },
   { href: "/about", label: "About" },
   { href: "/about#philosophy", label: "Our Approach", wide: true },
+  { href: "/resources", label: "Resources" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
@@ -22,6 +26,17 @@ const primaryNav = [
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const isPlannedCare = pathname === "/gender-affirming-care";
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setOpen(false); menuButton.current?.focus(); }
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
 
   // Close the mobile menu whenever navigation lands on a new page.
   useEffect(() => {
@@ -39,10 +54,10 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 overflow-x-clip border-b border-onyx-700/80 bg-onyx/90 backdrop-blur-md">
-      <Container className="flex h-20 max-w-[1600px] items-center justify-between gap-4">
+      <Container className="flex min-h-20 max-w-[1600px] flex-wrap items-center justify-between gap-x-4 gap-y-3 py-4 min-[1536px]:flex-nowrap">
         <Wordmark />
 
-        <nav aria-label="Primary" className="hidden items-center gap-3 lg:flex xl:gap-4 min-[1600px]:gap-5">
+        <nav aria-label="Primary" className="hidden w-full items-center justify-center gap-3 lg:flex min-[1536px]:w-auto min-[1600px]:gap-5">
           <Link
             href="/"
             className={`${linkClass("/")} shrink-0`}
@@ -63,15 +78,16 @@ export function SiteHeader() {
           ))}
 
           <a
-            href={getStartedHref}
-            title={handoffNote}
+            href={isPlannedCare ? "#early-access" : getStartedHref}
+            title={isPlannedCare ? "Join for planned-care launch updates" : handoffNote}
             className="button-sheen brand-eyebrow whitespace-nowrap bg-plum px-4 py-3 text-[0.6875rem] xl:px-5 xl:text-xs tracking-[0.14em] text-ivory transition-colors hover:bg-plum-600"
           >
-            Start Consultation
+            {isPlannedCare ? "Early Access" : "Start Consultation"}
           </a>
         </nav>
 
         <button
+          ref={menuButton}
           type="button"
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
@@ -126,13 +142,13 @@ export function SiteHeader() {
           ))}
 
           <a
-            href={getStartedHref}
+            href={isPlannedCare ? "#early-access" : getStartedHref}
             onClick={() => setOpen(false)}
             className="brand-eyebrow mt-4 bg-plum px-6 py-4 text-center text-[0.625rem] text-ivory"
           >
-            Start Your Consultation
+            {isPlannedCare ? "Join Early Access" : "Start Your Consultation"}
           </a>
-          <p className="mt-3 text-center text-xs text-ivory-200/70">{handoffNote}</p>
+          <p className="mt-3 text-center text-xs text-ivory-200/70">{isPlannedCare ? "Planned care. Registration is for launch updates only." : handoffNote}</p>
         </Container>
       </div>
     </header>
