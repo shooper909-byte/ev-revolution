@@ -28,7 +28,7 @@ add_filter('rest_authentication_errors', function ($result) {
 });
 
 function es_lockdown_live_routes() {
-	return array('', '/about', '/contact', '/faq', '/privacy-policy', '/terms-of-service', '/telehealth-consent', '/subscription-cancellation', '/hipaa-policy', '/disclaimer');
+	return array('', '/packages/mrs-collection', '/about', '/contact', '/faq', '/privacy-policy', '/terms-of-service', '/telehealth-consent', '/subscription-cancellation', '/hipaa-policy', '/disclaimer');
 }
 
 /* Care now lives on the telehealth site. Keep in step with src/lib/telehealth.ts:
@@ -37,6 +37,8 @@ function es_lockdown_live_routes() {
 define('ES_TELEHEALTH_ORIGIN', 'https://eve-sisters.vercel.app');
 
 function es_lockdown_handoff_url($path) {
+	// The collection overview is an indexable brand page; enrollment stays external.
+	if ($path === "/packages/mrs-collection") { return ''; }
 	$legacy = array(
 		'/pillars/weight-loss' => '/care/weight-management',
 		'/pillars/hormones-menopause' => '/care/hormones-menopause',

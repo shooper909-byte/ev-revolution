@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container, Eyebrow } from "@/components/Container";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/disclaimer" },
   title: "Medical Disclaimer",
   description:
     "Eve’s Sisters publishes general wellness education. It is not medical advice, diagnosis or treatment.",

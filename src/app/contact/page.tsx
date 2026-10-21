@@ -4,6 +4,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { business, businessName, partners } from "@/lib/business";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact",
   description:
     "Questions, press enquiries and partnerships — reach the Eve’s Sisters team.",

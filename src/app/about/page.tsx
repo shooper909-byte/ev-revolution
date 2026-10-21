@@ -7,8 +7,9 @@ import s from "./about.module.css";
 import { telehealthUrl } from "@/lib/telehealth";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: {
-    absolute: "About Eve’s Sisters | Women’s Wellness at Every Stage of Life",
+    absolute: "About Eve’s Sisters | Wellness for Every Stage of Life",
   },
   description:
     "Meet Eve’s Sisters, a women’s wellness brand built around inclusion, clear information, and thoughtfully designed access to care.",
