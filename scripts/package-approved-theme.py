@@ -38,7 +38,7 @@ for source in (build / 'server/app').rglob('*.html'):
 sitemap = build / 'server/app/sitemap.xml.body'
 assert sitemap.is_file(), 'Built sitemap required'
 shutil.copy2(sitemap, target / 'static-pages/sitemap.xml')
-for route in ('gender-affirming-care', 'services', 'resources'):
+for route in ('gender-affirming-care', 'services', 'resources', 'packages-mrs-collection'):
     assert (target / 'static-pages' / (route + '.html')).is_file()
 
 runtime = (base / 'functions.php').read_text(encoding='utf-8')

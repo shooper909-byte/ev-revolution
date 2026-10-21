@@ -20,7 +20,7 @@ function isHandedOff(path: string) {
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname.replace(/\/+$/, "") || "/";
 
-  if (isHandedOff(path)) {
+  if (path !== "/packages/mrs-collection" && isHandedOff(path)) {
     // Legacy pillar URLs map to their care page first.
     const from = pillars.find((pillar) => path === `/pillars/${pillar.slug}`)?.carePath ?? path;
     // Temporary while every redirect lands on the telehealth homepage, so

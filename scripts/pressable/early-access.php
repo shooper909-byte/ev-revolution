@@ -65,3 +65,17 @@ function eves_sisters_release_sitemap() {
 }
 // Serve the release sitemap before the legacy MU plugin's init-priority-0 sitemap.
 add_action('init', 'eves_sisters_release_sitemap', -1);
+
+// Serve the collection overview before legacy MU-plugin handoff redirects.
+function eves_sisters_collection_overview() {
+    if (is_admin()) { return; }
+    $path = rtrim((string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+    if ($path !== '/packages/mrs-collection') { return; }
+    $file = get_template_directory() . '/static-pages/packages-mrs-collection.html';
+    if (!is_readable($file)) { return; }
+    status_header(200);
+    header('Content-Type: text/html; charset=UTF-8');
+    readfile($file);
+    exit;
+}
+add_action('init', 'eves_sisters_collection_overview', -1);
