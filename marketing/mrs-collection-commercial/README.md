@@ -1,7 +1,9 @@
 # The Mrs. Collection — 30-second commercial
 
 `out/mrs-collection-commercial.mp4`: 1080×1920 (9:16) vertical, 30 fps, 30 s,
-H.264 + AAC, for Instagram Reels, Stories, TikTok and YouTube Shorts.
+H.264 + AAC, voiceover over a music bed, mixed to −16 LUFS, for Instagram
+Reels, Stories, TikTok and YouTube Shorts.
+`out/mrs-collection-commercial-music-only.mp4` is the same cut without the voice.
 
 ## Storyboard
 
@@ -15,15 +17,24 @@ H.264 + AAC, for Instagram Reels, Stories, TikTok and YouTube Shorts.
 | 0:22–0:26 | Three stacked portraits | **Three signatures.** … *One sisterhood.* |
 | 0:26–0:30 | Eve's Sisters logo end card | Explore the Mrs. Collection · evevolutionwellness.com · @EVEVOLUTIONHEALTH · disclaimer |
 
-## Optional voiceover (≈60 words, fits under the music)
+## Voiceover
 
-> You make room for everyone. Now… make room for you.
-> Introducing the Mrs. Collection.
-> Mrs. Jones — private care, centered on you.
-> Mrs. Golden — care shaped around your whole story.
-> Mrs. Robinson — let them wonder.
-> Three signatures. One sisterhood.
-> Explore the Mrs. Collection at evevolutionwellness.com.
+Warm female voice (Kokoro TTS, voice `af_heart`, Apache-2.0, free for
+commercial use). Each line starts as its scene appears:
+
+| Time | Line |
+| --- | --- |
+| 0:00 | You make room for everyone. Now, make room for you. |
+| 0:04 | Introducing… the Mrs. Collection. |
+| 0:08 | Mrs. Jones. Private care, centered on you. |
+| 0:13 | Mrs. Golden. Care shaped around your whole story. |
+| 0:18 | Mrs. Robinson. Let them wonder. |
+| 0:22 | Three signatures. One sisterhood. |
+| 0:25 | Explore the Mrs. Collection, at evevolutionwellness.com ("Eve Evolution wellness dot com"). |
+
+The script is in `voiceover.py`, spelled for the ear ("Missus"). To record a
+human voice instead, read the same lines to these timings and replace
+`out/voiceover.wav`.
 
 ## Editing and re-rendering
 
@@ -33,11 +44,18 @@ H.264 + AAC, for Instagram Reels, Stories, TikTok and YouTube Shorts.
   preinstalled Playwright Chromium); `node render.cjs --stills 3,10` saves
   stills for checking.
 - `python3 music.py` writes `out/music.wav`, an original synthesized pad, so
-  there is nothing to license. Mux it with:
+  there is nothing to license.
+- Voiceover: in a virtualenv, `pip install kokoro-onnx soundfile`, download
+  `kokoro-v1.0.onnx` and `voices-v1.0.bin` from the
+  [kokoro-onnx releases](https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.0),
+  then `python voiceover.py <model folder>` writes `out/voiceover.wav`
+  (`VO_VOICE=bf_emma` etc. picks another voice).
+- Final mix (music ducks under the voice):
 
   ```bash
-  ffmpeg -y -i out/video-silent.mp4 -i out/music.wav -c:v copy -c:a aac -b:a 192k \
-    -af "lowpass=f=5000,loudnorm=I=-20:TP=-2" -shortest -movflags +faststart \
+  ffmpeg -y -i out/video-silent.mp4 -i out/music.wav -i out/voiceover.wav -filter_complex \
+    "[1:a]lowpass=f=5000,volume=0.55[m];[2:a]aresample=44100,aformat=channel_layouts=stereo,highpass=f=80,acompressor=threshold=-18dB:ratio=3:attack=5:release=80,asplit=2[v][key];[m][key]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=500[duck];[duck][v]amix=inputs=2:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=9[a]" \
+    -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart \
     out/mrs-collection-commercial.mp4
   ```
 
