@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Mrs. Collection — Commercial</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root {
+    --onyx: #080b0b;
+    --ivory: #f7efe6;
+    --plum: #642a52;
+    --plum-900: #2a0f22;
+    --champagne: #dab16a;
+    --champagne-200: #f0d9a8;
+    --champagne-700: #b3884a;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Montserrat", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; background: #000; overflow: hidden; }
+  #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--onyx); color: var(--ivory); }
+  .scene { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+  .bg { position: absolute; inset: 0; background-size: cover; background-position: center; will-change: transform; }
+  .eyebrow { font-family: var(--sans); font-weight: 500; font-size: 26px; letter-spacing: .42em; text-transform: uppercase; color: var(--champagne); }
+  .gold { background: linear-gradient(180deg, var(--champagne-200) 0%, var(--champagne) 45%, var(--champagne-700) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .line { position: absolute; will-change: transform, opacity; }
+  .rule { height: 2px; background: linear-gradient(90deg, transparent, var(--champagne), transparent); }
+
+  /* 1 · Opening */
+  #s1 .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,11,11,.55) 0%, rgba(8,11,11,0) 28%, rgba(8,11,11,0) 55%, rgba(8,11,11,.9) 82%, #080b0b 100%); }
+  #s1 .copy { position: absolute; left: 0; right: 0; bottom: 230px; text-align: center; }
+  #s1 .l1, #s1 .l2 { left: 0; right: 0; font-family: var(--serif); font-size: 76px; line-height: 1.1; }
+  #s1 .l1 { bottom: 120px; font-style: italic; color: var(--ivory); }
+  #s1 .l2 { bottom: 0; }
+
+  /* 2 · Title */
+  #s2 { background: radial-gradient(ellipse 70% 45% at 50% 48%, #3a1430 0%, #1a0915 55%, #080b0b 100%); }
+  #s2 .glow { position: absolute; left: 50%; top: 50%; width: 1400px; height: 1400px; margin: -700px 0 0 -700px; border-radius: 50%; background: radial-gradient(circle, rgba(218,177,106,.16) 0%, rgba(218,177,106,0) 60%); }
+  #s2 .center { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
+  #s2 .eyebrow { left: 0; right: 0; top: 700px; text-align: center; }
+  #s2 .title { left: 0; right: 0; top: 770px; text-align: center; font-family: var(--serif); font-weight: 500; font-size: 150px; line-height: 1; }
+  #s2 .title span { display: block; }
+  #s2 .rule { left: 240px; right: 240px; top: 1110px; }
+  #s2 .tag { left: 0; right: 0; top: 1150px; text-align: center; font-family: var(--serif); font-style: italic; font-size: 60px; color: var(--ivory); }
+  .spark { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: var(--champagne-200); box-shadow: 0 0 12px 3px rgba(240,217,168,.6); }
+
+  /* 3–5 · Signatures */
+  .sig { background: linear-gradient(180deg, #120610 0%, var(--plum-900) 70%, #1b0817 100%); }
+  .sig .photo { position: absolute; left: 0; right: 0; top: 0; height: 1440px; overflow: hidden; }
+  .sig .photo .bg { inset: -2px; background-position: center 18%; }
+  .sig .photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18,6,16,.35) 0%, rgba(18,6,16,0) 14%, rgba(18,6,16,0) 66%, rgba(42,15,34,.85) 88%, var(--plum-900) 100%); }
+  .sig .frame { position: absolute; left: 48px; right: 48px; top: 48px; bottom: 48px; border: 2px solid rgba(218,177,106,.55); border-radius: 6px; }
+  .sig .eyebrow { left: 0; right: 0; top: 1400px; text-align: center; font-size: 24px; }
+  .sig .name { left: 0; right: 0; top: 1445px; text-align: center; font-family: var(--serif); font-weight: 500; font-size: 150px; line-height: 1; color: var(--ivory); }
+  .sig .rule { left: 330px; right: 330px; top: 1625px; }
+  .sig .tag { left: 80px; right: 80px; top: 1655px; text-align: center; font-family: var(--sans); font-size: 40px; line-height: 1.35; color: rgba(247,239,230,.92); }
+
+  /* 6 · Triptych */
+  #s6 { background: var(--onyx); }
+  #s6 .strip { position: absolute; left: 0; right: 0; height: 460px; overflow: hidden; }
+  #s6 .strip .bg { inset: -10px 0; }
+  #s6 .strip::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,11,11,.6) 0%, rgba(8,11,11,0) 40%); }
+  #s6 .strip .label { position: absolute; left: 70px; bottom: 36px; z-index: 2; font-family: var(--serif); font-size: 64px; color: var(--ivory); }
+  #s6 .strip + .strip { border-top: 2px solid rgba(218,177,106,.5); }
+  #s6 .head { left: 0; right: 0; text-align: center; font-family: var(--serif); font-size: 74px; line-height: 1.1; }
+  #s6 .head.top { top: 95px; }
+  #s6 .head.bottom { top: 1700px; font-style: italic; color: var(--ivory); font-size: 60px; }
+
+  /* 7 · End card */
+  #s7 { background: #000; }
+  #s7 .logo { left: 90px; right: 90px; top: 360px; }
+  #s7 .logo img { width: 100%; display: block; }
+  #s7 .eyebrow { left: 0; right: 0; top: 1150px; text-align: center; }
+  #s7 .cta { left: 0; right: 0; top: 1205px; text-align: center; font-family: var(--serif); font-weight: 500; font-size: 92px; line-height: 1.05; color: var(--ivory); }
+  #s7 .url { left: 0; right: 0; top: 1440px; text-align: center; font-family: var(--sans); font-weight: 500; font-size: 40px; letter-spacing: .08em; color: var(--champagne); }
+  #s7 .handle { left: 0; right: 0; top: 1505px; text-align: center; font-family: var(--sans); font-size: 30px; letter-spacing: .12em; color: rgba(247,239,230,.75); }
+  #s7 .fine { left: 120px; right: 120px; top: 1730px; text-align: center; font-family: var(--sans); font-size: 21px; line-height: 1.5; color: rgba(247,239,230,.5); }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <section class="scene" id="s1">
+    <div class="bg" style="background-image:url(assets/sisterhood-rooftop.jpg)"></div>
+    <div class="shade"></div>
+    <div class="copy">
+      <div class="line l1">You make room for everyone.</div>
+      <div class="line l2 gold">Now make room for you.</div>
+    </div>
+  </section>
+
+  <section class="scene" id="s2">
+    <div class="glow"></div>
+    <div class="sparks"></div>
+    <div class="line eyebrow">Introducing</div>
+    <div class="line title gold"><span>The Mrs.</span><span>Collection</span></div>
+    <div class="line rule"></div>
+    <div class="line tag">Make room for a little more you.</div>
+  </section>
+
+  <section class="scene sig" id="s3">
+    <div class="photo"><div class="bg" style="background-image:url(assets/mrs-jones.jpg)"></div></div>
+    <div class="frame"></div>
+    <div class="line eyebrow">The Mrs. Collection · I</div>
+    <div class="line name">Mrs. Jones</div>
+    <div class="line rule"></div>
+    <div class="line tag">Private care, centered on you.</div>
+  </section>
+
+  <section class="scene sig" id="s4">
+    <div class="photo"><div class="bg" style="background-image:url(assets/mrs-golden.jpg)"></div></div>
+    <div class="frame"></div>
+    <div class="line eyebrow">The Mrs. Collection · II</div>
+    <div class="line name">Mrs. Golden</div>
+    <div class="line rule"></div>
+    <div class="line tag">Care shaped around your whole story.</div>
+  </section>
+
+  <section class="scene sig" id="s5">
+    <div class="photo"><div class="bg" style="background-image:url(assets/mrs-robinson.jpg)"></div></div>
+    <div class="frame"></div>
+    <div class="line eyebrow">The Mrs. Collection · III</div>
+    <div class="line name">Mrs. Robinson</div>
+    <div class="line rule"></div>
+    <div class="line tag">Let them wonder.</div>
+  </section>
+
+  <section class="scene" id="s6">
+    <div class="line head top gold">Three signatures.</div>
+    <div class="strip" id="st1" style="top:240px"><div class="bg" style="background-image:url(assets/mrs-jones.jpg);background-position:center 9%"></div><div class="label">Mrs. Jones</div></div>
+    <div class="strip" id="st2" style="top:700px"><div class="bg" style="background-image:url(assets/mrs-golden.jpg);background-position:center 5%"></div><div class="label" style="top:36px;bottom:auto">Mrs. Golden</div></div>
+    <div class="strip" id="st3" style="top:1160px"><div class="bg" style="background-image:url(assets/mrs-robinson.jpg);background-position:center 10%"></div><div class="label">Mrs. Robinson</div></div>
+    <div class="line head bottom">One sisterhood.</div>
+  </section>
+
+  <section class="scene" id="s7">
+    <div class="line logo"><img src="assets/eves-sisters-logo.jpg" alt="Eve's Sisters — The evolution of a woman's body."></div>
+    <div class="line eyebrow">Your signature care experience</div>
+    <div class="line cta">Explore the<br>Mrs. Collection</div>
+    <div class="line url">evevolutionwellness.com</div>
+    <div class="line handle">@EVEVOLUTIONHEALTH</div>
+    <div class="line fine">Private telehealth care with licensed clinicians. Treatment requires a consultation; not everyone qualifies.</div>
+  </section>
+
+</div>
+
+<script>
+  const DURATION = 30;
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  const out = x => 1 - Math.pow(1 - clamp(x), 3);
+  const prog = (t, a, b) => clamp((t - a) / (b - a));
+  // fade-and-rise for a text line: enters at `a` over `d` seconds
+  function rise(el, t, a, d = .9, dist = 40, exitAt = null) {
+    let o = out(prog(t, a, a + d));
+    let y = (1 - o) * dist;
+    if (exitAt !== null) { const e = ease(prog(t, exitAt, exitAt + .6)); o *= 1 - e; y -= e * 20; }
+    el.style.opacity = o;
+    el.style.transform = `translateY(${y}px)`;
+  }
+  // scene envelope with crossfades of `x` seconds at either end
+  function env(t, a, b, x = .7) {
+    if (t < a - x / 2 || t > b + x / 2) return 0;
+    return Math.min(ease(prog(t, a - x / 2, a + x / 2)), 1 - ease(prog(t, b - x / 2, b + x / 2)));
+  }
+  const $ = s => document.querySelector(s);
+
+  // sparks in the title scene, fixed seed so every render is identical
+  const sparks = [];
+  (() => {
+    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const host = $('#s2 .sparks');
+    for (let i = 0; i < 38; i++) {
+      const s = document.createElement('div'); s.className = 'spark'; host.appendChild(s);
+      sparks.push({ el: s, x: rnd() * 1080, y: 300 + rnd() * 1400, v: 30 + rnd() * 70, p: rnd() * 6.28, r: .5 + rnd() });
+    }
+  })();
+
+  const S = {
+    s1: [0, 4.2], s2: [4.2, 8], s3: [8, 12.8], s4: [12.8, 17.6], s5: [17.6, 22.4], s6: [22.4, 26.2], s7: [26.2, 30.6],
+  };
+
+  function render(t) {
+    for (const [id, [a, b]] of Object.entries(S)) $('#' + id).style.opacity = id === 's1' ? Math.min(1, 1 - ease(prog(t, b - .35, b + .35))) * clamp(t / .5) : env(t, a, b);
+
+    // 1 · Opening: slow push-in on the sisterhood
+    $('#s1 .bg').style.transform = `scale(${1.04 + .1 * ease(prog(t, 0, 4.6))}) translateY(${-20 * prog(t, 0, 4.6)}px)`;
+    rise($('#s1 .l1'), t, .5);
+    rise($('#s1 .l2'), t, 1.9);
+
+    // 2 · Title
+    const t2 = t - S.s2[0];
+    $('#s2 .glow').style.transform = `scale(${.85 + .25 * ease(prog(t2, 0, 3.8))})`;
+    rise($('#s2 .eyebrow'), t2, .2, .8, 20);
+    const ti = $('#s2 .title'); const tp = out(prog(t2, .55, 1.9));
+    ti.style.opacity = tp; ti.style.transform = `scale(${1.08 - .08 * tp})`; ti.style.letterSpacing = `${(1 - tp) * .08}em`;
+    const r = $('#s2 .rule'); r.style.opacity = 1; r.style.transform = `scaleX(${ease(prog(t2, 1.5, 2.3))})`;
+    rise($('#s2 .tag'), t2, 2.0);
+    for (const s of sparks) {
+      const y = s.y - s.v * t2, tw = .35 + .65 * Math.abs(Math.sin(s.p + t2 * 2 * s.r));
+      s.el.style.transform = `translate(${s.x + 14 * Math.sin(s.p + t2)}px, ${y}px) scale(${s.r})`;
+      s.el.style.opacity = tw * clamp(t2 / .8);
+    }
+
+    // 3–5 · Signatures: Ken Burns + staggered copy
+    [['s3', 1, 0], ['s4', -1, 1], ['s5', 1, 2]].forEach(([id, dir, i]) => {
+      const [a, b] = S[id], lt = t - a, p = prog(t, a - .4, b + .4);
+      $(`#${id} .bg`).style.transform = `scale(${1.03 + .09 * p}) translateX(${dir * (14 - 28 * p)}px)`;
+      $(`#${id} .frame`).style.opacity = .4 + .6 * out(prog(lt, .1, 1.2));
+      rise($(`#${id} .eyebrow`), lt, .35, .8, 16);
+      rise($(`#${id} .name`), lt, .55, 1.0, 50);
+      const rr = $(`#${id} .rule`); rr.style.opacity = 1; rr.style.transform = `scaleX(${ease(prog(lt, 1.0, 1.8))})`;
+      rise($(`#${id} .tag`), lt, 1.25);
+    });
+
+    // 6 · Triptych
+    const t6 = t - S.s6[0];
+    rise($('#s6 .head.top'), t6, .2, .8, 24);
+    ['#st1', '#st2', '#st3'].forEach((s, i) => {
+      const el = $(s), p = out(prog(t6, .25 + i * .3, 1.15 + i * .3));
+      el.style.opacity = p;
+      el.style.transform = `translateX(${(i % 2 ? 1 : -1) * (1 - p) * 120}px)`;
+      el.querySelector('.bg').style.transform = `scale(${1.06 - .04 * prog(t6, 0, 3.8)}) translateY(${(i - 1) * 6 * prog(t6, 0, 3.8)}px)`;
+    });
+    rise($('#s6 .head.bottom'), t6, 1.5);
+
+    // 7 · End card
+    const t7 = t - S.s7[0];
+    const lg = $('#s7 .logo'), lp = out(prog(t7, .2, 1.6));
+    lg.style.opacity = lp; lg.style.transform = `scale(${1.05 - .05 * lp})`;
+    rise($('#s7 .eyebrow'), t7, 1.0, .8, 16);
+    rise($('#s7 .cta'), t7, 1.2);
+    rise($('#s7 .url'), t7, 1.7, .8, 20);
+    rise($('#s7 .handle'), t7, 1.9, .8, 20);
+    rise($('#s7 .fine'), t7, 2.1, .8, 0);
+    // fade to black in the last half second
+    $('#stage').style.opacity = 1 - ease(prog(t, DURATION - .5, DURATION));
+  }
+
+  window.DURATION = DURATION;
+  window.render = render;
+  window.ready = Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode())]);
+  // live preview: play on load unless the renderer is driving frames
+  if (!location.search.includes('render')) {
+    const start = performance.now();
+    const tick = () => { render(((performance.now() - start) / 1000) % (DURATION + 1)); requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  } else { render(0); }
+</script>
+</body>
+</html>
