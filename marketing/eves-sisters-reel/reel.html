@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Eve's Sisters — "Let Them Wonder" reel</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root {
+    --ivory: #f7efe6; --champagne: #dab16a; --champagne-200: #f0d9a8; --champagne-700: #b3884a; --orchid: #c79be0;
+    --serif: "Cormorant Garamond", Georgia, serif; --sans: "Montserrat", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+  #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0b0510; color: var(--ivory); }
+  .shot { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+  .img { position: absolute; inset: 0; background-size: cover; background-position: center; will-change: transform; }
+  /* small source photos: soft blurred fill behind a sharp centred copy */
+  .fill { position: absolute; inset: -60px; background-size: cover; background-position: center; filter: blur(40px) brightness(.45) saturate(1.2); }
+  .inset { position: absolute; left: 0; right: 0; background-size: cover; background-position: center; will-change: transform; }
+  .grade { position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 85% 70% at 50% 42%, rgba(0,0,0,0) 45%, rgba(8,2,12,.75) 100%),
+                linear-gradient(180deg, rgba(40,10,50,.25), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 55%, rgba(12,3,16,.85) 100%); }
+  #leak { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; }
+  #flash { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 45%, #fff2d6, #dab16a 60%, #7a3d8a); opacity: 0; mix-blend-mode: screen; }
+  #grain { position: absolute; inset: 0; pointer-events: none; opacity: .09; mix-blend-mode: overlay; }
+
+  /* captions live inside the Reels safe zone: below 270px, above 1250px */
+  .cap { position: absolute; left: 70px; right: 70px; top: 1010px; text-align: center; font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: 84px; line-height: 1.05; color: var(--ivory); text-shadow: 0 4px 30px rgba(0,0,0,.75), 0 1px 3px rgba(0,0,0,.6); }
+  .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity, filter; }
+  .cap.gold .w { background: linear-gradient(180deg, var(--champagne-200), var(--champagne) 55%, var(--champagne-700)); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 4px 24px rgba(0,0,0,.7)); }
+  .cap.big { font-size: 118px; top: 960px; }
+
+  /* brand moment */
+  #brand { background: radial-gradient(ellipse 70% 40% at 50% 46%, #3b1240 0%, #160818 60%, #07030a 100%); }
+  #brand .e { mix-blend-mode: screen; position: absolute; left: 50%; top: 520px; width: 760px; margin-left: -380px; }
+  #brand .e img { width: 100%; display: block; }
+  #brand .shine { position: absolute; left: 0; right: 0; top: 480px; height: 700px; background: linear-gradient(105deg, transparent 40%, rgba(255,240,210,.55) 50%, transparent 60%); mix-blend-mode: overlay; }
+
+  /* end card */
+  #end { background: radial-gradient(ellipse 80% 45% at 50% 40%, #3a1245 0%, #170919 55%, #07030a 100%); }
+  #end .bg { position: absolute; inset: 0; background: url(assets/your-turn-face.jpg) center 15% / cover; opacity: .28; filter: blur(2px); }
+  #end .logo { mix-blend-mode: screen; position: absolute; left: 50%; top: 300px; width: 640px; margin-left: -320px; }
+  #end .logo img { width: 100%; display: block; }
+  #end .kick { position: absolute; left: 0; right: 0; top: 820px; text-align: center; font-family: var(--serif); font-style: italic; font-size: 84px; color: var(--ivory); }
+  #end .btn { position: absolute; left: 50%; top: 960px; transform: translateX(-50%); padding: 30px 60px; border-radius: 999px; white-space: nowrap;
+    background: linear-gradient(180deg, var(--champagne-200), var(--champagne) 55%, var(--champagne-700)); color: #1a0a1c;
+    font-family: var(--sans); font-weight: 500; font-size: 34px; letter-spacing: .24em; text-transform: uppercase; box-shadow: 0 10px 50px rgba(218,177,106,.35); }
+  #end .url { position: absolute; left: 0; right: 0; top: 1105px; text-align: center; font-family: var(--sans); font-weight: 500; font-size: 36px; letter-spacing: .03em; color: var(--champagne-200); }
+  #end .bio { position: absolute; left: 0; right: 0; top: 1165px; text-align: center; font-family: var(--sans); font-size: 26px; letter-spacing: .3em; text-transform: uppercase; color: var(--orchid); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="shot" id="s1"><div class="img" style="background-image:url(assets/your-turn-face.jpg);background-position:50% 22%"></div></div>
+  <div class="shot" id="s2"><div class="img" style="background-image:url(assets/silk-shoulder.jpg);background-position:50% 30%"></div></div>
+  <div class="shot" id="s3a"><div class="img" style="background-image:url(assets/touch.jpg);background-position:50% 30%"></div></div>
+  <div class="shot" id="s3b"><div class="img" style="background-image:url(assets/gaze.jpg);background-position:50% 25%"></div></div>
+  <div class="shot" id="s4"><div class="fill" style="background-image:url(assets/together.jpg)"></div><div class="inset" style="background-image:url(assets/together.jpg);top:250px;height:1020px"></div></div>
+  <div class="shot" id="s5"><div class="fill" style="background-image:url(assets/trio.jpg)"></div><div class="img" style="background-image:url(assets/trio.jpg);background-size:auto 1250px;background-repeat:no-repeat;background-position:0 140px"></div></div>
+  <div class="shot" id="brand"><div class="e"><img src="assets/eves-sisters-logo.jpg" alt="Eve's Sisters"></div><div class="shine"></div></div>
+  <div class="shot" id="s7a"><div class="fill" style="background-image:url(assets/afterglow.jpg)"></div><div class="inset" style="background-image:url(assets/afterglow.jpg);top:180px;height:1100px"></div></div>
+  <div class="shot" id="s7b"><div class="fill" style="background-image:url(assets/crown.jpg)"></div><div class="inset" style="background-image:url(assets/crown.jpg);top:180px;height:1100px"></div></div>
+  <div class="shot" id="s7c"><div class="fill" style="background-image:url(assets/radiance-rx.jpg)"></div><div class="inset" style="background-image:url(assets/radiance-rx.jpg);top:180px;height:1100px"></div></div>
+  <div class="shot" id="s8"><div class="img" style="background-image:url(assets/chapter.jpg);background-position:50% 20%"></div></div>
+  <div class="shot" id="s9"><div class="img" style="background-image:url(assets/your-turn-face.jpg);background-position:50% 18%"></div></div>
+  <div class="shot" id="end">
+    <div class="bg"></div>
+    <div class="logo"><img src="assets/eves-sisters-logo.jpg" alt="Eve's Sisters — The evolution of a woman's body."></div>
+    <div class="kick">Your turn.</div>
+    <div class="btn">Join early access</div>
+    <div class="url">evevolutionhealth.com/early-access</div>
+    <div class="bio">Link in bio</div>
+  </div>
+
+  <div class="grade"></div>
+  <canvas id="leak" width="270" height="480"></canvas>
+  <div id="flash"></div>
+  <canvas id="grain" width="540" height="960"></canvas>
+  <div id="caps"></div>
+</div>
+
+<script>
+  const DURATION = 18, BEAT = 0.75; // 80 BPM, cuts land on beats
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const out = x => 1 - Math.pow(1 - clamp(x), 3);
+  const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  const prog = (t, a, b) => clamp((t - a) / (b - a));
+  const $ = s => document.querySelector(s);
+
+  // [id, start, end, zoom from, zoom to, drift x px, drift y px]
+  const SHOTS = [
+    ['s1', 0, 1.5, 1.55, 1.25, -20, 30],
+    ['s2', 1.5, 3.0, 1.18, 1.06, 25, 0],
+    ['s3a', 3.0, 3.75, 1.2, 1.12, 0, -15],
+    ['s3b', 3.75, 4.5, 1.2, 1.1, -15, 0],
+    ['s4', 4.5, 6.75, 1.12, 1.0, 0, 0],
+    ['s5', 6.75, 8.25, 1.0, 1.0, 0, 0],
+    ['brand', 8.25, 9.75, 1.0, 1.0, 0, 0],
+    ['s7a', 9.75, 10.5, 1.1, 1.03, 0, 0],
+    ['s7b', 10.5, 11.25, 1.1, 1.03, 0, 0],
+    ['s7c', 11.25, 12.0, 1.1, 1.03, 0, 0],
+    ['s8', 12.0, 13.5, 1.08, 1.2, 0, -20],
+    ['s9', 13.5, 15.0, 1.02, 1.12, 0, 10],
+    ['end', 15.0, 18.0, 1.0, 1.0, 0, 0],
+  ];
+  // captions mirror the voiceover so the ad works with sound off
+  const CAPS = [
+    [0.15, 1.5, "She's been glowing lately."],
+    [1.65, 3.0, "Everyone's asking why."],
+    [3.4, 4.5, "She's not telling.", 'gold'],
+    [4.7, 6.75, 'Some things are better shared…'],
+    [6.9, 8.25, '…between sisters.', 'gold'],
+    [9.6, 12.0, 'Private care, for every stage of you.'],
+    [12.6, 13.5, 'Your turn is coming.'],
+    [13.9, 15.0, 'Let them wonder.', 'gold big'],
+  ];
+  const capEls = CAPS.map(([a, b, text, cls]) => {
+    const d = document.createElement('div'); d.className = 'cap ' + (cls || '');
+    d.innerHTML = text.split(' ').map(w => `<span class="w">${w}</span>`).join(' ');
+    $('#caps').appendChild(d); return d;
+  });
+
+  // seeded noise so every render is identical
+  let seed = 1; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const gctx = $('#grain').getContext('2d'), gimg = gctx.createImageData(540, 960);
+  const lctx = $('#leak').getContext('2d');
+
+  function render(t) {
+    for (const [id, a, b, z0, z1, dx, dy] of SHOTS) {
+      const el = $('#' + id), on = t >= a && t < b;
+      el.style.opacity = on ? 1 : 0;
+      if (!on) continue;
+      const p = prog(t, a, b), punch = 1 + .06 * (1 - out(prog(t, a, a + .35)));
+      const z = (z0 + (z1 - z0) * ease(p)) * punch;
+      el.querySelectorAll('.img, .inset').forEach(i => { i.style.transform = `translate(${dx * p}px, ${dy * p}px) scale(${z})`; });
+    }
+    // trio pans across all three women
+    $('#s5 .img').style.backgroundPosition = `${-200 - 560 * ease(prog(t, 6.75, 8.25))}px 140px`;
+
+    // brand: logo blooms in, a shine sweeps across
+    const bt = t - 8.25, be = $('#brand .e');
+    be.style.opacity = out(prog(bt, 0, .6)); be.style.transform = `scale(${1.15 - .15 * out(prog(bt, 0, 1.2))})`; be.style.filter = `blur(${12 * (1 - out(prog(bt, 0, .6)))}px)`;
+    $('#brand .shine').style.transform = `translateX(${-1100 + 2200 * ease(prog(bt, .4, 1.4))}px)`;
+
+    // end card builds on the beat
+    const et = t - 15;
+    const step = (sel, at, dy = 30) => { const e = $(sel), o = out(prog(et, at, at + .5)); e.style.opacity = o; e.style.marginTop = `${(1 - o) * dy}px`; };
+    step('#end .logo', 0, 0); $('#end .logo').style.transform = `scale(${1.08 - .08 * out(prog(et, 0, 1))})`;
+    step('#end .kick', .3); step('#end .btn', .75); step('#end .url', 1.1, 15); step('#end .bio', 1.3, 15);
+    const pulse = et > 1.5 ? 1 + .03 * Math.sin((et - 1.5) * Math.PI * 2 / BEAT) ** 2 : 1;
+    $('#end .btn').style.transform = `translateX(-50%) scale(${pulse})`;
+
+    // captions: words rise in one by one, whole line fades out
+    CAPS.forEach(([a, b], i) => {
+      const words = capEls[i].querySelectorAll('.w'), fade = 1 - out(prog(t, b - .2, b));
+      words.forEach((w, j) => {
+        const o = out(prog(t, a + j * .11, a + j * .11 + .35));
+        w.style.opacity = o * fade; w.style.transform = `translateY(${(1 - o) * 26}px)`; w.style.filter = `blur(${(1 - o) * 8}px)`;
+      });
+    });
+
+    // gold flash on each hard cut
+    let f = 0;
+    for (const [, a] of SHOTS) if (a > 0 && t >= a) f = Math.max(f, .45 * (1 - out(prog(t, a, a + .18))));
+    $('#flash').style.opacity = f;
+
+    // drifting light leak
+    lctx.clearRect(0, 0, 270, 480);
+    const lx = 135 + 120 * Math.sin(t * .5), ly = 160 + 90 * Math.cos(t * .37);
+    const g = lctx.createRadialGradient(lx, ly, 0, lx, ly, 220);
+    g.addColorStop(0, 'rgba(255,190,120,.28)'); g.addColorStop(.5, 'rgba(180,80,200,.10)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    lctx.fillStyle = g; lctx.fillRect(0, 0, 270, 480);
+
+    // film grain
+    seed = 1 + Math.floor(t * 30) * 7919;
+    const d = gimg.data;
+    for (let i = 0; i < d.length; i += 4) { const v = rnd() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+    gctx.putImageData(gimg, 0, 0);
+
+    $('#stage').style.opacity = 1 - ease(prog(t, DURATION - .4, DURATION));
+  }
+
+  window.DURATION = DURATION;
+  window.render = render;
+  window.ready = Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode())]);
+  if (!location.search.includes('render')) {
+    const start = performance.now();
+    const tick = () => { render(((performance.now() - start) / 1000) % DURATION); requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  } else { render(0); }
+</script>
+</body>
+</html>
