@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Eve's Sisters — Early Access post</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root {
+    --ivory: #f7efe6; --champagne: #dab16a; --champagne-200: #f0d9a8; --champagne-700: #b3884a;
+    --orchid: #c79be0;
+    --serif: "Cormorant Garamond", Georgia, serif; --sans: "Montserrat", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d0510; color: var(--ivory); }
+  body[data-only] .card { display: none; }
+  body[data-only=feed] #feed, body[data-only=story] #story { display: block; }
+  .card { position: relative; width: 1080px; overflow: hidden; background: #12061a; }
+  .photo { position: absolute; left: 0; top: 0; width: 1080px; height: 1350px; background: url(assets/your-turn.jpg) center top / cover; }
+  .gold { background: linear-gradient(180deg, var(--champagne-200), var(--champagne) 50%, var(--champagne-700)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .rule { height: 2px; background: linear-gradient(90deg, transparent, var(--champagne), transparent); }
+  .url { font-family: var(--sans); font-weight: 500; letter-spacing: .04em; color: var(--champagne); }
+
+  /* Feed post, 4:5 — keeps the artwork, adds the call to action in the dark lower left */
+  #feed { height: 1350px; }
+  #feed .fade { position: absolute; inset: 0; background:
+      linear-gradient(180deg, rgba(18,6,26,0) 62%, rgba(18,6,26,.5) 80%, rgba(18,6,26,.85) 100%); }
+  #feed .copy { position: absolute; left: 70px; bottom: 74px; width: 560px; }
+  #feed .lead { font-family: var(--serif); font-style: italic; font-size: 56px; line-height: 1.08; }
+  #feed .sub { margin-top: 18px; font-family: var(--sans); font-size: 25px; line-height: 1.5; color: rgba(247,239,230,.88); }
+  #feed .btn { display: inline-block; margin-top: 30px; padding: 18px 34px; border: 2px solid var(--champagne); border-radius: 999px;
+    font-family: var(--sans); font-weight: 500; font-size: 22px; letter-spacing: .26em; text-transform: uppercase; color: var(--champagne-200); background: rgba(18,6,26,.55); }
+  #feed .url { margin-top: 22px; font-size: 24px; }
+
+  /* Story, 9:16 — artwork on top, call to action and QR below */
+  #story { height: 1920px; background: radial-gradient(ellipse 90% 40% at 50% 78%, #3a1245 0%, #1a0820 55%, #0d0510 100%); }
+  #story .photo { height: 1350px; }
+  #story .fade { position: absolute; left: 0; right: 0; top: 1050px; height: 300px; background: linear-gradient(180deg, rgba(26,8,32,0), #1d0924); }
+  #story .copy { position: absolute; left: 0; right: 0; top: 1280px; text-align: center; }
+  #story .lead { font-family: var(--serif); font-style: italic; font-size: 68px; line-height: 1.05; }
+  #story .sub { margin: 18px auto 0; width: 820px; font-family: var(--sans); font-size: 28px; line-height: 1.5; color: rgba(247,239,230,.88); }
+  #story .rule { width: 420px; margin: 34px auto 0; }
+  #story .join { display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 36px; }
+  #story .qr { background: #fff; padding: 14px; border-radius: 10px; box-shadow: 0 0 0 2px var(--champagne), 0 10px 40px rgba(0,0,0,.5); }
+  #story .qr img { display: block; width: 190px; height: 190px; image-rendering: pixelated; }
+  #story .how { text-align: left; }
+  #story .how .k { font-family: var(--sans); font-weight: 500; font-size: 22px; letter-spacing: .3em; text-transform: uppercase; color: var(--orchid); }
+  #story .how .v { margin-top: 10px; font-family: var(--serif); font-size: 44px; line-height: 1.1; }
+  #story .url { margin-top: 14px; font-size: 25px; }
+</style>
+</head>
+<body>
+
+<div class="card" id="feed">
+  <div class="photo"></div>
+  <div class="fade"></div>
+  <div class="copy">
+    <div class="lead gold">Be first through the door.</div>
+    <div class="sub">Join the waitlist for early access before Eve&rsquo;s Sisters opens to everyone.</div>
+    <div class="btn">Join the waitlist</div>
+    <div class="url">evevolutionhealth.com/early-access</div>
+  </div>
+</div>
+
+<div class="card" id="story">
+  <div class="photo"></div>
+  <div class="fade"></div>
+  <div class="copy">
+    <div class="lead gold">Be first through the door.</div>
+    <div class="sub">Join the waitlist for early access before Eve&rsquo;s Sisters opens to everyone.</div>
+    <div class="rule"></div>
+    <div class="join">
+      <div class="qr"><img src="assets/waitlist-qr.png" alt="QR code for the early access waitlist"></div>
+      <div class="how">
+        <div class="k">Scan to join</div>
+        <div class="v">or tap the link</div>
+        <div class="url">evevolutionhealth.com<br>/early-access</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>const o = new URLSearchParams(location.search).get('only'); if (o) document.body.dataset.only = o;</script>
+</body>
+</html>
