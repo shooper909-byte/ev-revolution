@@ -8,24 +8,20 @@
  */
 
 /**
- * evevolutionwellness.com is not connected to the telehealth app yet, so
- * links go to the app's Vercel address until it is. Once
- * https://evevolutionwellness.com loads with a valid certificate, set
- * `connected` to true.
+ * The custom care domain is live with HTTPS and supports direct page visits.
+ * Keep every consultation and treatment handoff on the patient-facing domain.
  */
-const connected = false;
+const connected = true;
 
 export const telehealth = {
   connected,
   origin: connected ? "https://evevolutionwellness.com" : "https://eve-sisters.vercel.app",
   domain: "evevolutionwellness.com",
   /**
-   * The telehealth site is a single-page app. Until its host rewrites every
-   * path to the app, a direct visit to anything but "/" answers 404, so deep
-   * links fall back to the homepage. Flip this once
-   * https://evevolutionwellness.com/start loads directly in a fresh tab.
+   * Direct visits to /start and the mapped care pages are supported, so
+   * visitors can continue to the matching service instead of the homepage.
    */
-  deepLinks: false,
+  deepLinks: true,
 } as const;
 
 /** The line shown beside every handoff button, so leaving the site is expected. */
@@ -42,7 +38,7 @@ const pageMap: Record<string, string> = {
   "/care/skin-beauty": "/care/skin-beauty",
   "/care/energy-performance": "/care/energy-vitality",
   "/care/longevity-healthspan": "/care/longevity-renewal",
-  "/care/recovery-rejuvenation": "/care/rest-recovery",
+  "/care/recovery-rejuvenation": "/care/rest-wellbeing",
   "/eves-secret": "/care/eves-secrets",
   "/peptide-care": "/care/peptides",
   "/packages/mrs-collection": "/mrs-collection",
