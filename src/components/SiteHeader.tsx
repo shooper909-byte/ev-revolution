@@ -15,7 +15,8 @@ import { handoffNote } from "@/lib/telehealth";
 const primaryNav = [
   { href: "/services", label: "Services" },
   { href: "/gender-affirming-care", label: "Gender-Affirming Care" },
-  { href: "/packages/mrs-collection", label: "Packages" },
+  { href: "/packages", label: "Packages" },
+  { href: "/guides", label: "Guides" },
   { href: "/about", label: "About" },
   { href: "/about#philosophy", label: "Our Approach", wide: true },
   { href: "/resources", label: "Resources" },
