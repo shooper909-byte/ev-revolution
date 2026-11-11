@@ -187,50 +187,6 @@ export const guides: Guide[] = [
     packageLabel: "Compare weight and hormone care packages",
     mentionsCompounded: true,
   },
-  {
-    slug: "testosterone-for-women",
-    title: "Testosterone for women: what to know before you ask",
-    description:
-      "What testosterone does in women's bodies, how it changes with age, when clinicians may consider low-dose treatment, and the questions to ask first.",
-    keyword: "testosterone for women",
-    readingTime: "6 min",
-    date: "2026-11-11",
-    intro:
-      "Testosterone is often thought of as a male hormone, but women make it too. Interest in low-dose testosterone for women has grown, and the evidence is more specific than social media suggests.",
-    sections: [
-      {
-        heading: "Testosterone in women’s bodies",
-        paragraphs: [
-          "Women produce testosterone in the ovaries and adrenal glands. Levels gradually decline with age, and drop more sharply after surgical removal of the ovaries.",
-        ],
-      },
-      {
-        heading: "What the evidence supports",
-        paragraphs: [
-          "The strongest evidence for low-dose testosterone in women is for low sexual desire that causes distress (hypoactive sexual desire disorder) in postmenopausal women, after other causes have been considered. Evidence for other uses is limited.",
-        ],
-      },
-      {
-        heading: "Side effects and monitoring",
-        paragraphs: [
-          "Possible side effects include acne and unwanted hair growth. Clinicians usually check blood levels before and during treatment to keep them in the normal female range.",
-        ],
-      },
-      {
-        heading: "Questions to bring to a clinician",
-        paragraphs: [],
-        bullets: [
-          "Could something else be affecting my desire or energy, such as sleep, mood, medications or relationship stress?",
-          "Is low-dose testosterone appropriate for me?",
-          "How will my levels be monitored?",
-          "Are there other options, such as PT-141 or vaginal estrogen for comfort?",
-        ],
-      },
-    ],
-    packagePath: "/packages/desire-vitality",
-    packageLabel: "See the Desire & Vitality plan",
-    mentionsCompounded: true,
-  },
 ];
 
 export const getGuide = (slug: string) => guides.find((g) => g.slug === slug);
