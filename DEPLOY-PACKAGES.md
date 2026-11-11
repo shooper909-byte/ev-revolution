@@ -39,3 +39,22 @@ Do not deploy without the owner's go-ahead.
    - the header shows Packages and Guides on desktop and mobile
 7. Submit `https://evevolutionhealth.com/sitemap.xml` again in Search Console.
 8. If anything fails, restore the backup.
+
+## Applied — Nov 11, 2026
+Deployed to Pressable site 1791593 (theme `eves-sisters-2.15.0`, patched in place) after on-demand file and database backups.
+- Theme copy saved at `wp-content/theme-backups/eves-sisters-2.15.0-pre-guides-20261111` (outside `/themes`).
+- Added `static-pages/guides.html` and the four `guides-<slug>.html` pages. Refreshed the HTML for home, services, resources, about, faq, contact, early-access and the six policy pages so the new header shows. Updated `sitemap.xml` and added the new `assets/next/static` files.
+- `functions.php`:
+  - added the five `guides` routes to `$pages` in `eves_sisters_static_mirror()`
+  - added `'/packages' => '/packages'` to `eves_sisters_care_pages_20261109()`, also mirrored in `scripts/pressable/telehealth-handoff.php`
+- Left untouched: `gender-affirming-care` and `journal`. They already returned 404 before this deploy.
+- Edge and object caches purged.
+- Verified live:
+  - all 5 guide URLs return 200 with self canonicals
+  - the header shows Packages and Guides
+  - the support phone filter still applies
+  - `/packages` returns 307 to `https://evevolutionwellness.com/packages`
+  - sitemap has 18 URLs
+  - no page errors or failed requests at 1280 and 390px
+
+Rollback: copy the theme-backups folder back over `wp-content/themes/eves-sisters-2.15.0`, then purge the edge cache.
