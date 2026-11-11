@@ -13,6 +13,7 @@ function eves_sisters_care_pages_20261109() {
         '/care/recovery-rejuvenation' => '/care/rest-wellbeing',
         '/eves-secret' => '/care/eves-secrets',
         '/peptide-care' => '/care/peptides',
+        '/packages' => '/packages',
         '/packages/mrs-collection' => '/mrs-collection',
         '/packages/mrs-jones' => '/mrs-collection/mrs-jones',
         '/packages/mrs-golden' => '/mrs-collection/mrs-golden',
