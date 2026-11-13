@@ -6,7 +6,7 @@ import styles from "./affirming.module.css";
 
 const description = "Explore Eve’s Sisters’ plans for inclusive gender-affirming telehealth, LGBTQ+ wellness, and personalized care. Join our early-access list.";
 export const metadata: Metadata = {
-  title: "Gender-Affirming Care & LGBTQ+ Wellness", description,
+  title: "Gender-Affirming Care & LGBTQ+ Wellness (Coming Soon)", description,
   alternates: { canonical: "/gender-affirming-care" },
   openGraph: { title: "Gender-Affirming Care & LGBTQ+ Wellness | Eve’s Sisters", description, url: "/gender-affirming-care", images: [{ url: "/images/affirming-care/editorial-group.webp", width: 1774, height: 887, alt: "Illustrative editorial portrait of four adults" }] },
 };
@@ -24,22 +24,23 @@ export default function GenderAffirmingCarePage() {
       <div className={styles.heroPhoto}><Image src="/images/affirming-care/editorial-group.webp" alt="Illustrative editorial portrait of four adults with varied personal styles, together against a violet backdrop" fill sizes="(max-width: 760px) 100vw, 70vw" priority /></div>
       <div className={styles.heroShade} />
       <div className={styles.heroInner}>
+        <p className={styles.comingSoon}><span aria-hidden="true" />Coming soon</p>
         <p className={styles.eyebrow}>Gender-Affirming Care & LGBTQ+ Wellness</p>
         <h1 id="affirming-title">All bodies.<br />All identities.<br /><span>All welcome.</span></h1>
         <p className={styles.heroCopy}>Your identity deserves respect. Your health deserves personalized attention. Discover Eve’s Sisters’ vision for inclusive, affirming telehealth and whole-person wellness.</p>
         <div className={styles.heroActions}><a className={styles.goldButton} href="#early-access">Join the early access list <span aria-hidden="true">→</span></a><a className={styles.textButton} href="#services">Explore our services <span aria-hidden="true">↗</span></a></div>
-        <p className={styles.plannedNotice}><span />Planned services · Join for launch updates</p>
+        <p className={styles.plannedNotice}><span />Not yet available · Join for launch updates</p>
       </div>
       <div className={styles.heroBottom}><p>Confidential. Inclusive. Personalized.</p><span>Illustrative AI-generated imagery. Not patients or clinicians.</span></div>
     </section>
 
-    <nav className={styles.pathways} aria-label="Explore planned care pathways">{affirmingServices.map(service => <a href={`#${service.id}`} key={service.id}><span aria-hidden="true" className={styles.pathwayIcon}>{service.symbol}</span><span>{service.short}</span><small>Planned service</small></a>)}</nav>
+    <nav className={styles.pathways} aria-label="Explore planned care pathways">{affirmingServices.map(service => <a href={`#${service.id}`} key={service.id}><span aria-hidden="true" className={styles.pathwayIcon}>{service.symbol}</span><span>{service.short}</span><small>Coming soon</small></a>)}</nav>
 
     <section id="services" className={styles.services} aria-labelledby="services-heading">
       <div className={styles.sectionIntro}><p className={styles.eyebrow}>Your goals. Your journey.</p><h2 id="services-heading">Comprehensive<br /><span>Gender-Affirming Care</span></h2><p>Personalized care designed around your identity, health, and goals.</p><p className={styles.developmentNote}>We’re developing these care pathways. A clinical partner for gender-affirming services has not yet been contracted. These services are not currently available.</p></div>
       <div className={styles.serviceGrid}>{affirmingServices.map(service => <article key={service.id} id={service.id} className={styles.serviceCard}>
         <div className={styles.servicePhoto}><Image src="/images/affirming-care/editorial-group.webp" alt="Illustrative adult wellness campaign portrait; not a patient or clinician" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" style={{ objectPosition: `${service.position} center` }} /><span className={styles.serviceSymbol} aria-hidden="true">{service.symbol}</span></div>
-        <div className={styles.serviceBody}><p className={styles.badge}>Planned service</p><h3>{service.title}</h3><p>{service.description}</p><details><summary>Learn more <span className={styles.srOnly}>about planned {service.title}</span><span aria-hidden="true">＋</span></summary><p className={styles.potential}>Potential services, subject to provider confirmation:</p><ul>{service.benefits.map(benefit => <li key={benefit}>{benefit}</li>)}</ul><p className={styles.potential}>Any future prescription requires an independent clinician’s evaluation. Eligibility and availability are not guaranteed.</p></details></div>
+        <div className={styles.serviceBody}><p className={styles.badge}>Coming soon</p><h3>{service.title}</h3><p>{service.description}</p><details><summary>Learn more <span className={styles.srOnly}>about planned {service.title}</span><span aria-hidden="true">＋</span></summary><p className={styles.potential}>Potential services, subject to provider confirmation:</p><ul>{service.benefits.map(benefit => <li key={benefit}>{benefit}</li>)}</ul><p className={styles.potential}>Any future prescription requires an independent clinician’s evaluation. Eligibility and availability are not guaranteed.</p></details></div>
       </article>)}</div>
     </section>
 
@@ -47,7 +48,7 @@ export default function GenderAffirmingCarePage() {
       <div className={styles.centerIntro}><p className={styles.eyebrow}>Proposed membership concepts</p><h2 id="memberships-heading">Care That Evolves With You</h2><p>Thoughtful support. Flexible care. A plan shaped around you.</p></div>
       <div className={styles.packageGrid}>{affirmingPackages.map((plan, index) => <article key={plan.name} className={`${styles.package} ${index === 1 ? styles.featuredPackage : ""}`}>
         {index === 1 && <div className={styles.popular}>Most popular <span>· Proposed featured tier</span></div>}
-        <h3>{plan.name}</h3><p className={styles.tier}>{plan.tier}</p><p className={styles.price}><sup>$</sup>{plan.price}<span>/month</span></p><p className={styles.proposed}>Proposed price · Not available to purchase</p>
+        <h3>{plan.name}</h3><p className={styles.tier}>{plan.tier}</p><p className={styles.price}><sup>$</sup>{plan.price}<span>/month</span></p><p className={styles.proposed}>Coming soon · Proposed price · Not available to purchase</p>
         <ul>{plan.benefits.map(benefit => <li key={benefit}><span aria-hidden="true">✓</span>{benefit}</li>)}</ul><a className={styles.goldButton} href="#early-access" aria-label={`Join early access for ${plan.name} ${plan.tier}`}>Join early access <span aria-hidden="true">→</span></a>
       </article>)}</div>
       <p className={styles.disclosure}>Membership plans, pricing, and clinical services are under development. Availability will depend on licensed provider partnerships, medical eligibility, and applicable state regulations. Medications and laboratory services may involve additional charges.</p>
