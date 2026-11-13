@@ -53,12 +53,26 @@ export default function MedicationsPage() {
   const brandSlugs = new Set(brandMedications.map((b) => b.slug));
   return (
     <Container className="py-16 sm:py-24">
-      <Eyebrow>Clear information. Thoughtful support.</Eyebrow>
-      <h1 className="mt-6 font-display text-5xl">Medications &amp; treatments</h1>
-      <p className="mt-6 max-w-2xl text-ivory-200">
-        Every medication our licensed clinicians may prescribe, explained in plain language: what it is, how it’s used, what to know first,
-        and what it costs. Nothing is prescribed unless a clinician decides it is right for you.
-      </p>
+      <div className="grid items-center gap-8 sm:grid-cols-[1fr_18rem]">
+        <div>
+          <Eyebrow>Clear information. Thoughtful support.</Eyebrow>
+          <h1 className="mt-6 font-display text-5xl">Medications &amp; treatments</h1>
+          <p className="mt-6 max-w-2xl text-ivory-200">
+            Every medication our licensed clinicians may prescribe, explained in plain language: what it is, how it’s used, what to know first,
+            and what it costs. Nothing is prescribed unless a clinician decides it is right for you.
+          </p>
+        </div>
+        <div className="relative h-72 w-full overflow-hidden rounded-lg sm:h-80">
+          <Image
+            src="/images/care/medications-hero-dance.webp"
+            alt="Four women dancing in silhouette against warm golden light"
+            fill
+            priority
+            sizes="(min-width: 640px) 18rem, 100vw"
+            className="object-cover object-center"
+          />
+        </div>
+      </div>
       <nav aria-label="Categories" className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm">
         {medicationCategories.map((c) => (
           <a key={c.slug} href={`#${c.slug}`} className="text-champagne hover:text-ivory">

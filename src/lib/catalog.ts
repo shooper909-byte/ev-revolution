@@ -226,12 +226,12 @@ export const medications: Medication[] = [...(data.treatments as Medication[]), 
 
 /** Lifestyle photo for each category (brand-site care images). */
 export const categoryImages: Record<string, { src: string; alt: string }> = {
-  "weight-management": { src: "/images/care/care-weight-management.webp", alt: "A woman smiling in natural light" },
-  "hormones-menopause": { src: "/images/care/care-menopause-hormones.webp", alt: "A woman in her fifties relaxing at home" },
+  "weight-management": { src: "/images/care/care-weight-rooftop.webp", alt: "Five women of different ages laughing together on a sunny rooftop" },
+  "hormones-menopause": { src: "/images/care/care-hormones-lounge.webp", alt: "Four confident women standing together in an evening lounge" },
   "skin-beauty": { src: "/images/care/care-skin-beauty-v3.webp", alt: "A woman with glowing skin" },
   "hair-health": { src: "/images/care/care-hair.webp", alt: "A woman with healthy, full hair" },
   "eves-secrets": { src: "/images/care/care-eves-secret-collection.webp", alt: "The Eve’s Secret collection" },
-  peptides: { src: "/images/products/peptide-care.png", alt: "Eve’s Sisters peptide care products" },
+  peptides: { src: "/images/care/care-peptides-trio.webp", alt: "Three women smiling, cheek to cheek" },
   "longevity-renewal": { src: "/images/care/care-longevity.webp", alt: "A woman enjoying an active, healthy life" },
 };
 
