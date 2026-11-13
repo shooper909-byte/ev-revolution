@@ -256,8 +256,21 @@ export function medicationImage(m: Medication): { src: string; alt: string; prod
 
 export const ILLUSTRATION_NOTE = "Illustration only. The actual product and packaging look different.";
 
-/** Mrs. Collection packages use their persona portrait; others use their category photo. */
+/**
+ * Photo for each package, chosen so no two package cards share a photo.
+ * Owner-supplied campaign photos live in /images/plans; the rest use the
+ * Mrs. Collection portrait or the category photo.
+ */
+const packageImages: Record<string, { src: string; alt: string }> = {
+  "glp1-semaglutide": { src: "/images/plans/glp1-semaglutide.webp", alt: "Three women in their fifties and sixties, smiling" },
+  "glp1-tirzepatide": { src: "/images/plans/glp1-tirzepatide.webp", alt: "Three women of different backgrounds, close together" },
+  "elite-total-evolution": { src: "/images/plans/elite-total-evolution.webp", alt: "Four women in elegant evening wear in a lounge" },
+  "menopause-essentials": { src: "/images/plans/menopause-essentials.webp", alt: "Three women laughing together on a sofa" },
+  "mrs-jones-tirzepatide": categoryImages["weight-management"],
+};
+
 export function packageImage(p: Package): { src: string; alt: string } {
+  if (packageImages[p.slug]) return packageImages[p.slug];
   if (p.persona) return { src: `/images/mrs-collection/${p.persona}.png`, alt: `${p.name}` };
   return categoryImages[p.category] ?? categoryImages["weight-management"];
 }
