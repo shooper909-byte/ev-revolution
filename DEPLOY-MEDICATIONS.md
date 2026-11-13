@@ -26,6 +26,9 @@ It needs SFTP access to Pressable site 1791593. Deploy only with the owner's go-
      and footer changed on all of them
    - `sitemap.xml.body` → `static-pages/sitemap.xml`
    - new files under `.next/static` → `assets/next/static`
+   - new images: `public/images/medications/` (45 WebP product shots) and
+     `public/images/care/care-hair.webp` → `assets/images/`. The pages load them through
+     `/_next/image`, like every other image on the site; check one loads (step 6).
    `scripts/package-approved-theme.py --base <live theme copy> --refresh` does this
    flattening.
 4. `functions.php`:
@@ -44,6 +47,8 @@ It needs SFTP access to Pressable site 1791593. Deploy only with the owner's go-
    - a package's "Start this package" opens `evevolutionwellness.com/packages/<slug>`
    - `/packages` still returns 307 to the telehealth packages hub
    - `sitemap.xml` lists 77 URLs (17 live today + 60 new)
+   - product photos show on `/medications` and on a medication page, e.g.
+     `/_next/image?url=%2Fimages%2Fmedications%2Fsemaglutide.webp&w=640&q=75` returns 200
    - no page errors or failed requests
 7. Submit `https://evevolutionhealth.com/sitemap.xml` again in Search Console.
 8. If anything fails, copy the theme-backups folder back over the live theme and purge the edge cache.
