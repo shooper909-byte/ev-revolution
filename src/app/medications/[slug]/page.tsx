@@ -10,6 +10,7 @@ import {
   brandInfo,
   getCategory,
   getMedication,
+  ILLUSTRATION_NOTE,
   medicationImage,
   medicationPrices,
   medications,
@@ -76,9 +77,12 @@ export default async function MedicationPage({ params }: Props) {
             {m.aka && <p className="mt-2 text-ivory-200/70">Also called {m.aka}</p>}
             <p className="mt-6 text-lg text-ivory-200">{m.summary}</p>
           </div>
-          <div className={`relative mx-auto h-64 w-48 overflow-hidden rounded-lg ${img.product ? "" : "sm:h-64"}`}>
-            <Image src={img.src} alt={img.alt} fill priority sizes="12rem" className={img.product ? "object-contain" : "object-cover"} />
-          </div>
+          <figure className="mx-auto w-48">
+            <div className="relative h-64 w-48 overflow-hidden rounded-lg">
+              <Image src={img.src} alt={img.alt} fill priority sizes="12rem" className={img.product ? "object-contain" : "object-cover"} />
+            </div>
+            {img.illustration && <figcaption className="mt-2 text-center text-xs text-ivory-200/60">{ILLUSTRATION_NOTE}</figcaption>}
+          </figure>
         </div>
 
         <div className="hairline mt-8 rounded-lg border p-6">

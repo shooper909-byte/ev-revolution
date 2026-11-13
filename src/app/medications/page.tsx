@@ -42,6 +42,7 @@ function MedicationCard({ m }: { m: Medication }) {
       <p className="brand-eyebrow mt-2 text-ivory-200/60">{m.forms.join(" · ")}</p>
       <p className="mt-3 text-sm leading-relaxed text-ivory-200">{m.summary}</p>
       <p className="mt-4 text-sm text-champagne">{price ? price.line : PRICE_ON_TELEHEALTH}</p>
+      {img.illustration && <p className="mt-2 text-xs text-ivory-200/50">Image is an illustration, not the actual product.</p>}
       <span aria-hidden="true" className="mt-auto pt-4 text-champagne">→</span>
       </div>
     </Link>

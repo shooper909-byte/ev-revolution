@@ -237,14 +237,24 @@ export const categoryImages: Record<string, { src: string; alt: string }> = {
 
 /**
  * Product photo for a medication: the labeled Eve's Sisters product shot
- * (from the telehealth site's product images). Brand-name medications have no
- * Eve's Sisters product shot; manufacturer photos are not used, so they show
- * their category photo instead.
+ * (from the telehealth site's product images). Brand-name medications use an
+ * original, unbranded illustration of their form (weekly pen or daily tablets)
+ * instead: manufacturer packaging is trademarked and is not imitated, and the
+ * page labels the image as an illustration (`illustration: true`).
  */
-export function medicationImage(m: Medication): { src: string; alt: string; product: boolean } {
-  if (!brandEntries.some((b) => b.slug === m.slug)) return { src: `/images/medications/${m.slug}.webp`, alt: `${m.name} product`, product: true };
-  return { ...(categoryImages[m.category] ?? categoryImages["weight-management"]), product: false };
+export function medicationImage(m: Medication): { src: string; alt: string; product: boolean; illustration: boolean } {
+  const brand = brandEntries.find((b) => b.slug === m.slug);
+  if (!brand) return { src: `/images/medications/${m.slug}.webp`, alt: `${m.name} product`, product: true, illustration: false };
+  const pen = brand.forms.some((f) => /pen/i.test(f));
+  return {
+    src: `/images/medications/${m.slug}.webp`,
+    alt: pen ? "Illustration of a once-weekly injection pen, not the actual product" : "Illustration of once-daily oral tablets, not the actual product",
+    product: true,
+    illustration: true,
+  };
 }
+
+export const ILLUSTRATION_NOTE = "Illustration only. The actual product and packaging look different.";
 
 /** Mrs. Collection packages use their persona portrait; others use their category photo. */
 export function packageImage(p: Package): { src: string; alt: string } {
