@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 import { guides } from "@/lib/guides";
+import { medications, packages } from "@/lib/catalog";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://evevolutionhealth.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/services", "/gender-affirming-care", "/resources", "/guides", "/about", "/contact", "/early-access", "/faq", "/privacy-policy", "/terms-of-service", "/telehealth-consent", "/subscription-cancellation", "/hipaa-policy", "/disclaimer"];
+  const staticRoutes = ["", "/services", "/gender-affirming-care", "/resources", "/guides", "/medications", "/plans", "/about", "/contact", "/early-access", "/faq", "/privacy-policy", "/terms-of-service", "/telehealth-consent", "/subscription-cancellation", "/hipaa-policy", "/disclaimer"];
 
   return [
     ...staticRoutes.map((route) => ({
@@ -19,5 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
+    ...medications.map((m) => ({ url: `${baseUrl}/medications/${m.slug}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 })),
+    ...packages.map((p) => ({ url: `${baseUrl}/plans/${p.slug}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 })),
   ];
 }

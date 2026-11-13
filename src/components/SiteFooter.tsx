@@ -43,7 +43,9 @@ export function SiteFooter() {
             {telehealth.connected && <p className="mt-2 text-xs text-ivory-200/60">On {telehealth.domain}</p>}
             <ul className="mt-5 space-y-3">
               <li><Link href="/services" className="text-sm text-ivory-200 hover:text-champagne">Services overview</Link></li>
-              <li><Link href="/gender-affirming-care" className="text-sm text-ivory-200 hover:text-champagne">Gender-Affirming Care · Planned</Link></li>
+              <li><Link href="/medications" className="text-sm text-ivory-200 hover:text-champagne">Medications &amp; treatments</Link></li>
+              <li><Link href="/plans" className="text-sm text-ivory-200 hover:text-champagne">Packages &amp; what they include</Link></li>
+              <li><Link href="/gender-affirming-care" className="text-sm text-ivory-200 hover:text-champagne">Gender-Affirming Care · Coming soon</Link></li>
               {[
                 ...publicPillars.map((pillar) => ({ from: pillar.carePath ?? "/care", label: careLabel(pillar) })),
                 { from: "/eves-secret", label: "Eve’s Secret™" },

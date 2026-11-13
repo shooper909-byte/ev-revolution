@@ -1,0 +1,1237 @@
+{
+  "categories": [
+    {
+      "slug": "weight-management",
+      "name": "Weight Management",
+      "short": "Weight",
+      "promise": "Metabolic care that understands a woman’s body changes — and changes with it.",
+      "intro": "Provider-supervised programs that pair modern prescription options with nutrition and movement guidance, designed around your hormones, your history and your life.",
+      "clinicalNote": "Prescription weight management requires a clinician evaluation to confirm eligibility. Programs are provider-supervised and used alongside nutrition and activity changes. Individual experiences vary.",
+      "kind": "category",
+      "includes": []
+    },
+    {
+      "slug": "hormones-menopause",
+      "name": "Hormones & Menopause",
+      "short": "Hormones",
+      "promise": "Perimenopause, menopause and beyond — met with expertise, not a shrug.",
+      "intro": "Hormone and thyroid support guided by clinicians who specialize in the transitions women are too often told to simply endure.",
+      "clinicalNote": "All hormone therapy requires a provider evaluation and lab testing where appropriate. Your clinician will review your health history, discuss benefits and risks, and determine whether treatment is right for you.",
+      "kind": "category",
+      "includes": []
+    },
+    {
+      "slug": "longevity-renewal",
+      "name": "Longevity & Renewal",
+      "short": "Longevity",
+      "promise": "Invest in the woman you’re becoming — with a long-term, clinician-guided plan.",
+      "intro": "A thoughtful approach to healthy aging that brings together labs, hormone care and clinician-directed wellness and peptide programs — reviewed with you over time.",
+      "clinicalNote": "Longevity care begins with a clinician evaluation and labs where appropriate. Programs are prescribed only when medically appropriate, are not intended to diagnose, treat, cure or prevent any disease, and individual experiences vary.",
+      "kind": "pathway",
+      "includes": [
+        "nad-plus",
+        "sermorelin",
+        "glutathione",
+        "nad-plus-nasal-spray",
+        "ghk-cu-cream",
+        "estriol-ghk-cu-cream",
+        "t3-t4"
+      ]
+    },
+    {
+      "slug": "skin-beauty",
+      "name": "Skin & Beauty",
+      "short": "Skin",
+      "promise": "Prescription-grade skincare, tailored to your skin — every tone, every texture.",
+      "intro": "Clinician-directed topical formulas for concerns like breakouts, fine lines and uneven texture, chosen for your skin type and routine.",
+      "clinicalNote": "Prescription topicals are dispensed only after a clinician reviews your skin history and goals. Some ingredients increase sun sensitivity and are not appropriate during pregnancy or breastfeeding.",
+      "kind": "category",
+      "includes": []
+    },
+    {
+      "slug": "hair-health",
+      "name": "Hair Health",
+      "short": "Hair",
+      "promise": "Thinning hair is common. Feeling alone with it doesn’t have to be.",
+      "intro": "Oral and topical prescription options, evaluated by a clinician who looks at the full picture — hormones, history and lifestyle.",
+      "clinicalNote": "Hair treatments require a clinician evaluation. Some options are not appropriate during pregnancy, while trying to conceive, or while breastfeeding — your clinician will review this with you.",
+      "kind": "category",
+      "includes": []
+    },
+    {
+      "slug": "energy-vitality",
+      "name": "Energy & Vitality",
+      "short": "Energy",
+      "promise": "Running on empty? Let’s find out why — with a clinician, labs and a plan made for you.",
+      "intro": "Low energy can have many causes — hormones, thyroid, nutrition, sleep and stress among them. Your clinician starts with your history and labs, then discusses whether options like thyroid support or a wellness program are appropriate.",
+      "clinicalNote": "Fatigue has many possible causes and should be evaluated by a licensed clinician. Treatment is prescribed only when medically appropriate. Wellness programs are not intended to diagnose, treat, cure or prevent any disease, and no specific energy outcome is guaranteed.",
+      "kind": "pathway",
+      "includes": [
+        "liothyronine",
+        "t3-t4",
+        "nad-plus",
+        "nad-plus-nasal-spray",
+        "mic-b12-lipostat",
+        "methylene-blue"
+      ]
+    },
+    {
+      "slug": "rest-wellbeing",
+      "name": "Rest & Well-Being",
+      "short": "Well-Being",
+      "promise": "Rest isn’t a luxury. It’s part of your care.",
+      "intro": "Clinician-guided wellness programs that may complement a calmer, more restful routine — alongside sleep, movement and nutrition guidance from your care team.",
+      "clinicalNote": "Wellness programs require a clinician evaluation and are prescribed only when medically appropriate. They are not intended to diagnose, treat, cure or prevent any disease, and individual experiences vary.",
+      "kind": "pathway",
+      "includes": [
+        "glutathione",
+        "sermorelin",
+        "nad-plus",
+        "nad-plus-nasal-spray"
+      ]
+    },
+    {
+      "slug": "eves-secrets",
+      "name": "Eve’s Secrets",
+      "short": "Intimate",
+      "promise": "Desire, intimacy and pleasure are part of health. Discreetly, beautifully, yours.",
+      "intro": "A private, clinician-guided pathway for intimate and sexual wellness — evaluated with care, delivered discreetly.",
+      "clinicalNote": "Intimate wellness options require a clinician evaluation to confirm they are medically appropriate for you. Eligibility, audience and use are always clinician-directed.",
+      "kind": "category",
+      "includes": []
+    },
+    {
+      "slug": "peptides",
+      "name": "Peptide Therapy",
+      "short": "Peptides",
+      "promise": "Clinician-directed peptide programs — prescribed only when medically appropriate.",
+      "intro": "Peptides are short chains of amino acids. A licensed provider evaluates whether a peptide program is appropriate for you, then oversees your care with follow-up and lab monitoring where needed.",
+      "clinicalNote": "Peptide programs require a clinician evaluation and are prescribed only when medically appropriate. Compounded peptides are not FDA-approved and are prepared by a licensed pharmacy. Lab monitoring may be required. Not intended to diagnose, treat, cure or prevent any disease.",
+      "kind": "category",
+      "includes": []
+    }
+  ],
+  "treatments": [
+    {
+      "slug": "semaglutide",
+      "name": "Compounded Semaglutide",
+      "category": "weight-management",
+      "forms": [
+        "Injectable vial",
+        "Oral tablet"
+      ],
+      "summary": "A compounded formulation of semaglutide, a GLP-1 receptor agonist, prescribed for weight management when a licensed provider determines it is clinically appropriate.",
+      "whatItIs": "A compounded formulation of semaglutide, a GLP-1 receptor agonist, prescribed for weight management when a licensed provider determines it is clinically appropriate.",
+      "howItsUsed": "Injectable semaglutide is given once weekly under the skin. An oral tablet option is also available. Your clinician determines which form and program is appropriate.",
+      "programs": [
+        "Injectable — starter, continuation, maintenance and microdose programs",
+        "Oral tablet — starter and continuation programs"
+      ],
+      "considerations": [
+        "Requires a clinician evaluation to confirm eligibility.",
+        "Your clinician will review your health history, current medications and potential side effects."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "tirzepatide",
+      "name": "Compounded Tirzepatide",
+      "category": "weight-management",
+      "forms": [
+        "Injectable vial",
+        "Oral tablet"
+      ],
+      "summary": "A compounded formulation of tirzepatide, a dual GIP/GLP-1 receptor agonist, prescribed for weight management when a licensed provider determines it is clinically appropriate.",
+      "whatItIs": "A compounded formulation of tirzepatide, a dual GIP/GLP-1 receptor agonist, prescribed for weight management when a licensed provider determines it is clinically appropriate.",
+      "howItsUsed": "Injectable tirzepatide is given once weekly under the skin. An oral tablet option is also available. Your clinician determines which form and program is appropriate.",
+      "programs": [
+        "Injectable — starter, continuation, maintenance and microdose programs",
+        "Oral tablet — starter and continuation programs"
+      ],
+      "considerations": [
+        "Requires a clinician evaluation to confirm eligibility.",
+        "Your clinician will review your health history, current medications and potential side effects."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "mic-b12-lipostat",
+      "name": "MIC-B12 Lipostat",
+      "category": "weight-management",
+      "forms": [
+        "Injectable vial"
+      ],
+      "summary": "A compounded formulation of methionine, inositol, choline and vitamin B12, used in weight management care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded formulation of methionine, inositol, choline and vitamin B12, used in weight management care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Given as an injection. Your clinician will determine whether it fits your plan.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "ondansetron",
+      "name": "Ondansetron",
+      "category": "weight-management",
+      "forms": [
+        "Tablet"
+      ],
+      "summary": "An oral anti-nausea medication that may be offered as supportive care alongside a weight management program, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "An oral anti-nausea medication that may be offered as supportive care alongside a weight management program, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as needed, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Your provider will review your heart health and current medications before prescribing."
+      ],
+      "compounded": false
+    },
+    {
+      "slug": "biest",
+      "name": "BIEST",
+      "category": "hormones-menopause",
+      "forms": [
+        "Cream",
+        "Capsule"
+      ],
+      "summary": "A compounded cream or capsule containing bi-estrogen (estradiol and estriol), used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded cream or capsule containing bi-estrogen (estradiol and estriol), used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied as a topical cream or taken by mouth as a capsule, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and lab testing where appropriate.",
+        "Your clinician will discuss the benefits and risks of hormone therapy with you.",
+        "Estrogen therapy carries risks — including blood clots, stroke and certain cancers — which your provider will review with you."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "biest-progesterone",
+      "name": "BIEST / Progesterone",
+      "category": "hormones-menopause",
+      "forms": [
+        "Capsule"
+      ],
+      "summary": "A compounded oral capsule containing bi-estrogen (estradiol and estriol) with progesterone, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded oral capsule containing bi-estrogen (estradiol and estriol) with progesterone, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and lab testing where appropriate.",
+        "Estrogen therapy carries risks — including blood clots, stroke and certain cancers — which your provider will review with you."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "dhea",
+      "name": "DHEA",
+      "category": "hormones-menopause",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream containing DHEA, used in hormone support, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream containing DHEA, used in hormone support, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied as a topical cream as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and lab testing where appropriate.",
+        "Not appropriate during pregnancy or breastfeeding."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "estradiol",
+      "name": "Estradiol",
+      "category": "hormones-menopause",
+      "forms": [
+        "Capsule",
+        "Tablet"
+      ],
+      "summary": "An oral capsule or tablet containing estradiol, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "An oral capsule or tablet containing estradiol, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and lab testing where appropriate.",
+        "Your clinician will discuss the benefits and risks of estrogen therapy with you.",
+        "Estrogen therapy carries risks — including blood clots, stroke and certain cancers — which your provider will review with you."
+      ],
+      "compounded": false
+    },
+    {
+      "slug": "estradiol-patch",
+      "name": "Estradiol Patch",
+      "category": "hormones-menopause",
+      "forms": [
+        "Patch"
+      ],
+      "summary": "A transdermal patch delivering estradiol, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A transdermal patch delivering estradiol, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Worn on the skin and changed on a set schedule determined by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and lab testing where appropriate.",
+        "Estrogen therapy carries risks — including blood clots, stroke and certain cancers — which your provider will review with you."
+      ],
+      "compounded": false
+    },
+    {
+      "slug": "estradiol-vaginal-insert",
+      "name": "Estradiol Vaginal Insert",
+      "category": "hormones-menopause",
+      "forms": [
+        "Vaginal insert"
+      ],
+      "summary": "A compounded vaginal insert containing estradiol, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded vaginal insert containing estradiol, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Used as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and lab testing where appropriate.",
+        "Estrogen therapy carries risks — including blood clots, stroke and certain cancers — which your provider will review with you."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "progesterone-ir",
+      "name": "Progesterone IR",
+      "category": "hormones-menopause",
+      "forms": [
+        "Capsule"
+      ],
+      "summary": "A compounded immediate-release oral capsule containing progesterone, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded immediate-release oral capsule containing progesterone, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and lab testing where appropriate."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "liothyronine",
+      "name": "Liothyronine SR",
+      "aka": "T3",
+      "category": "hormones-menopause",
+      "forms": [
+        "Sustained-release capsule"
+      ],
+      "summary": "A compounded oral capsule containing liothyronine (T3), used in thyroid hormone therapy, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded oral capsule containing liothyronine (T3), used in thyroid hormone therapy, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as a sustained-release (SR) capsule, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and thyroid lab testing.",
+        "Thyroid hormone should not be used for weight management or in people with normal thyroid function."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "t3-t4",
+      "name": "T3 / T4",
+      "category": "hormones-menopause",
+      "forms": [
+        "Capsule"
+      ],
+      "summary": "A compounded oral capsule containing liothyronine (T3) and levothyroxine (T4), used in thyroid hormone therapy, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded oral capsule containing liothyronine (T3) and levothyroxine (T4), used in thyroid hormone therapy, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and thyroid lab testing.",
+        "Thyroid hormone should not be used for weight management or in people with normal thyroid function."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "estradiol-vaginal-cream",
+      "name": "Estradiol Vaginal Cream",
+      "category": "hormones-menopause",
+      "forms": [
+        "Vaginal cream"
+      ],
+      "summary": "A compounded vaginal cream containing estradiol, used in hormone replacement therapy for localized symptoms, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded vaginal cream containing estradiol, used in hormone replacement therapy for localized symptoms, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied vaginally as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and lab testing where appropriate.",
+        "Estrogen therapy carries risks — including blood clots, stroke and certain cancers — which your provider will review with you."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "progesterone-cream",
+      "name": "Progesterone Cream",
+      "category": "hormones-menopause",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream containing progesterone, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream containing progesterone, used in hormone replacement therapy, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied as a topical cream as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a provider evaluation and lab testing where appropriate.",
+        "Topical progesterone may not provide uterine protection when used with estrogen; your provider will advise which form is right for you."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "tretinoin-cream",
+      "name": "Tretinoin Cream",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream containing tretinoin, a retinoid used in skincare, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream containing tretinoin, a retinoid used in skincare, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin at night.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Can increase sun sensitivity — daily sunscreen is essential.",
+        "Not appropriate during pregnancy."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "tretinoin-gel",
+      "name": "Tretinoin Gel",
+      "category": "skin-beauty",
+      "forms": [
+        "Gel"
+      ],
+      "summary": "A compounded topical gel containing tretinoin, a retinoid used in skincare, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical gel containing tretinoin, a retinoid used in skincare, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin at night.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Can increase sun sensitivity — daily sunscreen is essential.",
+        "Not appropriate during pregnancy."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "tretinoin-foam",
+      "name": "Tretinoin Foam",
+      "category": "skin-beauty",
+      "forms": [
+        "Foam"
+      ],
+      "summary": "A compounded topical foam containing tretinoin, a retinoid used in skincare, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical foam containing tretinoin, a retinoid used in skincare, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin at night.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Can increase sun sensitivity — daily sunscreen is essential.",
+        "Not appropriate during pregnancy."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "cashmere-cream",
+      "name": "Cashmere Cream",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical skincare formulation, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical skincare formulation, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation."
+      ],
+      "compounded": true,
+      "pendingConfirmation": "Confirm full ingredient list with Rx Ave before finalizing page copy."
+    },
+    {
+      "slug": "ghk-cu-cream",
+      "name": "GHK-Cu Cream",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream containing GHK-Cu, a copper peptide, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream containing GHK-Cu, a copper peptide, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin as directed. Topical form only.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "tretinoin-hyaluronate",
+      "name": "Tretinoin / Hyaluronate",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream pairing tretinoin with hyaluronate, a hydrating ingredient, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream pairing tretinoin with hyaluronate, a hydrating ingredient, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin at night.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Can increase sun sensitivity — daily sunscreen is essential.",
+        "Not appropriate during pregnancy."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "tretinoin-niacinamide-aloe",
+      "name": "Tretinoin / Niacinamide / Aloe",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream combining tretinoin with niacinamide and aloe, also available with hyaluronate, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream combining tretinoin with niacinamide and aloe, also available with hyaluronate, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin at night.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Can increase sun sensitivity — daily sunscreen is essential.",
+        "Not appropriate during pregnancy."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "tretinoin-clindamycin-niacinamide",
+      "name": "Tretinoin / Clindamycin / Niacinamide",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream combining tretinoin, the antibiotic clindamycin and niacinamide, used in acne care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream combining tretinoin, the antibiotic clindamycin and niacinamide, used in acne care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Can increase sun sensitivity — daily sunscreen is essential.",
+        "Not appropriate during pregnancy."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "estriol-ghk-cu-cream",
+      "name": "Estriol / Niacinamide / GHK-Cu / Hyaluronate",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream combining estriol, niacinamide, the copper peptide GHK-Cu and hyaluronate, used in skincare, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream combining estriol, niacinamide, the copper peptide GHK-Cu and hyaluronate, used in skincare, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Contains a hormone (estriol); your provider will review your health history before prescribing.",
+        "Not appropriate during pregnancy."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "azelaic-niacinamide",
+      "name": "Azelaic Acid / Niacinamide",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream combining azelaic acid and niacinamide, used for concerns such as uneven tone and redness, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream combining azelaic acid and niacinamide, used for concerns such as uneven tone and redness, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "azelaic-ivermectin-metronidazole",
+      "name": "Azelaic Acid / Ivermectin / Metronidazole",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream combining azelaic acid, ivermectin and metronidazole, used in rosacea care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream combining azelaic acid, ivermectin and metronidazole, used in rosacea care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "niacinamide-ivermectin-metronidazole",
+      "name": "Niacinamide / Ivermectin / Metronidazole",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream combining niacinamide, ivermectin and metronidazole, used in rosacea care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream combining niacinamide, ivermectin and metronidazole, used in rosacea care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the skin as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "finasteride",
+      "name": "Finasteride",
+      "category": "hair-health",
+      "forms": [
+        "Tablet",
+        "Capsule",
+        "Topical"
+      ],
+      "summary": "Finasteride as an oral tablet, or as a compounded capsule or topical formulation, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "Finasteride as an oral tablet, or as a compounded capsule or topical formulation, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Usually taken once daily, or applied topically, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Not appropriate during pregnancy, while trying to conceive, or for anyone who may become pregnant without clinician guidance.",
+        "Finasteride is FDA-approved for male pattern hair loss; its use for women is off-label and is decided by your provider."
+      ],
+      "compounded": "partial",
+      "compoundedNote": "The capsule and topical forms are compounded; the tablet is not."
+    },
+    {
+      "slug": "minoxidil",
+      "name": "Minoxidil",
+      "category": "hair-health",
+      "forms": [
+        "Tablet",
+        "Capsule",
+        "Topical"
+      ],
+      "summary": "Minoxidil as a topical formulation or a compounded oral capsule, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "Minoxidil as a topical formulation or a compounded oral capsule, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Available as a topical or an oral prescription, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation, including a review of blood pressure and heart health.",
+        "Oral minoxidil for hair loss is an off-label use; your provider will discuss whether it is appropriate for you."
+      ],
+      "compounded": "partial",
+      "compoundedNote": "The oral capsule is compounded; the topical form is not."
+    },
+    {
+      "slug": "finasteride-minoxidil",
+      "name": "Finasteride / Minoxidil",
+      "category": "hair-health",
+      "forms": [
+        "Oral",
+        "Topical"
+      ],
+      "summary": "A compounded formulation combining finasteride and minoxidil, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded formulation combining finasteride and minoxidil, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Available in oral or topical form, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Not appropriate during pregnancy or while trying to conceive.",
+        "Finasteride and oral minoxidil are used off-label for women’s hair loss; your provider will decide whether this is appropriate."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "dutasteride",
+      "name": "Dutasteride",
+      "category": "hair-health",
+      "forms": [
+        "Capsule"
+      ],
+      "summary": "An oral capsule containing dutasteride, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "An oral capsule containing dutasteride, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Not appropriate during pregnancy, while trying to conceive, or for anyone who may become pregnant without clinician guidance.",
+        "Dutasteride is not FDA-approved for hair loss; its use for women is off-label and is decided by your provider."
+      ],
+      "compounded": false
+    },
+    {
+      "slug": "biotin-finasteride-minoxidil",
+      "name": "Biotin / Finasteride / Minoxidil",
+      "category": "hair-health",
+      "forms": [
+        "Capsule"
+      ],
+      "summary": "A compounded oral capsule combining biotin, finasteride and minoxidil, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded oral capsule combining biotin, finasteride and minoxidil, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation, including a review of blood pressure and heart health.",
+        "Not appropriate during pregnancy, while trying to conceive, or for anyone who may become pregnant without clinician guidance.",
+        "Biotin can affect some lab results — tell your provider before any blood test."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "topical-hair-solution",
+      "name": "Topical Hair Solution",
+      "category": "hair-health",
+      "forms": [
+        "Solution",
+        "Drops"
+      ],
+      "summary": "A compounded topical solution built on minoxidil and, depending on the formula, ingredients such as finasteride, latanoprost, caffeine or melatonin, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical solution built on minoxidil and, depending on the formula, ingredients such as finasteride, latanoprost, caffeine or melatonin, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the scalp as directed by your clinician. Your provider chooses the formula.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Formulas containing finasteride or dutasteride are not appropriate during pregnancy or while trying to conceive."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "topical-hair-spray-foam",
+      "name": "Topical Hair Spray & Foam",
+      "category": "hair-health",
+      "forms": [
+        "Spray",
+        "Foam"
+      ],
+      "summary": "A compounded topical spray or foam built on minoxidil and, depending on the formula, ingredients such as finasteride, tretinoin, biotin or ketoconazole, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical spray or foam built on minoxidil and, depending on the formula, ingredients such as finasteride, tretinoin, biotin or ketoconazole, used in hair loss care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied to the scalp as directed by your clinician. Your provider chooses the formula.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Formulas containing finasteride, dutasteride or tretinoin are not appropriate during pregnancy or while trying to conceive."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "sermorelin",
+      "name": "Sermorelin",
+      "category": "peptides",
+      "forms": [
+        "Injectable vial",
+        "Nasal spray",
+        "Troche",
+        "Sublingual film"
+      ],
+      "summary": "A compounded formulation of sermorelin, a growth hormone-releasing hormone (GHRH) analog, prescribed only when a licensed provider determines it is appropriate for a legitimate medical indication.",
+      "whatItIs": "A compounded formulation of sermorelin, a growth hormone-releasing hormone (GHRH) analog, prescribed only when a licensed provider determines it is appropriate for a legitimate medical indication.",
+      "howItsUsed": "Given as an injection under the skin, or as a nasal spray, troche or sublingual film, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation and lab testing where appropriate."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "nad-plus",
+      "name": "NAD+",
+      "category": "peptides",
+      "forms": [
+        "Injectable vial",
+        "Cream"
+      ],
+      "summary": "A compounded formulation of nicotinamide adenine dinucleotide (NAD+), prescribed only when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded formulation of nicotinamide adenine dinucleotide (NAD+), prescribed only when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Offered as an injection or a topical cream within clinician-guided wellness programs.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Individual experiences vary."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "nad-plus-nasal-spray",
+      "name": "NAD+ Nasal Spray",
+      "category": "peptides",
+      "forms": [
+        "Nasal spray"
+      ],
+      "summary": "A compounded intranasal formulation of NAD+, prescribed only when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded intranasal formulation of NAD+, prescribed only when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Used as a nasal spray as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Individual experiences vary."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "glutathione",
+      "name": "Glutathione",
+      "category": "peptides",
+      "forms": [
+        "Injectable vial",
+        "Troche"
+      ],
+      "summary": "A compounded formulation of glutathione, prescribed only when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded formulation of glutathione, prescribed only when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Offered as an injection or a troche within clinician-guided wellness programs.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Individual experiences vary."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "methylene-blue",
+      "name": "Methylene Blue",
+      "category": "peptides",
+      "forms": [
+        "Capsule"
+      ],
+      "summary": "A compounded oral capsule containing methylene blue, offered within clinician-guided wellness programs, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded oral capsule containing methylene blue, offered within clinician-guided wellness programs, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Must not be combined with certain antidepressants and other serotonergic medications — your provider will review all of your medications.",
+        "Not appropriate during pregnancy or breastfeeding.",
+        "Individual experiences vary."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "pt-141",
+      "name": "PT-141",
+      "aka": "Bremelanotide",
+      "category": "eves-secrets",
+      "forms": [
+        "Injectable vial"
+      ],
+      "summary": "A compounded formulation of bremelanotide (PT-141), prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded formulation of bremelanotide (PT-141), prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Given as an injection under the skin before intimacy, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation, including a review of blood pressure and heart health."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "sildenafil",
+      "name": "Sildenafil",
+      "category": "eves-secrets",
+      "forms": [
+        "Tablet",
+        "Capsule"
+      ],
+      "summary": "An oral formulation of sildenafil, a PDE5 inhibitor used off-label in women’s intimate wellness care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "An oral formulation of sildenafil, a PDE5 inhibitor used off-label in women’s intimate wellness care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth before intimacy, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Eligibility and appropriate use are always clinician-directed.",
+        "Must not be used with nitrate medications — your provider will review all of your medications.",
+        "This medication is FDA-approved for erectile dysfunction in men; its use for women is off-label and is decided by your provider."
+      ],
+      "compounded": false
+    },
+    {
+      "slug": "tadalafil",
+      "name": "Tadalafil",
+      "category": "eves-secrets",
+      "forms": [
+        "Tablet",
+        "Capsule",
+        "Sublingual tablet",
+        "Troche"
+      ],
+      "summary": "An oral formulation of tadalafil, a PDE5 inhibitor used off-label in women’s intimate wellness care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "An oral formulation of tadalafil, a PDE5 inhibitor used off-label in women’s intimate wellness care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as needed or daily, as prescribed by your clinician. Sublingual tablet and troche forms dissolve in the mouth.",
+      "programs": [],
+      "considerations": [
+        "Eligibility and appropriate use are always clinician-directed.",
+        "Must not be used with nitrate medications — your provider will review all of your medications.",
+        "This medication is FDA-approved for erectile dysfunction in men; its use for women is off-label and is decided by your provider."
+      ],
+      "compounded": "partial",
+      "compoundedNote": "The sublingual tablet and troche forms are compounded."
+    },
+    {
+      "slug": "fem-max-troche",
+      "name": "Fem Max Troche",
+      "category": "eves-secrets",
+      "forms": [
+        "Troche",
+        "Rapid-dissolve tablet"
+      ],
+      "summary": "A compounded troche containing tadalafil, oxytocin and PT-141, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded troche containing tadalafil, oxytocin and PT-141, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Dissolved in the mouth, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "olympus-troche",
+      "name": "Olympus Troche",
+      "category": "eves-secrets",
+      "forms": [
+        "Troche"
+      ],
+      "summary": "A compounded troche containing oxytocin, tadalafil and bremelanotide, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded troche containing oxytocin, tadalafil and bremelanotide, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Dissolved in the mouth, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "arousal-cream",
+      "name": "Tadalafil / Vardenafil / PT-141 / Oxytocin Cream",
+      "category": "eves-secrets",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded topical cream combining tadalafil, vardenafil, PT-141 and oxytocin, used in intimate wellness care, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream combining tadalafil, vardenafil, PT-141 and oxytocin, used in intimate wellness care, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Applied topically before intimacy, as directed by your clinician.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation, including a review of blood pressure and heart health.",
+        "Must not be used with nitrate medications — your provider will review all of your medications.",
+        "Use for women is off-label and is decided by your provider."
+      ],
+      "compounded": true
+    }
+  ],
+  "packages": [
+    {
+      "slug": "mrs-jones-weight-hormones",
+      "name": "Mrs. Jones — Weight + Hormones",
+      "persona": "mrs-jones",
+      "tagline": "Weight care and menopause hormone care, in one plan.",
+      "forWho": "Women in perimenopause or menopause whose weight changed along with their hormones, and who want one clinician looking at both.",
+      "includes": [
+        "Compounded semaglutide or tirzepatide, if appropriate",
+        "Estradiol + progesterone hormone therapy, if appropriate",
+        "One licensed clinician and one care plan",
+        "Follow-ups every refill cycle and discreet delivery"
+      ],
+      "price": 289,
+      "treatments": [
+        "semaglutide",
+        "tirzepatide",
+        "estradiol",
+        "progesterone-ir"
+      ],
+      "intakeCategory": "weight-management",
+      "compounded": true,
+      "itemized": [
+        "Semaglutide plan: $159/month ($179 at maintenance dose), or tirzepatide plan: $249/month",
+        "Clinician visit for hormone care: $129 per visit",
+        "Estradiol + progesterone: from $86/month"
+      ],
+      "priceSummary": "GLP-1 plan from $159/month + hormone care",
+      "differentiator": "The only plan pairing GLP-1 care with menopause hormone care under one clinician.",
+      "category": "weight-management",
+      "featured": true
+    },
+    {
+      "slug": "mrs-jones-tirzepatide",
+      "name": "Mrs. Jones with Tirzepatide",
+      "persona": "mrs-jones",
+      "tagline": "The Mrs. Jones plan built around tirzepatide.",
+      "forWho": "Women who, with their clinician, choose tirzepatide alongside menopause hormone care.",
+      "includes": [
+        "Compounded tirzepatide, if appropriate",
+        "Estradiol + progesterone hormone therapy, if appropriate",
+        "One licensed clinician and one care plan",
+        "Follow-ups every refill cycle and discreet delivery"
+      ],
+      "price": 379,
+      "maintenancePrice": 419,
+      "treatments": [
+        "tirzepatide",
+        "estradiol",
+        "progesterone-ir"
+      ],
+      "intakeCategory": "weight-management",
+      "compounded": true,
+      "itemized": [
+        "Tirzepatide plan: $249/month ($319 at maintenance dose)",
+        "Clinician visit for hormone care: $129 per visit",
+        "Estradiol + progesterone: from $86/month"
+      ],
+      "priceSummary": "Tirzepatide $249/month + hormone care",
+      "differentiator": "Tirzepatide and hormone care from one clinician, one plan.",
+      "category": "weight-management"
+    },
+    {
+      "slug": "perimenopause-starter",
+      "name": "Perimenopause Starter",
+      "tagline": "A gentle first step for the years before menopause.",
+      "forWho": "Women noticing changes in sleep, cycles or mood in their late 30s and 40s who want a clinician's view before anything else.",
+      "includes": [
+        "Progesterone, if appropriate",
+        "Licensed clinician evaluation",
+        "Follow-ups every refill cycle and discreet delivery"
+      ],
+      "price": 89,
+      "treatments": [
+        "progesterone-ir"
+      ],
+      "intakeCategory": "hormones-menopause",
+      "compounded": true,
+      "itemized": [
+        "Clinician visit for hormone care: $129 per visit",
+        "Progesterone: from $43/month"
+      ],
+      "priceSummary": "$129 visit + progesterone from $43/month",
+      "differentiator": "Perimenopause care at an entry price, with a path to full hormone care.",
+      "category": "hormones-menopause",
+      "featured": true
+    },
+    {
+      "slug": "menopause-essentials",
+      "name": "Menopause Essentials",
+      "tagline": "Clinician-guided estradiol and progesterone, with clear itemized pricing.",
+      "forWho": "Women in menopause who want clinician-guided estradiol and progesterone, with ongoing follow-ups.",
+      "includes": [
+        "Estradiol + progesterone, if appropriate",
+        "Licensed clinician evaluation and follow-ups",
+        "Discreet delivery"
+      ],
+      "price": 135,
+      "treatments": [
+        "estradiol",
+        "progesterone-ir",
+        "biest-progesterone"
+      ],
+      "intakeCategory": "hormones-menopause",
+      "compounded": true,
+      "itemized": [
+        "Clinician visit for hormone care: $129 per visit",
+        "Estradiol + progesterone: from $86/month"
+      ],
+      "priceSummary": "$129 visit + medication from $86/month",
+      "differentiator": "Clinician-led hormone care with every cost shown up front.",
+      "category": "hormones-menopause"
+    },
+    {
+      "slug": "mrs-golden-glow",
+      "name": "Mrs. Golden — Glow Through Menopause",
+      "persona": "mrs-golden",
+      "tagline": "Hormone care and prescription skincare, together.",
+      "forWho": "Women in menopause who notice changes in their skin as well as their hormones.",
+      "includes": [
+        "Estradiol + progesterone hormone therapy, if appropriate",
+        "Prescription tretinoin cream, if appropriate",
+        "One licensed clinician and one care plan",
+        "Discreet delivery"
+      ],
+      "price": 219,
+      "treatments": [
+        "estradiol",
+        "progesterone-ir",
+        "tretinoin-cream"
+      ],
+      "intakeCategory": "hormones-menopause",
+      "compounded": true,
+      "itemized": [
+        "Clinician visit for hormone care: $129 per visit",
+        "Estradiol + progesterone: from $86/month",
+        "Tretinoin cream: $449 per 3-month supply"
+      ],
+      "priceSummary": "$129 visit + hormones + tretinoin",
+      "differentiator": "Prescription hormones and prescription skincare in one plan.",
+      "category": "hormones-menopause",
+      "featured": true
+    },
+    {
+      "slug": "eves-secret-intimacy",
+      "name": "Eve’s Secret Intimacy Plan",
+      "tagline": "Private care for desire and comfort.",
+      "forWho": "Women who want a private conversation with a clinician about desire, arousal or vaginal comfort.",
+      "includes": [
+        "PT-141, if appropriate",
+        "Vaginal estrogen cream where appropriate",
+        "Licensed clinician evaluation",
+        "Discreet delivery"
+      ],
+      "price": 149,
+      "treatments": [
+        "pt-141",
+        "estradiol-vaginal-cream"
+      ],
+      "intakeCategory": "eves-secrets",
+      "compounded": true,
+      "availability": "PT-141 is not available in North Dakota or Ohio.",
+      "itemized": [
+        "PT-141: $399 per 3-month supply",
+        "Vaginal estradiol cream, if prescribed: $2.04 per gram, plus the $129 hormone-care visit"
+      ],
+      "priceSummary": "PT-141 $399 per 3 months",
+      "differentiator": "Intimacy care designed for women, from a women's brand.",
+      "category": "eves-secrets"
+    },
+    {
+      "slug": "glp1-semaglutide",
+      "name": "GLP-1 Essentials — Semaglutide",
+      "tagline": "Clinician-guided semaglutide care.",
+      "forWho": "Women who want to start GLP-1 care with semaglutide.",
+      "includes": [
+        "Compounded semaglutide, if appropriate",
+        "Licensed clinician care",
+        "Discreet delivery"
+      ],
+      "price": 159,
+      "maintenancePrice": 179,
+      "treatments": [
+        "semaglutide"
+      ],
+      "intakeCategory": "weight-management",
+      "compounded": true,
+      "differentiator": "Add hormone care at any time with Mrs. Jones.",
+      "category": "weight-management",
+      "prepay": 453
+    },
+    {
+      "slug": "glp1-tirzepatide",
+      "name": "GLP-1 Advanced — Tirzepatide",
+      "tagline": "Clinician-guided tirzepatide care.",
+      "forWho": "Women who, with their clinician, choose tirzepatide.",
+      "includes": [
+        "Compounded tirzepatide, if appropriate",
+        "Licensed clinician care",
+        "Discreet delivery"
+      ],
+      "price": 249,
+      "maintenancePrice": 319,
+      "treatments": [
+        "tirzepatide"
+      ],
+      "intakeCategory": "weight-management",
+      "compounded": true,
+      "differentiator": "Add hormone care at any time with Mrs. Jones.",
+      "category": "weight-management",
+      "prepay": 710
+    },
+    {
+      "slug": "mrs-robinson-renewal",
+      "name": "Mrs. Robinson — Renewal",
+      "persona": "mrs-robinson",
+      "tagline": "Peptide care and hormone care for the decades ahead.",
+      "forWho": "Women planning how they want to feel in the decades ahead, with a long-term clinician-guided plan.",
+      "includes": [
+        "Sermorelin, if appropriate",
+        "NAD+ nasal spray, if appropriate",
+        "Estradiol + progesterone hormone therapy, if appropriate",
+        "Licensed clinician care and discreet delivery"
+      ],
+      "price": 449,
+      "treatments": [
+        "sermorelin",
+        "nad-plus-nasal-spray",
+        "estradiol",
+        "progesterone-ir"
+      ],
+      "intakeCategory": "peptides",
+      "compounded": true,
+      "availability": "Sermorelin ships from a different pharmacy in California and DC. NAD+ nasal spray is not available in DC.",
+      "itemized": [
+        "Sermorelin: $649 per 3-month supply",
+        "NAD+ nasal spray: $599 per 3-month supply",
+        "Clinician visit for hormone care: $129 per visit",
+        "Estradiol + progesterone: from $86/month"
+      ],
+      "priceSummary": "Itemized: peptides + hormone care",
+      "differentiator": "Peptide care built around a woman's hormones.",
+      "category": "longevity-renewal"
+    },
+    {
+      "slug": "elite-total-evolution",
+      "name": "Elite — Total Evolution",
+      "tagline": "Weight, hormones, renewal and skin in our highest-touch plan.",
+      "forWho": "Women who want every part of their care in one plan with priority support.",
+      "includes": [
+        "Compounded tirzepatide, if appropriate",
+        "Estradiol + progesterone hormone therapy, if appropriate",
+        "Sermorelin and NAD+ nasal spray, if appropriate",
+        "Cashmere prescription face cream, if appropriate",
+        "Priority care coordination"
+      ],
+      "price": 799,
+      "treatments": [
+        "tirzepatide",
+        "estradiol",
+        "progesterone-ir",
+        "sermorelin",
+        "nad-plus-nasal-spray",
+        "cashmere-cream"
+      ],
+      "intakeCategory": "weight-management",
+      "compounded": true,
+      "availability": "Sermorelin ships from a different pharmacy in California and DC. NAD+ nasal spray is not available in DC.",
+      "itemized": [
+        "Tirzepatide plan: $249/month ($319 at maintenance dose)",
+        "Clinician visit for hormone care: $129 per visit",
+        "Estradiol + progesterone: from $86/month",
+        "Sermorelin: $649 per 3-month supply",
+        "NAD+ nasal spray: $599 per 3-month supply",
+        "Cashmere face cream: $799 per 3-month supply"
+      ],
+      "priceSummary": "Itemized: every program in one plan",
+      "differentiator": "Every part of your care in one plan, with priority coordination.",
+      "category": "weight-management"
+    }
+  ],
+  "KARPA": {
+    "semaglutide": 159,
+    "semaglutideMaintenance": 179,
+    "tirzepatide": 249,
+    "tirzepatideMaintenance": 319,
+    "hrtVisit": 129,
+    "estradiolMonthly": 43,
+    "progesteroneMonthly": 43,
+    "biestProgesteroneMonthly": 84,
+    "vaginalEstradiolPerGram": 2.04,
+    "tretinoin3mo": 449,
+    "pt141_3mo": 399,
+    "sermorelin3mo": 649,
+    "nadNasal3mo": 599,
+    "cashmere3mo": 799
+  },
+  "GLP1_PLANS": [
+    {
+      "name": "Compounded Semaglutide",
+      "every28Days": 159,
+      "payments": 3,
+      "upfront3mo": 453
+    },
+    {
+      "name": "Compounded Tirzepatide",
+      "every28Days": 249,
+      "payments": 3,
+      "upfront3mo": 710
+    }
+  ],
+  "GLP1_EXTRAS": {
+    "labPanel": 189,
+    "ondansetron3mo": 199,
+    "micB12_3mo": 387
+  }
+}
