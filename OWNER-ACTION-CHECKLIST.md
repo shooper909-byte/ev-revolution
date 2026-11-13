@@ -18,6 +18,13 @@ The intake and checkout run on a separate platform (hosted on Azure), not on Lov
 7. **Ask the vendor for a women's intimacy (libido/desire) questionnaire.** Today Eve's Secrets has to use the HRT intake because the only sexual-health form is for erectile dysfunction. The website now tells customers this up front.
 8. **Delete test records** named "Audit TestDoNotTreat" (info@evevolutionhealth.com, (713) 555-0147). They are unpaid partial submissions from the walkthrough.
 
+### Re-check on 2026-11-13 (phone walkthrough)
+Already fixed in the intake platform: tirzepatide intro price ($249 / $710), checkout now opens on Monthly, and the "ONE-TIME PAYMENT · SHIPS AT ONCE" label is gone. Still open:
+1. **Semaglutide intro price is wrong.** The first intake screen says *$199 billed monthly OR $499 for 3 months*. Checkout charges **$159/month or $453 for 3 months**, which matches the website. Change the intro to $159 / $453. Right now it overstates your price by $40 before people even start.
+2. **"Not sure, I'd like my provider to recommend" defaults checkout to tirzepatide at $249**, the most expensive option. Default it to semaglutide at $159 (your advertised "from" price), or show both with the clinician choosing.
+3. **The intro price screen adds a tap** ("Start my assessment") before the first question. Consider showing the price box above question 1 instead.
+4. **"Billed $159 every 28 days, 3 payments ($477 total). Pause anytime."** Say plainly whether Monthly is a 3-month commitment. "Every 28 days" also means 13 charges a year, not 12.
+
 ## 3. Content only you can provide
 - **Care team:** the "NAME & PHOTO TO COME" cards were removed. Send real clinician names, credentials and photos (with their permission) to put them back. This is one of the strongest trust signals for telehealth.
 - **Reviews:** the site has a testimonials section that stays hidden until reviews are verified. Add only real customer reviews, with their consent. Fake reviews violate FTC rules.
