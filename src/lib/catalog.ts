@@ -262,9 +262,9 @@ export const ILLUSTRATION_NOTE = "Illustration only. The actual product and pack
  * Mrs. Collection portrait or the category photo.
  */
 const packageImages: Record<string, { src: string; alt: string }> = {
-  "glp1-semaglutide": { src: "/images/plans/glp1-semaglutide.webp", alt: "Three women in their fifties and sixties, smiling" },
-  "glp1-tirzepatide": { src: "/images/plans/glp1-tirzepatide.webp", alt: "Three women of different backgrounds, close together" },
-  "elite-total-evolution": { src: "/images/plans/elite-total-evolution.webp", alt: "Four women in elegant evening wear in a lounge" },
+  "glp1-semaglutide": { src: "/images/plans/glp1-semaglutide-v2.webp", alt: "A woman in a plum satin blouse, smiling softly" },
+  "glp1-tirzepatide": { src: "/images/plans/glp1-tirzepatide-v2.webp", alt: "Five women of different ages in swimsuits by a pool" },
+  "elite-total-evolution": { src: "/images/plans/elite-total-evolution-v2.webp", alt: "Three women in their fifties and sixties, smiling" },
   "menopause-essentials": { src: "/images/plans/menopause-essentials.webp", alt: "Three women laughing together on a sofa" },
   "mrs-jones-tirzepatide": categoryImages["weight-management"],
 };
