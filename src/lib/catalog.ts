@@ -224,6 +224,34 @@ export const brandInfo = (slug: string): BrandInfo | undefined => brandEntries.f
 export const brandMedications: Medication[] = brandEntries;
 export const medications: Medication[] = [...(data.treatments as Medication[]), ...brandEntries];
 
+/** Lifestyle photo for each category (brand-site care images). */
+export const categoryImages: Record<string, { src: string; alt: string }> = {
+  "weight-management": { src: "/images/care/care-weight-management.webp", alt: "A woman smiling in natural light" },
+  "hormones-menopause": { src: "/images/care/care-menopause-hormones.webp", alt: "A woman in her fifties relaxing at home" },
+  "skin-beauty": { src: "/images/care/care-skin-beauty-v3.webp", alt: "A woman with glowing skin" },
+  "hair-health": { src: "/images/care/care-hair.webp", alt: "A woman with healthy, full hair" },
+  "eves-secrets": { src: "/images/care/care-eves-secret-collection.webp", alt: "The Eve’s Secret collection" },
+  peptides: { src: "/images/products/peptide-care.png", alt: "Eve’s Sisters peptide care products" },
+  "longevity-renewal": { src: "/images/care/care-longevity.webp", alt: "A woman enjoying an active, healthy life" },
+};
+
+/**
+ * Product photo for a medication: the labeled Eve's Sisters product shot
+ * (from the telehealth site's product images). Brand-name medications have no
+ * Eve's Sisters product shot; manufacturer photos are not used, so they show
+ * their category photo instead.
+ */
+export function medicationImage(m: Medication): { src: string; alt: string; product: boolean } {
+  if (!brandEntries.some((b) => b.slug === m.slug)) return { src: `/images/medications/${m.slug}.webp`, alt: `${m.name} product`, product: true };
+  return { ...(categoryImages[m.category] ?? categoryImages["weight-management"]), product: false };
+}
+
+/** Mrs. Collection packages use their persona portrait; others use their category photo. */
+export function packageImage(p: Package): { src: string; alt: string } {
+  if (p.persona) return { src: `/images/mrs-collection/${p.persona}.png`, alt: `${p.name}` };
+  return categoryImages[p.category] ?? categoryImages["weight-management"];
+}
+
 export const getMedication = (slug: string) => medications.find((m) => m.slug === slug);
 export const getCategory = (slug: string) => categories.find((c) => c.slug === slug);
 

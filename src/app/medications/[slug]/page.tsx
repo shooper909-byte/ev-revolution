@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container, Eyebrow } from "@/components/Container";
@@ -9,6 +10,7 @@ import {
   brandInfo,
   getCategory,
   getMedication,
+  medicationImage,
   medicationPrices,
   medications,
   packagePriceLine,
@@ -50,6 +52,7 @@ export default async function MedicationPage({ params }: Props) {
   const cat = getCategory(m.category);
   const brand = brandInfo(m.slug);
   const price = medicationPrices[m.slug];
+  const img = medicationImage(m);
   const inPackages = packages.filter((p) => p.treatments.includes(m.slug));
   // Brand-name options are chosen inside the weight-management questionnaire; everything else has its own start page.
   const start = brand ? `/start/consultation?category=${m.category}` : `/start/${m.slug}`;
@@ -66,10 +69,17 @@ export default async function MedicationPage({ params }: Props) {
         )}
       </nav>
       <article className="mx-auto mt-6 max-w-3xl">
-        <Eyebrow>{brand ? `Brand-name · ${brand.maker}` : m.compounded ? "Compounded prescription" : "Prescription"}</Eyebrow>
-        <h1 className="mt-6 font-display text-4xl sm:text-5xl">{m.name}</h1>
-        {m.aka && <p className="mt-2 text-ivory-200/70">Also called {m.aka}</p>}
-        <p className="mt-6 text-lg text-ivory-200">{m.summary}</p>
+        <div className="grid items-center gap-8 sm:grid-cols-[1fr_12rem]">
+          <div>
+            <Eyebrow>{brand ? `Brand-name · ${brand.maker}` : m.compounded ? "Compounded prescription" : "Prescription"}</Eyebrow>
+            <h1 className="mt-6 font-display text-4xl sm:text-5xl">{m.name}</h1>
+            {m.aka && <p className="mt-2 text-ivory-200/70">Also called {m.aka}</p>}
+            <p className="mt-6 text-lg text-ivory-200">{m.summary}</p>
+          </div>
+          <div className={`relative mx-auto h-64 w-48 overflow-hidden rounded-lg ${img.product ? "" : "sm:h-64"}`}>
+            <Image src={img.src} alt={img.alt} fill priority sizes="12rem" className={img.product ? "object-contain" : "object-cover"} />
+          </div>
+        </div>
 
         <div className="hairline mt-8 rounded-lg border p-6">
           <p className="brand-eyebrow text-ivory-200/60">Price</p>

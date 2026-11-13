@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container, Eyebrow } from "@/components/Container";
-import { COMPOUNDED_NOTICE, PACKAGE_VISIT_NOTE, getMedication, getPackage, packagePriceLine, packages } from "@/lib/catalog";
+import { COMPOUNDED_NOTICE, PACKAGE_VISIT_NOTE, getMedication, getPackage, packageImage, packagePriceLine, packages } from "@/lib/catalog";
 import { handoffNote, telehealthUrl } from "@/lib/telehealth";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -30,6 +31,9 @@ export default async function PlanPage({ params }: Props) {
         <Link href="/plans" className="hover:text-champagne">Packages</Link>
       </nav>
       <article className="mx-auto mt-6 max-w-3xl">
+        <div className="relative mb-8 h-72 w-full overflow-hidden rounded-lg sm:h-96">
+          <Image src={packageImage(p).src} alt={packageImage(p).alt} fill priority sizes="(min-width: 768px) 48rem, 100vw" className="object-cover object-top" />
+        </div>
         <Eyebrow>{p.tagline}</Eyebrow>
         <h1 className="mt-6 font-display text-4xl sm:text-5xl">{p.name}</h1>
         <p className="mt-6 text-lg text-ivory-200">{p.forWho}</p>

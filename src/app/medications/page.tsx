@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Container, Eyebrow } from "@/components/Container";
 import {
@@ -6,7 +7,9 @@ import {
   COMPOUNDED_NOTICE,
   PRICE_ON_TELEHEALTH,
   brandMedications,
+  categoryImages,
   medicationCategories,
+  medicationImage,
   medicationPrices,
   medications,
   type Medication,
@@ -22,13 +25,25 @@ export const metadata: Metadata = {
 
 function MedicationCard({ m }: { m: Medication }) {
   const price = medicationPrices[m.slug];
+  const img = medicationImage(m);
   return (
-    <Link href={`/medications/${m.slug}`} className="hairline flex flex-col rounded-lg border p-6 hover:bg-plum-900/30">
+    <Link href={`/medications/${m.slug}`} className="hairline flex flex-col overflow-hidden rounded-lg border hover:bg-plum-900/30">
+      <div className={`relative h-52 w-full ${img.product ? "bg-gradient-to-b from-plum-900/50 to-transparent" : ""}`}>
+        <Image
+          src={img.src}
+          alt={img.alt}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className={img.product ? "object-contain p-4" : "object-cover"}
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-6">
       <h3 className="font-display text-2xl">{m.name}</h3>
       <p className="brand-eyebrow mt-2 text-ivory-200/60">{m.forms.join(" · ")}</p>
       <p className="mt-3 text-sm leading-relaxed text-ivory-200">{m.summary}</p>
       <p className="mt-4 text-sm text-champagne">{price ? price.line : PRICE_ON_TELEHEALTH}</p>
       <span aria-hidden="true" className="mt-auto pt-4 text-champagne">→</span>
+      </div>
     </Link>
   );
 }
@@ -60,8 +75,17 @@ export default function MedicationsPage() {
         const brands = own.filter((m) => brandSlugs.has(m.slug));
         return (
           <section key={c.slug} id={c.slug} className="mt-16 scroll-mt-24">
-            <h2 className="font-display text-4xl">{c.name}</h2>
-            <p className="mt-3 max-w-3xl text-ivory-200">{c.intro}</p>
+            <div className="grid items-center gap-6 sm:grid-cols-[1fr_14rem]">
+              <div>
+                <h2 className="font-display text-4xl">{c.name}</h2>
+                <p className="mt-3 max-w-3xl text-ivory-200">{c.intro}</p>
+              </div>
+              {categoryImages[c.slug] && (
+                <div className="relative h-56 w-full overflow-hidden rounded-lg sm:h-64">
+                  <Image src={categoryImages[c.slug].src} alt={categoryImages[c.slug].alt} fill sizes="(min-width: 640px) 14rem, 100vw" className="object-cover object-top" />
+                </div>
+              )}
+            </div>
             {brands.length > 0 && <h3 className="brand-eyebrow mt-8 text-ivory-200/70">Compounded &amp; other prescriptions</h3>}
             <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {compounded.map((m) => (

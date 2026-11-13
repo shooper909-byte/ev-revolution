@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Container, Eyebrow } from "@/components/Container";
-import { COMPOUNDED_NOTICE, PACKAGE_VISIT_NOTE, packagePriceLine, packages } from "@/lib/catalog";
+import { COMPOUNDED_NOTICE, PACKAGE_VISIT_NOTE, packageImage, packagePriceLine, packages } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "Packages",
@@ -21,7 +22,11 @@ export default function PlansPage() {
       </p>
       <div className="mt-12 grid gap-6 sm:grid-cols-2">
         {packages.map((p) => (
-          <Link key={p.slug} href={`/plans/${p.slug}`} className="hairline flex flex-col rounded-lg border p-8 hover:bg-plum-900/30">
+          <Link key={p.slug} href={`/plans/${p.slug}`} className="hairline flex flex-col overflow-hidden rounded-lg border hover:bg-plum-900/30">
+            <div className="relative h-56 w-full">
+              <Image src={packageImage(p).src} alt={packageImage(p).alt} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover object-top" />
+            </div>
+            <div className="flex flex-1 flex-col p-8">
             <h2 className="font-display text-2xl">{p.name}</h2>
             <p className="mt-2 text-ivory-200/80">{p.tagline}</p>
             <p className="mt-4 text-champagne">{packagePriceLine(p)}</p>
@@ -29,6 +34,7 @@ export default function PlansPage() {
               {p.includes.map((i) => <li key={i}>{i}</li>)}
             </ul>
             <span aria-hidden="true" className="mt-auto pt-5 text-champagne">→</span>
+            </div>
           </Link>
         ))}
       </div>
