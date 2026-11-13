@@ -43,7 +43,7 @@ It needs SFTP access to Pressable site 1791593. Deploy only with the owner's go-
      (brand-name ones: `/start/consultation?category=weight-management`) with UTM tags
    - a package's "Start this package" opens `evevolutionwellness.com/packages/<slug>`
    - `/packages` still returns 307 to the telehealth packages hub
-   - `sitemap.xml` lists 80 URLs (20 existing + 60 new)
+   - `sitemap.xml` lists 77 URLs (17 live today + 60 new)
    - no page errors or failed requests
 7. Submit `https://evevolutionhealth.com/sitemap.xml` again in Search Console.
 8. If anything fails, copy the theme-backups folder back over the live theme and purge the edge cache.
