@@ -16,19 +16,29 @@ It needs SFTP access to Pressable site 1791593. Deploy only with the owner's go-
 ## Steps (same method as the Nov 11 Guides deploy)
 1. Take on-demand file and database backups in Pressable. Copy the live theme to
    `wp-content/theme-backups/<theme>-pre-medications-<date>` (outside `/themes`).
-2. `npm ci && npm run typecheck && npm run build` from the merge commit.
+2. Check out the latest `main` containing merged PR #67 and these deployment instructions.
+   Run `npm ci && npm run typecheck && npm run build` from that checkout.
 3. Copy from `.next/server/app` into the theme's `static-pages/`, flattening `/` to `-`
    as before:
    - `medications.html` and every `medications/<slug>.html` → `medications-<slug>.html` (50)
    - `plans.html` and every `plans/<slug>.html` → `plans-<slug>.html` (10)
    - **every existing page's HTML again** (home, services, guides, about, faq, contact,
-     resources, early-access, policies, gender-affirming-care, us/*), because the header
-     and footer changed on all of them
+     resources, early-access, policies, gender-affirming-care, us/*), including the
+     gender-affirming-care "Coming soon" page, because the header and footer changed
+     on all of them. Upload every page's HTML, not only the new pages
    - `sitemap.xml.body` → `static-pages/sitemap.xml`
    - new files under `.next/static` → `assets/next/static`
-   - new images: `public/images/medications/` (45 WebP product shots) and
-     `public/images/care/care-hair.webp` → `assets/images/`. The pages load them through
-     `/_next/image`, like every other image on the site; check one loads (step 6).
+   - images: copy these into the theme's `assets/images/`, preserving the
+     `medications/`, `plans/` and `care/` subfolders:
+     - the whole `public/images/medications/` folder (50 WebP images, including all
+       5 brand-name illustrations: `wegovy.webp`, `wegovy-oral.webp`, `zepbound.webp`,
+       `mounjaro.webp` and `orforglipron.webp`)
+     - the whole `public/images/plans/` folder (4 package photos)
+     - from `public/images/care/`: `care-hair.webp`, `care-weight-rooftop.webp`,
+       `care-hormones-lounge.webp`, `care-peptides-trio.webp` and
+       `medications-hero-dance.webp`
+     The pages load them through `/_next/image`, like every other image on the
+     site; check medication, brand-name, package and care images load (step 6).
    `scripts/package-approved-theme.py --base <live theme copy> --refresh` does this
    flattening.
 4. `functions.php`:
