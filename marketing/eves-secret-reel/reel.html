@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Eve's Secret — "Shh" reel</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root {
+    --ivory: #f7efe6; --champagne: #dab16a; --champagne-200: #f0d9a8; --champagne-700: #b3884a; --orchid: #c79be0;
+    --serif: "Cormorant Garamond", Georgia, serif; --sans: "Montserrat", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+  #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0a0409; color: var(--ivory); }
+  .shot { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+  .img { position: absolute; inset: 0; background-size: cover; background-position: center; will-change: transform; }
+  .fill { position: absolute; inset: -60px; background-size: cover; background-position: center; filter: blur(45px) brightness(.4) saturate(1.3); }
+  .inset { position: absolute; left: 0; right: 0; top: 160px; height: 1200px; background-size: cover; background-position: center; will-change: transform;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 8%, #000 82%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 8%, #000 82%, transparent 100%); }
+  .grade { position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 85% 65% at 50% 40%, rgba(0,0,0,0) 40%, rgba(10,2,10,.8) 100%),
+                linear-gradient(180deg, rgba(60,10,45,.3), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 52%, rgba(12,2,12,.88) 100%); }
+  #leak { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; }
+  #flash { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 40%, #ffe6f0, #c0608a 55%, #3a0c30); opacity: 0; mix-blend-mode: screen; }
+  #grain { position: absolute; inset: 0; pointer-events: none; opacity: .1; mix-blend-mode: overlay; }
+
+  .cap { position: absolute; left: 70px; right: 70px; top: 1030px; text-align: center; font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: 84px; line-height: 1.05; color: var(--ivory); text-shadow: 0 4px 30px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.6); }
+  .cap .w { display: inline-block; opacity: 0; will-change: transform, opacity, filter; }
+  .cap.gold .w { background: linear-gradient(180deg, var(--champagne-200), var(--champagne) 55%, var(--champagne-700)); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 4px 24px rgba(0,0,0,.8)); }
+  .cap.big { font-size: 150px; top: 960px; }
+  .cap.big .w { filter: drop-shadow(0 0 30px rgba(0,0,0,.95)) drop-shadow(0 4px 12px rgba(0,0,0,.9)); }
+  .cap.small { font-size: 70px; }
+  .cap.word { font-style: normal; font-size: 64px; letter-spacing: .32em; text-transform: uppercase; font-family: var(--sans); font-weight: 500; top: 1080px; }
+
+  /* title card */
+  #title { background: radial-gradient(ellipse 70% 42% at 50% 45%, #4a1238 0%, #1c0716 58%, #070206 100%); }
+  #title .name { position: absolute; left: 0; right: 0; top: 640px; text-align: center; font-family: var(--serif); font-weight: 500; font-size: 200px; line-height: 1;
+    background: linear-gradient(180deg, #fff1d6, var(--champagne) 50%, var(--champagne-700)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  #title .tm { font-size: 50px; vertical-align: top; }
+  #title .tag { position: absolute; left: 0; right: 0; top: 880px; text-align: center; font-family: var(--sans); font-size: 40px; letter-spacing: .3em; text-transform: uppercase; color: var(--ivory); }
+  #title .by { position: absolute; left: 0; right: 0; top: 960px; text-align: center; font-family: var(--serif); font-style: italic; font-size: 48px; color: var(--champagne-200); }
+  #title .shine { position: absolute; left: 0; right: 0; top: 600px; height: 450px; background: linear-gradient(105deg, transparent 40%, rgba(255,235,220,.6) 50%, transparent 60%); mix-blend-mode: overlay; }
+
+  /* end card */
+  #end { background: radial-gradient(ellipse 80% 45% at 50% 40%, #4a1238 0%, #1c0716 55%, #070206 100%); }
+  #end .bg { position: absolute; inset: 0; background: url(assets/shh-hero.jpg) center 30% / cover; opacity: .22; filter: blur(6px); }
+  #end .mark { position: absolute; left: 50%; top: 270px; width: 360px; margin-left: -180px; height: 300px; overflow: hidden; mix-blend-mode: screen; }
+  #end .mark img { width: 100%; display: block; }
+  #end .name { position: absolute; left: 0; right: 0; top: 600px; text-align: center; font-family: var(--serif); font-weight: 500; font-size: 140px; line-height: 1;
+    background: linear-gradient(180deg, #fff1d6, var(--champagne) 50%, var(--champagne-700)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  #end .kick { position: absolute; left: 0; right: 0; top: 770px; text-align: center; font-family: var(--serif); font-style: italic; font-size: 54px; color: var(--ivory); }
+  #end .btn { position: absolute; left: 50%; top: 900px; transform: translateX(-50%); padding: 30px 60px; border-radius: 999px; white-space: nowrap;
+    background: linear-gradient(180deg, var(--champagne-200), var(--champagne) 55%, var(--champagne-700)); color: #1a0716;
+    font-family: var(--sans); font-weight: 500; font-size: 34px; letter-spacing: .24em; text-transform: uppercase; box-shadow: 0 10px 50px rgba(218,177,106,.35); }
+  #end .url { position: absolute; left: 0; right: 0; top: 1045px; text-align: center; font-family: var(--sans); font-weight: 500; font-size: 36px; color: var(--champagne-200); }
+  #end .bio { position: absolute; left: 0; right: 0; top: 1105px; text-align: center; font-family: var(--sans); font-size: 26px; letter-spacing: .3em; text-transform: uppercase; color: var(--orchid); }
+  #end .fine { position: absolute; left: 120px; right: 120px; top: 1180px; text-align: center; font-family: var(--sans); font-size: 21px; line-height: 1.5; color: rgba(247,239,230,.55); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="shot" id="s1"><div class="fill" style="background-image:url(assets/shh-hero.jpg)"></div><div class="inset" style="background-image:url(assets/shh-hero.jpg)"></div></div>
+  <div class="shot" id="s2"><div class="fill" style="background-image:url(assets/shh-3.jpg)"></div><div class="inset" style="background-image:url(assets/shh-3.jpg)"></div></div>
+  <div class="shot" id="s3"><div class="img" style="background-image:url(assets/silk-shoulder.jpg);background-position:50% 30%"></div></div>
+  <div class="shot" id="s4"><div class="img" style="background-image:url(assets/touch.jpg);background-position:50% 30%"></div></div>
+  <div class="shot" id="s5"><div class="fill" style="background-image:url(assets/together.jpg)"></div><div class="inset" style="background-image:url(assets/together.jpg)"></div></div>
+  <div class="shot" id="s6a"><div class="fill" style="background-image:url(assets/shh-1.jpg)"></div><div class="inset" style="background-image:url(assets/shh-1.jpg)"></div></div>
+  <div class="shot" id="s6b"><div class="fill" style="background-image:url(assets/shh-2.jpg)"></div><div class="inset" style="background-image:url(assets/shh-2.jpg)"></div></div>
+  <div class="shot" id="s6c"><div class="fill" style="background-image:url(assets/shh-4.jpg)"></div><div class="inset" style="background-image:url(assets/shh-4.jpg)"></div></div>
+  <div class="shot" id="s6d"><div class="fill" style="background-image:url(assets/lash-brow.jpg)"></div><div class="inset" style="background-image:url(assets/lash-brow.jpg)"></div></div>
+  <div class="shot" id="title">
+    <div class="name">Eve&rsquo;s Secret<span class="tm">™</span></div>
+    <div class="tag">Soft. Sensual. Elevated.</div>
+    <div class="by">by Eve&rsquo;s Sisters</div>
+    <div class="shine"></div>
+  </div>
+  <div class="shot" id="s8"><div class="fill" style="background-image:url(assets/shh-group.jpg)"></div><div class="inset" style="background-image:url(assets/shh-group.jpg);background-size:auto 1200px;background-repeat:no-repeat"></div></div>
+  <div class="shot" id="s9"><div class="fill" style="background-image:url(assets/shh-hero-group.jpg)"></div><div class="inset" style="background-image:url(assets/shh-hero-group.jpg);background-size:auto 1200px;background-repeat:no-repeat"></div></div>
+  <div class="shot" id="end">
+    <div class="bg"></div>
+    <div class="mark"><img src="assets/eves-sisters-logo.jpg" alt=""></div>
+    <div class="name">Eve&rsquo;s Secret</div>
+    <div class="kick">Some secrets are worth sharing.</div>
+    <div class="btn">Unlock the secret</div>
+    <div class="url">evevolutionwellness.us/eves-secret</div>
+    <div class="bio">Early access · Link in bio</div>
+    <div class="fine">Discreet consultations with licensed clinicians. Treatment only when clinically appropriate. 18+.</div>
+  </div>
+
+  <div class="grade"></div>
+  <canvas id="leak" width="270" height="480"></canvas>
+  <div id="flash"></div>
+  <canvas id="grain" width="540" height="960"></canvas>
+  <div id="caps"></div>
+</div>
+
+<script>
+  const BEAT = 60 / 84, DURATION = 28 * BEAT; // 84 BPM, 7 bars = 20s
+  const B = n => n * BEAT;
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const out = x => 1 - Math.pow(1 - clamp(x), 3);
+  const ease = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  const prog = (t, a, b) => clamp((t - a) / (b - a));
+  const $ = s => document.querySelector(s);
+
+  // [id, start, end, zoom from, zoom to, drift x, drift y]
+  const SHOTS = [
+    ['s1', 0, B(2), 1.3, 1.1, 0, 0],
+    ['s2', B(2), B(4), 1.15, 1.03, 0, 0],
+    ['s3', B(4), B(6), 1.18, 1.06, 25, 0],
+    ['s4', B(6), B(8), 1.12, 1.22, 0, -20],
+    ['s5', B(8), B(10), 1.1, 1.0, 0, 0],
+    ['s6a', B(10), B(11), 1.15, 1.06, 0, 0],
+    ['s6b', B(11), B(12), 1.15, 1.06, 0, 0],
+    ['s6c', B(12), B(13), 1.15, 1.06, 0, 0],
+    ['s6d', B(13), B(14), 1.15, 1.06, 0, 0],
+    ['title', B(14), B(17), 1, 1, 0, 0],
+    ['s8', B(17), B(21), 1, 1, 0, 0],
+    ['s9', B(21), B(24), 1, 1, 0, 0],
+    ['end', B(24), DURATION, 1, 1, 0, 0],
+  ];
+  const CAPS = [
+    [0.1, B(2), 'Shh…', 'big'],
+    [1.25, B(4) - .1, 'Can you keep a secret?'],
+    [3.0, 5.6, 'She’s been smiling…| for no reason.'],
+    [6.0, B(10), 'And someone noticed.', 'gold'],
+    [B(10) + .03, B(11), 'Desire.', 'word'],
+    [B(11) + .03, B(12), 'Confidence.', 'word'],
+    [B(12) + .03, B(13), 'Intimacy.', 'word'],
+    [B(13) + .03, B(14), 'Yours.', 'word gold'],
+    [12.6, B(21), 'Discreet care,| from clinicians who get it.'],
+    [15.65, B(24), 'Some secrets are worth sharing.', 'gold'],
+  ];
+  const capEls = CAPS.map(([a, b, text, cls]) => {
+    const d = document.createElement('div'); d.className = 'cap ' + (cls || '');
+    d.innerHTML = text.split(' ').map(w => w.endsWith('|') ? `<span class="w">${w.slice(0, -1)}</span><br>` : `<span class="w">${w}</span>`).join(' ');
+    $('#caps').appendChild(d); return d;
+  });
+
+  let seed = 1; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const gctx = $('#grain').getContext('2d'), gimg = gctx.createImageData(540, 960);
+  const lctx = $('#leak').getContext('2d');
+
+  function render(t) {
+    for (const [id, a, b, z0, z1, dx, dy] of SHOTS) {
+      const el = $('#' + id), on = t >= a && t < b;
+      el.style.opacity = on ? 1 : 0;
+      if (!on) continue;
+      const p = prog(t, a, b), punch = 1 + .07 * (1 - out(prog(t, a, a + .3)));
+      const z = (z0 + (z1 - z0) * ease(p)) * punch;
+      el.querySelectorAll('.img, .inset').forEach(i => { i.style.transform = `translate(${dx * p}px, ${dy * p}px) scale(${z})`; });
+    }
+    // slow pans across the two group shots
+    $('#s8 .inset').style.backgroundPosition = `${-60 - 640 * ease(prog(t, B(17), B(21)))}px 0`;
+    $('#s9 .inset').style.backgroundPosition = `${-500 * ease(prog(t, B(21), B(24)))}px 0`;
+
+    // title card
+    const tt = t - B(14), nm = $('#title .name'), np = out(prog(tt, 0, .9));
+    nm.style.opacity = np; nm.style.letterSpacing = `${(1 - np) * .12}em`; nm.style.filter = `blur(${(1 - np) * 14}px)`;
+    const tg = $('#title .tag'), tp = out(prog(tt, .7, 1.3)); tg.style.opacity = tp; tg.style.transform = `translateY(${(1 - tp) * 20}px)`;
+    $('#title .by').style.opacity = out(prog(tt, 1.1, 1.7));
+    $('#title .shine').style.transform = `translateX(${-1100 + 2200 * ease(prog(tt, .5, 1.6))}px)`;
+
+    // end card
+    const et = t - B(24);
+    const step = (sel, at, dy = 30) => { const e = $(sel), o = out(prog(et, at, at + .5)); e.style.opacity = o; e.style.marginTop = `${(1 - o) * dy}px`; };
+    step('#end .mark', 0, 0); step('#end .name', .15); step('#end .kick', .45); step('#end .btn', .8);
+    step('#end .url', 1.1, 15); step('#end .bio', 1.25, 15); step('#end .fine', 1.4, 0);
+    const pulse = et > 1.4 ? 1 + .03 * Math.sin((et - 1.4) * Math.PI / BEAT) ** 2 : 1;
+    $('#end .btn').style.transform = `translateX(-50%) scale(${pulse})`;
+
+    CAPS.forEach(([a, b], i) => {
+      const words = capEls[i].querySelectorAll('.w'), fade = 1 - out(prog(t, b - .15, b));
+      words.forEach((w, j) => {
+        const o = out(prog(t, a + j * .1, a + j * .1 + .32));
+        w.style.opacity = o * fade; w.style.transform = `translateY(${(1 - o) * 26}px)`; w.style.filter = `blur(${(1 - o) * 8}px)`;
+      });
+    });
+
+    let f = 0;
+    for (const [, a] of SHOTS) if (a > 0 && t >= a) f = Math.max(f, .5 * (1 - out(prog(t, a, a + .16))));
+    $('#flash').style.opacity = f;
+
+    lctx.clearRect(0, 0, 270, 480);
+    const lx = 135 + 120 * Math.sin(t * .55), ly = 170 + 90 * Math.cos(t * .4);
+    const g = lctx.createRadialGradient(lx, ly, 0, lx, ly, 230);
+    g.addColorStop(0, 'rgba(255,160,150,.26)'); g.addColorStop(.5, 'rgba(170,50,150,.12)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    lctx.fillStyle = g; lctx.fillRect(0, 0, 270, 480);
+
+    seed = 1 + Math.floor(t * 30) * 7919;
+    const d = gimg.data;
+    for (let i = 0; i < d.length; i += 4) { const v = rnd() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+    gctx.putImageData(gimg, 0, 0);
+
+    $('#stage').style.opacity = clamp(t / .25) * (1 - ease(prog(t, DURATION - .4, DURATION)));
+  }
+
+  window.DURATION = DURATION;
+  window.render = render;
+  window.ready = Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode())]);
+  if (!location.search.includes('render')) {
+    const start = performance.now();
+    const tick = () => { render(((performance.now() - start) / 1000) % DURATION); requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  } else { render(0); }
+</script>
+</body>
+</html>
