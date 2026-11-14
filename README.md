@@ -19,6 +19,13 @@ wellness brand.
 - **TypeScript**, strict mode
 - No external UI library; the design system lives in this repo
 
+## Patient mobile app
+
+`eves-sisters-patient-app/` is the Eve's Sisters iOS/Android app (Expo,
+React Native, TypeScript). It is a separate npm project with its own
+`package.json`; the website build ignores it. See
+[its README](eves-sisters-patient-app/README.md) to preview it on a phone.
+
 ## Getting started
 
 ```bash
