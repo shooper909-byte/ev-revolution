@@ -7,6 +7,7 @@ import { PillarCard } from "@/components/PillarCard";
 import { PillarIcon } from "@/components/PillarIcon";
 import { TelehealthHandoff } from "@/components/TelehealthHandoff";
 import { careLabel, publicPillars } from "@/lib/pillars";
+import { KARPA, money } from "@/lib/catalog";
 import { handoffNote, telehealthUrl } from "@/lib/telehealth";
 
 export const metadata: Metadata = {
@@ -63,6 +64,27 @@ const websiteJsonLd = {
   name: "Eve’s Sisters",
   url: "https://evevolutionhealth.com/",
 };
+
+const glancePrices = [
+  {
+    label: "Weight loss (GLP-1)",
+    price: `From ${money(KARPA.semaglutide)} every 28 days`,
+    detail: `Compounded semaglutide. Tirzepatide from ${money(KARPA.tirzepatide)}. Your first clinician visit and shipping are included.`,
+    href: "/medications#weight-management",
+  },
+  {
+    label: "Hormones & menopause",
+    price: `${money(KARPA.hrtVisit)} visit + from ${money(KARPA.progesteroneMonthly)}/month`,
+    detail: "A clinician visit, then estradiol or progesterone at each medication’s price, only if prescribed.",
+    href: "/medications#hormones-menopause",
+  },
+  {
+    label: "Weight + hormones together",
+    price: `GLP-1 from ${money(KARPA.semaglutide)} every 28 days + hormone care`,
+    detail: "The Mrs. Jones plan: one clinician looking after both.",
+    href: "/plans/mrs-jones-weight-hormones",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -150,6 +172,34 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+        </Container>
+      </section>
+
+      {/* Prices at a glance */}
+      <section className="border-b border-onyx-700">
+        <Container className="py-16 sm:py-20">
+          <Eyebrow>What it costs</Eyebrow>
+          <h2 className="mt-5 font-display text-3xl sm:text-4xl">Clear prices, before you start.</h2>
+          <ul className="mt-10 grid gap-5 md:grid-cols-3">
+            {glancePrices.map((g) => (
+              <li key={g.label}>
+                <Link href={g.href} className="hairline flex h-full flex-col rounded-lg border bg-plum-900/30 p-6 hover:bg-plum-900/50">
+                  <span className="brand-eyebrow text-ivory-200/60">{g.label}</span>
+                  <span className="mt-3 font-display text-2xl text-champagne">{g.price}</span>
+                  <span className="mt-3 text-sm leading-relaxed text-ivory-200">{g.detail}</span>
+                  <span className="mt-auto pt-5 text-sm text-champagne">See details <span aria-hidden="true">&rarr;</span></span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-2xl text-xs leading-relaxed text-ivory-200/60">
+              No insurance needed. Prescribed only if a licensed clinician decides it’s right for you. Prices apply outside North Dakota and Ohio.
+            </p>
+            <Link href="/medications" className="brand-eyebrow inline-block rounded-full border border-champagne px-8 py-4 text-center text-[0.625rem] text-champagne hover:bg-champagne hover:text-onyx">
+              See all prices <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
         </Container>
       </section>
 
