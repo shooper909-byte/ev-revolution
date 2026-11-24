@@ -7,7 +7,7 @@ import { PillarCard } from "@/components/PillarCard";
 import { PillarIcon } from "@/components/PillarIcon";
 import { TelehealthHandoff } from "@/components/TelehealthHandoff";
 import { careLabel, publicPillars } from "@/lib/pillars";
-import { KARPA, money } from "@/lib/catalog";
+import { PRICES, money } from "@/lib/catalog";
 import { handoffNote, telehealthUrl } from "@/lib/telehealth";
 
 export const metadata: Metadata = {
@@ -68,20 +68,20 @@ const websiteJsonLd = {
 const glancePrices = [
   {
     label: "Weight loss (GLP-1)",
-    price: `From ${money(KARPA.semaglutide)} every 28 days`,
-    detail: `Compounded semaglutide. Tirzepatide from ${money(KARPA.tirzepatide)}. Your first clinician visit and shipping are included.`,
+    price: `From ${money(PRICES.semaglutide)} every 28 days`,
+    detail: `Compounded semaglutide. Tirzepatide from ${money(PRICES.tirzepatide)}; microdose plan ${money(PRICES.microdoseTirzepatide)}. Clinician reviews and shipping are included.`,
     href: "/medications#weight-management",
   },
   {
     label: "Hormones & menopause",
-    price: `${money(KARPA.hrtVisit)} visit + from ${money(KARPA.progesteroneMonthly)}/month`,
-    detail: "A clinician visit, then estradiol or progesterone at each medication’s price, only if prescribed.",
-    href: "/medications#hormones-menopause",
+    price: "From $139/month",
+    detail: "Menopause Essentials: estradiol + progesterone cream, clinician reviews and delivery. No separate visit fees.",
+    href: "/plans/menopause-essentials",
   },
   {
     label: "Weight + hormones together",
-    price: `GLP-1 from ${money(KARPA.semaglutide)} every 28 days + hormone care`,
-    detail: "The Mrs. Jones plan: one clinician looking after both.",
+    price: "$259 every 28 days",
+    detail: "The Mrs. Jones plan: GLP-1 and hormone care from one clinician.",
     href: "/plans/mrs-jones-weight-hormones",
   },
 ];

@@ -35,7 +35,8 @@
         "nad-plus-nasal-spray",
         "ghk-cu-cream",
         "estriol-ghk-cu-cream",
-        "t3-t4"
+        "t3-t4",
+        "ghk-cu-injection"
       ]
     },
     {
@@ -72,7 +73,8 @@
         "nad-plus",
         "nad-plus-nasal-spray",
         "mic-b12-lipostat",
-        "methylene-blue"
+        "methylene-blue",
+        "low-dose-naltrexone"
       ]
     },
     {
@@ -84,6 +86,7 @@
       "clinicalNote": "Wellness programs require a clinician evaluation and are prescribed only when medically appropriate. They are not intended to diagnose, treat, cure or prevent any disease, and individual experiences vary.",
       "kind": "pathway",
       "includes": [
+        "sleepe",
         "glutathione",
         "sermorelin",
         "nad-plus",
@@ -916,9 +919,235 @@
         "Use for women is off-label and is decided by your provider."
       ],
       "compounded": true
+    },
+    {
+      "slug": "estradiol-progesterone-cream",
+      "name": "Estradiol + Progesterone Cream",
+      "category": "hormones-menopause",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded cream combining estradiol and progesterone in one daily application, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream that combines estradiol (an estrogen) and progesterone. Combining both hormones in one cream means one product and one daily routine for women whose clinician prescribes both.",
+      "howItsUsed": "Applied to the skin once a day as directed by your clinician. A 45-gram jar typically lasts about 45 days at a 1-gram daily dose.",
+      "programs": [
+        "Menopause Essentials",
+        "Mrs. Jones",
+        "Mrs. Golden",
+        "Mrs. Robinson"
+      ],
+      "considerations": [
+        "Requires a clinician evaluation of your health history, including breast, blood-clot, stroke and heart history.",
+        "Your clinician decides whether estrogen and progesterone are right for you and at what dose."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "estriol-vaginal-cream",
+      "name": "Estriol Vaginal Cream",
+      "aka": "Vaginal estrogen",
+      "category": "eves-secrets",
+      "forms": [
+        "Vaginal cream"
+      ],
+      "summary": "A compounded low-dose vaginal estriol cream for vaginal dryness and comfort, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded vaginal cream containing estriol, a gentle estrogen, used locally for vaginal dryness, irritation and discomfort with intimacy that often begin around menopause.",
+      "howItsUsed": "Applied inside the vagina with an applicator, usually more often for the first weeks and then about twice a week, as directed by your clinician. One 30-gram tube typically lasts about three months.",
+      "programs": [
+        "Eve’s Secret — Comfort",
+        "Eve’s Secret — Complete"
+      ],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Tell your clinician about any unexplained vaginal bleeding or a history of estrogen-sensitive cancer."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "estriol-face-cream",
+      "name": "Estriol Face Cream",
+      "category": "skin-beauty",
+      "forms": [
+        "Cream"
+      ],
+      "summary": "A compounded estriol cream for skin that has changed with menopause, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded topical cream containing a low concentration of estriol, a gentle estrogen, for facial skin that has become thinner or drier as estrogen falls around menopause.",
+      "howItsUsed": "Applied to the face in a thin layer as directed by your clinician. A 30-gram jar typically lasts about two months.",
+      "programs": [
+        "Mrs. Golden"
+      ],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Tell your clinician about any history of estrogen-sensitive cancer."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "ghk-cu-injection",
+      "name": "GHK-Cu Injection",
+      "aka": "Copper peptide",
+      "category": "peptides",
+      "forms": [
+        "Injectable vial"
+      ],
+      "summary": "A compounded injectable form of GHK-Cu, a copper peptide, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "GHK-Cu is a naturally occurring copper-binding peptide. This compounded injectable form is prescribed by some clinicians as part of a skin and renewal plan.",
+      "howItsUsed": "Given as a small injection under the skin on the schedule your clinician sets. One vial typically lasts about four weeks.",
+      "programs": [],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Evidence in people is still limited; your clinician will explain what is and isn’t known."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "sleepe",
+      "name": "SleepE",
+      "aka": "Ramelteon + magnesium L-threonate",
+      "category": "rest-wellbeing",
+      "forms": [
+        "Chewable tablet"
+      ],
+      "summary": "A compounded bedtime chewable combining ramelteon 10 mg and magnesium L-threonate, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "SleepE combines ramelteon, a prescription medication that acts on the body’s melatonin receptors to help with falling asleep, with magnesium L-threonate in one chewable tablet.",
+      "howItsUsed": "One chewable tablet about 30 minutes before bed, as directed by your clinician. Ships as a 90-day supply.",
+      "programs": [
+        "Mrs. Rose"
+      ],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Not for use with fluvoxamine; tell your clinician about every medication you take.",
+        "Avoid alcohol and do not drive if you feel drowsy."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "lush-lox",
+      "name": "Lush Lox",
+      "aka": "Low-dose oral minoxidil with biotin, D3 and K2",
+      "category": "hair-health",
+      "forms": [
+        "Dissolving tablet"
+      ],
+      "summary": "A compounded once-daily dissolving tablet for women’s hair thinning, combining low-dose minoxidil 2.5 mg with biotin, vitamin D3 and vitamin K2.",
+      "whatItIs": "Lush Lox combines low-dose oral minoxidil, which clinicians prescribe off-label for hair thinning, with biotin, vitamin D3 and vitamin K2 in one dissolving tablet made for women.",
+      "howItsUsed": "One tablet a day, dissolved on the tongue, as directed by your clinician. Added to any Eve’s Sisters plan.",
+      "programs": [
+        "Add-on to any plan"
+      ],
+      "considerations": [
+        "Requires a clinician evaluation, including blood pressure and heart history.",
+        "Not for use during pregnancy or breastfeeding.",
+        "Biotin can affect some lab test results; tell your lab you take it."
+      ],
+      "compounded": true
+    },
+    {
+      "slug": "low-dose-naltrexone",
+      "name": "Low-Dose Naltrexone (LDN)",
+      "aka": "LDN",
+      "category": "weight-management",
+      "forms": [
+        "Capsule"
+      ],
+      "summary": "Compounded low-dose naltrexone 1.5 mg capsules, prescribed off-label when a licensed provider determines it is appropriate.",
+      "whatItIs": "Naltrexone is an FDA-approved medication. At low doses it is prescribed off-label by some clinicians as part of a broader wellness or weight plan.",
+      "howItsUsed": "One capsule a day, often at bedtime, as directed by your clinician. Added to a GLP-1 or hormone plan.",
+      "programs": [
+        "Add-on to a GLP-1 or hormone plan"
+      ],
+      "considerations": [
+        "Requires a clinician evaluation.",
+        "Not for anyone taking opioid pain medication.",
+        "Off-label use; your clinician will explain the evidence."
+      ],
+      "compounded": true
     }
   ],
   "packages": [
+    {
+      "slug": "microdose-me",
+      "name": "Microdose Me — The Gentle Start",
+      "tagline": "Start GLP-1 care at the lowest dose.",
+      "forWho": "Women who want to begin GLP-1 care slowly, at a low dose, with a clinician watching how they feel.",
+      "includes": [
+        "Compounded tirzepatide at the starting (microdose) step, if appropriate",
+        "Clinician reviews before every refill",
+        "Discreet delivery"
+      ],
+      "price": 199,
+      "treatments": [
+        "tirzepatide"
+      ],
+      "intakeCategory": "weight-management",
+      "compounded": true,
+      "itemized": [
+        "Microdose tirzepatide: $199 every 28 days, or $549 up front for 3 months",
+        "Clinician reviews and shipping included"
+      ],
+      "priceSummary": "$199 every 28 days",
+      "differentiator": "A low-dose start for women who want to go gently.",
+      "category": "weight-management",
+      "prepay": 549,
+      "featured": true
+    },
+    {
+      "slug": "glp1-semaglutide",
+      "name": "GLP-1 Essentials — Semaglutide",
+      "tagline": "Clinician-guided semaglutide care.",
+      "forWho": "Women who want to start GLP-1 care with semaglutide.",
+      "includes": [
+        "Compounded semaglutide, if appropriate",
+        "Clinician reviews before every refill",
+        "Discreet delivery"
+      ],
+      "price": 169,
+      "maintenancePrice": 199,
+      "treatments": [
+        "semaglutide"
+      ],
+      "intakeCategory": "weight-management",
+      "compounded": true,
+      "itemized": [
+        "Steps 1–3 (up to 1 mg weekly): $169 every 28 days",
+        "Steps 4–5: $199 every 28 days",
+        "Or $459 up front for your first 3 months",
+        "Clinician reviews and shipping included"
+      ],
+      "priceSummary": "From $169 every 28 days",
+      "differentiator": "Add hormone care at any time with Mrs. Jones.",
+      "category": "weight-management",
+      "prepay": 459
+    },
+    {
+      "slug": "glp1-tirzepatide",
+      "name": "GLP-1 Advanced — Tirzepatide",
+      "tagline": "Clinician-guided tirzepatide care.",
+      "forWho": "Women who, with their clinician, choose tirzepatide.",
+      "includes": [
+        "Compounded tirzepatide, if appropriate",
+        "Clinician reviews before every refill",
+        "Discreet delivery"
+      ],
+      "price": 249,
+      "maintenancePrice": 349,
+      "treatments": [
+        "tirzepatide"
+      ],
+      "intakeCategory": "weight-management",
+      "compounded": true,
+      "itemized": [
+        "Steps 1–2 (up to 5 mg weekly): $249 every 28 days",
+        "Steps 3–4: $299 every 28 days",
+        "Steps 5–6: $349 every 28 days",
+        "Or $669 up front for your first 3 months",
+        "Clinician reviews and shipping included"
+      ],
+      "priceSummary": "From $249 every 28 days",
+      "differentiator": "Add hormone care at any time with Mrs. Jones.",
+      "category": "weight-management",
+      "prepay": 669
+    },
     {
       "slug": "mrs-jones-weight-hormones",
       "name": "Mrs. Jones — Weight + Hormones",
@@ -926,26 +1155,24 @@
       "tagline": "Weight care and menopause hormone care, in one plan.",
       "forWho": "Women in perimenopause or menopause whose weight changed along with their hormones, and who want one clinician looking at both.",
       "includes": [
-        "Compounded semaglutide or tirzepatide, if appropriate",
-        "Estradiol + progesterone hormone therapy, if appropriate",
-        "One licensed clinician and one care plan",
-        "Follow-ups every refill cycle and discreet delivery"
+        "Compounded semaglutide, if appropriate",
+        "Estradiol + progesterone cream, if appropriate",
+        "One licensed clinician, one care plan, one delivery",
+        "Clinician reviews before every refill"
       ],
-      "price": 289,
+      "price": 259,
       "treatments": [
         "semaglutide",
-        "tirzepatide",
-        "estradiol",
-        "progesterone-ir"
+        "estradiol-progesterone-cream"
       ],
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Semaglutide plan: $159/month ($179 at maintenance dose), or tirzepatide plan: $249/month",
-        "Clinician visit for hormone care: $129 per visit",
-        "Estradiol + progesterone: from $86/month"
+        "$259 every 28 days for semaglutide + hormone cream",
+        "Bought separately: $169 + $169 per 45-day jar of hormone cream",
+        "Clinician reviews and shipping included"
       ],
-      "priceSummary": "GLP-1 plan from $159/month + hormone care",
+      "priceSummary": "$259 every 28 days",
       "differentiator": "The only plan pairing GLP-1 care with menopause hormone care under one clinician.",
       "category": "weight-management",
       "featured": true
@@ -958,78 +1185,26 @@
       "forWho": "Women who, with their clinician, choose tirzepatide alongside menopause hormone care.",
       "includes": [
         "Compounded tirzepatide, if appropriate",
-        "Estradiol + progesterone hormone therapy, if appropriate",
-        "One licensed clinician and one care plan",
-        "Follow-ups every refill cycle and discreet delivery"
+        "Estradiol + progesterone cream, if appropriate",
+        "One licensed clinician, one care plan, one delivery",
+        "Clinician reviews before every refill"
       ],
-      "price": 379,
-      "maintenancePrice": 419,
+      "price": 339,
+      "maintenancePrice": 389,
       "treatments": [
         "tirzepatide",
-        "estradiol",
-        "progesterone-ir"
+        "estradiol-progesterone-cream"
       ],
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Tirzepatide plan: $249/month ($319 at maintenance dose)",
-        "Clinician visit for hormone care: $129 per visit",
-        "Estradiol + progesterone: from $86/month"
+        "Steps 1–2: $339 every 28 days",
+        "From step 3: $389 every 28 days",
+        "Clinician reviews and shipping included"
       ],
-      "priceSummary": "Tirzepatide $249/month + hormone care",
+      "priceSummary": "From $339 every 28 days",
       "differentiator": "Tirzepatide and hormone care from one clinician, one plan.",
       "category": "weight-management"
-    },
-    {
-      "slug": "perimenopause-starter",
-      "name": "Perimenopause Starter",
-      "tagline": "A gentle first step for the years before menopause.",
-      "forWho": "Women noticing changes in sleep, cycles or mood in their late 30s and 40s who want a clinician's view before anything else.",
-      "includes": [
-        "Progesterone, if appropriate",
-        "Licensed clinician evaluation",
-        "Follow-ups every refill cycle and discreet delivery"
-      ],
-      "price": 89,
-      "treatments": [
-        "progesterone-ir"
-      ],
-      "intakeCategory": "hormones-menopause",
-      "compounded": true,
-      "itemized": [
-        "Clinician visit for hormone care: $129 per visit",
-        "Progesterone: from $43/month"
-      ],
-      "priceSummary": "$129 visit + progesterone from $43/month",
-      "differentiator": "Perimenopause care at an entry price, with a path to full hormone care.",
-      "category": "hormones-menopause",
-      "featured": true
-    },
-    {
-      "slug": "menopause-essentials",
-      "name": "Menopause Essentials",
-      "tagline": "Clinician-guided estradiol and progesterone, with clear itemized pricing.",
-      "forWho": "Women in menopause who want clinician-guided estradiol and progesterone, with ongoing follow-ups.",
-      "includes": [
-        "Estradiol + progesterone, if appropriate",
-        "Licensed clinician evaluation and follow-ups",
-        "Discreet delivery"
-      ],
-      "price": 135,
-      "treatments": [
-        "estradiol",
-        "progesterone-ir",
-        "biest-progesterone"
-      ],
-      "intakeCategory": "hormones-menopause",
-      "compounded": true,
-      "itemized": [
-        "Clinician visit for hormone care: $129 per visit",
-        "Estradiol + progesterone: from $86/month"
-      ],
-      "priceSummary": "$129 visit + medication from $86/month",
-      "differentiator": "Clinician-led hormone care with every cost shown up front.",
-      "category": "hormones-menopause"
     },
     {
       "slug": "mrs-golden-glow",
@@ -1038,97 +1213,28 @@
       "tagline": "Hormone care and prescription skincare, together.",
       "forWho": "Women in menopause who notice changes in their skin as well as their hormones.",
       "includes": [
-        "Estradiol + progesterone hormone therapy, if appropriate",
-        "Prescription tretinoin cream, if appropriate",
-        "One licensed clinician and one care plan",
-        "Discreet delivery"
+        "Estradiol + progesterone cream, if appropriate",
+        "GHK-Cu copper peptide cream, if appropriate",
+        "Estriol face cream, if appropriate",
+        "One clinician, one delivery every 90 days"
       ],
       "price": 219,
       "treatments": [
-        "estradiol",
-        "progesterone-ir",
-        "tretinoin-cream"
+        "estradiol-progesterone-cream",
+        "ghk-cu-cream",
+        "estriol-face-cream"
       ],
       "intakeCategory": "hormones-menopause",
       "compounded": true,
       "itemized": [
-        "Clinician visit for hormone care: $129 per visit",
-        "Estradiol + progesterone: from $86/month",
-        "Tretinoin cream: $449 per 3-month supply"
+        "$219/month, shipped every 90 days",
+        "Add Lush Lox for hair thinning: +$55/month",
+        "Clinician reviews and shipping included"
       ],
-      "priceSummary": "$129 visit + hormones + tretinoin",
-      "differentiator": "Prescription hormones and prescription skincare in one plan.",
+      "priceSummary": "$219/month",
+      "differentiator": "Hormones, copper peptide and estriol skincare in one plan.",
       "category": "hormones-menopause",
       "featured": true
-    },
-    {
-      "slug": "eves-secret-intimacy",
-      "name": "Eve’s Secret Intimacy Plan",
-      "tagline": "Private care for desire and comfort.",
-      "forWho": "Women who want a private conversation with a clinician about desire, arousal or vaginal comfort.",
-      "includes": [
-        "PT-141, if appropriate",
-        "Vaginal estrogen cream where appropriate",
-        "Licensed clinician evaluation",
-        "Discreet delivery"
-      ],
-      "price": 149,
-      "treatments": [
-        "pt-141",
-        "estradiol-vaginal-cream"
-      ],
-      "intakeCategory": "eves-secrets",
-      "compounded": true,
-      "availability": "PT-141 is not available in North Dakota or Ohio.",
-      "itemized": [
-        "PT-141: $399 per 3-month supply",
-        "Vaginal estradiol cream, if prescribed: $2.04 per gram, plus the $129 hormone-care visit"
-      ],
-      "priceSummary": "PT-141 $399 per 3 months",
-      "differentiator": "Intimacy care designed for women, from a women's brand.",
-      "category": "eves-secrets"
-    },
-    {
-      "slug": "glp1-semaglutide",
-      "name": "GLP-1 Essentials — Semaglutide",
-      "tagline": "Clinician-guided semaglutide care.",
-      "forWho": "Women who want to start GLP-1 care with semaglutide.",
-      "includes": [
-        "Compounded semaglutide, if appropriate",
-        "Licensed clinician care",
-        "Discreet delivery"
-      ],
-      "price": 159,
-      "maintenancePrice": 179,
-      "treatments": [
-        "semaglutide"
-      ],
-      "intakeCategory": "weight-management",
-      "compounded": true,
-      "differentiator": "Add hormone care at any time with Mrs. Jones.",
-      "category": "weight-management",
-      "prepay": 453
-    },
-    {
-      "slug": "glp1-tirzepatide",
-      "name": "GLP-1 Advanced — Tirzepatide",
-      "tagline": "Clinician-guided tirzepatide care.",
-      "forWho": "Women who, with their clinician, choose tirzepatide.",
-      "includes": [
-        "Compounded tirzepatide, if appropriate",
-        "Licensed clinician care",
-        "Discreet delivery"
-      ],
-      "price": 249,
-      "maintenancePrice": 319,
-      "treatments": [
-        "tirzepatide"
-      ],
-      "intakeCategory": "weight-management",
-      "compounded": true,
-      "differentiator": "Add hormone care at any time with Mrs. Jones.",
-      "category": "weight-management",
-      "prepay": 710
     },
     {
       "slug": "mrs-robinson-renewal",
@@ -1139,28 +1245,182 @@
       "includes": [
         "Sermorelin, if appropriate",
         "NAD+ nasal spray, if appropriate",
-        "Estradiol + progesterone hormone therapy, if appropriate",
-        "Licensed clinician care and discreet delivery"
+        "Estradiol + progesterone cream, if appropriate",
+        "Clinician reviews and discreet delivery"
       ],
-      "price": 449,
+      "price": 349,
       "treatments": [
         "sermorelin",
         "nad-plus-nasal-spray",
-        "estradiol",
-        "progesterone-ir"
+        "estradiol-progesterone-cream"
       ],
       "intakeCategory": "peptides",
       "compounded": true,
-      "availability": "Sermorelin ships from a different pharmacy in California and DC. NAD+ nasal spray is not available in DC.",
       "itemized": [
-        "Sermorelin: $649 per 3-month supply",
-        "NAD+ nasal spray: $599 per 3-month supply",
-        "Clinician visit for hormone care: $129 per visit",
-        "Estradiol + progesterone: from $86/month"
+        "$349/month",
+        "Bought separately: sermorelin $129/month + NAD+ $179/month + hormone cream $169 per 45 days",
+        "Clinician reviews and shipping included"
       ],
-      "priceSummary": "Itemized: peptides + hormone care",
-      "differentiator": "Peptide care built around a woman's hormones.",
+      "priceSummary": "$349/month",
+      "differentiator": "Peptide care built around a woman’s hormones.",
       "category": "longevity-renewal"
+    },
+    {
+      "slug": "perimenopause-starter",
+      "name": "Mrs. Rose — Perimenopause Reset",
+      "tagline": "Steadier nights for the years before menopause.",
+      "forWho": "Women in their late 30s and 40s noticing changes in sleep, cycles or mood who want a clinician’s view and a gentle first step.",
+      "includes": [
+        "Progesterone, if appropriate",
+        "SleepE bedtime chewable, if appropriate",
+        "One clinician, one delivery every 90 days"
+      ],
+      "price": 169,
+      "treatments": [
+        "progesterone-ir",
+        "sleepe"
+      ],
+      "intakeCategory": "hormones-menopause",
+      "compounded": true,
+      "itemized": [
+        "$169/month, shipped every 90 days",
+        "Add an at-home hormone lab kit: $189 one time",
+        "Clinician reviews and shipping included"
+      ],
+      "priceSummary": "$169/month",
+      "differentiator": "Perimenopause care that starts with sleep, with a path to full hormone care.",
+      "category": "hormones-menopause",
+      "featured": true
+    },
+    {
+      "slug": "menopause-essentials",
+      "name": "Menopause Essentials",
+      "tagline": "Clinician-guided estradiol and progesterone, one simple price.",
+      "forWho": "Women in menopause who want clinician-guided estradiol and progesterone, with ongoing reviews.",
+      "includes": [
+        "Estradiol + progesterone cream, if appropriate",
+        "Licensed clinician evaluation and refill reviews",
+        "Discreet delivery every 90 days"
+      ],
+      "price": 139,
+      "treatments": [
+        "estradiol-progesterone-cream",
+        "estradiol",
+        "progesterone-ir"
+      ],
+      "intakeCategory": "hormones-menopause",
+      "compounded": true,
+      "itemized": [
+        "$139/month, shipped every 90 days",
+        "No separate visit fees"
+      ],
+      "priceSummary": "$139/month",
+      "differentiator": "Hormone care at one clear monthly price, no visit fees.",
+      "category": "hormones-menopause"
+    },
+    {
+      "slug": "eves-secret-spark",
+      "name": "Eve’s Secret — Spark",
+      "tagline": "Private, as-needed care for desire.",
+      "forWho": "Women who want a private conversation with a clinician about low desire or arousal.",
+      "includes": [
+        "PT-141, if appropriate",
+        "Licensed clinician evaluation",
+        "Discreet delivery"
+      ],
+      "price": 99,
+      "treatments": [
+        "pt-141"
+      ],
+      "intakeCategory": "eves-secrets",
+      "compounded": true,
+      "availability": "PT-141 may not be available in every state.",
+      "itemized": [
+        "$297 every 3 months ($99/month)",
+        "Clinician review and shipping included"
+      ],
+      "priceSummary": "$99/month, billed every 3 months",
+      "differentiator": "Desire care designed for women, from a women’s brand.",
+      "category": "eves-secrets",
+      "prepay": 297
+    },
+    {
+      "slug": "eves-secret-comfort",
+      "name": "Eve’s Secret — Comfort",
+      "tagline": "Gentle relief for vaginal dryness.",
+      "forWho": "Women with vaginal dryness, irritation or discomfort with intimacy around menopause.",
+      "includes": [
+        "Estriol vaginal cream, if appropriate",
+        "Licensed clinician evaluation",
+        "Discreet delivery every 90 days"
+      ],
+      "price": 49,
+      "treatments": [
+        "estriol-vaginal-cream"
+      ],
+      "intakeCategory": "eves-secrets",
+      "compounded": true,
+      "itemized": [
+        "$147 every 3 months ($49/month)",
+        "Clinician review and shipping included"
+      ],
+      "priceSummary": "$49/month, billed every 3 months",
+      "differentiator": "Local, low-dose comfort care at a simple price.",
+      "category": "eves-secrets",
+      "prepay": 147
+    },
+    {
+      "slug": "eves-secret-intimacy",
+      "name": "Eve’s Secret — Complete",
+      "tagline": "Desire and comfort, together.",
+      "forWho": "Women who want help with both desire and physical comfort, from one clinician.",
+      "includes": [
+        "PT-141, if appropriate",
+        "Estriol vaginal cream, if appropriate",
+        "Licensed clinician evaluation",
+        "Discreet delivery every 90 days"
+      ],
+      "price": 129,
+      "treatments": [
+        "pt-141",
+        "estriol-vaginal-cream"
+      ],
+      "intakeCategory": "eves-secrets",
+      "compounded": true,
+      "availability": "PT-141 may not be available in every state.",
+      "itemized": [
+        "$387 every 3 months ($129/month)",
+        "Bought separately: $297 + $147 every 3 months",
+        "Clinician review and shipping included"
+      ],
+      "priceSummary": "$129/month, billed every 3 months",
+      "differentiator": "The complete intimacy plan, designed for women.",
+      "category": "eves-secrets",
+      "prepay": 387,
+      "featured": true
+    },
+    {
+      "slug": "know-your-numbers",
+      "name": "Know Your Numbers",
+      "tagline": "An at-home hormone and thyroid lab, reviewed by a clinician.",
+      "forWho": "Women who want to see their hormone and thyroid levels before deciding on care.",
+      "includes": [
+        "At-home finger-collection kit for 7 hormone and thyroid markers",
+        "Prepaid return shipping to the lab",
+        "Clinician review of your results",
+        "$50 credit toward any plan within 30 days"
+      ],
+      "price": 189,
+      "treatments": [],
+      "intakeCategory": "hormones-menopause",
+      "compounded": false,
+      "itemized": [
+        "$189 one time",
+        "Markers: cortisol, DHEA-S, estradiol, FSH, progesterone, total testosterone, TSH"
+      ],
+      "priceSummary": "$189 one time",
+      "differentiator": "Start with your numbers, then choose care.",
+      "category": "hormones-menopause"
     },
     {
       "slug": "elite-total-evolution",
@@ -1169,69 +1429,78 @@
       "forWho": "Women who want every part of their care in one plan with priority support.",
       "includes": [
         "Compounded tirzepatide, if appropriate",
-        "Estradiol + progesterone hormone therapy, if appropriate",
+        "Estradiol + progesterone cream, if appropriate",
         "Sermorelin and NAD+ nasal spray, if appropriate",
-        "Cashmere prescription face cream, if appropriate",
+        "GHK-Cu copper peptide cream, if appropriate",
         "Priority care coordination"
       ],
-      "price": 799,
+      "price": 599,
       "treatments": [
         "tirzepatide",
-        "estradiol",
-        "progesterone-ir",
+        "estradiol-progesterone-cream",
         "sermorelin",
         "nad-plus-nasal-spray",
-        "cashmere-cream"
+        "ghk-cu-cream"
       ],
       "intakeCategory": "weight-management",
       "compounded": true,
-      "availability": "Sermorelin ships from a different pharmacy in California and DC. NAD+ nasal spray is not available in DC.",
       "itemized": [
-        "Tirzepatide plan: $249/month ($319 at maintenance dose)",
-        "Clinician visit for hormone care: $129 per visit",
-        "Estradiol + progesterone: from $86/month",
-        "Sermorelin: $649 per 3-month supply",
-        "NAD+ nasal spray: $599 per 3-month supply",
-        "Cashmere face cream: $799 per 3-month supply"
+        "$599/month",
+        "Bought separately: over $850/month",
+        "Clinician reviews and shipping included"
       ],
-      "priceSummary": "Itemized: every program in one plan",
+      "priceSummary": "$599/month",
       "differentiator": "Every part of your care in one plan, with priority coordination.",
       "category": "weight-management"
     }
   ],
-  "KARPA": {
-    "semaglutide": 159,
-    "semaglutideMaintenance": 179,
+  "PRICES": {
+    "semaglutide": 169,
+    "semaglutideHigherDose": 199,
+    "semaglutidePrepay3mo": 459,
     "tirzepatide": 249,
-    "tirzepatideMaintenance": 319,
-    "hrtVisit": 129,
-    "estradiolMonthly": 43,
-    "progesteroneMonthly": 43,
-    "biestProgesteroneMonthly": 84,
-    "vaginalEstradiolPerGram": 2.04,
+    "tirzepatideMidDose": 299,
+    "tirzepatideHigherDose": 349,
+    "tirzepatidePrepay3mo": 669,
+    "microdoseTirzepatide": 199,
+    "microdosePrepay3mo": 549,
+    "estradiol3mo": 249,
+    "progesterone3mo": 249,
+    "estradiolProgesteroneCream": 169,
+    "vaginalEstrogen3mo": 149,
+    "progesteroneCream3mo": 299,
+    "pt141_3mo": 297,
+    "sermorelin8wk": 258,
+    "nadMonthly": 179,
+    "glutathioneMonthly": 149,
+    "ghkCuInjectionMonthly": 179,
+    "ghkCuCream2mo": 169,
+    "estriolFaceCream2mo": 139,
+    "sleepe3mo": 249,
+    "lushLoxMonthly": 55,
+    "ldnMonthly": 59,
+    "dheaMonthly": 79,
+    "micB12Vial": 109,
+    "hormoneLabKit": 189,
     "tretinoin3mo": 449,
-    "pt141_3mo": 399,
-    "sermorelin3mo": 649,
-    "nadNasal3mo": 599,
     "cashmere3mo": 799
   },
   "GLP1_PLANS": [
     {
       "name": "Compounded Semaglutide",
-      "every28Days": 159,
-      "payments": 3,
-      "upfront3mo": 453
+      "every28Days": 169,
+      "payments": 1,
+      "upfront3mo": 459
     },
     {
       "name": "Compounded Tirzepatide",
       "every28Days": 249,
-      "payments": 3,
-      "upfront3mo": 710
+      "payments": 1,
+      "upfront3mo": 669
     }
   ],
   "GLP1_EXTRAS": {
     "labPanel": 189,
-    "ondansetron3mo": 199,
-    "micB12_3mo": 387
+    "micB12Vial": 109
   }
 }
