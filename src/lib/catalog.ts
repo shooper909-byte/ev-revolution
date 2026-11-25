@@ -307,11 +307,11 @@ const INCLUDED = "Clinician reviews and discreet shipping included.";
 export const medicationPrices: Record<string, { line: string; detail?: string }> = {
   semaglutide: {
     line: `From ${money(PRICES.semaglutide)} every 28 days`,
-    detail: `Steps 1–3 (up to 1 mg weekly): ${money(PRICES.semaglutide)} every 28 days. Steps 4–5: ${money(PRICES.semaglutideHigherDose)} every 28 days. Or ${money(PRICES.semaglutidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
+    detail: `Starter and continuation doses: ${money(PRICES.semaglutide)} every 28 days. Higher doses: ${money(PRICES.semaglutideHigherDose)} every 28 days. Or ${money(PRICES.semaglutidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
   },
   tirzepatide: {
     line: `From ${money(PRICES.tirzepatide)} every 28 days`,
-    detail: `Steps 1–2 (up to 5 mg weekly): ${money(PRICES.tirzepatide)} every 28 days. Steps 3–4: ${money(PRICES.tirzepatideMidDose)}. Steps 5–6: ${money(PRICES.tirzepatideHigherDose)}. Or ${money(PRICES.tirzepatidePrepay3mo)} up front for your first 3 months. Microdose plan: ${money(PRICES.microdoseTirzepatide)} every 28 days. ${INCLUDED}`,
+    detail: `Starter doses: ${money(PRICES.tirzepatide)} every 28 days. Continuation doses: ${money(PRICES.tirzepatideMidDose)}. Highest doses: ${money(PRICES.tirzepatideHigherDose)}. Or ${money(PRICES.tirzepatidePrepay3mo)} up front for your first 3 months. Microdose plan: ${money(PRICES.microdoseTirzepatide)} every 28 days. ${INCLUDED}`,
   },
   ...Object.fromEntries(
     brandEntries.map((b) => [

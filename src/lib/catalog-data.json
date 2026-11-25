@@ -929,7 +929,7 @@
       ],
       "summary": "A compounded cream combining estradiol and progesterone in one daily application, prescribed when a licensed provider determines it is appropriate.",
       "whatItIs": "A compounded topical cream that combines estradiol (an estrogen) and progesterone. Combining both hormones in one cream means one product and one daily routine for women whose clinician prescribes both.",
-      "howItsUsed": "Applied to the skin once a day as directed by your clinician. A 45-gram jar typically lasts about 45 days at a 1-gram daily dose.",
+      "howItsUsed": "Applied to the skin as directed by your clinician.",
       "programs": [
         "Menopause Essentials",
         "Mrs. Jones",
@@ -952,7 +952,7 @@
       ],
       "summary": "A compounded low-dose vaginal estriol cream for vaginal dryness and comfort, prescribed when a licensed provider determines it is appropriate.",
       "whatItIs": "A compounded vaginal cream containing estriol, a gentle estrogen, used locally for vaginal dryness, irritation and discomfort with intimacy that often begin around menopause.",
-      "howItsUsed": "Applied inside the vagina with an applicator, usually more often for the first weeks and then about twice a week, as directed by your clinician. One 30-gram tube typically lasts about three months.",
+      "howItsUsed": "Applied inside the vagina with an applicator, as directed by your clinician.",
       "programs": [
         "Eve’s Secret — Comfort",
         "Eve’s Secret — Complete"
@@ -972,7 +972,7 @@
       ],
       "summary": "A compounded estriol cream for skin that has changed with menopause, prescribed when a licensed provider determines it is appropriate.",
       "whatItIs": "A compounded topical cream containing a low concentration of estriol, a gentle estrogen, for facial skin that has become thinner or drier as estrogen falls around menopause.",
-      "howItsUsed": "Applied to the face in a thin layer as directed by your clinician. A 30-gram jar typically lasts about two months.",
+      "howItsUsed": "Applied to the face in a thin layer, as directed by your clinician.",
       "programs": [
         "Mrs. Golden"
       ],
@@ -992,7 +992,7 @@
       ],
       "summary": "A compounded injectable form of GHK-Cu, a copper peptide, prescribed when a licensed provider determines it is appropriate.",
       "whatItIs": "GHK-Cu is a naturally occurring copper-binding peptide. This compounded injectable form is prescribed by some clinicians as part of a skin and renewal plan.",
-      "howItsUsed": "Given as a small injection under the skin on the schedule your clinician sets. One vial typically lasts about four weeks.",
+      "howItsUsed": "Given as an injection under the skin, as directed by your clinician.",
       "programs": [],
       "considerations": [
         "Requires a clinician evaluation.",
@@ -1008,9 +1008,9 @@
       "forms": [
         "Chewable tablet"
       ],
-      "summary": "A compounded bedtime chewable combining ramelteon 10 mg and magnesium L-threonate, prescribed when a licensed provider determines it is appropriate.",
+      "summary": "A compounded bedtime chewable combining ramelteon and magnesium L-threonate, prescribed when a licensed provider determines it is appropriate.",
       "whatItIs": "SleepE combines ramelteon, a prescription medication that acts on the body’s melatonin receptors to help with falling asleep, with magnesium L-threonate in one chewable tablet.",
-      "howItsUsed": "One chewable tablet about 30 minutes before bed, as directed by your clinician. Ships as a 90-day supply.",
+      "howItsUsed": "Chewed at bedtime, as directed by your clinician.",
       "programs": [
         "Mrs. Rose"
       ],
@@ -1029,9 +1029,9 @@
       "forms": [
         "Dissolving tablet"
       ],
-      "summary": "A compounded once-daily dissolving tablet for women’s hair thinning, combining low-dose minoxidil 2.5 mg with biotin, vitamin D3 and vitamin K2.",
+      "summary": "A compounded dissolving tablet for women’s hair thinning, combining low-dose minoxidil with biotin, vitamin D3 and vitamin K2.",
       "whatItIs": "Lush Lox combines low-dose oral minoxidil, which clinicians prescribe off-label for hair thinning, with biotin, vitamin D3 and vitamin K2 in one dissolving tablet made for women.",
-      "howItsUsed": "One tablet a day, dissolved on the tongue, as directed by your clinician. Added to any Eve’s Sisters plan.",
+      "howItsUsed": "Dissolved on the tongue, as directed by your clinician. Added to any Eve’s Sisters plan.",
       "programs": [
         "Add-on to any plan"
       ],
@@ -1050,9 +1050,9 @@
       "forms": [
         "Capsule"
       ],
-      "summary": "Compounded low-dose naltrexone 1.5 mg capsules, prescribed off-label when a licensed provider determines it is appropriate.",
+      "summary": "Compounded low-dose naltrexone capsules, prescribed off-label when a licensed provider determines it is appropriate.",
       "whatItIs": "Naltrexone is an FDA-approved medication. At low doses it is prescribed off-label by some clinicians as part of a broader wellness or weight plan.",
-      "howItsUsed": "One capsule a day, often at bedtime, as directed by your clinician. Added to a GLP-1 or hormone plan.",
+      "howItsUsed": "Taken by mouth, as directed by your clinician. Added to a GLP-1 or hormone plan.",
       "programs": [
         "Add-on to a GLP-1 or hormone plan"
       ],
@@ -1071,7 +1071,7 @@
       "tagline": "Start GLP-1 care at the lowest dose.",
       "forWho": "Women who want to begin GLP-1 care slowly, at a low dose, with a clinician watching how they feel.",
       "includes": [
-        "Compounded tirzepatide at the starting (microdose) step, if appropriate",
+        "Compounded tirzepatide at a low starting dose, if appropriate",
         "Clinician reviews before every refill",
         "Discreet delivery"
       ],
@@ -1109,8 +1109,8 @@
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Steps 1–3 (up to 1 mg weekly): $169 every 28 days",
-        "Steps 4–5: $199 every 28 days",
+        "Starter and continuation doses: $169 every 28 days",
+        "Higher doses: $199 every 28 days",
         "Or $459 up front for your first 3 months",
         "Clinician reviews and shipping included"
       ],
@@ -1137,9 +1137,9 @@
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Steps 1–2 (up to 5 mg weekly): $249 every 28 days",
-        "Steps 3–4: $299 every 28 days",
-        "Steps 5–6: $349 every 28 days",
+        "Starter doses: $249 every 28 days",
+        "Continuation doses: $299 every 28 days",
+        "Highest doses: $349 every 28 days",
         "Or $669 up front for your first 3 months",
         "Clinician reviews and shipping included"
       ],
@@ -1198,8 +1198,8 @@
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Steps 1–2: $339 every 28 days",
-        "From step 3: $389 every 28 days",
+        "Starter doses: $339 every 28 days",
+        "Continuation and higher doses: $389 every 28 days",
         "Clinician reviews and shipping included"
       ],
       "priceSummary": "From $339 every 28 days",
