@@ -74,7 +74,7 @@ const glancePrices = [
   },
   {
     label: "Hormones & menopause",
-    price: "From $139/month",
+    price: "From $119/month",
     detail: "Menopause Essentials: estradiol + progesterone cream, clinician reviews and delivery. No separate visit fees.",
     href: "/plans/menopause-essentials",
   },

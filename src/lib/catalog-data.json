@@ -120,15 +120,13 @@
       "name": "Compounded Semaglutide",
       "category": "weight-management",
       "forms": [
-        "Injectable vial",
-        "Oral tablet"
+        "Injectable vial"
       ],
       "summary": "A compounded formulation of semaglutide, a GLP-1 receptor agonist, prescribed for weight management when a licensed provider determines it is clinically appropriate.",
       "whatItIs": "A compounded formulation of semaglutide, a GLP-1 receptor agonist, prescribed for weight management when a licensed provider determines it is clinically appropriate.",
-      "howItsUsed": "Injectable semaglutide is given once weekly under the skin. An oral tablet option is also available. Your clinician determines which form and program is appropriate.",
+      "howItsUsed": "Given as an injection under the skin, as directed by your clinician. Your clinician determines whether this program is appropriate for you.",
       "programs": [
-        "Injectable — starter, continuation, maintenance and microdose programs",
-        "Oral tablet — starter and continuation programs"
+        "Injectable — starter, continuation, maintenance and microdose programs"
       ],
       "considerations": [
         "Requires a clinician evaluation to confirm eligibility.",
@@ -141,15 +139,13 @@
       "name": "Compounded Tirzepatide",
       "category": "weight-management",
       "forms": [
-        "Injectable vial",
-        "Oral tablet"
+        "Injectable vial"
       ],
       "summary": "A compounded formulation of tirzepatide, a dual GIP/GLP-1 receptor agonist, prescribed for weight management when a licensed provider determines it is clinically appropriate.",
       "whatItIs": "A compounded formulation of tirzepatide, a dual GIP/GLP-1 receptor agonist, prescribed for weight management when a licensed provider determines it is clinically appropriate.",
-      "howItsUsed": "Injectable tirzepatide is given once weekly under the skin. An oral tablet option is also available. Your clinician determines which form and program is appropriate.",
+      "howItsUsed": "Given as an injection under the skin, as directed by your clinician. Your clinician determines whether this program is appropriate for you.",
       "programs": [
-        "Injectable — starter, continuation, maintenance and microdose programs",
-        "Oral tablet — starter and continuation programs"
+        "Injectable — starter, continuation, maintenance and microdose programs"
       ],
       "considerations": [
         "Requires a clinician evaluation to confirm eligibility.",
@@ -231,11 +227,11 @@
       "name": "DHEA",
       "category": "hormones-menopause",
       "forms": [
-        "Cream"
+        "Capsule"
       ],
-      "summary": "A compounded topical cream containing DHEA, used in hormone support, prescribed when a licensed provider determines it is appropriate.",
-      "whatItIs": "A compounded topical cream containing DHEA, used in hormone support, prescribed when a licensed provider determines it is appropriate.",
-      "howItsUsed": "Applied as a topical cream as directed by your clinician.",
+      "summary": "A compounded oral capsule containing DHEA, used in hormone support, prescribed when a licensed provider determines it is appropriate.",
+      "whatItIs": "A compounded oral capsule containing DHEA, used in hormone support, prescribed when a licensed provider determines it is appropriate.",
+      "howItsUsed": "Taken by mouth as directed by your clinician.",
       "programs": [],
       "considerations": [
         "Requires a provider evaluation and lab testing where appropriate.",
@@ -1274,19 +1270,17 @@
         "Licensed clinician evaluation and refill reviews",
         "Discreet delivery every 90 days"
       ],
-      "price": 139,
+      "price": 119,
       "treatments": [
-        "estradiol-progesterone-cream",
-        "estradiol",
-        "progesterone-ir"
+        "estradiol-progesterone-cream"
       ],
       "intakeCategory": "hormones-menopause",
       "compounded": true,
       "itemized": [
-        "$139/month, shipped every 90 days",
+        "$119/month, shipped every 90 days",
         "No separate visit fees"
       ],
-      "priceSummary": "$139/month",
+      "priceSummary": "$119/month",
       "differentiator": "Hormone care at one clear monthly price, no visit fees.",
       "category": "hormones-menopause"
     },
