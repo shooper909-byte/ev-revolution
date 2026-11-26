@@ -69,7 +69,7 @@ const glancePrices = [
   {
     label: "Weight loss (GLP-1)",
     price: `From ${money(PRICES.semaglutide)} every 28 days`,
-    detail: `Compounded semaglutide. Tirzepatide from ${money(PRICES.tirzepatide)}; microdose plan ${money(PRICES.microdoseTirzepatide)}. Clinician reviews and shipping are included.`,
+    detail: `Compounded semaglutide. Tirzepatide from ${money(PRICES.tirzepatide)}. Clinician reviews and shipping are included.`,
     href: "/medications#weight-management",
   },
   {

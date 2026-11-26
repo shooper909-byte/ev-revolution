@@ -1066,32 +1066,6 @@
   ],
   "packages": [
     {
-      "slug": "microdose-me",
-      "name": "Microdose Me — The Gentle Start",
-      "tagline": "Start GLP-1 care at the lowest dose.",
-      "forWho": "Women who want to begin GLP-1 care slowly, at a low dose, with a clinician watching how they feel.",
-      "includes": [
-        "Compounded tirzepatide at a low starting dose, if appropriate",
-        "Clinician reviews before every refill",
-        "Discreet delivery"
-      ],
-      "price": 199,
-      "treatments": [
-        "tirzepatide"
-      ],
-      "intakeCategory": "weight-management",
-      "compounded": true,
-      "itemized": [
-        "Microdose tirzepatide: $199 every 28 days, or $549 up front for 3 months",
-        "Clinician reviews and shipping included"
-      ],
-      "priceSummary": "$199 every 28 days",
-      "differentiator": "A low-dose start for women who want to go gently.",
-      "category": "weight-management",
-      "prepay": 549,
-      "featured": true
-    },
-    {
       "slug": "glp1-semaglutide",
       "name": "GLP-1 Essentials — Semaglutide",
       "tagline": "Clinician-guided semaglutide care.",
@@ -1140,13 +1114,13 @@
         "Starter doses: $249 every 28 days",
         "Continuation doses: $299 every 28 days",
         "Highest doses: $349 every 28 days",
-        "Or $669 up front for your first 3 months",
+        "Or $757 up front for your first 3 months",
         "Clinician reviews and shipping included"
       ],
       "priceSummary": "From $249 every 28 days",
       "differentiator": "Add hormone care at any time with Mrs. Jones.",
       "category": "weight-management",
-      "prepay": 669
+      "prepay": 757
     },
     {
       "slug": "mrs-jones-weight-hormones",
@@ -1168,8 +1142,7 @@
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "$259 every 28 days for semaglutide + hormone cream",
-        "Bought separately: $169 + $169 per 45-day jar of hormone cream",
+        "Semaglutide + estradiol/progesterone cream: $259 every 28 days",
         "Clinician reviews and shipping included"
       ],
       "priceSummary": "$259 every 28 days",
@@ -1258,7 +1231,6 @@
       "compounded": true,
       "itemized": [
         "$349/month",
-        "Bought separately: sermorelin $129/month + NAD+ $179/month + hormone cream $169 per 45 days",
         "Clinician reviews and shipping included"
       ],
       "priceSummary": "$349/month",
@@ -1390,7 +1362,6 @@
       "availability": "PT-141 may not be available in every state.",
       "itemized": [
         "$387 every 3 months ($129/month)",
-        "Bought separately: $297 + $147 every 3 months",
         "Clinician review and shipping included"
       ],
       "priceSummary": "$129/month, billed every 3 months",
@@ -1408,7 +1379,7 @@
         "At-home finger-collection kit for 7 hormone and thyroid markers",
         "Prepaid return shipping to the lab",
         "Clinician review of your results",
-        "$50 credit toward any plan within 30 days"
+        "$50 credit toward your first month of a GLP-1 or Mrs. Collection plan, within 30 days"
       ],
       "price": 189,
       "treatments": [],
@@ -1446,7 +1417,6 @@
       "compounded": true,
       "itemized": [
         "$599/month",
-        "Bought separately: over $850/month",
         "Clinician reviews and shipping included"
       ],
       "priceSummary": "$599/month",
@@ -1461,9 +1431,7 @@
     "tirzepatide": 249,
     "tirzepatideMidDose": 299,
     "tirzepatideHigherDose": 349,
-    "tirzepatidePrepay3mo": 669,
-    "microdoseTirzepatide": 199,
-    "microdosePrepay3mo": 549,
+    "tirzepatidePrepay3mo": 757,
     "estradiol3mo": 249,
     "progesterone3mo": 249,
     "estradiolProgesteroneCream": 169,
@@ -1496,7 +1464,7 @@
       "name": "Compounded Tirzepatide",
       "every28Days": 249,
       "payments": 1,
-      "upfront3mo": 669
+      "upfront3mo": 757
     }
   ],
   "GLP1_EXTRAS": {

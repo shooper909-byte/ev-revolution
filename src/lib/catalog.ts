@@ -270,7 +270,6 @@ const packageImages: Record<string, { src: string; alt: string }> = {
   "elite-total-evolution": { src: "/images/plans/elite-total-evolution-v2.webp", alt: "Three women in their fifties and sixties, smiling" },
   "menopause-essentials": { src: "/images/plans/menopause-essentials.webp", alt: "Three women laughing together on a sofa" },
   "mrs-jones-tirzepatide": categoryImages["weight-management"],
-  "microdose-me": { src: "/images/care/care-weight-become-more-you.webp", alt: "Three women in plum activewear beside the words “Become more you”" },
   "perimenopause-starter": { src: "/images/care/care-menopause-hormones.webp", alt: "A woman in her fifties looking up, at ease" },
   "eves-secret-spark": categoryImages["eves-secrets"],
   "eves-secret-comfort": { src: "/images/care/care-cta-silk.webp", alt: "A bare shoulder draped in plum velvet" },
@@ -311,7 +310,7 @@ export const medicationPrices: Record<string, { line: string; detail?: string }>
   },
   tirzepatide: {
     line: `From ${money(PRICES.tirzepatide)} every 28 days`,
-    detail: `Starter doses: ${money(PRICES.tirzepatide)} every 28 days. Continuation doses: ${money(PRICES.tirzepatideMidDose)}. Highest doses: ${money(PRICES.tirzepatideHigherDose)}. Or ${money(PRICES.tirzepatidePrepay3mo)} up front for your first 3 months. Microdose plan: ${money(PRICES.microdoseTirzepatide)} every 28 days. ${INCLUDED}`,
+    detail: `Starter doses: ${money(PRICES.tirzepatide)} every 28 days. Continuation doses: ${money(PRICES.tirzepatideMidDose)}. Highest doses: ${money(PRICES.tirzepatideHigherDose)}. Or ${money(PRICES.tirzepatidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
   },
   ...Object.fromEntries(
     brandEntries.map((b) => [
