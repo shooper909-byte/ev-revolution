@@ -337,7 +337,7 @@ export const medicationPrices: Record<string, { line: string; detail?: string }>
   "ghk-cu-cream": { line: `${money(PRICES.ghkCuCream3mo)} for a 3-month supply`, detail: `Billed once. ${INCLUDED}` },
   "estriol-face-cream": { line: `${money(PRICES.estriolFaceCream2mo)} per 2-month jar`, detail: INCLUDED },
   "lush-lox": { line: `${money(PRICES.lushLoxMonthly)}/month`, detail: "Added to any plan." },
-  "pt-141": { line: `${money(PRICES.pt141_3mo)} per 3-month supply`, detail: `$99/month. ${INCLUDED}` },
+  "pt-141": { line: `${money(PRICES.pt141Monthly)}/month`, detail: `Or ${money(PRICES.pt141Prepay3mo)} for 3 months. ${INCLUDED}` },
   sermorelin: { line: `${money(PRICES.sermorelin3mo)} for a 3-month supply`, detail: `Billed once. ${INCLUDED}` },
   "nad-plus": { line: `${money(PRICES.nadMonthly)}/month`, detail: `Or ${money(PRICES.nadPrepay3mo)} for 3 months. ${INCLUDED}` },
   "nad-plus-nasal-spray": { line: `${money(PRICES.nadMonthly)}/month`, detail: `Or ${money(PRICES.nadPrepay3mo)} for 3 months. ${INCLUDED}` },
