@@ -65,7 +65,7 @@ const sections: PolicySection[] = [
     heading: "Cookies",
     body: [
       "We use cookies and similar technologies to keep the site working, remember your preferences and understand how the site is used. You can block or delete cookies in your browser settings; some features may not work without them. We do not place health information in advertising cookies.",
-      "Advertising cookies: if you accept them, we use the Meta (Facebook) pixel on a few general pages, such as our home, about and FAQ pages, to measure our ads. It does not run on medication, package, guide or intake pages. We do not send health information, form answers, names, email addresses or phone numbers to Meta. You can decline, or change your choice at any time with the Cookie settings link in the footer.",
+      "Advertising cookies: if you accept them, we use Google (Google Ads and Google Tag Manager) and the Meta (Facebook) pixel to measure our ads. The Meta pixel runs only on a few general pages, such as our home, about and FAQ pages. Google sees medication, package, guide and intake pages only as a general section (for example, \"/medications\"), never the specific page. We do not send health information, form answers, names, email addresses or phone numbers to Google or Meta. Until you accept, Google tags run without advertising or analytics cookies. You can decline, or change your choice at any time with the Cookie settings link in the footer.",
     ],
   },
   {

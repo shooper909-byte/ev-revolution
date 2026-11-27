@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CONSENT_KEY, META_PIXEL_ID, pixelAllowedOn } from "@/lib/metaPixel";
+import { CONSENT_KEY, META_PIXEL_ID, TRACKING_ENABLED, pixelAllowedOn } from "@/lib/metaPixel";
 
 type Choice = "accepted" | "declined" | null;
 
@@ -26,10 +26,24 @@ declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
     _fbq?: unknown;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
-function loadPixel(id: string) {
+const GRANTED = { ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted", analytics_storage: "granted" };
+const DENIED = { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied" };
+
+function gpcOn(): boolean {
+  return Boolean((navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl);
+}
+
+function applyChoice(choice: Choice) {
+  const accepted = choice === "accepted" && !gpcOn();
+  window.gtag?.("consent", "update", accepted ? GRANTED : DENIED);
+  if (accepted && META_PIXEL_ID) loadPixel(META_PIXEL_ID);
+}
+
+function loadPixel(id: string): void {
   if (!pixelAllowedOn(window.location.pathname) || window.fbq) return;
   /* Standard Meta loader, without advanced matching. */
   const w = window as unknown as Record<string, unknown>;
@@ -59,24 +73,24 @@ export function CookieConsent() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (!META_PIXEL_ID) return;
-    const saved = readChoice();
+    if (!TRACKING_ENABLED) return;
+    const saved = gpcOn() ? "declined" : readChoice();
     setChoice(saved);
     setOpen(saved === null);
-    if (saved === "accepted") loadPixel(META_PIXEL_ID);
+    applyChoice(saved);
     const reopen = () => setOpen(true);
     window.addEventListener("es-cookie-settings", reopen);
     return () => window.removeEventListener("es-cookie-settings", reopen);
   }, []);
 
-  if (!META_PIXEL_ID || !open) return null;
+  if (!TRACKING_ENABLED || !open) return null;
 
   const decide = (c: Exclude<Choice, null>) => {
     saveChoice(c);
     setChoice(c);
     setOpen(false);
-    if (c === "accepted") loadPixel(META_PIXEL_ID);
-    else if (choice === "accepted") window.location.reload();
+    applyChoice(c);
+    if (c === "declined" && choice === "accepted") window.location.reload();
   };
 
   return (
@@ -87,7 +101,7 @@ export function CookieConsent() {
       className="fixed inset-x-4 bottom-4 z-[90] mx-auto max-w-xl rounded-lg border border-onyx-700 bg-onyx p-4 text-sm text-ivory-200 shadow-lg"
     >
       <p>
-        We use cookies to see how visitors find us and to measure our ads. We never share your health information.{" "}
+        We use cookies to see how visitors find us and to measure our ads (Google and Meta). We never share your health information.{" "}
         <a href="/privacy-policy" className="underline hover:text-champagne">
           Privacy Policy
         </a>
@@ -106,7 +120,7 @@ export function CookieConsent() {
 
 /** Footer link that reopens the banner. Hidden while the pixel is off. */
 export function CookieSettingsLink({ className }: { className?: string }) {
-  if (!META_PIXEL_ID) return null;
+  if (!TRACKING_ENABLED) return null;
   return (
     <button type="button" className={className} onClick={() => window.dispatchEvent(new Event("es-cookie-settings"))}>
       Cookie settings

@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SupportBubble } from "@/components/SupportBubble";
 import { EmailCapturePopup } from "@/components/EmailCapturePopup";
 import { CookieConsent } from "@/components/CookieConsent";
+import { GoogleTagBody, GoogleTagHead } from "@/components/GoogleTagManager";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -43,7 +44,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        <GoogleTagHead />
+      </head>
       <body className="font-sans">
+        <GoogleTagBody />
         <a
           href="#main"
           className="brand-eyebrow sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-plum focus:px-4 focus:py-2 focus:text-ivory"
