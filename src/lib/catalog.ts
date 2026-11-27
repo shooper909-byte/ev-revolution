@@ -305,12 +305,12 @@ const INCLUDED = "Clinician reviews and discreet shipping included.";
  */
 export const medicationPrices: Record<string, { line: string; detail?: string }> = {
   semaglutide: {
-    line: `From ${money(PRICES.semaglutide)}/month`,
-    detail: `Starter and continuation doses: ${money(PRICES.semaglutide)}/month. Higher doses: ${money(PRICES.semaglutideHigherDose)}/month. Or ${money(PRICES.semaglutidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
+    line: `${money(PRICES.semaglutide)}/month at any dose`,
+    detail: `One price at every dose. Or ${money(PRICES.semaglutidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
   },
   tirzepatide: {
-    line: `From ${money(PRICES.tirzepatide)}/month`,
-    detail: `Starter doses: ${money(PRICES.tirzepatide)}/month. Continuation doses: ${money(PRICES.tirzepatideMidDose)}/month. Highest doses: ${money(PRICES.tirzepatideHigherDose)}/month. Or ${money(PRICES.tirzepatidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
+    line: `${money(PRICES.tirzepatide)}/month at any dose`,
+    detail: `One price at every dose. Or ${money(PRICES.tirzepatidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
   },
   ...Object.fromEntries(
     brandEntries.map((b) => [

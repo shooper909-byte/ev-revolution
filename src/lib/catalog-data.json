@@ -1071,23 +1071,21 @@
         "Clinician reviews before every refill",
         "Discreet delivery"
       ],
-      "price": 169,
-      "maintenancePrice": 199,
+      "price": 189,
       "treatments": [
         "semaglutide"
       ],
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Starter and continuation doses: $169/month",
-        "Higher doses: $199/month",
-        "Or $459 up front for your first 3 months",
+        "$189/month at any dose",
+        "Or $539 up front for your first 3 months",
         "Clinician reviews and shipping included"
       ],
-      "priceSummary": "From $169/month",
+      "priceSummary": "$189/month",
       "differentiator": "Add hormone care at any time with Mrs. Jones.",
       "category": "weight-management",
-      "prepay": 459
+      "prepay": 539
     },
     {
       "slug": "glp1-tirzepatide",
@@ -1099,24 +1097,21 @@
         "Clinician reviews before every refill",
         "Discreet delivery"
       ],
-      "price": 249,
-      "maintenancePrice": 349,
+      "price": 299,
       "treatments": [
         "tirzepatide"
       ],
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Starter doses: $249/month",
-        "Continuation doses: $299/month",
-        "Highest doses: $349/month",
-        "Or $757 up front for your first 3 months",
+        "$299/month at any dose",
+        "Or $849 up front for your first 3 months",
         "Clinician reviews and shipping included"
       ],
-      "priceSummary": "From $249/month",
+      "priceSummary": "$299/month",
       "differentiator": "Add hormone care at any time with Mrs. Jones.",
       "category": "weight-management",
-      "prepay": 757
+      "prepay": 849
     },
     {
       "slug": "mrs-jones-weight-hormones",
@@ -1130,7 +1125,7 @@
         "One licensed clinician, one care plan, one delivery",
         "Clinician reviews before every refill"
       ],
-      "price": 259,
+      "price": 279,
       "treatments": [
         "semaglutide",
         "estradiol-progesterone-cream"
@@ -1138,10 +1133,10 @@
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Semaglutide + estradiol/progesterone cream: $259/month",
+        "Semaglutide + estradiol/progesterone cream: $279/month at any dose",
         "Clinician reviews and shipping included"
       ],
-      "priceSummary": "$259/month",
+      "priceSummary": "$279/month",
       "differentiator": "The only plan pairing GLP-1 care with menopause hormone care under one clinician.",
       "category": "weight-management",
       "featured": true
@@ -1158,8 +1153,7 @@
         "One licensed clinician, one care plan, one delivery",
         "Clinician reviews before every refill"
       ],
-      "price": 339,
-      "maintenancePrice": 389,
+      "price": 389,
       "treatments": [
         "tirzepatide",
         "estradiol-progesterone-cream"
@@ -1167,11 +1161,10 @@
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Starter doses: $339/month",
-        "Continuation and higher doses: $389/month",
+        "Tirzepatide + estradiol/progesterone cream: $389/month at any dose",
         "Clinician reviews and shipping included"
       ],
-      "priceSummary": "From $339/month",
+      "priceSummary": "$389/month",
       "differentiator": "Tirzepatide and hormone care from one clinician, one plan.",
       "category": "weight-management"
     },
@@ -1419,13 +1412,10 @@
     }
   ],
   "PRICES": {
-    "semaglutide": 169,
-    "semaglutideHigherDose": 199,
-    "semaglutidePrepay3mo": 459,
-    "tirzepatide": 249,
-    "tirzepatideMidDose": 299,
-    "tirzepatideHigherDose": 349,
-    "tirzepatidePrepay3mo": 757,
+    "semaglutide": 189,
+    "semaglutidePrepay3mo": 539,
+    "tirzepatide": 299,
+    "tirzepatidePrepay3mo": 849,
     "estradiol3mo": 249,
     "progesterone3mo": 249,
     "estradiolProgesteroneCream": 169,
@@ -1450,15 +1440,15 @@
   "GLP1_PLANS": [
     {
       "name": "Compounded Semaglutide",
-      "every28Days": 169,
+      "every28Days": 189,
       "payments": 1,
-      "upfront3mo": 459
+      "upfront3mo": 539
     },
     {
       "name": "Compounded Tirzepatide",
-      "every28Days": 249,
+      "every28Days": 299,
       "payments": 1,
-      "upfront3mo": 757
+      "upfront3mo": 849
     }
   ],
   "GLP1_EXTRAS": {

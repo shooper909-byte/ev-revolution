@@ -69,7 +69,7 @@ const glancePrices = [
   {
     label: "Weight loss (GLP-1)",
     price: `From ${money(PRICES.semaglutide)}/month`,
-    detail: `Compounded semaglutide. Tirzepatide from ${money(PRICES.tirzepatide)}. Clinician reviews and shipping are included.`,
+    detail: `Compounded semaglutide. Tirzepatide ${money(PRICES.tirzepatide)}/month. One price at every dose; clinician reviews and shipping are included.`,
     href: "/medications#weight-management",
   },
   {
@@ -80,7 +80,7 @@ const glancePrices = [
   },
   {
     label: "Weight + hormones together",
-    price: "$259/month",
+    price: "$279/month",
     detail: "The Mrs. Jones plan: GLP-1 and hormone care from one clinician.",
     href: "/plans/mrs-jones-weight-hormones",
   },
