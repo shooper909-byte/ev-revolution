@@ -6,9 +6,12 @@
  * sites use the same medication copy and the same prices. Re-export it when
  * those files change; do not hand-edit the JSON.
  *
- * Prices here must match what Karpa checkout charges. Only prices that were
- * checked against checkout are shown; everything else says the price is shown
- * on the telehealth site.
+ * Prices are the Eve's Sisters retail prices set from Remedora's pharmacy
+ * cost list (Nov 2026 pricing model). They must match what checkout charges:
+ * publish them only once checkout runs on Remedora at these prices. Tretinoin,
+ * Cashmere and the brand-name GLP-1s are still fulfilled through Karpa, so their
+ * prices are Karpa's. Medications without an entry say the price is shown on
+ * the telehealth site.
  */
 import data from "./catalog-data.json";
 
@@ -61,7 +64,7 @@ export type Package = {
   prepay?: number;
 };
 
-export const KARPA = data.KARPA;
+export const PRICES = data.PRICES;
 export const GLP1_PLANS = data.GLP1_PLANS;
 export const GLP1_EXTRAS = data.GLP1_EXTRAS;
 export const money = (n: number) => `$${n.toLocaleString("en-US", { minimumFractionDigits: n % 1 ? 2 : 0 })}`;
@@ -267,6 +270,11 @@ const packageImages: Record<string, { src: string; alt: string }> = {
   "elite-total-evolution": { src: "/images/plans/elite-total-evolution-v2.webp", alt: "Three women in their fifties and sixties, smiling" },
   "menopause-essentials": { src: "/images/plans/menopause-essentials.webp", alt: "Three women laughing together on a sofa" },
   "mrs-jones-tirzepatide": categoryImages["weight-management"],
+  "perimenopause-starter": { src: "/images/care/care-menopause-hormones.webp", alt: "A woman in her fifties looking up, at ease" },
+  "eves-secret-spark": categoryImages["eves-secrets"],
+  "eves-secret-comfort": { src: "/images/care/care-cta-silk.webp", alt: "A bare shoulder draped in plum velvet" },
+  "eves-secret-intimacy": { src: "/images/care/care-together.webp", alt: "Four women of different ages in evening wear, standing together" },
+  "know-your-numbers": { src: "/images/care/care-flexible.webp", alt: "Four generations of women, cheek to cheek" },
 };
 
 export function packageImage(p: Package): { src: string; alt: string } {
@@ -289,20 +297,20 @@ export function medicationsIn(slug: string): Medication[] {
 /** Categories that own medications, in display order (pathways list others' medications, so they're skipped on the hub). */
 export const medicationCategories = categories.filter((c) => c.kind !== "pathway");
 
-const HRT_VISIT = `plus a ${money(KARPA.hrtVisit)} clinician visit for hormone care`;
+const INCLUDED = "Clinician reviews and discreet shipping included.";
 
 /**
- * Prices checked against Karpa checkout (Nov 2026). `line` is the headline,
+ * Retail prices (Remedora pricing model, Nov 2026). `line` is the headline,
  * `detail` the fine print. Medications without an entry show no price.
  */
 export const medicationPrices: Record<string, { line: string; detail?: string }> = {
   semaglutide: {
-    line: `From ${money(KARPA.semaglutide)} every 28 days`,
-    detail: `${money(GLP1_PLANS[0].every28Days)} every 28 days for ${GLP1_PLANS[0].payments} payments (${money(GLP1_PLANS[0].every28Days * GLP1_PLANS[0].payments)} total), or ${money(GLP1_PLANS[0].upfront3mo)} upfront for 3 months. ${money(KARPA.semaglutideMaintenance)} every 28 days at the maintenance dose. Oral tablet plan from $189 every 28 days ($419 upfront for 3 months); microdose plan $179 every 28 days ($449 upfront). Includes your first clinician visit and shipping.`,
+    line: `${money(PRICES.semaglutide)}/month at any dose`,
+    detail: `One price at every dose. Or ${money(PRICES.semaglutidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
   },
   tirzepatide: {
-    line: `From ${money(KARPA.tirzepatide)} every 28 days`,
-    detail: `${money(GLP1_PLANS[1].every28Days)} every 28 days for ${GLP1_PLANS[1].payments} payments (${money(GLP1_PLANS[1].every28Days * GLP1_PLANS[1].payments)} total), or ${money(GLP1_PLANS[1].upfront3mo)} upfront for 3 months. ${money(KARPA.tirzepatideMaintenance)} every 28 days at the maintenance dose. Oral tablet plan from $209 every 28 days ($519 upfront for 3 months); microdose plan $249 every 28 days ($649 upfront). Includes your first clinician visit and shipping.`,
+    line: `${money(PRICES.tirzepatide)}/month at any dose`,
+    detail: `One price at every dose. Or ${money(PRICES.tirzepatidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
   },
   ...Object.fromEntries(
     brandEntries.map((b) => [
@@ -315,17 +323,27 @@ export const medicationPrices: Record<string, { line: string; detail?: string }>
       },
     ]),
   ),
-  "mic-b12-lipostat": { line: `${money(GLP1_EXTRAS.micB12_3mo)} per 3-month supply`, detail: "Offered as an add-on to a GLP-1 plan at checkout." },
-  ondansetron: { line: `${money(GLP1_EXTRAS.ondansetron3mo)} per 3-month supply`, detail: "Offered as an add-on to a GLP-1 plan at checkout." },
-  estradiol: { line: `From ${money(KARPA.estradiolMonthly)}/month`, detail: `Medication price, ${HRT_VISIT}.` },
-  "progesterone-ir": { line: `From ${money(KARPA.progesteroneMonthly)}/month`, detail: `Medication price, ${HRT_VISIT}.` },
-  "biest-progesterone": { line: `From ${money(KARPA.biestProgesteroneMonthly)}/month`, detail: `Medication price, ${HRT_VISIT}.` },
-  "estradiol-vaginal-cream": { line: `${money(KARPA.vaginalEstradiolPerGram)} per gram`, detail: `Medication price, ${HRT_VISIT}.` },
-  "tretinoin-cream": { line: `${money(KARPA.tretinoin3mo)} per 3-month supply` },
-  "cashmere-cream": { line: `${money(KARPA.cashmere3mo)} per 3-month supply` },
-  "pt-141": { line: `${money(KARPA.pt141_3mo)} per 3-month supply` },
-  sermorelin: { line: `${money(KARPA.sermorelin3mo)} per 3-month supply` },
-  "nad-plus-nasal-spray": { line: `${money(KARPA.nadNasal3mo)} per 3-month supply` },
+  "mic-b12-lipostat": { line: `${money(PRICES.micB12Vial)} per vial`, detail: "Added to a GLP-1 plan." },
+  "low-dose-naltrexone": { line: `${money(PRICES.ldnMonthly)}/month`, detail: "Added to a GLP-1 or hormone plan." },
+  estradiol: { line: `${money(PRICES.estradiol3mo)} per 3-month supply`, detail: INCLUDED },
+  "progesterone-ir": { line: `${money(PRICES.progesterone3mo)} per 3-month supply`, detail: `${INCLUDED} Or part of Mrs. Rose from $169/month.` },
+  "estradiol-progesterone-cream": { line: "Included in Menopause Essentials, $119/month", detail: "Also part of Mrs. Jones, Mrs. Golden, Mrs. Robinson and Elite. Clinician reviews and discreet shipping included." },
+  "progesterone-cream": { line: `${money(PRICES.progesteroneCream3mo)} per 3-month supply`, detail: INCLUDED },
+  "estradiol-vaginal-cream": { line: `${money(PRICES.vaginalEstrogen3mo)} per 3-month supply`, detail: INCLUDED },
+  "estriol-vaginal-cream": { line: `${money(PRICES.vaginalEstrogen3mo)} per 3-month supply`, detail: `${INCLUDED} Or $49/month in Eve’s Secret — Comfort.` },
+  dhea: { line: `${money(PRICES.dheaMonthly)}/month`, detail: "Added to a hormone plan." },
+  "tretinoin-cream": { line: `${money(PRICES.tretinoin3mo)} per 3-month supply` },
+  "cashmere-cream": { line: `${money(PRICES.cashmere3mo)} per 3-month supply` },
+  "ghk-cu-cream": { line: `${money(PRICES.ghkCuCream3mo)} for a 3-month supply`, detail: `Billed once. ${INCLUDED}` },
+  "estriol-face-cream": { line: `${money(PRICES.estriolFaceCream2mo)} per 2-month jar`, detail: INCLUDED },
+  "lush-lox": { line: `${money(PRICES.lushLoxMonthly)}/month`, detail: "Added to any plan." },
+  "pt-141": { line: `${money(PRICES.pt141_3mo)} per 3-month supply`, detail: `$99/month. ${INCLUDED}` },
+  sermorelin: { line: `${money(PRICES.sermorelin3mo)} for a 3-month supply`, detail: `Billed once. ${INCLUDED}` },
+  "nad-plus": { line: `${money(PRICES.nadMonthly)}/month`, detail: `Or ${money(PRICES.nadPrepay3mo)} for 3 months. ${INCLUDED}` },
+  "nad-plus-nasal-spray": { line: `${money(PRICES.nadMonthly)}/month`, detail: `Or ${money(PRICES.nadPrepay3mo)} for 3 months. ${INCLUDED}` },
+  glutathione: { line: `${money(PRICES.glutathioneMonthly)}/month`, detail: `Or ${money(PRICES.glutathionePrepay3mo)} for 3 months. ${INCLUDED}` },
+  "ghk-cu-injection": { line: `${money(PRICES.ghkCuInjectionMonthly)}/month`, detail: `Or ${money(PRICES.ghkCuInjectionPrepay3mo)} for 3 months. ${INCLUDED}` },
+  sleepe: { line: `${money(PRICES.sleepe3mo)} per 3-month supply`, detail: `${INCLUDED} Or part of Mrs. Rose at $169/month.` },
 };
 
 /** Shown where a medication has no checked price. */
@@ -344,32 +362,20 @@ const INCLUDE_FIXES: Record<string, string> = {
   "Licensed clinician care and discreet delivery": "Licensed clinician evaluation and discreet delivery",
 };
 
-export const PACKAGE_VISIT_NOTE = `Follow-up visits are billed separately: hormone-care visits are ${money(KARPA.hrtVisit)} each, and GLP-1 plan prices include your first clinician visit only.`;
-
-/** GLP-1 packages sold as one plan: exact price lines matching checkout. */
-const glp1PriceLines: Record<string, string[]> = {
-  "glp1-semaglutide": [medicationPrices.semaglutide.detail!],
-  "glp1-tirzepatide": [medicationPrices.tirzepatide.detail!],
-};
-
-/** GLP-1 plans bill every 28 days, not per calendar month; the exported copy says "/month". */
-const glp1Billing = (s: string) =>
-  s
-    .replace(/(Semaglutide plan:?|Tirzepatide plan:?|tirzepatide plan:?|GLP-1 plan from|Tirzepatide) (\$\d+)\/month/g, "$1 $2 every 28 days")
-    .replace(/\((\$\d+) at maintenance dose\)/g, "($1 every 28 days at the maintenance dose)");
+export const PACKAGE_VISIT_NOTE = "Package prices include your clinician’s reviews before each refill and discreet shipping. There are no separate visit fees.";
 
 export const packages: Package[] = (data.packages as Package[]).map((p) => ({
   ...p,
   includes: p.includes.map((i) => INCLUDE_FIXES[i] ?? i),
-  itemized: (p.itemized ?? glp1PriceLines[p.slug])?.map(glp1Billing),
-  priceSummary: p.priceSummary && glp1Billing(p.priceSummary),
+  itemized: p.itemized,
+  priceSummary: p.priceSummary,
 }));
 
 export const getPackage = (slug: string) => packages.find((p) => p.slug === slug);
 
 /** Short price line for package cards. */
 export const packagePriceLine = (p: Package) =>
-  p.priceSummary ?? (p.slug.startsWith("glp1-") ? `From ${money(p.price)} every 28 days` : `${money(p.price)}/month`);
+  p.priceSummary ?? (p.slug.startsWith("glp1-") ? `From ${money(p.price)}/month` : `${money(p.price)}/month`);
 
 export const COMPOUNDED_NOTICE =
   "Compounded medications are not FDA-approved. The FDA does not verify their safety, effectiveness or quality. They are prepared by licensed pharmacies and prescribed only when a licensed provider determines they are appropriate for you.";
