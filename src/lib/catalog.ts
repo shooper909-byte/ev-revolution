@@ -305,12 +305,12 @@ const INCLUDED = "Clinician reviews and discreet shipping included.";
  */
 export const medicationPrices: Record<string, { line: string; detail?: string }> = {
   semaglutide: {
-    line: `From ${money(PRICES.semaglutide)} every 28 days`,
-    detail: `Starter and continuation doses: ${money(PRICES.semaglutide)} every 28 days. Higher doses: ${money(PRICES.semaglutideHigherDose)} every 28 days. Or ${money(PRICES.semaglutidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
+    line: `From ${money(PRICES.semaglutide)}/month`,
+    detail: `Starter and continuation doses: ${money(PRICES.semaglutide)}/month. Higher doses: ${money(PRICES.semaglutideHigherDose)}/month. Or ${money(PRICES.semaglutidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
   },
   tirzepatide: {
-    line: `From ${money(PRICES.tirzepatide)} every 28 days`,
-    detail: `Starter doses: ${money(PRICES.tirzepatide)} every 28 days. Continuation doses: ${money(PRICES.tirzepatideMidDose)}. Highest doses: ${money(PRICES.tirzepatideHigherDose)}. Or ${money(PRICES.tirzepatidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
+    line: `From ${money(PRICES.tirzepatide)}/month`,
+    detail: `Starter doses: ${money(PRICES.tirzepatide)}/month. Continuation doses: ${money(PRICES.tirzepatideMidDose)}/month. Highest doses: ${money(PRICES.tirzepatideHigherDose)}/month. Or ${money(PRICES.tirzepatidePrepay3mo)} up front for your first 3 months. ${INCLUDED}`,
   },
   ...Object.fromEntries(
     brandEntries.map((b) => [
@@ -364,24 +364,18 @@ const INCLUDE_FIXES: Record<string, string> = {
 
 export const PACKAGE_VISIT_NOTE = "Package prices include your clinician’s reviews before each refill and discreet shipping. There are no separate visit fees.";
 
-/** GLP-1 plans bill every 28 days, not per calendar month; the exported copy says "/month". */
-const glp1Billing = (s: string) =>
-  s
-    .replace(/(Semaglutide plan:?|Tirzepatide plan:?|tirzepatide plan:?|GLP-1 plan from|Tirzepatide) (\$\d+)\/month/g, "$1 $2 every 28 days")
-    .replace(/\((\$\d+) at maintenance dose\)/g, "($1 every 28 days at the maintenance dose)");
-
 export const packages: Package[] = (data.packages as Package[]).map((p) => ({
   ...p,
   includes: p.includes.map((i) => INCLUDE_FIXES[i] ?? i),
-  itemized: p.itemized?.map(glp1Billing),
-  priceSummary: p.priceSummary && glp1Billing(p.priceSummary),
+  itemized: p.itemized,
+  priceSummary: p.priceSummary,
 }));
 
 export const getPackage = (slug: string) => packages.find((p) => p.slug === slug);
 
 /** Short price line for package cards. */
 export const packagePriceLine = (p: Package) =>
-  p.priceSummary ?? (p.slug.startsWith("glp1-") ? `From ${money(p.price)} every 28 days` : `${money(p.price)}/month`);
+  p.priceSummary ?? (p.slug.startsWith("glp1-") ? `From ${money(p.price)}/month` : `${money(p.price)}/month`);
 
 export const COMPOUNDED_NOTICE =
   "Compounded medications are not FDA-approved. The FDA does not verify their safety, effectiveness or quality. They are prepared by licensed pharmacies and prescribed only when a licensed provider determines they are appropriate for you.";

@@ -1079,12 +1079,12 @@
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Starter and continuation doses: $169 every 28 days",
-        "Higher doses: $199 every 28 days",
+        "Starter and continuation doses: $169/month",
+        "Higher doses: $199/month",
         "Or $459 up front for your first 3 months",
         "Clinician reviews and shipping included"
       ],
-      "priceSummary": "From $169 every 28 days",
+      "priceSummary": "From $169/month",
       "differentiator": "Add hormone care at any time with Mrs. Jones.",
       "category": "weight-management",
       "prepay": 459
@@ -1107,13 +1107,13 @@
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Starter doses: $249 every 28 days",
-        "Continuation doses: $299 every 28 days",
-        "Highest doses: $349 every 28 days",
+        "Starter doses: $249/month",
+        "Continuation doses: $299/month",
+        "Highest doses: $349/month",
         "Or $757 up front for your first 3 months",
         "Clinician reviews and shipping included"
       ],
-      "priceSummary": "From $249 every 28 days",
+      "priceSummary": "From $249/month",
       "differentiator": "Add hormone care at any time with Mrs. Jones.",
       "category": "weight-management",
       "prepay": 757
@@ -1138,10 +1138,10 @@
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Semaglutide + estradiol/progesterone cream: $259 every 28 days",
+        "Semaglutide + estradiol/progesterone cream: $259/month",
         "Clinician reviews and shipping included"
       ],
-      "priceSummary": "$259 every 28 days",
+      "priceSummary": "$259/month",
       "differentiator": "The only plan pairing GLP-1 care with menopause hormone care under one clinician.",
       "category": "weight-management",
       "featured": true
@@ -1167,11 +1167,11 @@
       "intakeCategory": "weight-management",
       "compounded": true,
       "itemized": [
-        "Starter doses: $339 every 28 days",
-        "Continuation and higher doses: $389 every 28 days",
+        "Starter doses: $339/month",
+        "Continuation and higher doses: $389/month",
         "Clinician reviews and shipping included"
       ],
-      "priceSummary": "From $339 every 28 days",
+      "priceSummary": "From $339/month",
       "differentiator": "Tirzepatide and hormone care from one clinician, one plan.",
       "category": "weight-management"
     },
