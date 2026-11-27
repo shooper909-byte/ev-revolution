@@ -74,15 +74,15 @@ const glancePrices = [
   },
   {
     label: "Hormones & menopause",
-    price: "From $119/month",
-    detail: "Menopause Essentials: estradiol + progesterone cream, clinician reviews and delivery. No separate visit fees.",
+    price: "About $119/month",
+    detail: `Menopause Essentials: estradiol + progesterone cream, ${money(PRICES.menopauseEssentials3mo)} for 3 months, billed once. Clinician reviews and delivery included.`,
     href: "/plans/menopause-essentials",
   },
   {
-    label: "Weight + hormones together",
-    price: "$279/month",
-    detail: "The Mrs. Jones plan: GLP-1 and hormone care from one clinician.",
-    href: "/plans/mrs-jones-weight-hormones",
+    label: "Desire & intimacy",
+    price: `${money(PRICES.pt141Monthly)}/month`,
+    detail: "Eve’s Secret — Spark: PT-141, clinician review and discreet delivery.",
+    href: "/plans/eves-secret-spark",
   },
 ];
 
