@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SupportBubble } from "@/components/SupportBubble";
 import { EmailCapturePopup } from "@/components/EmailCapturePopup";
+import { CookieConsent } from "@/components/CookieConsent";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -54,6 +55,7 @@ export default function RootLayout({
         <SiteFooter />
         <SupportBubble />
         <EmailCapturePopup />
+        <CookieConsent />
         <script
           dangerouslySetInnerHTML={{
             __html:
