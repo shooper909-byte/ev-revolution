@@ -721,14 +721,11 @@
       "name": "Sermorelin",
       "category": "peptides",
       "forms": [
-        "Injectable vial",
-        "Nasal spray",
-        "Troche",
-        "Sublingual film"
+        "Injectable vial"
       ],
       "summary": "A compounded formulation of sermorelin, a growth hormone-releasing hormone (GHRH) analog, prescribed only when a licensed provider determines it is appropriate for a legitimate medical indication.",
       "whatItIs": "A compounded formulation of sermorelin, a growth hormone-releasing hormone (GHRH) analog, prescribed only when a licensed provider determines it is appropriate for a legitimate medical indication.",
-      "howItsUsed": "Given as an injection under the skin, or as a nasal spray, troche or sublingual film, as directed by your clinician.",
+      "howItsUsed": "Given as an injection under the skin, as directed by your clinician.",
       "programs": [],
       "considerations": [
         "Requires a clinician evaluation and lab testing where appropriate."
@@ -740,12 +737,11 @@
       "name": "NAD+",
       "category": "peptides",
       "forms": [
-        "Injectable vial",
-        "Cream"
+        "Injectable vial"
       ],
       "summary": "A compounded formulation of nicotinamide adenine dinucleotide (NAD+), prescribed only when a licensed provider determines it is appropriate.",
       "whatItIs": "A compounded formulation of nicotinamide adenine dinucleotide (NAD+), prescribed only when a licensed provider determines it is appropriate.",
-      "howItsUsed": "Offered as an injection or a topical cream within clinician-guided wellness programs.",
+      "howItsUsed": "Given as an injection, as directed by your clinician. A nasal spray is also available.",
       "programs": [],
       "considerations": [
         "Requires a clinician evaluation.",
@@ -775,12 +771,11 @@
       "name": "Glutathione",
       "category": "peptides",
       "forms": [
-        "Injectable vial",
-        "Troche"
+        "Injectable vial"
       ],
       "summary": "A compounded formulation of glutathione, prescribed only when a licensed provider determines it is appropriate.",
       "whatItIs": "A compounded formulation of glutathione, prescribed only when a licensed provider determines it is appropriate.",
-      "howItsUsed": "Offered as an injection or a troche within clinician-guided wellness programs.",
+      "howItsUsed": "Given as an injection, as directed by your clinician.",
       "programs": [],
       "considerations": [
         "Requires a clinician evaluation.",
@@ -1422,11 +1417,14 @@
     "vaginalEstrogen3mo": 149,
     "progesteroneCream3mo": 299,
     "pt141_3mo": 297,
-    "sermorelin8wk": 258,
+    "sermorelin3mo": 387,
     "nadMonthly": 179,
+    "nadPrepay3mo": 509,
     "glutathioneMonthly": 149,
+    "glutathionePrepay3mo": 425,
     "ghkCuInjectionMonthly": 179,
-    "ghkCuCream2mo": 169,
+    "ghkCuInjectionPrepay3mo": 509,
+    "ghkCuCream3mo": 249,
     "estriolFaceCream2mo": 139,
     "sleepe3mo": 249,
     "lushLoxMonthly": 55,
