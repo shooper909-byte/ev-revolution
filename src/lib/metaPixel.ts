@@ -12,7 +12,7 @@
 export const META_PIXEL_ID = "";
 
 /** Google Tag Manager container, e.g. "GTM-XXXXXXX". Empty = GTM off. */
-export const GTM_ID = "";
+export const GTM_ID = "GTM-TR9MBVXD";
 
 export const TRACKING_ENABLED = Boolean(META_PIXEL_ID || GTM_ID);
 
