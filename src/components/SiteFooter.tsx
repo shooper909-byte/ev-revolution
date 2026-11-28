@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { BusinessContact, policyLinks } from "@/components/PolicyPage";
+import { CookieSettingsLink } from "@/components/CookieConsent";
 import { careLabel, getStartedHref as getStartedHrefFor, publicPillars } from "@/lib/pillars";
 import { handoffNote, telehealth, telehealthUrl } from "@/lib/telehealth";
 
@@ -108,6 +109,9 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <CookieSettingsLink className="text-sm text-ivory-200 transition-colors hover:text-champagne" />
+              </li>
             </ul>
           </nav>
         </div>
