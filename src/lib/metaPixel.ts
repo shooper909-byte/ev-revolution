@@ -9,7 +9,7 @@
  * - It runs only on the general pages below. Meta logs the page address, so it
  *   never runs on medication, package, guide or intake pages.
  */
-export const META_PIXEL_ID = "";
+export const META_PIXEL_ID = "2589041114909656";
 
 /** Google Tag Manager container, e.g. "GTM-XXXXXXX". Empty = GTM off. */
 export const GTM_ID = "GTM-TR9MBVXD";
