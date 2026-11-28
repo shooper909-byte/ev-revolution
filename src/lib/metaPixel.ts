@@ -18,7 +18,7 @@ export const TRACKING_ENABLED = Boolean(META_PIXEL_ID || GTM_ID);
 
 export const CONSENT_KEY = "es-cookie-consent";
 
-const ALLOWED_PATHS = new Set([
+export const ALLOWED_PATHS = new Set([
   "/",
   "/about",
   "/contact",
