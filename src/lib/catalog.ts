@@ -69,6 +69,35 @@ export const GLP1_PLANS = data.GLP1_PLANS;
 export const GLP1_EXTRAS = data.GLP1_EXTRAS;
 export const money = (n: number) => `$${n.toLocaleString("en-US", { minimumFractionDigits: n % 1 ? 2 : 0 })}`;
 
+/**
+ * Paused while Karpa is on its Launch plan (skin, hair and labs only) and
+ * Remedora sells one medication per checkout. Bring a slug back by removing it.
+ */
+export const PAUSED_PACKAGES = new Set([
+  "mrs-jones-weight-hormones",
+  "mrs-jones-tirzepatide",
+  "mrs-golden-glow",
+  "mrs-robinson-renewal",
+  "perimenopause-starter",
+  "elite-total-evolution",
+  "eves-secret-intimacy",
+]);
+export const PAUSED_MEDICATIONS = new Set([
+  "biest",
+  "biest-progesterone",
+  "estradiol-patch",
+  "estradiol-vaginal-insert",
+  "liothyronine",
+  "t3-t4",
+  "methylene-blue",
+  "low-dose-naltrexone",
+  "sildenafil",
+  "tadalafil",
+  "fem-max-troche",
+  "olympus-troche",
+  "arousal-cream",
+]);
+
 export const categories: Category[] = data.categories;
 
 /**
@@ -225,7 +254,13 @@ export const BRAND_NOTICE =
 
 export const brandInfo = (slug: string): BrandInfo | undefined => brandEntries.find((b) => b.slug === slug)?.brand;
 export const brandMedications: Medication[] = brandEntries;
-export const medications: Medication[] = [...(data.treatments as Medication[]), ...brandEntries];
+const PAUSED_PROGRAM_NAMES = new Set(["Mrs. Jones", "Mrs. Golden", "Mrs. Robinson", "Mrs. Rose", "Elite", "Elite — Total Evolution", "Eve’s Secret — Complete"]);
+export const medications: Medication[] = [
+  ...(data.treatments as Medication[])
+    .filter((m) => !PAUSED_MEDICATIONS.has(m.slug))
+    .map((m) => (m.programs ? { ...m, programs: m.programs.filter((name) => !PAUSED_PROGRAM_NAMES.has(name)) } : m)),
+  ...brandEntries,
+];
 
 /** Lifestyle photo for each category (brand-site care images). */
 export const categoryImages: Record<string, { src: string; alt: string }> = {
@@ -324,14 +359,13 @@ export const medicationPrices: Record<string, { line: string; detail?: string }>
     ]),
   ),
   "mic-b12-lipostat": { line: `${money(PRICES.micB12Vial)} per vial`, detail: "Added to a GLP-1 plan." },
-  "low-dose-naltrexone": { line: `${money(PRICES.ldnMonthly)}/month`, detail: "Added to a GLP-1 or hormone plan." },
-  estradiol: { line: `${money(PRICES.estradiol3mo)} per 3-month supply`, detail: INCLUDED },
-  "progesterone-ir": { line: `${money(PRICES.progesterone3mo)} per 3-month supply`, detail: `${INCLUDED} Or part of Mrs. Rose from $169/month.` },
-  "estradiol-progesterone-cream": { line: "Included in Menopause Essentials, $119/month", detail: "Also part of Mrs. Jones, Mrs. Golden, Mrs. Robinson and Elite. Clinician reviews and discreet shipping included." },
+    estradiol: { line: `${money(PRICES.estradiol3mo)} per 3-month supply`, detail: INCLUDED },
+  "progesterone-ir": { line: `${money(PRICES.progesterone3mo)} per 3-month supply`, detail: INCLUDED },
+  "estradiol-progesterone-cream": { line: `${money(PRICES.menopauseEssentials3mo)} for 3 months in Menopause Essentials`, detail: `Billed once, about $119/month. ${INCLUDED}` },
   "progesterone-cream": { line: `${money(PRICES.progesteroneCream3mo)} per 3-month supply`, detail: INCLUDED },
   "estradiol-vaginal-cream": { line: `${money(PRICES.vaginalEstrogen3mo)} per 3-month supply`, detail: INCLUDED },
-  "estriol-vaginal-cream": { line: `${money(PRICES.vaginalEstrogen3mo)} per 3-month supply`, detail: `${INCLUDED} Or $49/month in Eve’s Secret — Comfort.` },
-  dhea: { line: `${money(PRICES.dheaMonthly)}/month`, detail: "Added to a hormone plan." },
+  "estriol-vaginal-cream": { line: `${money(PRICES.vaginalEstriol3mo)} per 3-month supply`, detail: `${INCLUDED} The same cream as Eve’s Secret — Comfort.` },
+  dhea: { line: `${money(PRICES.dheaMonthly)}/month`, detail: INCLUDED },
   "tretinoin-cream": { line: `${money(PRICES.tretinoin3mo)} per 3-month supply` },
   "cashmere-cream": { line: `${money(PRICES.cashmere3mo)} per 3-month supply` },
   "ghk-cu-cream": { line: `${money(PRICES.ghkCuCream3mo)} for a 3-month supply`, detail: `Billed once. ${INCLUDED}` },
@@ -343,7 +377,7 @@ export const medicationPrices: Record<string, { line: string; detail?: string }>
   "nad-plus-nasal-spray": { line: `${money(PRICES.nadMonthly)}/month`, detail: `Or ${money(PRICES.nadPrepay3mo)} for 3 months. ${INCLUDED}` },
   glutathione: { line: `${money(PRICES.glutathioneMonthly)}/month`, detail: `Or ${money(PRICES.glutathionePrepay3mo)} for 3 months. ${INCLUDED}` },
   "ghk-cu-injection": { line: `${money(PRICES.ghkCuInjectionMonthly)}/month`, detail: `Or ${money(PRICES.ghkCuInjectionPrepay3mo)} for 3 months. ${INCLUDED}` },
-  sleepe: { line: `${money(PRICES.sleepe3mo)} per 3-month supply`, detail: `${INCLUDED} Or part of Mrs. Rose at $169/month.` },
+  sleepe: { line: `${money(PRICES.sleepe3mo)} per 3-month supply`, detail: INCLUDED },
 };
 
 /** Shown where a medication has no checked price. */
@@ -364,7 +398,7 @@ const INCLUDE_FIXES: Record<string, string> = {
 
 export const PACKAGE_VISIT_NOTE = "Package prices include your clinician’s reviews before each refill and discreet shipping. There are no separate visit fees.";
 
-export const packages: Package[] = (data.packages as Package[]).map((p) => ({
+export const packages: Package[] = (data.packages as Package[]).filter((p) => !PAUSED_PACKAGES.has(p.slug)).map((p) => ({
   ...p,
   includes: p.includes.map((i) => INCLUDE_FIXES[i] ?? i),
   itemized: p.itemized,

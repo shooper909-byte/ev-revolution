@@ -1078,7 +1078,7 @@
         "Clinician reviews and shipping included"
       ],
       "priceSummary": "$189/month",
-      "differentiator": "Add hormone care at any time with Mrs. Jones.",
+      "differentiator": "One price at every dose, with clinician reviews included.",
       "category": "weight-management",
       "prepay": 539
     },
@@ -1104,7 +1104,7 @@
         "Clinician reviews and shipping included"
       ],
       "priceSummary": "$299/month",
-      "differentiator": "Add hormone care at any time with Mrs. Jones.",
+      "differentiator": "One price at every dose, with clinician reviews included.",
       "category": "weight-management",
       "prepay": 849
     },
@@ -1256,7 +1256,7 @@
       "includes": [
         "Estradiol + progesterone cream, if appropriate",
         "Licensed clinician evaluation and refill reviews",
-        "Discreet delivery every 90 days"
+        "Discreet delivery"
       ],
       "price": 119,
       "treatments": [
@@ -1265,11 +1265,11 @@
       "intakeCategory": "hormones-menopause",
       "compounded": true,
       "itemized": [
-        "$119/month, shipped every 90 days",
-        "No separate visit fees"
+        "$357 for 3 months, billed once (about $119/month)",
+        "Clinician reviews and discreet shipping included"
       ],
-      "priceSummary": "$119/month",
-      "differentiator": "Hormone care at one clear monthly price, no visit fees.",
+      "priceSummary": "$357 for 3 months (about $119/month)",
+      "differentiator": "Hormone care at one clear price, no visit fees.",
       "category": "hormones-menopause"
     },
     {
@@ -1412,7 +1412,9 @@
     "estradiol3mo": 249,
     "progesterone3mo": 249,
     "estradiolProgesteroneCream": 169,
+    "menopauseEssentials3mo": 357,
     "vaginalEstrogen3mo": 149,
+    "vaginalEstriol3mo": 147,
     "progesteroneCream3mo": 299,
     "pt141Monthly": 179,
     "pt141Prepay3mo": 509,

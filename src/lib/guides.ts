@@ -83,8 +83,8 @@ export const guides: Guide[] = [
         ],
       },
     ],
-    packagePath: "/packages/mrs-jones-weight-hormones",
-    packageLabel: "See the Mrs. Jones weight + hormones plan",
+    packagePath: "/packages/glp1-semaglutide",
+    packageLabel: "See GLP-1 weight management pricing",
     mentionsCompounded: true,
   },
   {

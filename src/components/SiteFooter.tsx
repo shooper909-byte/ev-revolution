@@ -50,7 +50,6 @@ export function SiteFooter() {
               {[
                 ...publicPillars.map((pillar) => ({ from: pillar.carePath ?? "/care", label: careLabel(pillar) })),
                 { from: "/eves-secret", label: "Eve’s Secret™" },
-                { from: "/packages/mrs-collection", label: "The Mrs. Collection" },
               ].map((item) => (
                 <li key={item.from}>
                   <a
